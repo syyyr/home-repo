@@ -1,0 +1,7 @@
+#!/bin/bash
+HOURS=$(date +%H)
+if [ $HOURS -lt 8 ] || [ $HOURS -gt 22 ]; then
+    echo je noc
+    exec terminator -p dark
+fi
+exec terminator
