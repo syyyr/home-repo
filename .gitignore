@@ -2,6 +2,7 @@
 !.config
 !apps
 !apps/**
+!.profile
 !.screenrc
 !.vim/
 !.vim/**

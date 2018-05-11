@@ -9,7 +9,14 @@ source ~/.vim/syntax.vim
 " startscreen 🤔
 let g:Startscreen_function = function('Draw_startscreen')
 
-if str2nr(strftime('%H')) < 8 || str2nr(strftime('%H')) > 23
+" set dark theme at night
+if empty($NIGHTSTART)
+    let $NIGHTSTART = 23
+endif
+if empty($DAYSTART)
+    let $NIGHTSTART = 8
+endif
+if str2nr(strftime('%H')) < str2nr($DAYSTART) || str2nr(strftime('%H')) > str2nr($NIGHTSTART)
     set background=dark
 endif
 
