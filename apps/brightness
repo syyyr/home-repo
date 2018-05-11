@@ -1,0 +1,74 @@
+#!/bin/bash
+
+round()
+{
+    echo $(printf %.$2f $(echo "scale=$2;(((10^$2)*$1)+0.5)/(10^$2)" | bc))
+};
+
+for arg in $@;do
+case "$arg" in
+    up)
+        if [ $DOWN ]; then
+            echo "Doesn't make sense to use up and down together."
+            exit 1
+        fi
+        if [ $UP ]; then
+            UP=$((UP+1))
+        else
+            UP="1"
+        fi
+        ;;
+    down)
+        if [ $UP ]; then
+            echo "Doesn't make sense to use up and down together."
+            exit 1
+        fi
+        if [ $DOWN ]; then
+            DOWN=$((DOWN+1))
+        else
+            DOWN="1"
+        fi
+        ;;
+    show)
+        ;;
+    quiet)
+        QUIET="1";
+        ;;
+    *)
+        echo "Unknown argument: $arg"
+        exit 1
+        ;;
+esac
+done
+
+if [[ $(round $(light) 0) -le "6"  && -n  $DOWN ]]; then
+    light -S 1
+    unset DOWN
+fi
+
+if [ $DOWN ]; then
+    for i in `seq $DOWN`;do
+        light -U 5
+    done
+    if [ ! $QUIET ]; then echo "Lowering brightness by $((DOWN*5))%"; fi
+fi
+if [ $UP ]; then
+    for i in `seq $UP`;do
+        light -A 5
+    done
+    if [ ! $QUIET ]; then echo "Raising brightness by $((UP*5))%"; fi
+fi
+
+if [ $QUIET ]; then
+    exit 0
+fi
+
+BRIGHT=$(light)
+BRIGHT=$(round $BRIGHT 0)
+
+BRIGHTNESS_IMG="/home/vk/.local/share/icons/blue/brightness.png"
+
+LAST=`cat /tmp/brightness-not-id`
+ARGS="-t 1000 -r ${LAST:-"0"} -p"
+ARGS+=" -h string:image_path:$BRIGHTNESS_IMG"
+notify-send $ARGS "Brightness" "$BRIGHT"% > /tmp/brightness-not-id

@@ -1,0 +1,17 @@
+*
+!.config
+!apps
+!apps/**
+!.screenrc
+!.vim/
+!.vim/**
+!.vim/**/**
+!.vimrc
+!.xbindkeysrc
+!.xinitrc
+!.inputrc
+!.gitignore
+!.Xresources
+.config/google-chrome
+.config/chromium
+.config/chrome-remote-desktop
