@@ -9,7 +9,9 @@ source ~/.vim/syntax.vim
 " startscreen 🤔
 let g:Startscreen_function = function('Draw_startscreen')
 
-
+if str2nr(strftime('%H')) < 8 || str2nr(strftime('%H')) > 23
+    set background=dark
+endif
 
 " airline stuff
 if !exists('g:airline_symbols')
