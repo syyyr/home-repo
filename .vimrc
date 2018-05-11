@@ -1,10 +1,10 @@
 " pathogen blya
 execute pathogen#infect()
 
-source ~/.vim/basic.vim
-source ~/.vim/mapping.vim
-source ~/.vim/custom_commands.vim
-source ~/.vim/syntax.vim
+runtime basic.vim
+runtime mapping.vim
+runtime custom_commands.vim
+runtime syntax.vim
 
 " startscreen 🤔
 let g:Startscreen_function = function('Draw_startscreen')

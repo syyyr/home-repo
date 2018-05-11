@@ -1,14 +1,12 @@
-set nocp " no compatible
 set title " set title to VIM
 set showcmd " show commands
 set noshowmode " but not current moce
 "set shortmess+=I " dont show launch screen
 set cursorline "line highlight
-set nocp " no compatible
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
-set tabstop=4 " tab is for spaces long
+set softtabstop=4 " tab is four spaces long
 set shiftwidth=4 " << >> 4 spaces
 set expandtab " spaces instead of tabs
 set smarttab " idk what this does xd
@@ -26,7 +24,7 @@ set backspace=eol,start,indent
 colorscheme PaperColor
 
 " set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set scrolloff=7
 
 " interactive tab command completion
 set wildmenu
@@ -58,7 +56,7 @@ set foldcolumn=1
 set number "seems better
 
 " better linebreak
-set lbr
+set linebreak
 
 " 🤔
 set noswapfile
