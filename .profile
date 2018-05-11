@@ -1,2 +1,2 @@
-export DAYSTART="11"
+export DAYSTART="9"
 export NIGHTSTART="22"
