@@ -22,7 +22,7 @@ map <C-space> ?
 map <silent> <ESC><cr> :noh<cr>
 
 " jump to next merge conflict
-nnoremap <silent> <ESC>c /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
+nnoremap <silent> <ESC>c :silent /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
 
 " smart way to move between windows
 map <C-j> <C-W>j
