@@ -29,6 +29,10 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>l
 
 " toggle linenumbers
 nnoremap <ESC>n :setlocal number!<cr>
