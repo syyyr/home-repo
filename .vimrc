@@ -50,3 +50,6 @@ let g:clever_f_smart_case = 1
 " scratch
 let g:scratch_disable = 0
 
+" rust stuff
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
