@@ -2,7 +2,9 @@ set title " set title to VIM
 set showcmd " show commands
 set noshowmode " but not current moce
 "set shortmess+=I " dont show launch screen
-"set cursorline "line highlight
+if empty($HOMEPC)
+    set cursorline "line highlight
+endif
 set nocp " no compatible
 
 filetype plugin indent on
