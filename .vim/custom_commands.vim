@@ -44,3 +44,13 @@ fun! Draw_startscreen()
     silent! read ~/.local/share/thinking.txt
     echo
 endfun
+
+" remain in visual after shift
+function! ShiftAndKeepVisualSelection(cmd, mode)
+    set nosmartindent
+    if mode() =~ '[Vv]'
+        return a:cmd . ":set smartindent\<CR>gv"
+    else
+        return a:cmd . ":set smartindent\<CR>"
+    endif
+endfunction

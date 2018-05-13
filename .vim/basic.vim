@@ -35,6 +35,9 @@ set wildmenu
 " sane opening new files
 set hidden
 
+" fold everything according to syntax
+"set foldmethod=syntax
+
 " performance hack
 set lazyredraw
 
@@ -44,6 +47,7 @@ set smartcase
 
 " matching brackets
 set showmatch
+set matchpairs+=<:>,«:»
 
 " turn off bells etc.
 set noerrorbells
@@ -64,9 +68,13 @@ set linebreak
 " 🤔
 set noswapfile
 
-" undo even after exiting
+" better ex command autocomplete
+set wildmode=list:longest,full
+
+" undo
 set undofile
 set undodir=~/.vim/.undo,~/tmp,/tmp
+set undolevels=5000
 
 " return to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

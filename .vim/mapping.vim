@@ -50,3 +50,7 @@ nnoremap <ESC>j mz:m+<cr>`z
 nnoremap <ESC>k mz:m-2<cr>`z
 vnoremap <ESC>j :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <ESC>k :m'<-2<cr>`>my`<mzgv`yo`z
+
+" stay in visual after shift
+vmap <expr> > ShiftAndKeepVisualSelection(">")
+vmap <expr> < ShiftAndKeepVisualSelection("<")
