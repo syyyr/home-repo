@@ -1,0 +1,75 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+
+order += "keyboard_locks"
+order += "volume master"
+order += "wireless _first_"
+order += "ethernet enp0s25"
+order += "diskdata"
+order += "battery all"
+order += "tztime local"
+
+
+keyboard_locks {
+        cache_timeout = 10
+        format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+wireless _first_ {
+        format_up = "W: %essid (%ip)"
+        format_down = "W: down"
+}
+
+ethernet enp0s25 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = ""
+}
+
+diskdata {
+        format = "[\?color=free {free}]"
+        format_space = "{value:.1f} GB"
+        thresholds = {
+            'free': [(0, 'worst'), (0.3, 'worse'), (0.5, 'better'), (1, 'best')]
+        }
+        color_best = '#00FF00'
+        color_better = '#FFFF00'
+        color_worse = '#FF4500'
+        color_worst = '#AA0000'
+}
+
+battery_level all {
+        format = "%status %percentage %remaining"
+        measurement_mode = sys
+}
+
+tztime local {
+        format = "%d.%m.%Y %H:%M"
+}
+
+load {
+        format = "%1min"
+}
+
+disk "/" {
+        format = "%avail"
+}

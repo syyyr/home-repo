@@ -2,6 +2,11 @@
 !.config
 !apps
 !apps/**
+!.config
+!.config/i3
+!.config/i3/config
+!.config/i3status
+!.config/i3status/config
 !.profile
 !.screenrc
 !.vim/
