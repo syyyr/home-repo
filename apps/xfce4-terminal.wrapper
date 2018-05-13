@@ -1,0 +1,11 @@
+#!/bin/bash
+HOURS=$(date +%H)
+if [ $HOURS -lt ${DAYSTART:-8} ] || [ $HOURS -ge ${NIGHTSTART:-22} ]; then
+    echo je noc
+    cp ~/.config/xfce4/terminal/terminalrc.dark ~/.config/xfce4/terminal/terminalrc
+else
+    echo je den
+    cp ~/.config/xfce4/terminal/terminalrc.light ~/.config/xfce4/terminal/terminalrc
+fi
+
+exec xfce4-terminal "$@"
