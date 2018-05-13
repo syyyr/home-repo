@@ -1,0 +1,11 @@
+#!/bin/bash
+
+_volume_complete() {
+    COMPREPLY+=($( compgen -W "up down toggle silent show quiet" "$2" ) )
+}
+
+_kbd_pulsectl_complete() {
+    COMPREPLY+=($( compgen -W "pulse cycle manual timeout" "$2" ) )
+}
+complete -F _volume_complete volume
+complete -F _kbd_pulsectl_complete kbdlightctl
