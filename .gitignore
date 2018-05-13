@@ -9,6 +9,8 @@
 !.config/i3status/config
 !.config/terminator
 !.config/terminator/config
+!.config/kbd_lighttimeout.conf
+!.config/kbd_pulse.conf
 !.profile
 !.screenrc
 !.vim/
