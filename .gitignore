@@ -12,6 +12,13 @@
 !.config/terminator/config
 !.config/kbd_lighttimeout.conf
 !.config/kbd_pulse.conf
+!.local
+!.local/share
+!.local/share/mfw.png
+!.local/share/thinking.txt
+!.local/share/icons
+!.local/share/icons/blue
+!.local/share/icons/blue/**
 !.profile
 !.screenrc
 !.vim/
