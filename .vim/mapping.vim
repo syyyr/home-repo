@@ -29,10 +29,14 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
+
+" ability to move with hjkl in insert mode
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
-inoremap <C-h> <C-o>h
-inoremap <C-l> <C-o>l
+" <C-o>h doesn't work at end of line
+inoremap <C-h> <ESC>i
+" <C-o>l doesn't work at end of line
+inoremap <C-l> <C-O>:stopinsert<CR>a
 
 " toggle linenumbers
 nnoremap <ESC>n :setlocal number!<cr>
