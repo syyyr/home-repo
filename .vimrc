@@ -11,12 +11,12 @@ let g:Startscreen_function = function('Draw_startscreen')
 
 " set dark theme at night
 if empty($NIGHTSTART)
-    let $NIGHTSTART = 23
+    let $NIGHTSTART = 22
 endif
 if empty($DAYSTART)
     let $NIGHTSTART = 8
 endif
-if str2nr(strftime('%H')) < str2nr($DAYSTART) || str2nr(strftime('%H')) > str2nr($NIGHTSTART)
+if str2nr(strftime('%H')) < str2nr($DAYSTART) || str2nr(strftime('%H')) >= str2nr($NIGHTSTART)
     set background=dark
 endif
 
