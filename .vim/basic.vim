@@ -5,7 +5,6 @@ set noshowmode " but not current moce
 if empty($HOMEPC)
     set cursorline "line highlight
 endif
-set nocp " no compatible
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
@@ -69,7 +68,7 @@ set linebreak
 set noswapfile
 
 " better ex command autocomplete
-set wildmode=list:longest,full
+set wildmode=list:longest
 
 " undo
 set undofile
