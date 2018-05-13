@@ -16,6 +16,8 @@
 !.local/share
 !.local/share/mfw.png
 !.local/share/thinking.txt
+!.local/share/fonts
+!.local/share/fonts/Consolas-Power-Line.ttf
 !.local/share/icons
 !.local/share/icons/blue
 !.local/share/icons/blue/**
