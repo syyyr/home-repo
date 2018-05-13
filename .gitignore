@@ -27,6 +27,7 @@
 !.vim/**
 !.vim/**/**
 .vim/.netrwhist
+.vim/.undo
 !.vimrc
 !.xbindkeysrc
 !.xinitrc
