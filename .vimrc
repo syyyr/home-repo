@@ -14,7 +14,7 @@ if empty($NIGHTSTART)
     let $NIGHTSTART = 22
 endif
 if empty($DAYSTART)
-    let $NIGHTSTART = 8
+    let $DAYSTART = 8
 endif
 if str2nr(strftime('%H')) < str2nr($DAYSTART) || str2nr(strftime('%H')) >= str2nr($NIGHTSTART)
     set background=dark
