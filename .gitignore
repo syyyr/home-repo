@@ -7,6 +7,8 @@
 !.config/i3/config
 !.config/i3status
 !.config/i3status/config
+!.config/terminator
+!.config/terminator/config
 !.profile
 !.screenrc
 !.vim/
