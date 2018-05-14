@@ -75,6 +75,10 @@ set undofile
 set undodir=~/.vim/.undo,~/tmp,/tmp
 set undolevels=5000
 
+" folding
+set foldmethod=indent
+set foldnestmax=1
+
 " return to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
