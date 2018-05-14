@@ -39,6 +39,7 @@ endfun
 
 " startscreen_function
 fun! Draw_startscreen()
+    setlocal foldmethod=manual
     execute 'IndentLinesDisable'
     file VIM
     silent! read ~/.local/share/thinking.txt
