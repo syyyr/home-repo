@@ -30,6 +30,9 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
+" close the window (or a tab) with C-q
+nnoremap <C-q> :q<cr>
+
 " ability to move with hjkl in insert mode
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
