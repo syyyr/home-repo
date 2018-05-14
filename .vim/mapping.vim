@@ -58,3 +58,16 @@ vnoremap <ESC>k :m'<-2<cr>`>my`<mzgv`yo`z
 " stay in visual after shift
 vmap <expr> > ShiftAndKeepVisualSelection(">")
 vmap <expr> < ShiftAndKeepVisualSelection("<")
+
+" tabs?
+nmap <ESC>; gt
+nmap <ESC>+ 1gt
+nmap <ESC>ě 2gt
+nmap <ESC>š 3gt
+nmap <ESC>č 4gt
+nmap <ESC>ř 5gt
+nmap <ESC>ž 6gt
+nmap <ESC>ý 7gt
+nmap <ESC>á 8gt
+nmap <ESC>é 9gt
+nmap <ESC>= :tablast<CR>
