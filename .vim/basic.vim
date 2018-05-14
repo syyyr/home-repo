@@ -34,9 +34,6 @@ set wildmenu
 " sane opening new files
 set hidden
 
-" fold everything according to syntax
-"set foldmethod=syntax
-
 " performance hack
 set lazyredraw
 
