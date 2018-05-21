@@ -7,5 +7,10 @@ _volume_complete() {
 _kbd_pulsectl_complete() {
     COMPREPLY+=($( compgen -W "pulse cycle manual timeout" "$2" ) )
 }
+
+_taskkill_complete() {
+    COMPREPLY+=($( compgen -W "$(tasklist)" "$2" ))
+}
 complete -F _volume_complete volume
 complete -F _kbd_pulsectl_complete kbdlightctl
+complete -F _taskkill_complete taskkill
