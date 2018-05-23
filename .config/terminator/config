@@ -2,6 +2,8 @@
   focus = mouse
   inactive_color_offset = 1.0
 [keybindings]
+  go_down = None
+  go_left = None
   layout_launcher = None
 [layouts]
   [[default]]
@@ -19,7 +21,7 @@
     cursor_color = "#aaaaaa"
     font = Consolas NF 18
     foreground_color = "#444444"
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#0087af:#ff55ff:#5ed6d6:#ffffff"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#729fcf:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#0087af:#ff55ff:#5ed6d6:#ffffff"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False
