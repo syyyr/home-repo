@@ -55,3 +55,6 @@ function! ShiftAndKeepVisualSelection(cmd, mode)
         return a:cmd . ":set smartindent\<CR>"
     endif
 endfunction
+
+" end with :Q XD
+command Q q
