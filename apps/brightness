@@ -66,6 +66,7 @@ fi
 BRIGHT=$(light)
 BRIGHT=$(round $BRIGHT 0)
 
+echo "Brightness: $BRIGHT"
 BRIGHTNESS_IMG="/home/vk/.local/share/icons/blue/brightness.png"
 
 LAST=`cat /tmp/brightness-not-id`
