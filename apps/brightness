@@ -44,6 +44,9 @@ case "$arg" in
     quiet)
         QUIET="1";
         ;;
+    silent)
+        SILENT="1";
+        ;;
     *)
         echo "Unknown argument: $arg"
         exit 1
