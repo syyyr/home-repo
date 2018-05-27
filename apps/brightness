@@ -1,9 +1,19 @@
 #!/bin/bash
 
+toWeighted()
+{
+    python -c "import math;print(math.sqrt(math.pow(${1},3))*0.099+1)"
+}
+
+toUnweighted()
+{
+    python -c "import math;print(math.pow(math.pow(((${1}-1)/0.099),1/3),2))"
+}
+
 round()
 {
     echo $(printf %.$2f $(echo "scale=$2;(((10^$2)*$1)+0.5)/(10^$2)" | bc))
-};
+}
 
 for arg in $@;do
 case "$arg" in
@@ -41,20 +51,24 @@ case "$arg" in
 esac
 done
 
-if [[ $(round $(light) 0) -le "6"  && -n  $DOWN ]]; then
+if [[ $(round $(light) 0) -le "2"  && -n  $DOWN ]]; then
     light -S 1
     unset DOWN
 fi
 
 if [ $DOWN ]; then
     for i in `seq $DOWN`;do
-        light -U 5
+        CURRENT=$(toUnweighted $(light))
+        NEW=$(toWeighted $(python -c  "print($CURRENT-5)"))
+        light -S $NEW
     done
     if [ ! $QUIET ]; then echo "Lowering brightness by $((DOWN*5))%"; fi
 fi
 if [ $UP ]; then
     for i in `seq $UP`;do
-        light -A 5
+        CURRENT=$(toUnweighted $(light))
+        NEW=$(toWeighted $(python -c  "print($CURRENT+5)"))
+        light -S $NEW
     done
     if [ ! $QUIET ]; then echo "Raising brightness by $((UP*5))%"; fi
 fi
