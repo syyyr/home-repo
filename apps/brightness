@@ -81,11 +81,18 @@ if [ $QUIET ]; then
 fi
 
 BRIGHT=$(light)
+BRIGHT=$(toUnweighted $BRIGHT)
+BRIGHT=$(bc -l <<< $BRIGHT/5)
 BRIGHT=$(round $BRIGHT 0)
+BRIGHT=$(bc -l <<< $BRIGHT*5)
 
-echo "Brightness: $BRIGHT"
+echo "Brightness: $BRIGHT"%
+
+if [ $SILENT ]; then
+    exit 0
+fi
+
 BRIGHTNESS_IMG="/home/vk/.local/share/icons/blue/brightness.png"
-
 LAST=`cat /tmp/brightness-not-id`
 ARGS="-t 1000 -r ${LAST:-"0"} -p"
 ARGS+=" -h string:image_path:$BRIGHTNESS_IMG"
