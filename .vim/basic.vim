@@ -76,6 +76,9 @@ set undolevels=5000
 set foldmethod=indent
 set foldnestmax=1
 
+" fuzzy file search
+set path+=**
+
 " return to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
