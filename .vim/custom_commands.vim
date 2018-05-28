@@ -47,7 +47,7 @@ fun! Draw_startscreen()
 endfun
 
 " remain in visual after shift
-function! ShiftAndKeepVisualSelection(cmd, mode)
+function! ShiftAndKeepVisualSelection(cmd)
     set nosmartindent
     if mode() =~ '[Vv]'
         return a:cmd . ":set smartindent\<CR>gv"
