@@ -346,6 +346,11 @@ function! s:HandleKeyInput(c)
   if s:maze[i][j]==' '
     let s:you[0]=i
     let s:you[1]=j
+  else
+    echo "You lost."
+    let c=getchar()
+    call s:HJKL(s:R, s:C)
+    return 1
   endif
 
   for i in range(s:konamiMode)
