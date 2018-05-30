@@ -449,7 +449,7 @@ class Config(object):
       # Output verbosity
       # valid values are: LOG_ERROR, LOG_WARN, LOG_INFO, LOG_DEBUG
       # use 0 to disable ALL output (not recommended!)
-      "VERBOSITY": LOG_INFO,
+      "VERBOSITY": LOG_WARN,
   }
 
   def __init__(self):
