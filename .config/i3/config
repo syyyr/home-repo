@@ -32,12 +32,12 @@ bindsym $mod+Shift+s exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -
 bindsym XF86Tools exec --no-startup-id "terminator -e \\"vim ~/.config/i3/config\\""
 bindsym Control+XF86Tools exec --no-startup-id "terminator -e \\"vim ~/.config/i3status/config\\""
 bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
-bindsym XF86LaunchA exec --no-startup-id "~/bin/kbdlightctl cycle"
+bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
 
 
 # screenshot
 bindsym Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
-bindsym Control+Print exec --no-startup-id "~/apps/area-screenshot; notify-send -t 2000 Screenshotted."
+bindsym Control+Print exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
 
 # lock
 bindsym $mod+semicolon exec --no-startup-id ~/apps/lock
@@ -46,19 +46,19 @@ bindsym $mod+semicolon exec --no-startup-id ~/apps/lock
 bindsym $mod+b exec --no-startup-id google-chrome-stable
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness up"
-bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness down"
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness up up"
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness down down"
+bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up"
+bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down"
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up up"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down down"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume up"
-bindsym XF86AudioLowerVolume exec --no-startup-id "~/apps/volume down"
-bindsym XF86AudioMute exec --no-startup-id "~/apps/volume toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash up"
+bindsym XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash down"
+bindsym XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
 
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume up up"
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "~/apps/volume down down"
-bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume toggle"
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash up up"
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash down down"
+bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
 
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
