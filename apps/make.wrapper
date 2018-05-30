@@ -1,0 +1,3 @@
+#!/bin/bash
+/bin/make $@
+notify-send -t 5000 "Make" "Make $@ is done."
