@@ -74,6 +74,3 @@ nmap <ESC>ý 7gt
 nmap <ESC>á 8gt
 nmap <ESC>é 9gt
 nmap <ESC>= :tablast<CR>
-
-" insert mode readline emulation
-imap <ESC><BS> <C-o>diw
