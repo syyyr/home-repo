@@ -13,6 +13,8 @@ set shiftwidth=4 " << >> 4 spaces
 set expandtab " spaces instead of tabs
 set smarttab " idk what this does xd
 
+set smartindent " indenting in txt files
+
 " no esc delay
 set timeout
 set ttimeout

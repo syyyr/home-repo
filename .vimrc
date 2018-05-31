@@ -53,3 +53,9 @@ let g:scratch_disable = 0
 " rust stuff
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+
+" vim markdown preview
+let vim_markdown_preview_toggle=3
+let vim_markdown_preview_pandoc=1
+
+
