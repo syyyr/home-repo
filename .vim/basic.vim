@@ -79,7 +79,9 @@ set foldmethod=indent
 set foldnestmax=1
 
 " fuzzy file search
-set path+=**
+set path=.
+set path+=src/**
+set path+=tests/**
 
 " return to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
