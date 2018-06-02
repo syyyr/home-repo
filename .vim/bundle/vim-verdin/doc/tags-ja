@@ -1,0 +1,17 @@
+!_TAG_FILE_ENCODING	utf-8	//
+:VerdinScanBuffer	Verdin.jax	/*:VerdinScanBuffer*
+:VerdinStartAutocompletion	Verdin.jax	/*:VerdinStartAutocompletion*
+:VerdinStopAutocompletion	Verdin.jax	/*:VerdinStopAutocompletion*
+Verdin	Verdin.jax	/*Verdin*
+Verdin#omnifunc()	Verdin.jax	/*Verdin#omnifunc()*
+Verdin-commands	Verdin.jax	/*Verdin-commands*
+Verdin-cooperation	Verdin.jax	/*Verdin-cooperation*
+Verdin-functions	Verdin.jax	/*Verdin-functions*
+Verdin-usage	Verdin.jax	/*Verdin-usage*
+Verdin.txt	Verdin.jax	/*Verdin.txt*
+g:Verdin#autobraketinsert	Verdin.jax	/*g:Verdin#autobraketinsert*
+g:Verdin#autocomplete	Verdin.jax	/*g:Verdin#autocomplete*
+g:Verdin#autocompletedelay	Verdin.jax	/*g:Verdin#autocompletedelay*
+g:Verdin#donotsetomnifunc	Verdin.jax	/*g:Verdin#donotsetomnifunc*
+g:Verdin#fuzzymatch	Verdin.jax	/*g:Verdin#fuzzymatch*
+g:Verdin#loadpath	Verdin.jax	/*g:Verdin#loadpath*

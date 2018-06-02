@@ -1,5 +1,6 @@
 " pathogen blya
 execute pathogen#infect()
+Helptags
 
 runtime basic.vim
 runtime mapping.vim
