@@ -6,11 +6,11 @@ if [ -z $1 ];then
 fi
 
 if [ -z $2 ];then
-    scp "$1" rak@rakac.club:www/html/"$1"
-    echo "rakac.club/$1"
+    scp "$1" rak@ja.neviem.us:www/html/"$1"
+    echo "ja.neviem.us/$1"
 else
-    scp "$1" rak@rakac.club:www/html/"$2"
-    echo "rakac.club/$2"
+    scp "$1" rak@ja.neviem.us:www/html/"$2"
+    echo "ja.neviem.us/$2"
 fi
 
 
