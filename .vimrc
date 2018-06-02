@@ -59,4 +59,9 @@ let g:racer_experimental_completer = 1
 let vim_markdown_preview_toggle=3
 let vim_markdown_preview_pandoc=1
 
+"ale stuff
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {'rust': ['rls']}
+
+
 
