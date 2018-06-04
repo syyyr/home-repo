@@ -2,7 +2,7 @@ set title " set title to VIM
 set showcmd " show commands
 set noshowmode " but not current moce
 "set shortmess+=I " dont show launch screen
-if empty($HOMEPC)
+if 0 "empty($HOMEPC)
     set cursorline "line highlight
 endif
 
