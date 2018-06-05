@@ -61,7 +61,7 @@ let vim_markdown_preview_pandoc=1
 
 "ale stuff
 let g:airline#extensions#ale#enabled = 1
-let g:ale_linters = {'rust': ['rls']}
+let g:ale_linters = {'rust': ['rls'], 'cpp': ['gcc']}
 
 
 
