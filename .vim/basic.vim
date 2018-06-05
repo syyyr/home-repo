@@ -80,6 +80,7 @@ set foldnestmax=1
 
 " fuzzy file search
 set path=.
+set path=$PWD
 set path+=src/**
 set path+=tests/**
 
