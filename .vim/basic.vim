@@ -88,5 +88,5 @@ set path+=tests/**
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " preserve clipboard on leave
-autocmd VimLeave * call system('echo ' . shellescape(getreg('+')) . ' | xclip -selection clipboard')
+autocmd VimLeave * call system('echo ' . shellescape(getreg('+')) . ' | xclip -r -selection clipboard')
 
