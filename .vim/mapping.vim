@@ -75,5 +75,9 @@ nmap <ESC>á 8gt
 nmap <ESC>é 9gt
 nmap <ESC>= :tablast<CR>
 
+" semicolon marks
+noremap ; `p
+noremap ` mp
+
 " insert mode TAB completion 🤔
 inoremap <TAB> <C-N>
