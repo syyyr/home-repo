@@ -80,4 +80,4 @@ noremap ; `p
 noremap ` mp
 
 " insert mode TAB completion 🤔
-inoremap <TAB> <C-N>
+inoremap <silent> <TAB> <C-R>=TabOrCompletion()<CR>

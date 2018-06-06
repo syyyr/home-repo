@@ -56,5 +56,14 @@ function! ShiftAndKeepVisualSelection(cmd)
     endif
 endfunction
 
+function! TabOrCompletion()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<TAB> "
+    else
+        return "\<C-N>"
+    endif
+endfunction
+
 " end with :Q XD
 command Q q
