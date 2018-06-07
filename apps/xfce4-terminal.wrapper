@@ -1,4 +1,5 @@
 #!/bin/bash
+export DISPLAY=localhost:0
 HOURS=$(date +%H)
 if [ $HOURS -lt ${DAYSTART:-8} ] || [ $HOURS -ge ${NIGHTSTART:-22} ]; then
     echo je noc
