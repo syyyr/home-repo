@@ -1,2 +1,2 @@
 #!/bin/bash
-exec sftp -P2222 vk@home.rakac.club $@
+exec sftp -P2222 vk@home.anip.icu $@
