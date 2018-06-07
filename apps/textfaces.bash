@@ -1,5 +1,13 @@
 #!/bin/bash
 
+checkinput()
+{
+    if ! grep -E '^[0-9]+$' > /dev/null 2>&1 <<< "$1"; then
+        return 1
+    fi
+    return 0
+}
+
 declare -a FACES
 
 FACES[1]='( ͡° ͜ʖ ͡°)'
@@ -75,29 +83,34 @@ FACES[70]='(✿´‿`)'
 FACES[71]='¬_¬'
 FACES[72]='ب_ب'
 FACES[73]='｡゜(｀Д´)゜｡'
-FACES[74]='°Д°'
-FACES[75]='٩◔̯◔۶'
-FACES[76]='≧☉_☉≦'
-FACES[77]='☼.☼'
-FACES[78]='^̮^'
-FACES[79]='(>人<)'
-FACES[80]='〆(・∀・＠)'
-FACES[81]='(~_^)'
-FACES[82]='^̮^'
-FACES[83]='^̮^'
-FACES[84]='>_>'
-FACES[85]='(^̮^)'
-FACES[86]='^̮^'
-FACES[87]='^̮^'
-FACES[88]='=U'
-FACES[89]='(･.◤)'
-FACES[90]='¯\_(ツ)_/¯'
+FACES[74]='(ó ì_í)=óò=(ì_í ò)'
+FACES[75]='°Д°'
+FACES[76]='٩◔̯◔۶'
+FACES[77]='≧☉_☉≦'
+FACES[78]='☼.☼'
+FACES[79]='^̮^'
+FACES[80]='(>人<)'
+FACES[81]='〆(・∀・＠)'
+FACES[82]='(~_^)'
+FACES[83]='>_>'
+FACES[84]='(^̮^)'
+FACES[85]='=U'
+FACES[86]='(･.◤)'
+FACES[87]='¯\_(ツ)_/¯'
 IFS=$'\n'
 COUNT=1
-{  for face in ${FACES[*]}; do echo $COUNT $face; COUNT=$((COUNT+1)); done; } | column
 
-echo -n "Choose a face: [1-90] "
-read INPUT
+if [ $# -eq 0 ]; then
+    {  for face in ${FACES[*]}; do echo $COUNT $face; COUNT=$((COUNT+1)); done; } | column
+    echo -n "Choose a face: [1-90] "
+    read INPUT
+else
+    INPUT=$1
+fi
+
+if ! checkinput $INPUT; then
+    exit 1
+fi
 
 echo "Clipboarding ${FACES[INPUT]}"
 echo "${FACES[INPUT]}" | xclip -se c -r
