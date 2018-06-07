@@ -1,2 +1,2 @@
 #!/bin/bash
-exec ssh vk@78.45.185.210 -p2222 $@
+exec ssh vk@94.112.92.62 -p2222 $@
