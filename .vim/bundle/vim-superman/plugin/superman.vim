@@ -41,6 +41,11 @@ function! superman#SuperMan(...)
 
   " To make us behave more like less
   noremap q :q<CR>
+  noremap u <c-u>
+  noremap d <c-d>
+  noremap f <c-f>
+  noremap b <c-b>
+  noremap g gg
 endfunction
 
 " Command alias for our function
