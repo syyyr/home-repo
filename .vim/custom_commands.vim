@@ -66,4 +66,4 @@ function! TabOrCompletion()
 endfunction
 
 " end with :Q XD
-command Q q
+command -bang Q q<bang>
