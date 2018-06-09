@@ -15,6 +15,6 @@ if [ $# = 0 ]; then
 fi
 
 if [ "$1" = "-c" ];then
-    echo "http://rakac.club/rofl/$FILENAME to clipboard"
-    echo "http://rakac.club/rofl/$FILENAME" | xclip -se c -r
+    echo "http://rakac.neviem.us/rofl/$FILENAME to clipboard"
+    echo "http://rakac.neviem.us/rofl/$FILENAME" | xclip -se c -r
 fi
