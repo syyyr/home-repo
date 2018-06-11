@@ -27,6 +27,7 @@
 !.local/share/icons
 !.local/share/icons/blue
 !.local/share/icons/blue/**
+!.gitconfig
 !.profile
 !.screenrc
 !.vim/
