@@ -74,6 +74,9 @@ set undofile
 set undodir=~/.vim/.undo,~/tmp,/tmp
 set undolevels=5000
 
+" remember loooots of cmd line history
+set history=5000
+
 " folding
 set foldmethod=indent
 set foldnestmax=1
