@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = "Václav Kubernát"
+	email = kubervac@fit.cvut.cz
+[alias]
+	adog = log --all --decorate --oneline --graph
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
