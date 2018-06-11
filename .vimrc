@@ -63,5 +63,9 @@ let vim_markdown_preview_pandoc=1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {'rust': ['rls'], 'cpp': ['gcc']}
 
+" kms
+if (!empty($HOMEPC))
+    let g:dcrpc_autostart = 1
+endif
 
 
