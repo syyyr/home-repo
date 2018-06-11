@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Like gvimdiff, but can diff multiple pairs of files. (Also, uses
+# MacVim on Macs.)
+#
+# Also disables folding. I hate diff folding.
+
+exec vimdiff \
+  -c 'silent call TabMultiDiff()' \
+  -c 'tabfirst' \
+  -c 'tabdo windo set foldmethod=diff' \
+  "$@"
