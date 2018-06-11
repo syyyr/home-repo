@@ -87,6 +87,9 @@ set path=$PWD
 set path+=src/**
 set path+=tests/**
 
+" pretty windows split :>
+set fillchars+=vert:⏐
+
 " return to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
