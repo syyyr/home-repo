@@ -27,6 +27,27 @@ function! TabMultiDiff()
   let s:tab_multi_diff = 0
   argdo call s:AddBufferToTab()
   tabclose
+  if !empty($GIT_CURRENT_COMMIT)
+      let g:_init_diff_filenames = []
+      tabdo call add(g:_init_diff_filenames, 'diff: ' . expand('%:t'))
+      tabdo botright 5new
+      tabdo set syntax=git
+      tabdo setlocal
+                \ bufhidden=wipe
+                \ buftype=nofile
+                \ nobuflisted
+                \ nocursorcolumn
+                \ nocursorline
+                \ nolist
+                \ nonumber
+                \ noswapfile
+                \ norelativenumber
+      let g:_init_diff_count = 0
+      tabdo execute 'file' g:_init_diff_filenames[g:_init_diff_count] | let g:_init_diff_count+=1
+      tabdo execute '0read ! git log' $GIT_CURRENT_COMMIT '-1'
+      tabdo 1
+      tabdo set nomodifiable
+  endif
 endfun
 
 
