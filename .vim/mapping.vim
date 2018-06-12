@@ -87,3 +87,7 @@ inoremap <silent> <TAB> <C-R>=TabOrCompletion()<CR>
 "nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
+
+" accept the suggestion with <cr> or decline it with <esc>
+inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
+inoremap <silent><expr> <ESC> pumvisible() ? "<C-e>" : "<ESC>"
