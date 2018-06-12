@@ -2,10 +2,17 @@ let s:rpc_file = '/home/vk/sirve/Ubuntu/tmp/dcrpc'
 let s:file_dir = expand('<sfile>:p:h')
 
 func dcrpc#WriteTmp(timer)
-    call writefile(['Line ' . line('.') . ' of ' . line('$'), 'Editing ' . expand('%:t')], s:rpc_file)
+    if (g:dcrpc_showline)
+        call writefile(['㏑' . line('.') . '/' . line('$') . ': ' . expand('%:t'), 'The best editor on Earth.'], s:rpc_file)
+    else
+        call writefile([expand('%:t'), 'The best editor on Earth.'], s:rpc_file)
+    endif
 endfunc
 
 func dcrpc#StartDcrpc()
+    if !exists("g:dcrpc_showline")
+        let g:dcrpc_showline = 1
+    endif
     call system('bash ' . s:file_dir . '/../dcrpc.sh &')
     let s:dcrptimer = timer_start(5000, 'dcrpc#WriteTmp', {'repeat': -1})
 endfunc
