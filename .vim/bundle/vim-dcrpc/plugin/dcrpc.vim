@@ -1,7 +1,7 @@
 let s:rpc_file = '/home/vk/sirve/Ubuntu/tmp/dcrpc'
 
 autocmd VimLeave * call system('rm -f ' . s:rpc_file)
-autocmd VimLeave * call system('taskkill -f vim_dcrpc.exe &')
+autocmd VimLeave * call system('taskkill -f vim_dcrpc_master.exe &')
 
 command! StartDcrpc :call dcrpc#StartDcrpc()
 command! StopDcrpc :call dcrpc#StopDcrpc()
