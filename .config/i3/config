@@ -27,7 +27,7 @@ exec --no-startup-id fluxgui
 bindsym $mod+Shift+s exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -m ''\
  -b 'Shutdown' 'shutdown now'\
  -b 'Reboot' 'systemctl reboot'\
- -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend'"
+ -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
 
 # xd
 bindsym XF86Tools exec --no-startup-id "terminator -e \\"vim ~/.config/i3/config\\""
