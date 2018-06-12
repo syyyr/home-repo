@@ -40,12 +40,12 @@ function! superman#SuperMan(...)
   endif
 
   " To make us behave more like less
-  noremap q :q<CR>
-  noremap u <c-u>
-  noremap d <c-d>
-  noremap f <c-f>
-  noremap b <c-b>
-  noremap g gg
+  nnoremap <buffer> q :q<CR>
+  nnoremap <buffer> u <c-u>
+  nnoremap <buffer> d <c-d>
+  nnoremap <buffer> f <c-f>
+  nnoremap <buffer> b <c-b>
+  nnoremap <buffer> g gg
 endfunction
 
 " Command alias for our function
