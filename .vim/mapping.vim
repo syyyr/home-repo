@@ -90,4 +90,4 @@ nnoremap <Right> :vertical resize +2<CR>
 
 " accept the suggestion with <cr> or decline it with <esc>
 inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
-inoremap <silent><expr> <ESC> pumvisible() ? "<C-e>" : "<ESC>"
+" inoremap <silent><expr> <ESC> pumvisible() ? \"<C-e>\" : \"<ESC>";
