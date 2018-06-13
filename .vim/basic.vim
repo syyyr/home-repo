@@ -91,6 +91,10 @@ set path+=tests/**
 " pretty windows split :>
 set fillchars+=vert:⏐
 
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 " return to last position in file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
