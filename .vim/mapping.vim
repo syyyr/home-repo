@@ -23,6 +23,8 @@ nnoremap <silent> <ESC><cr> :noh<cr>
 
 " jump to next merge conflict
 nnoremap <silent> <ESC>c :silent /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
+xnoremap <silent> <ESC>c /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
+onoremap <silent> <ESC>c /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
 
 " smart way to move between windows
 nnoremap <C-j> <C-W>j
