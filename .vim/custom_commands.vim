@@ -56,12 +56,16 @@ function! ShiftAndKeepVisualSelection(cmd)
     endif
 endfunction
 
-function! TabOrCompletion()
+function! TabOrCompletion(direction)
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<TAB>"
     else
-        return "\<C-N>"
+        if a:direction == 'f'
+            return "\<C-N>"
+        else
+            return "\<C-P>"
+        endif
     endif
 endfunction
 

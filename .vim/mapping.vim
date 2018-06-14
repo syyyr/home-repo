@@ -82,7 +82,8 @@ noremap ; `p
 noremap ` mp
 
 " insert mode TAB completion 🤔
-inoremap <silent> <TAB> <C-R>=TabOrCompletion()<CR>
+inoremap <silent> <TAB> <C-R>=TabOrCompletion('f')<CR>
+inoremap <silent> <S-TAB> <C-R>=TabOrCompletion('b')<CR>
 
 " map LR arrows to resize, but keep UD arrows for scrolling
 "nnoremap <Up> :resize +2<CR>
