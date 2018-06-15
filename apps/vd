@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec vim \
+exec nvim -d \
   -c "silent call TabMultiDiff()" \
   -c 'tabdo windo set foldmethod=diff' \
   "$@"
