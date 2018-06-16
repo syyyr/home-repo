@@ -101,3 +101,6 @@ nnoremap ) /^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^en
 
 nmap <A-t> :Trailing<cr>
 
+" underscore text object
+xnoremap i_ :<C-u>normal! T_vt_<cr>
+onoremap i_ :normal vi_<cr>
