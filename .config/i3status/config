@@ -63,7 +63,7 @@ battery_level all {
 }
 
 tztime local {
-        format = "%d.%m.%Y %H:%M"
+        format = "%A %d.%m.%Y %H:%M"
 }
 
 load {
