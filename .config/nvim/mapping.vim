@@ -111,3 +111,6 @@ omap i% :<C-u>normal vi%<CR>
 
 " auto complete brace
 inoremap {<CR> {<CR>}<Esc>O
+
+" insert current line in cmd mode
+cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
