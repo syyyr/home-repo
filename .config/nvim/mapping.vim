@@ -105,6 +105,9 @@ nmap <A-t> :Trailing<cr>
 xnoremap i_ :<C-u>normal! T_vt_<cr>
 onoremap i_ :normal vi_<cr>
 
+" buffer text-object
+xnoremap i% GoggV
+omap i% :<C-u>normal vi%<CR>
+
 " auto complete brace
 inoremap {<CR> {<CR>}<Esc>O
-
