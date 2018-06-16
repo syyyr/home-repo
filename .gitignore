@@ -36,6 +36,7 @@
 !.vim/**
 !.vim/**/**
 .vim/.netrwhist
+.config/nvim/.netrwhist
 .vim/.undo
 !.vimrc
 !.xbindkeysrc
