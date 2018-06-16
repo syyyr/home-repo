@@ -16,7 +16,7 @@ set smartindent " indenting in txt files
 " no esc delay
 set timeout
 set ttimeout
-set timeoutlen=10
+set timeoutlen=1000
 set ttimeoutlen=10
 
 " Configure backspace so it acts as it should act
