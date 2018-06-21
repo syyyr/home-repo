@@ -1,6 +1,21 @@
-" pathogen blya
-execute pathogen#infect()
-Helptags
+" plugiiins
+call zen#init()
+Plugin 'Carpetsmoker/startscreen.vim'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'Yggdroot/indentLine'
+Plugin 'https://gitlab.com/betseg/vim-dcrpc.git'
+Plugin 'godlygeek/tabular'
+Plugin 'jez/vim-superman'
+Plugin 'mbbill/undotree'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'rhysd/clever-f.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/HJKL'
+Plugin 'w0rp/ale'
+set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
+" end plugiiins
 
 runtime basic.vim
 runtime mapping.vim
@@ -38,7 +53,7 @@ let g:indentLine_char = '▏'
 let g:clever_f_smart_case = 1
 
 " vim markdown preview
-let vim_markdown_preview_toggle=3
+"let vim_markdown_preview_toggle=3
 let vim_markdown_preview_pandoc=1
 
 "ale stuff
