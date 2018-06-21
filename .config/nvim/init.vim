@@ -3,7 +3,6 @@ call zen#init()
 Plugin 'Carpetsmoker/startscreen.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Yggdroot/indentLine'
-Plugin 'https://gitlab.com/betseg/vim-dcrpc.git'
 Plugin 'godlygeek/tabular'
 Plugin 'jez/vim-superman'
 Plugin 'mbbill/undotree'
@@ -15,6 +14,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
+set runtimepath+=/home/vk/.config/nvim/vim-dcrpc
 " end plugiiins
 
 runtime basic.vim
