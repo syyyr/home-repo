@@ -89,6 +89,9 @@ set path+=tests/**
 " pretty windows split :>
 set fillchars+=vert:⏐
 
+" windows are vertically split the other way
+set splitright
+
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
