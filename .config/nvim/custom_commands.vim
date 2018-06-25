@@ -68,5 +68,16 @@ function! TabOrCompletion(direction)
     endif
 endfunction
 
+function! SumNumbers()
+    normal! mm
+    let l:old=@a
+    let @a=''
+    g/\d\+$/normal! "AygnA+"Aylx
+    normal! `mi=a+0
+    let @a=l:old
+endfunction
+
+command SumNumbers call SumNumbers()
+
 " end with :Q XD
 command -bang Q q<bang>
