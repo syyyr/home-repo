@@ -65,4 +65,4 @@ if (!empty($HOMEPC))
     let g:dcrpc_autostart = 1
 endif
 
-let &makeprg='(cd build && make)'
+let &makeprg='(cd build && make -j4)'
