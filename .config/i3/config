@@ -31,8 +31,8 @@ bindsym $mod+Shift+s exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -
  -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
 
 # xd
-bindsym XF86Tools exec --no-startup-id "terminator -e \\"vim ~/.config/i3/config\\""
-bindsym Control+XF86Tools exec --no-startup-id "terminator -e \\"vim ~/.config/i3status/config\\""
+bindsym XF86Tools exec --no-startup-id "terminator -e \\"nvim ~/.config/i3/config\\""
+bindsym Control+XF86Tools exec --no-startup-id "terminator -e \\"nvim ~/.config/i3status/config\\""
 bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
 
