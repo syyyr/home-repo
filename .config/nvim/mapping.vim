@@ -42,7 +42,7 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 
 " toggle linenumbers
-nnoremap <A-n> :setlocal number!<cr> :setlocal relativenumber!<cr>
+nnoremap <A-n> :setlocal relativenumber!<cr>
 
 " toggle dark/light bg
 nnoremap <A-b> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -112,3 +112,6 @@ inoremap {<CR> {<CR>}<Esc>O
 
 " insert current line in cmd mode
 cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
+
+" toggle unsaved changes diff
+map <A-,> :DiffToggle<cr>

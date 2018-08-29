@@ -23,7 +23,6 @@ fun! DiffToggle()
     endif
 endfun
 command DiffToggle :call DiffToggle()
-map <ESC>, :DiffToggle<cr>
 
 " like %m but leaveout the startscreen
 fun! My_modified()
