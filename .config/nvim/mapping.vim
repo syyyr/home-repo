@@ -84,10 +84,10 @@ inoremap <silent> <TAB> <C-R>=TabOrCompletion('f')<CR>
 inoremap <silent> <S-TAB> <C-R>=TabOrCompletion('b')<CR>
 
 " map LR arrows to resize, but keep UD arrows for scrolling
-"nnoremap <Up> :resize +2<CR>
-"nnoremap <Down> :resize -2<CR>
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
+nnoremap <S-Left> :vertical resize -4<CR>
+nnoremap <S-Right> :vertical resize +4<CR>
 
 " accept the suggestion with <cr> or decline it with <esc>
 inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
