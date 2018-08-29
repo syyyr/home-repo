@@ -21,7 +21,7 @@
     cursor_color = "#aaaaaa"
     font = Consolas NF 15
     foreground_color = "#444444"
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#729fcf:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#0087af:#ff55ff:#5ed6d6:#ffffff"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#5ed6d6:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#0087af:#ff55ff:#5ed6d6:#ffffff"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False
@@ -32,7 +32,7 @@
     cursor_color = "#aaaaaa"
     font = Consolas NF 15
     foreground_color = "#d0d0d0"
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#0087af:#ff55ff:#5ed6d6:#ffffff"
+    palette = "#1c1c1c:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#0087af:#ff55ff:#5ed6d6:#ffffff"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False
