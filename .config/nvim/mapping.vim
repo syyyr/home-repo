@@ -76,8 +76,8 @@ nmap <A-é> 9gt
 nmap <A-=> :tablast<CR>
 
 " semicolon marks
-noremap ; `p
-noremap ` mp
+noremap ; `P
+noremap ` mP
 
 " insert mode TAB completion 🤔
 inoremap <silent> <TAB> <C-R>=TabOrCompletion('f')<CR>
