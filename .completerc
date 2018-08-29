@@ -1,5 +1,9 @@
 #!/bin/bash
 
+_brightness_complete() {
+    COMPREPLY+=($( compgen -W "up down toggle silent show quiet" "$2" ) )
+}
+
 _volume_complete() {
     COMPREPLY+=($( compgen -W "up down toggle silent show quiet" "$2" ) )
 }
@@ -11,6 +15,7 @@ _kbd_pulsectl_complete() {
 _taskkill_complete() {
     COMPREPLY+=($( compgen -W "$(tasklist)" "$2" ))
 }
+complete -F _brightness_complete brightness
 complete -F _volume_complete volume
 complete -F _kbd_pulsectl_complete kbdlightctl
 complete -F _taskkill_complete taskkill
