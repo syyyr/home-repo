@@ -42,7 +42,7 @@ bindsym Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshott
 bindsym Control+Print exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
 
 # lock
-bindsym $mod+semicolon exec --no-startup-id ~/apps/lock.bash
+bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 
 # browser
 bindsym $mod+b exec --no-startup-id google-chrome-stable
