@@ -95,6 +95,9 @@ set fillchars+=vert:⏐
 " windows are vertically split the other way
 set splitright
 
+" system clipboard is used along with the unnamed register
+set clipboard=unnamedplus
+
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
