@@ -69,7 +69,7 @@ assign [class="vlc"] → 3
 assign [window_role="browser"] → 2
 assign [title="Katawa Shoujo"] → 3
 for_window [title="feh.*/tmp/screenshot"] fullscreen enable
-for_window [title="suppress-lid-suspend"] move scratchpad
+for_window [title="^suppress-lid-suspend$"] move scratchpad
 
 
 #movement
