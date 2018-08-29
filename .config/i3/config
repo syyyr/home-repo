@@ -64,6 +64,7 @@ bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
 
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
+assign [title="Videostream"] → 3
 assign [class="vlc"] → 3
 assign [class="Google-chrome"] → 2
 assign [title="Katawa Shoujo"] → 3
