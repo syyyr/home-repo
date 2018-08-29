@@ -66,7 +66,7 @@ bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
 assign [title="Chrome Remote Desktop"] → 3
 assign [title="Videostream"] → 3
 assign [class="vlc"] → 3
-assign [class="Google-chrome"] → 2
+assign [window_role="browser"] → 2
 assign [title="Katawa Shoujo"] → 3
 for_window [title="feh.*/tmp/screenshot"] fullscreen enable
 for_window [title="suppress-lid-suspend"] move scratchpad
