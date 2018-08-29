@@ -54,6 +54,9 @@ set t_vb=
 set incsearch
 set hlsearch
 
+" incremental commands
+set inccommand=split
+
 " left margin... idk
 set foldcolumn=1
 set number "seems better
