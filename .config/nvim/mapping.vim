@@ -94,8 +94,8 @@ inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
 " inoremap <silent><expr> <ESC> pumvisible() ? \"<C-e>\" : \"<ESC>";
 
 " fast movement in source files
-nnoremap ú ?^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^enum\\|^impl\\|^use\\|^using\\|^extern<CR>:nohl<CR>
-nnoremap ) /^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^enum\\|^impl\\|^use\\|^using\\|^extern<CR>:nohl<CR>
+nnoremap <silent> ú :keepjumps ?^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^enum\\|^impl\\|^use\\|^using\\|^extern<CR>:nohl<CR>
+nnoremap <silent> ) :keepjumps /^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^enum\\|^impl\\|^use\\|^using\\|^extern<CR>:nohl<CR>
 
 nmap <A-t> :Trailing<cr>
 
