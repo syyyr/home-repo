@@ -39,10 +39,6 @@
 #"py3-cmd refresh keyboard_locks"
 "killall -USR1 py3status"
    Release + Num_Lock
-"source volume down"
-   Mod2 + XF86AudioLowerVolume
-"source ~/apps/volume up"
-   XF86AudioRaiseVolume
 
 #keystate_numlock = enable
 #keystate_capslock = enable
