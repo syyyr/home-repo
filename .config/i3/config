@@ -76,6 +76,10 @@ for_window [title="^suppress-lid-suspend$"] move scratchpad
 #movement
 bindsym $mod+Tab workspace back_and_forth
 
+#move workspaces
+bindsym $mod+ctrl+h move workspace to output left
+bindsym $mod+ctrl+l move workspace to output right
+
 ########################################
 set $mod Mod4
 
