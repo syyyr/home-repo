@@ -170,8 +170,8 @@ bindsym $mod+plus workspace 1
 bindsym $mod+ecaron workspace 2
 bindsym $mod+scaron workspace 3
 bindsym $mod+ccaron workspace 4
-bindsym $mod+rcaron workspace 5
-bindsym $mod+zcaron workspace 6
+bindsym $mod+n workspace 5
+bindsym $mod+m workspace 6
 bindsym $mod+yacute workspace 7
 bindsym $mod+aacute workspace 8
 bindsym $mod+iacute workspace 9
@@ -182,8 +182,8 @@ bindsym $mod+Shift+plus move container to workspace 1
 bindsym $mod+Shift+ecaron move container to workspace 2
 bindsym $mod+Shift+scaron move container to workspace 3
 bindsym $mod+Shift+ccaron move container to workspace 4
-bindsym $mod+Shift+rcaron move container to workspace 5
-bindsym $mod+Shift+zcaron move container to workspace 6
+bindsym $mod+Shift+n move container to workspace 5
+bindsym $mod+Shift+m move container to workspace 6
 bindsym $mod+Shift+yacute move container to workspace 7
 bindsym $mod+Shift+aacute move container to workspace 8
 bindsym $mod+Shift+iacute move container to workspace 9
