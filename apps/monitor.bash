@@ -17,6 +17,12 @@ do
         xrandr --output eDP-1 --primary
     else
         xrandr --output $OUTPUT --right-of eDP-1 --auto --primary
+        i3 "workspace 2; move workspace to output $OUTPUT"
+        i3 "workspace 3; move workspace to output $OUTPUT"
+        i3 "workspace 4; move workspace to output $OUTPUT"
+        i3 "workspace 6; move workspace to output eDP-1"
+        i3 "workspace 5; move workspace to output eDP-1"
+        i3 "workspace 1; move workspace to output $OUTPUT"
         nitrogen --restore
     fi
 done
