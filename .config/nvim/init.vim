@@ -14,6 +14,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
+Plugin 'haya14busa/vim-signjk-motion'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 set runtimepath+=/home/vk/.config/nvim/vim-dcrpc
 " end plugiiins
@@ -68,3 +69,7 @@ if (!empty($HOMEPC))
 endif
 
 let &makeprg='(cd build && make -j4)'
+
+" sign-jk-motion
+map ů <Plug>(signjk-j)
+map § <Plug>(signjk-k)
