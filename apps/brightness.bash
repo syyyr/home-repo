@@ -93,7 +93,6 @@ if [ $SILENT ]; then
 fi
 
 BRIGHTNESS_IMG="/home/vk/.local/share/icons/blue/brightness.png"
-LAST=`cat /tmp/brightness-not-id`
-ARGS="-t 1000 -r ${LAST:-"0"} -p"
+ARGS="-t 1000 -R /tmp/brightness-not-id"
 ARGS+=" -h string:image_path:$BRIGHTNESS_IMG"
-notify-send $ARGS "Brightness" "$BRIGHT"% > /tmp/brightness-not-id
+notify-send $ARGS "Brightness" "$BRIGHT"%
