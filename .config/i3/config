@@ -47,8 +47,8 @@ bindsym Control+Print exec --no-startup-id "~/apps/area-screenshot.bash; notify-
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 
 # browser
-bindsym $mod+b workspace 2; exec --no-startup-id chromium
-#bindsym $mod+b exec --no-startup-id google-chrome-stable
+#bindsym $mod+b workspace 2; exec --no-startup-id chromium
+bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up"
