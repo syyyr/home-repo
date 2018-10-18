@@ -34,6 +34,8 @@ bindsym $mod+Shift+s exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -
 bindsym XF86Tools exec --no-startup-id "terminator -e \\"nvim ~/.config/i3/config\\""
 bindsym Control+XF86Tools exec --no-startup-id "terminator -e \\"nvim ~/.config/i3status/config\\""
 bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
+bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
+bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
 
 
