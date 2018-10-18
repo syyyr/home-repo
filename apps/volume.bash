@@ -100,7 +100,6 @@ if [ $SILENT ]; then
     exit 0
 fi
 
-LAST=`cat /tmp/vol-not-id`
-ARGS="-t 1000 -r ${LAST:-"0"} -p"
+ARGS="-t 1000 -R /tmp/vol-not-id"
 ARGS+=" -h string:image_path:$VOLUME_IMG"
-notify-send $ARGS "Volume" "$VOL" > /tmp/vol-not-id
+notify-send $ARGS "Volume" "$VOL"
