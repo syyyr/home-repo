@@ -23,6 +23,7 @@ exec --no-startup-id xbindkeys
 #exec --no-startup-id fluxgui
 exec --no-startup-id redshift-gtk -l 50.076435:14.421461 -t 6500K:2700K
 #exec --no-startup-id ~/bin/gdrive
+exec --no-startup-id compton  --opacity-rule 97:'class_g*= "Terminator"' -D 1 -b
 
 #suspend
 bindsym $mod+Shift+s exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -m ''\
