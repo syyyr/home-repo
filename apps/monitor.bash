@@ -2,10 +2,10 @@
 export DISPLAY=:0.0
 
 
-udevadm monitor -k  | while IFS= read -r line;
+udevadm monitor -k | while IFS= read -r line;
 do
 
-    if [ -z "$(grep "/devices/pci0000:00/0000:00:02\.0/drm/card0" <<< $line)" ]; then
+    if [ -z "$(grep -F "/devices/pci0000:00/0000:00:02.0/drm/card0 (drm)" <<< $line)" ]; then
         continue
     fi
 
