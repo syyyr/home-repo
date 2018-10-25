@@ -17,6 +17,8 @@
 [profiles]
   [[default]]
     background_color = "#eeeeee"
+    background_darkness = 0.9
+    background_type = transparent
     cursor_blink = False
     cursor_color = "#aaaaaa"
     font = Consolas NF 15
@@ -28,6 +30,8 @@
     use_system_font = False
   [[dark]]
     background_color = "#1c1c1c"
+    background_darkness = 0.9
+    background_type = transparent
     cursor_blink = False
     cursor_color = "#aaaaaa"
     font = Consolas NF 15
