@@ -25,7 +25,7 @@ exec --no-startup-id redshift-gtk -l 50.076435:14.421461 -t 6500K:2700K
 #exec --no-startup-id ~/bin/gdrive
 
 # compton exec
-exec --no-startup-id compton -b --backend glx --blur-background --blur-method kawase --blur-strength 8 --blur-background-exclude='class_g = "Escrotum"' --blur-background-exclude='class_g = "Google-chrome"'
+exec --no-startup-id compton -b --backend glx --blur-background --blur-method kawase --blur-strength 8 --blur-background-exclude='class_g = "Google-chrome" || class_g = "Escrotum" || class_g = "i3bar"'
 
 #suspend
 bindsym $mod+Shift+s exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -m ''\
