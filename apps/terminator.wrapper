@@ -4,4 +4,5 @@ if [ $HOURS -lt ${DAYSTART:-8} ] || [ $HOURS -ge ${NIGHTSTART:-22} ]; then
     echo je noc
     exec terminator -p dark "$@"
 fi
+echo je den
 exec terminator "$@"
