@@ -9,6 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+hide_edge_borders smart
 
 exec --no-startup-id numlockx on
 exec --no-startup-id xinput set-prop "Synaptics TM2668-002" "libinput Natural Scrolling Enabled" 1
