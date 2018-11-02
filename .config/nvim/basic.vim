@@ -23,6 +23,14 @@ set ttimeoutlen=10
 set backspace=eol,start,indent
 
 " colors
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1,
+  \     },
+  \   }
+  \ }
+
 colorscheme PaperColor
 
 " set 7 lines to the cursor - when moving vertically using j/k

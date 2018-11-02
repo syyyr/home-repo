@@ -171,8 +171,8 @@ fun! s:register_default_theme()
         \       'matchparen_fg' : ['#c6c6c6', '251'],
         \       'visual_fg' : ['#000000', '16'],
         \       'visual_bg' : ['#8787af', '103'],
-        \       'folded_fg' : ['#d787ff', '153'],
-        \       'folded_bg' : ['#5f005f', '31'],
+        \       'folded_fg' : ['#d787ff', '177'],
+        \       'folded_bg' : ['#5f005f', '53'],
         \       'wildmenu_fg': ['#1c1c1c', '234'],
         \       'wildmenu_bg': ['#afd700', '148'],
         \       'spellbad':   ['#5f0000', '52'],
@@ -807,11 +807,11 @@ endfun
 fun! s:set_format_attributes()
   " These are the default
   if s:mode == s:MODE_GUI_COLOR
-    let s:ft_bold    = " gui=bold "
-    let s:ft_none    = " gui=none "
-    let s:ft_reverse = " gui=reverse "
-    let s:ft_italic  = " gui=italic "
-    let s:ft_italic_bold = " gui=italic,bold "
+    let s:ft_bold    = " cterm=bold gui=bold "
+    let s:ft_none    = " cterm=none gui=none "
+    let s:ft_reverse = " cterm=reverse gui=reverse "
+    let s:ft_italic  = " cterm=italic gui=italic "
+    let s:ft_italic_bold = " cterm=italic,bold gui=italic,bold "
   elseif s:mode == s:MODE_256_COLOR
     let s:ft_bold    = " cterm=bold "
     let s:ft_none    = " cterm=none "
@@ -1161,13 +1161,13 @@ fun! s:apply_syntax_highlightings()
     if s:mode == s:MODE_16_COLOR
       exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg
     else
-      exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg . s:ft_none
+      exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:ft_none . s:ft_none
     endif
     exec 'hi CursorColumn'  . s:bg_cursorcolumn . s:ft_none
     exec 'hi PMenu' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
     exec 'hi PMenuSel' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_reverse
     if s:themeOpt_transparent_background
-      exec 'hi SignColumn' . s:fg_green . s:ft_none
+      exec 'hi SignColumn' . s:fg_green . s:ft_none . "ctermbg=none"
     else
       exec 'hi SignColumn' . s:fg_green . s:bg_background . s:ft_none
     endif
@@ -1311,7 +1311,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi cFormat' . s:fg_olive
   exec 'hi cStorageClass' . s:fg_navy . s:ft_bold
 
-  exec 'hi cBoolean' . s:fg_green
+  exec 'hi cBoolean' . s:fg_green . s:ft_bold
   exec 'hi cCharacter' . s:fg_olive
   exec 'hi cConstant' . s:fg_green . s:ft_bold
   exec 'hi cConditional' . s:fg_purple . s:ft_bold
@@ -1342,7 +1342,7 @@ fun! s:apply_syntax_highlightings()
   endif
 
   " CPP highlighting
-  exec 'hi cppBoolean' . s:fg_navy
+  exec 'hi cppBoolean' . s:fg_green . s:ft_bold
   exec 'hi cppSTLnamespace' . s:fg_purple
   exec 'hi cppSTLexception' . s:fg_pink
   exec 'hi cppSTLfunctional' . s:fg_foreground . s:ft_bold
@@ -1350,7 +1350,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi cppExceptions' . s:fg_red
   exec 'hi cppStatement' . s:fg_blue
   exec 'hi cppStorageClass' . s:fg_navy . s:ft_bold
-  exec 'hi cppAccess' . s:fg_blue
+  exec 'hi cppAccess' . s:fg_orange . s:ft_bold
   if s:langOpt_cpp__highlight_standard_library == 1
     exec 'hi cppSTLconstant' . s:fg_green . s:ft_bold
     exec 'hi cppSTLtype' . s:fg_pink . s:ft_bold
@@ -1364,6 +1364,24 @@ fun! s:apply_syntax_highlightings()
   endif
   " exec 'hi cppSTL' . s:fg_blue
 
+  " Rust highlighting
+  exec 'hi rustKeyword' . s:fg_pink
+  exec 'hi rustModPath' . s:fg_blue
+  exec 'hi rustModPathSep' . s:fg_blue
+  exec 'hi rustLifetime' . s:fg_purple
+  exec 'hi rustStructure' . s:fg_aqua . s:ft_bold
+  exec 'hi rustAttribute' . s:fg_aqua . s:ft_bold
+  exec 'hi rustPanic' . s:fg_olive . s:ft_bold
+  exec 'hi rustTrait' . s:fg_blue . s:ft_bold
+  exec 'hi rustEnum' . s:fg_green . s:ft_bold
+  exec 'hi rustEnumVariant' . s:fg_green
+  exec 'hi rustSelf' . s:fg_orange
+  exec 'hi rustSigil' . s:fg_aqua . s:ft_bold
+  exec 'hi rustOperator' . s:fg_aqua . s:ft_bold
+  exec 'hi rustMacro' . s:fg_olive . s:ft_bold
+  exec 'hi rustMacroVariable' . s:fg_olive
+  exec 'hi rustAssert' . s:fg_olive . s:ft_bold
+  exec 'hi rustConditional' . s:fg_purple . s:ft_bold
 
   " Lex highlighting
   exec 'hi lexCFunctions' . s:fg_foreground
@@ -1728,14 +1746,25 @@ fun! s:apply_syntax_highlightings()
   exec 'hi rubyBoolean' . s:fg_green . s:ft_bold
 
   " Fortran Highlighting
-  exec 'hi fortranUnitHeader' . s:fg_foreground . s:ft_bold
+  exec 'hi fortranUnitHeader' . s:fg_blue . s:ft_bold
+  exec 'hi fortranIntrinsic' . s:fg_blue . s:bg_background . s:ft_none
   exec 'hi fortranType' . s:fg_pink . s:ft_bold
-  exec 'hi fortranStructure' . s:fg_blue . s:ft_bold
+  exec 'hi fortranTypeOb' . s:fg_pink . s:ft_bold
+  exec 'hi fortranStructure' . s:fg_aqua
   exec 'hi fortranStorageClass' . s:fg_navy . s:ft_bold
   exec 'hi fortranStorageClassR' . s:fg_navy . s:ft_bold
   exec 'hi fortranKeyword' . s:fg_pink
-  exec 'hi fortranReadWrite' . s:fg_blue
+  exec 'hi fortranReadWrite' . s:fg_aqua . s:ft_bold
   exec 'hi fortranIO' . s:fg_navy
+  exec 'hi fortranOperator' . s:fg_aqua . s:ft_bold
+  exec 'hi fortranCall' . s:fg_aqua . s:ft_bold
+  exec 'hi fortranContinueMark' . s:fg_green
+
+  " ALGOL Highlighting (Plugin: https://github.com/sterpe/vim-algol68)
+  exec 'hi algol68Statement' . s:fg_blue . s:ft_bold
+  exec 'hi algol68Operator' . s:fg_aqua . s:ft_bold
+  exec 'hi algol68PreProc' . s:fg_green
+  exec 'hi algol68Function' . s:fg_blue
 
   " R Highlighting
   exec 'hi rType' . s:fg_blue
@@ -2062,7 +2091,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi NERDTreeDirSlash' . s:fg_pink
   exec 'hi NERDTreeFile' . s:fg_foreground
   exec 'hi NERDTreeExecFile' . s:fg_green
-  exec 'hi NERDTreeOpenable' . s:fg_pink . s:ft_bold
+  exec 'hi NERDTreeOpenable' . s:fg_aqua . s:ft_bold
   exec 'hi NERDTreeClosable' . s:fg_pink
 
   " Plugin: Tagbar
@@ -2126,12 +2155,16 @@ fun! s:apply_syntax_highlightings()
   exec 'hi gitcommitUntrackedFile' . s:fg_diffdelete_fg
   exec 'hi gitcommitBranch' . s:fg_aqua . s:ft_bold
   exec 'hi gitcommitDiscardedType' . s:fg_diffdelete_fg
+  exec 'hi gitcommitDiff' . s:fg_comment
 
-  exec 'hi diffFile' . s:fg_aqua . s:ft_bold
-  exec 'hi diffIndexLine' . s:fg_purple
+  exec 'hi diffFile' . s:fg_blue
+  exec 'hi diffSubname' . s:fg_comment
+  exec 'hi diffIndexLine' . s:fg_comment
   exec 'hi diffAdded' . s:fg_diffadd_fg
   exec 'hi diffRemoved' . s:fg_diffdelete_fg
-  exec 'hi diffLine' . s:fg_orange . s:ft_bold
+  exec 'hi diffLine' . s:fg_orange
+  exec 'hi diffBDiffer' . s:fg_orange
+  exec 'hi diffNewFile' . s:fg_comment
 
 endfun
 " }}}
