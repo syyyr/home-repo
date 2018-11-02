@@ -1,0 +1,8 @@
+#!/bin/bash
+OUTPUT=$(xrandr | grep -o "^.* connected" | grep -v "eDP1" | sed 's/ connected//')
+i3 "workspace 2; move workspace to output $OUTPUT"
+i3 "workspace 3; move workspace to output $OUTPUT"
+i3 "workspace 4; move workspace to output $OUTPUT"
+i3 "workspace 6; move workspace to output eDP1"
+i3 "workspace 5; move workspace to output eDP1"
+i3 "workspace 1; move workspace to output $OUTPUT"

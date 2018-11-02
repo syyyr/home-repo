@@ -71,6 +71,7 @@ bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
 
 bindsym XF86Display exec --no-startup-id "~/apps/area-gif.bash"
 bindsym Shift+XF86Display exec --no-startup-id "pkill ffmpeg"
+bindsym $mod+shift+b exec --no-startup-id "~/apps/workspace_ball.bash"
 
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
