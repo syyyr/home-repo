@@ -59,6 +59,9 @@ function! TabOrCompletion(direction)
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<TAB>"
     else
+        if pumvisible() " when menu is visible, I don't want to select the 1st match
+            return "\<C-E>\<C-N>"
+        endif
         if a:direction == 'f'
             return "\<C-N>"
         else
