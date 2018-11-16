@@ -128,3 +128,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " preserve clipboard on leave
 autocmd VimLeave * call system('echo ' . shellescape(getreg('+')) . ' | xclip -r -selection clipboard')
 
+" don't use ignorecase in insert mode (because of completion mainly)
+au InsertEnter * set noignorecase
+au InsertLeave * set ignorecase
