@@ -4,7 +4,7 @@ nnoremap Y y$
 " sane line movement
 nnoremap j gj
 nnoremap k gk
-nnoremap H 0
+nnoremap H ^
 nnoremap L $
 
 " leader
