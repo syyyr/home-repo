@@ -58,9 +58,15 @@ diskdata {
         color_worst = '#AA0000'
 }
 
-battery_level all {
-        format = "%status %percentage %remaining"
-        measurement_mode = sys
+battery all {
+        format = "%status %percentage"
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "❓"
+        status_full = "💯"
+        last_full_capacity = true
+        integer_battery_capacity = true
+        threshold_type = precentage
 }
 
 tztime local {
