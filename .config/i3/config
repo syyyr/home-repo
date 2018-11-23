@@ -228,14 +228,14 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym uring resize grow width 5 px or 5 ppt
-        bindsym Shift+j resize shrink width 15 px or 15 ppt
-        bindsym Shift+k resize grow height 15 px or 15 ppt
-        bindsym Shift+l resize shrink height 15 px or 15 ppt
-        bindsym Shift+uring resize grow width 15 px or 15 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+        bindsym Shift+h resize shrink width 15 px or 15 ppt
+        bindsym Shift+j resize grow height 15 px or 15 ppt
+        bindsym Shift+k resize shrink height 15 px or 15 ppt
+        bindsym Shift+l resize grow width 15 px or 15 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 5 px or 5 ppt
