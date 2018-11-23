@@ -19,6 +19,8 @@
 !.config/terminator/config
 !.config/kbd_lighttimeout.conf
 !.config/kbd_pulse.conf
+!.config/fontconfig
+!.config/fontconfig/fonts.conf
 !.local
 !.local/share
 !.local/share/mfw.png
