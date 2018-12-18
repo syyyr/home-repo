@@ -1,5 +1,6 @@
 *
 !.config
+!.config/writing.vim
 !apps
 !apps/**
 !.completerc
