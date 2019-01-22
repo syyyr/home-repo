@@ -37,6 +37,8 @@ if empty($DAYSTART)
 endif
 if str2nr(strftime('%H')) < str2nr($DAYSTART) || str2nr(strftime('%H')) >= str2nr($NIGHTSTART)
     set background=dark
+else
+    set background=light
 endif
 
 " airline stuff
