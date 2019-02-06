@@ -9,5 +9,8 @@ TERMPID=$(pstree -p | grep $$ | grep -oP '(?<=terminator\()[[:digit:]]+')
 sed -i "s/background_darkness.*$/background_darkness = 0.${OPACITY}/" ~/.config/terminator/config
 kill -USR1 $TERMPID
 /usr/bin/nvim -p "$@"
+TORETURN=$?
 sed -i 's/background_darkness.*$/background_darkness = 0.9/' ~/.config/terminator/config
 kill -USR1 $TERMPID
+
+exit $TORETURN
