@@ -7,6 +7,7 @@
 	adog = log --all --decorate --oneline --graph
 [diff]
 	tool = vimdiff
+	ignoreSubmodules = dirty
 [difftool]
 	prompt = false
 [multidiff]
