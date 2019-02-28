@@ -16,6 +16,7 @@ Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'haya14busa/vim-signjk-motion'
 Plugin 'junegunn/goyo.vim'
+Plugin 'StanAngeloff/php.vim'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 set runtimepath+=/home/vk/.config/nvim/vim-dcrpc
 " end plugiiins
