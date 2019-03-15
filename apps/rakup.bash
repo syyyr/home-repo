@@ -7,10 +7,10 @@ fi
 
 if [ -z "$2" ];then
     scp "$1" "rak@anip.icu:www/rakac/"
-    echo "http://rakac.anip.icu/$1"
+    echo "https://rakac.anip.icu/$1"
 else
     scp "$1" rak@anip.icu:www/rakac/"$2"
-    echo "http://rakac.anip.icu/$2"
+    echo "https://rakac.anip.icu/$2"
 fi
 
 
