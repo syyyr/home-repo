@@ -40,8 +40,12 @@ fun! Draw_startscreen()
     setlocal foldmethod=manual
     IndentLinesDisable
     file VIM
-    silent! read ~/.local/share/thinking.txt
-    echo
+    let random = system('echo $(($RANDOM % 5))')
+    if random == 0
+        silent! read ~/.local/share/thinking_alt.txt
+    else
+        silent! read ~/.local/share/thinking.txt
+    endif
 endfun
 
 " remain in visual after shift
