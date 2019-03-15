@@ -129,7 +129,7 @@ function! zen#add(remote, ...)
     endif
 
     let g:plugins[l:plugin_name] = {'name': l:plugin_name, 'remote': l:remote_name, 'path': l:plugin_dir}
-    execute "set rtp+=" . l:plugin_dir 
+    execute "set runtimepath^=" . l:plugin_dir
     call add(g:plugin_names, l:plugin_name)
 
     " TODO: add enable config
