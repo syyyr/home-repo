@@ -100,6 +100,6 @@ if [ $SILENT ]; then
     exit 0
 fi
 
-ARGS="-t 1000 -R /tmp/vol-not-id"
+ARGS="-t 2000 -R /tmp/vol-not-id"
 ARGS+=" -h string:image_path:$VOLUME_IMG"
 notify-send $ARGS "Volume" "$VOL"

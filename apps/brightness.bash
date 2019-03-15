@@ -93,6 +93,6 @@ if [ $SILENT ]; then
 fi
 
 BRIGHTNESS_IMG="/home/vk/.local/share/icons/blue/brightness.png"
-ARGS="-t 1000 -R /tmp/brightness-not-id"
+ARGS="-t 2000 -R /tmp/brightness-not-id"
 ARGS+=" -h string:image_path:$BRIGHTNESS_IMG"
 notify-send $ARGS "Brightness" "$BRIGHT"%
