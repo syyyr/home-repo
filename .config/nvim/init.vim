@@ -18,6 +18,7 @@ Plugin 'haya14busa/vim-signjk-motion'
 Plugin 'junegunn/goyo.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
+Plugin 'ludovicchabant/vim-gutentags'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 set runtimepath+=/home/vk/.config/nvim/vim-dcrpc
 " end plugiiins
@@ -78,3 +79,9 @@ let &makeprg='(cd build && make -j4)'
 " sign-jk-motion
 map ů <Plug>(signjk-j)
 map § <Plug>(signjk-k)
+
+" gutentags
+let g:gutentags_generate_on_missing = 0
+let g:gutentags_enabled = 0
+let g:gutentags_define_advanced_commands = 1
+autocmd FileType cpp GutentagsToggleEnabled

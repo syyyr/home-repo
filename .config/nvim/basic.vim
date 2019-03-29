@@ -118,6 +118,9 @@ set clipboard=unnamedplus
 " menu = show menu, but not when one item would be listed
 set completeopt=longest,menu
 
+" default scans tagfiles
+set complete=.,w,b,u
+
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
