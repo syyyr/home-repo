@@ -6,6 +6,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap H ^
 nnoremap L $
+xnoremap H ^
+xnoremap L $
 
 " leader
 "let mapleader = ","
