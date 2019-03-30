@@ -74,8 +74,6 @@ if (!empty($HOMEPC))
     let g:dcrpc_autostart = 1
 endif
 
-let &makeprg='(cd build && make -j4)'
-
 " sign-jk-motion
 map ů <Plug>(signjk-j)
 map § <Plug>(signjk-k)
