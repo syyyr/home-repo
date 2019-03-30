@@ -131,3 +131,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " don't use ignorecase in insert mode (because of completion mainly)
 au InsertEnter * set noignorecase
 au InsertLeave * set ignorecase
+
+" automatically try to compile a tex file
+au BufWritePost *.tex silent make
