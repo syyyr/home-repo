@@ -9,14 +9,10 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
-" leader
-"let mapleader = ","
-
 " Fast saving
 noremap <A-w> :w!<cr>
 
-" searching with space 😮
-" the second one doesn't work unfortunately
+" searching with space
 nnoremap <space> /
 nnoremap <C-space> ?
 
@@ -60,30 +56,14 @@ nnoremap <A-k> mz:m-2<cr>`z
 vnoremap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" stay in visual after shift
-vmap <expr> > ShiftAndKeepVisualSelection(">")
-vmap <expr> < ShiftAndKeepVisualSelection("<")
+" tabs
+nnoremap <A-;> gt
+nnoremap <A-+> 1gt
+nnoremap <A-=> :tablast<CR>
 
-" tabs?
-nmap <A-;> gt
-nmap <A-+> 1gt
-nmap <A-ě> 2gt
-nmap <A-š> 3gt
-nmap <A-č> 4gt
-nmap <A-ř> 5gt
-nmap <A-ž> 6gt
-nmap <A-ý> 7gt
-nmap <A-á> 8gt
-nmap <A-é> 9gt
-nmap <A-=> :tablast<CR>
-
-" semicolon marks
-noremap ; `P
-noremap ` mP
-
-" insert mode TAB completion 🤔
-inoremap <silent> <TAB> <C-R>=TabOrCompletion('f')<CR>
-inoremap <silent> <S-TAB> <C-R>=TabOrCompletion('b')<CR>
+" quick semicolon marks
+nnoremap ; `P
+nnoremap ` mP
 
 " map LR arrows to resize, but keep UD arrows for scrolling
 nnoremap <Left> :vertical resize -2<CR>
@@ -94,12 +74,6 @@ nnoremap <S-Right> :vertical resize +4<CR>
 " accept the suggestion with <cr> or decline it with <esc>
 inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
 " inoremap <silent><expr> <ESC> pumvisible() ? \"<C-e>\" : \"<ESC>";
-
-" fast movement in source files
-nnoremap <silent> ú :keepjumps ?^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^enum\\|^impl\\|^use\\|^using\\|^extern<CR>:nohl<CR>
-nnoremap <silent> ) :keepjumps /^.*\n{\\|^struct\\|^class\\|^namespace\\|^fn\\|^pub\\|^private\\|^enum\\|^impl\\|^use\\|^using\\|^extern<CR>:nohl<CR>
-
-nmap <A-t> :Trailing<cr>
 
 " underscore text object
 xnoremap i_ :<C-u>normal! T_vt_<cr>
@@ -114,6 +88,3 @@ inoremap {<CR> {<CR>}<Esc>O
 
 " insert current line in cmd mode
 cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
-
-" toggle unsaved changes diff
-map <A-,> :DiffToggle<cr>

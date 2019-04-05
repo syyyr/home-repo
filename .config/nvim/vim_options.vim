@@ -1,7 +1,6 @@
 set title " set title to NVIM
 set showcmd " show commands
 set noshowmode " but not current moce
-"set shortmess+=I " dont show launch screen
 set cursorline "line highlight
 
 filetype plugin indent on
@@ -21,25 +20,6 @@ set ttimeoutlen=10
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
-
-" colors
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1,
-  \       'allow_bold': 1,
-  \       'allow_italic': 1,
-  \     },
-  \   },
-  \   'language': {
-  \     'cpp': {
-  \       'highlight_standard_library': 1,
-  \     },
-  \   },
-  \ }
-
-colorscheme PaperColor
-let g:airline_theme='papercolor'
 
 " set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=7
@@ -81,7 +61,7 @@ set relativenumber
 " better linebreak
 set linebreak
 
-" 🤔
+" disable swap file
 set noswapfile
 
 " better ex command autocomplete
@@ -125,15 +105,6 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-" return to last position in file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 " don't use ignorecase in insert mode (because of completion mainly)
 au InsertEnter * set noignorecase
 au InsertLeave * set ignorecase
-
-" automatically try to compile a tex file
-au BufWritePost *.tex silent make
-
-" comments for cpp
-au Filetype cpp set commentstring=//%s

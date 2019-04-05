@@ -1,6 +1,3 @@
-" :W sudo save
-command Sudow w !sudo tee % > /dev/null
-
 " extra trailing ws delete
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
@@ -10,6 +7,7 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 command Trailing :call CleanExtraSpaces()
+nmap <A-t> :Trailing<cr>
 
 " quick diff
 let g:diff = 0
@@ -23,8 +21,10 @@ fun! DiffToggle()
     endif
 endfun
 command DiffToggle :call DiffToggle()
+" toggle unsaved changes diff
+map <A-,> :DiffToggle<cr>
 
-" like %m but leaveout the startscreen
+" custom function for the modified sign (doesn't show anything on startscreen)
 fun! My_modified()
     if !&modifiable && expand('%') != 'VIM'
         return  '[-]'
@@ -57,7 +57,10 @@ function! ShiftAndKeepVisualSelection(cmd)
         return a:cmd . ":set smartindent\<CR>"
     endif
 endfunction
+vmap <expr> > ShiftAndKeepVisualSelection(">")
+vmap <expr> < ShiftAndKeepVisualSelection("<")
 
+" insert mode TAB completion
 function! TabOrCompletion(direction)
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -73,6 +76,9 @@ function! TabOrCompletion(direction)
         endif
     endif
 endfunction
+inoremap <silent> <TAB> <C-R>=TabOrCompletion('f')<CR>
+inoremap <silent> <S-TAB> <C-R>=TabOrCompletion('b')<CR>
+
 
 function! SumNumbers()
     normal! mm
@@ -82,12 +88,13 @@ function! SumNumbers()
     normal! `mi=a+0
     let @a=l:old
 endfunction
-
 command SumNumbers call SumNumbers()
+
 
 " end with :Q XD
 command -bang Q q<bang>
 
+" custom function to get current syn group
 function! SynGroup()
     let l:s = synID(line('.'), col('.'), 1)
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
