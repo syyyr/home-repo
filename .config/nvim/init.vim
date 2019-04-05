@@ -21,7 +21,6 @@ Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
-set runtimepath+=/home/vk/.config/nvim/vim-dcrpc
 " end plugiiins
 
 runtime basic.vim
@@ -71,11 +70,6 @@ let g:ale_linters = {'rust': ['rls'], 'cpp': ['gcc']}
 let g:ale_c_parse_compile_commands = 1
 " this is still needed for header files
 let g:ale_cpp_gcc_options = "-std=c++17 -I src"
-
-" kms
-if (!empty($HOMEPC))
-    let g:dcrpc_autostart = 1
-endif
 
 " sign-jk-motion
 map ů <Plug>(signjk-j)
