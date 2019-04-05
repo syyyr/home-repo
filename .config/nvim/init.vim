@@ -19,6 +19,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'tpope/vim-commentary'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 set runtimepath+=/home/vk/.config/nvim/vim-dcrpc
 " end plugiiins

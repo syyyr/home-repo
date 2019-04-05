@@ -134,3 +134,6 @@ au InsertLeave * set ignorecase
 
 " automatically try to compile a tex file
 au BufWritePost *.tex silent make
+
+" comments for cpp
+au Filetype cpp set commentstring=//%s
