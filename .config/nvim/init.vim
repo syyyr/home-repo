@@ -3,11 +3,11 @@
 runtime custom_commands.vim
 " plugins and their options
 runtime plugins_options.vim
-" simple mappings, that don't use functions/commands
-runtime basic_mapping.vim
-" syntax highlighting and various color changes
-runtime colors.vim
 " simple vim options "set smth="
 runtime vim_options.vim
 " advanced vim options
 runtime startup.vim
+" simple mappings, that don't use functions/commands
+runtime basic_mapping.vim
+" syntax highlighting and various color changes
+runtime colors.vim
