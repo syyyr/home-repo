@@ -7,8 +7,6 @@ runtime plugins_options.vim
 runtime basic_mapping.vim
 " syntax highlighting and various color changes
 runtime colors.vim
-" filetype specific stuff
-runtime filetype.vim
 " simple vim options "set smth="
 runtime vim_options.vim
 " advanced vim options
