@@ -9,8 +9,9 @@ nnoremap L $
 xnoremap H ^
 xnoremap L $
 
-" Fast saving
-noremap <A-w> :w!<cr>
+" Fast saving. :update only saves if there changes (it can't be used to just
+" update modified time)
+noremap <A-w> :update!<cr>
 
 " searching with space
 nnoremap <space> /
