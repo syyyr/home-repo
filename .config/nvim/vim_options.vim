@@ -1,5 +1,4 @@
 set title " set title to NVIM
-set showcmd " show commands
 set noshowmode " but not current moce
 set cursorline "line highlight
 
@@ -8,9 +7,9 @@ syntax enable " enable syntax highlighting
 set softtabstop=4 " tab is four spaces long
 set shiftwidth=4 " << >> 4 spaces
 set expandtab " spaces instead of tabs
-set smarttab " idk what this does xd
 
-set smartindent " indenting in txt files
+" indenting in txt files
+set smartindent
 
 " no esc delay
 set timeout
@@ -18,14 +17,8 @@ set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=10
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-
 " set 7 lines to the cursor - when moving vertically using j/k
 set scrolloff=7
-
-" interactive tab command completion
-set wildmenu
 
 " sane opening new files
 set hidden
@@ -40,15 +33,6 @@ set smartcase
 " matching brackets
 set showmatch
 set matchpairs+=<:>,«:»
-
-" turn off bells etc.
-set noerrorbells
-set novisualbell
-set t_vb=
-
-" search stuff
-set incsearch
-set hlsearch
 
 " incremental commands
 set inccommand=split
@@ -69,11 +53,7 @@ set wildmode=list:longest
 
 " undo
 set undofile
-set undodir=~/.vim/.undo,~/tmp,/tmp
 set undolevels=5000
-
-" remember loooots of cmd line history
-set history=5000
 
 " folding
 set foldmethod=indent
@@ -86,7 +66,7 @@ set path+=src/**
 set path+=tests/**
 
 " pretty windows split :>
-set fillchars+=vert:⏐
+let &fillchars='fold: ,vert:⏐'
 
 " windows are vertically split the other way
 set splitright
@@ -101,9 +81,8 @@ set completeopt=longest,menu
 " default scans tagfiles
 set complete=.,w,b,u
 
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+" don't autoload file if it's changed outside of vim
+set noautoread
 
 " don't use ignorecase in insert mode (because of completion mainly)
 au InsertEnter * set noignorecase
