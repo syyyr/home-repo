@@ -22,7 +22,7 @@ fun! DiffToggle()
 endfun
 command DiffToggle :call DiffToggle()
 " toggle unsaved changes diff
-map <A-,> :DiffToggle<cr>
+nnoremap <A-,> :DiffToggle<cr>
 
 " custom function for the modified sign (doesn't show anything on startscreen)
 fun! My_modified()
