@@ -51,6 +51,7 @@ let g:ale_linters = {'rust': ['rls'], 'cpp': ['gcc']}
 let g:ale_c_parse_compile_commands = 1
 " this is still needed for header files
 let g:ale_cpp_gcc_options = "-std=c++17 -I src"
+let g:ale_tex_chktex_options = "-l .chktexrc"
 
 " sign-jk-motion
 map ů <Plug>(signjk-j)
@@ -61,3 +62,6 @@ let g:gutentags_generate_on_missing = 0
 let g:gutentags_enabled = 0
 let g:gutentags_define_advanced_commands = 1
 autocmd FileType cpp GutentagsToggleEnabled
+
+" tex
+let g:tex_conceal = 'amgs' " default but don't conceal delimiters
