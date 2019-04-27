@@ -58,10 +58,12 @@ map ů <Plug>(signjk-j)
 map § <Plug>(signjk-k)
 
 " gutentags
+let g:gutentags_exclude_project_root = ['/home/vk']
 let g:gutentags_generate_on_missing = 0
+let g:gutentags_generate_on_new = 0
 let g:gutentags_enabled = 0
 let g:gutentags_define_advanced_commands = 1
-autocmd FileType cpp GutentagsToggleEnabled
+autocmd FileType cpp let g:gutentags_enabled = 1
 
 " tex
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
