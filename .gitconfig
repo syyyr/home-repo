@@ -6,9 +6,11 @@
 [alias]
 	adog = log --all --decorate --oneline --graph
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 	ignoreSubmodules = dirty
 [difftool]
 	prompt = false
+[difftool "nvimdiff"]
+        cmd = "/bin/nvim -d \"$LOCAL\" \"$REMOTE\""
 [multidiff]
         tool = vd
