@@ -4,3 +4,4 @@ autocmd BufWritePost * silent make
 inoremap \it \textit{}<Left>
 inoremap "" \uv{}<Left>
 inoremap C++ \Cpp{}
+inoremap \fn \footnote{}<Left>
