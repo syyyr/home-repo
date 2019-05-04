@@ -1,5 +1,5 @@
 " automatically try to compile after saving (works with update)
-autocmd BufWritePost * silent make
+autocmd BufWritePost * silent Make!
 
 inoremap \it \textit{}<Left>
 inoremap "" \uv{}<Left>

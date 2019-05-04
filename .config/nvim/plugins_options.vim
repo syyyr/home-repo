@@ -21,6 +21,7 @@ Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
 Plugin 'neoclide/coc.nvim'
+Plugin 'tpope/vim-dispatch'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
 
@@ -68,3 +69,5 @@ autocmd FileType cpp let g:gutentags_enabled = 1
 
 " tex
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
+
+let g:dispatch_no_maps = 1
