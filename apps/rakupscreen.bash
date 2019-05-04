@@ -8,7 +8,7 @@ fi
 FILENAME=$(xclip -se c -o -target image/png | sha1sum | fold -w 7 | head -n1)
 FILENAME+=".png"
 echo "Saving to $FILENAME"
-xclip -se c -o -target image/png | ssh rak@do "cat > www/html/rofl/$FILENAME"
+xclip -se c -o -target image/png | ssh rak@anip.icu "cat > www/html/rofl/$FILENAME"
 
 if [ $# = 0 ]; then
     exit 0
