@@ -20,6 +20,7 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
+Plugin 'neoclide/coc.nvim'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
 
@@ -47,7 +48,7 @@ let vim_markdown_preview_pandoc=1
 
 "ale stuff
 let g:airline#extensions#ale#enabled = 1
-let g:ale_linters = {'rust': ['rls'], 'cpp': ['gcc']}
+let g:ale_linters = {'rust': ['rls'], 'cpp': []}
 let g:ale_c_parse_compile_commands = 1
 " this is still needed for header files
 let g:ale_cpp_gcc_options = "-std=c++17 -I src"
