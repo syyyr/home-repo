@@ -1,14 +1,27 @@
 #!/bin/bash
 
-if  ! xclip -se c -o -target image/png | pngcheck > /dev/null 2>&1 ; then
+get_image()
+{
+    base64 -d <<< "$IMAGE"
+}
+
+if [[ -t 0 ]]; then
+    IMAGE="$(xclip -se c -o -target image/png | base64)"
+else
+    IMAGE="$(base64)"
+fi
+
+
+
+if  ! $(get_image | pngcheck > /dev/null 2>&1) ; then
     echo "No picture in clipboard"
     exit 1
 fi
 
-FILENAME=$(xclip -se c -o -target image/png | sha1sum | fold -w 7 | head -n1)
+FILENAME=$(get_image | sha1sum | fold -w 7 | head -n1)
 FILENAME+=".png"
 echo "Saving to $FILENAME"
-xclip -se c -o -target image/png | ssh rak@anip.icu "cat > www/html/rofl/$FILENAME"
+get_image | ssh rak@anip.icu "cat > www/html/rofl/$FILENAME"
 
 if [ $# = 0 ]; then
     exit 0
