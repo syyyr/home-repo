@@ -67,6 +67,13 @@ let g:gutentags_enabled = 0
 let g:gutentags_define_advanced_commands = 1
 autocmd FileType cpp let g:gutentags_enabled = 1
 
+" goyo
+augroup GoyoFix
+    autocmd!
+    autocmd User GoyoEnter nested set eventignore=FocusGained
+    autocmd User GoyoLeave nested set eventignore=
+augroup END
+
 " tex
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 
