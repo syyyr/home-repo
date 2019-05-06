@@ -78,3 +78,6 @@ augroup END
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 
 let g:dispatch_no_maps = 1
+
+" coc.nvim
+inoremap <silent><expr> <c-space> coc#refresh()
