@@ -14,7 +14,7 @@ let g:diff = 0
 fun! DiffToggle()
     if !g:diff
         let g:diff = 1
-        execute "vert new | f scratch | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis"
+        execute &diffopt =~# "horizontal" ? "" : "vert" "new | f scratch | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis"
     else
         let g:diff = 0
         execute "bdelete scratch"
