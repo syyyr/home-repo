@@ -1,16 +1,18 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = "Václav Kubernát"
-	email = kubervac@fit.cvut.cz
+    name = "Václav Kubernát"
+    email = kubervac@fit.cvut.cz
 [alias]
-	adog = log --all --decorate --oneline --graph
+    adog = log --all --decorate --oneline --graph
 [diff]
-	tool = nvimdiff
-	ignoreSubmodules = dirty
+    tool = nvimdiff
+    ignoreSubmodules = dirty
 [difftool]
-	prompt = false
+    prompt = false
 [difftool "nvimdiff"]
-        cmd = "/bin/nvim -d \"$LOCAL\" \"$REMOTE\""
+    cmd = "/bin/nvim -d \"$LOCAL\" \"$REMOTE\""
 [multidiff]
-        tool = vd
+    tool = vd
+[merge]
+    conflictstyle = diff3
