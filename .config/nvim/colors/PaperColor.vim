@@ -160,7 +160,7 @@ fun! s:register_default_theme()
         \       'vertsplit_fg' : ['#5f8787', '66'],
         \       'vertsplit_bg' : ['#1c1c1c', '234'],
         \       'statusline_active_fg' : ['#1c1c1c', '234'],
-        \       'statusline_active_bg' : ['#5f8787', '66'],
+        \       'statusline_active_bg' : ['#005f87', '24'],
         \       'statusline_inactive_fg' : ['#bcbcbc', '250'],
         \       'statusline_inactive_bg' : ['#3a3a3a', '237'],
         \       'todo_fg' : ['#ff8700', '208'],
