@@ -1,5 +1,5 @@
 " automatically try to compile after saving (works with update)
-autocmd BufWritePost * silent Make!
+autocmd BufWritePost *.tex silent Make!
 
 inoremap \tit \textit{
 inoremap \ttt \texttt{
