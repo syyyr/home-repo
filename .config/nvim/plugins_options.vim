@@ -76,6 +76,7 @@ augroup END
 
 " tex
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
+let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 
 let g:dispatch_no_maps = 1
 
