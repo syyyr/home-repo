@@ -18,6 +18,7 @@ fun! DiffToggle()
     else
         let g:diff = 0
         execute "bdelete scratch"
+        set wrap
     endif
 endfun
 command DiffToggle :call DiffToggle()
