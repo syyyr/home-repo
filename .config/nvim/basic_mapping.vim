@@ -41,7 +41,7 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 
 " toggle linenumbers
-nnoremap <A-n> :setlocal relativenumber!<cr>
+nnoremap <A-n> :setlocal number!<cr>
 
 " toggle dark/light bg
 nnoremap <A-b> :let &background = ( &background == "dark"? "light" : "dark" )<CR>

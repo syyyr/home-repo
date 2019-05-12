@@ -39,8 +39,6 @@ set inccommand=split
 
 " left margin... idk
 set foldcolumn=1
-set number "seems better
-set relativenumber
 
 " better linebreak
 set linebreak
