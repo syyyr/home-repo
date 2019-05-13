@@ -15,7 +15,12 @@ _kbd_pulsectl_complete() {
 _taskkill_complete() {
     COMPREPLY+=($( compgen -W "$(tasklist)" "$2" ))
 }
+
+_vimrc_complete() {
+    COMPREPLY+=($( compgen -W "$(cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@)" "$2" ))
+}
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
 complete -F _kbd_pulsectl_complete kbdlightctl
 complete -F _taskkill_complete taskkill
+complete -F _vimrc_complete vimrc
