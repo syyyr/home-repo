@@ -5,6 +5,8 @@
 !apps/**
 !.completerc
 !.config
+!.config/bashrc
+!.config/bashrc/**
 !.config/nvim
 !.config/nvim/**
 !.config/i3

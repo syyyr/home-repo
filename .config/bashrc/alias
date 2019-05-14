@@ -1,0 +1,20 @@
+#alias BS
+alias email="vim -S ~/.config/writing.vim"
+alias explorer="taskkill -f explorer.exe; cmd explorer& exit"
+alias bashrc="nvim ~/.bashrc"
+for i in {1..64}; do alias make${i}="make -j$i"; done; unset i
+alias makec="make clean"
+alias maket="make test"
+alias man="vman"
+alias nvim="nvim -p $VIMOPTIONS"
+alias vim="nvim -p $VIMOPTIONS"
+alias shuts="shutdown -s"
+alias shutr="shutdown -r"
+alias crypto="run-parts ~/apps/crypto"
+alias sr="screen -r"
+alias geth="screen -d -m geth --rpc"
+alias cd..="cd .."
+alias screenoffx="screenoff;exit"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
