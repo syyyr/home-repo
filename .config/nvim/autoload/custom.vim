@@ -90,6 +90,11 @@ function! custom#AleIntegration()
         return l:problem['type'] . ': ln ' . problem['lnum']
     endif
 
+    let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'warning')
+    if l:problem != {}
+        return l:problem['type'] . ': ln ' . problem['lnum']
+    endif
+
     " check whitespace if ALE doesn't find anything
     let l:ws = search('\s$', 'nwc')
     if l:ws
