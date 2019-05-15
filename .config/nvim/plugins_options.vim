@@ -65,7 +65,10 @@ let g:gutentags_generate_on_missing = 0
 let g:gutentags_generate_on_new = 0
 let g:gutentags_enabled = 0
 let g:gutentags_define_advanced_commands = 1
-autocmd FileType cpp let g:gutentags_enabled = 1
+augroup gutentags
+    autocmd!
+    autocmd FileType cpp let g:gutentags_enabled = 1
+augroup END
 
 " goyo
 augroup GoyoFix

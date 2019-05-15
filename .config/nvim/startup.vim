@@ -12,4 +12,7 @@ else
 endif
 
 " return to last position in file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup lastPostion
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup END

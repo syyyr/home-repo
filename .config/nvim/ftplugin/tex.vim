@@ -1,5 +1,8 @@
 " automatically try to compile after saving (works with update)
-autocmd BufWritePost *.tex silent Make!
+augroup compilingTex
+    autocmd!
+    autocmd BufWritePost *.tex silent Make!
+augroup END
 
 inoremap <buffer> \tit \textit{
 inoremap <buffer> \ttt \texttt{

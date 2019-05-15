@@ -83,5 +83,8 @@ set complete=.,w,b,u
 set noautoread
 
 " don't use ignorecase in insert mode (because of completion mainly)
-au InsertEnter * set noignorecase
-au InsertLeave * set ignorecase
+augroup noInsertIgnoreCase
+    autocmd!
+    autocmd InsertEnter * set noignorecase
+    autocmd InsertLeave * set ignorecase
+augroup END

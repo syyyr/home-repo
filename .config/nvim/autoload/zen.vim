@@ -27,7 +27,10 @@ function! zen#init() abort
     endif
 
     call s:define_commands()
-    autocmd VimEnter * call s:git_installed()
+    augroup gitInstalled
+        autocmd!
+        autocmd VimEnter * call s:git_installed()
+    augroup END
 endfunction
 
 
