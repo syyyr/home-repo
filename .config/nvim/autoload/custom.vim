@@ -43,23 +43,6 @@ function! custom#DrawStartscreen()
     endif
 endfun
 
-" insert mode TAB completion
-function! custom#TabOrCompletion(direction)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~? '\k'
-        return "\<TAB>"
-    else
-        if pumvisible() " when menu is visible, I don't want to select the 1st match
-            return "\<C-E>\<C-N>"
-        endif
-        if a:direction ==# 'f'
-            return "\<C-N>"
-        else
-            return "\<C-P>"
-        endif
-    endif
-endfunction
-
 function! custom#SumNumbers()
     normal! mm
     let l:old=@a

@@ -7,10 +7,6 @@ command! DiffToggle :call custom#DiffToggle()
 " toggle unsaved changes diff
 nnoremap <A-,> :DiffToggle<cr>
 
-inoremap <silent> <TAB> <C-R>=custom#TabOrCompletion('f')<CR>
-inoremap <silent> <S-TAB> <C-R>=custom#TabOrCompletion('b')<CR>
-
-
 command! SumNumbers call custom#SumNumbers()
 
 " end with :Q XD
