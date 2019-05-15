@@ -91,8 +91,3 @@ augroup noInsertIgnoreCase
     autocmd InsertEnter * set noignorecase
     autocmd InsertLeave * set ignorecase
 augroup END
-
-" use :nohlsearch when enetering insert mode
-for s:c in ['a', 'A', '<Insert>', 'i', 'I', 'gI', 'gi', 'o', 'O']
-    exe 'nnoremap <silent> ' . s:c . ' :nohlsearch<CR>' . s:c
-endfor
