@@ -9,8 +9,6 @@ Plugin 'mbbill/undotree'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rhysd/clever-f.vim'
 Plugin 'rust-lang/rust.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
@@ -29,16 +27,6 @@ set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " startscreen 🤔
 let g:Startscreen_function = function('custom#Draw_startscreen')
 
-" airline stuff
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.maxlinenr = ' ㏑'
-let g:bufferline_echo = 0
-let g:airline_theme='papercolor'
-let g:airline_powerline_fonts = 1
-let g:airline_section_c = '%<%f%{custom#My_modified()} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%'
-
 " indentline
 let g:indentLine_char = '▏'
 
@@ -49,7 +37,6 @@ let g:clever_f_smart_case = 1
 let vim_markdown_preview_pandoc=1
 
 "ale stuff
-let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {'rust': ['rls'], 'cpp': []}
 let g:ale_c_parse_compile_commands = 1
 " this is still needed for header files

@@ -14,9 +14,6 @@ let g:PaperColor_Theme_Options = {
   \   },
   \ }
 
-colorscheme PaperColor
-let g:airline_theme='papercolor'
-
 " highlight git merge conflicts
 highlight MergeConflict ctermbg=black ctermfg=red
 augroup mergeConflict
@@ -24,3 +21,11 @@ augroup mergeConflict
     autocmd ColorScheme PaperColor highlight MergeConflict ctermbg=black ctermfg=red
     autocmd Syntax * syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$'
 augroup END
+
+augroup statusUnderline
+    autocmd!
+    autocmd ColorScheme PaperColor highlight StatusLineNC cterm=underline,reverse
+    autocmd ColorScheme PaperColor highlight StatusLine cterm=underline,reverse,bold
+augroup END
+
+colorscheme PaperColor
