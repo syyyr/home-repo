@@ -11,9 +11,6 @@ inoremap <buffer> \v \verb¨
 
 set diffopt+=horizontal
 
-" I don't want this mapping in Tex
-augroup unmap
-    autocmd!
-    autocmd BufEnter *.tex silent! iunmap {<CR>
-    autocmd BufLeave *.tex inoremap {<CR> {<CR>}<Esc>O
-augroup END
+" I don't want the global mapping in Tex files. However, this doesn't solve
+" the timeout issue :/
+inoremap <buffer> <nowait> { {
