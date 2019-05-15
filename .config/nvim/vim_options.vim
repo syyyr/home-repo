@@ -1,3 +1,4 @@
+scriptencoding utf8
 set title " set title to NVIM
 set noshowmode " but not current moce
 set cursorline "line highlight

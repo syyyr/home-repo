@@ -207,7 +207,7 @@ endfun
 
 " Acquire Theme Data: {{{
 
-" Brief: 
+" Brief:
 "   Function to get theme information and store in variables for other
 "   functions to use
 "
@@ -219,17 +219,17 @@ endfun
 "   g:PaperColor_Theme_Options            <dictionary>  user options
 "
 " Expose:
-"   s:theme_name       <string>     the name of the selected theme 
+"   s:theme_name       <string>     the name of the selected theme
 "   s:selected_theme   <dictionary> the selected theme object (contains palette, etc.)
 "   s:selected_variant <string>     'light' or 'dark'
 "   s:palette          <dictionary> the palette of selected theme
 "   s:options          <dictionary> user options
 fun! s:acquire_theme_data()
-  
+
   " Get theme name: {{{
   let s:theme_name = 'default'
 
-  if exists("g:PaperColor_Theme") " Users expressed theme preference
+  if exists('g:PaperColor_Theme') " Users expressed theme preference
     let lowercase_theme_name = tolower(g:PaperColor_Theme)
 
     if lowercase_theme_name !=? 'default'
@@ -261,7 +261,7 @@ fun! s:acquire_theme_data()
   " Get Theme Variant: either dark or light  {{{
   let s:selected_variant = 'dark'
 
-  let s:is_dark=(&background == 'dark')
+  let s:is_dark=(&background ==# 'dark')
 
   if s:is_dark
     if has_key(s:selected_theme, 'dark')
@@ -306,7 +306,7 @@ fun! s:acquire_theme_data()
   let s:options = {}
 
 
-  if exists("g:PaperColor_Theme_Options")
+  if exists('g:PaperColor_Theme_Options')
     let s:options = g:PaperColor_Theme_Options
   endif
   " }}}
@@ -324,7 +324,7 @@ fun! s:identify_color_mode()
   let s:MODE_256_COLOR = 1
   let s:MODE_GUI_COLOR = 2
 
-  if has("gui_running")  || has('termguicolors') && &termguicolors || has('nvim') && $NVIM_TUI_ENABLE_TRUE_COLOR
+  if has('gui_running')  || has('termguicolors') && &termguicolors || has('nvim') && $NVIM_TUI_ENABLE_TRUE_COLOR
     let s:mode = s:MODE_GUI_COLOR
   elseif (&t_Co >= 256)
     let s:mode = s:MODE_256_COLOR
@@ -343,8 +343,8 @@ endfun
 fun! s:generate_theme_option_variables()
   " 0. All possible theme option names must be registered here
   let l:available_theme_options = [
-        \ 'allow_bold', 
-        \ 'allow_italic', 
+        \ 'allow_bold',
+        \ 'allow_italic',
         \ 'transparent_background',
         \ ]
 
@@ -382,7 +382,7 @@ fun! s:generate_theme_option_variables()
   if has_key(s:options, 'theme')
     let s:theme_options = s:options['theme']
   endif
-  
+
   " 3.1 In case user sets for a theme without specifying which variant
   if has_key(s:theme_options, s:theme_name)
     let l:theme_options = s:theme_options[s:theme_name]
@@ -394,7 +394,7 @@ fun! s:generate_theme_option_variables()
 
 
   " 3.2 In case user sets for a specific variant of a theme
-  
+
   " Create the string that the user might have set for this theme variant
   " for example, 'default.dark'
   let l:specific_theme_variant = s:theme_name . '.' . s:selected_variant
@@ -445,7 +445,7 @@ fun! s:set_overriding_colors()
 
       for l:color in keys(s:themeOpt_override)
         let l:value = s:themeOpt_override[l:color]
-        if l:value[0] == ''
+        if l:value[0] ==# ''
           let l:value[0] = s:to_HEX[l:value[1]]
         endif
         let s:palette[l:color] = l:value
@@ -456,10 +456,10 @@ fun! s:set_overriding_colors()
       if !empty(s:themeOpt_override)
         call s:load_GUI_to_256_converter()
       endif
- 
+
       for l:color in keys(s:themeOpt_override)
         let l:value = s:themeOpt_override[l:color]
-        if l:value[1] == ''
+        if l:value[1] ==# ''
           let l:value[1] = s:to_256(l:value[0])
         endif
         let s:palette[l:color] = l:value
@@ -492,7 +492,7 @@ endfun
 " Expose:
 "   s:langOpt_[LANGUAGE]__[OPTION]  <any>   variables for language options
 "
-" Example: 
+" Example:
 "     g:PaperColor_Theme_Options has something like this:
 "       'language': {
 "       \   'python': {
@@ -518,10 +518,10 @@ fun! s:generate_language_option_variables()
   " Part of user-config options
   if has_key(s:options, 'language')
     let l:language_options = s:options['language']
-    " echo l:language_options 
+    " echo l:language_options
     for l:lang in keys(l:language_options)
       let l:options = l:language_options[l:lang]
-      " echo l:lang 
+      " echo l:lang
       " echo l:options
       for l:option in keys(l:options)
         let s:{'langOpt_' . l:lang . '__' . l:option} = l:options[l:option]
@@ -725,9 +725,9 @@ fun! s:load_GUI_to_256_converter()
 
   " Returns the palette index to approximate the '#rrggbb' hex string
   fun! s:to_256(rgb)
-    let l:r = ("0x" . strpart(a:rgb, 1, 2)) + 0
-    let l:g = ("0x" . strpart(a:rgb, 3, 2)) + 0
-    let l:b = ("0x" . strpart(a:rgb, 5, 2)) + 0
+    let l:r = ('0x' . strpart(a:rgb, 1, 2)) + 0
+    let l:g = ('0x' . strpart(a:rgb, 3, 2)) + 0
+    let l:b = ('0x' . strpart(a:rgb, 5, 2)) + 0
 
     return s:colour(l:r, l:g, l:b)
   endfun
@@ -807,32 +807,32 @@ endfun
 fun! s:set_format_attributes()
   " These are the default
   if s:mode == s:MODE_GUI_COLOR
-    let s:ft_bold    = " cterm=bold gui=bold "
-    let s:ft_none    = " cterm=none gui=none "
-    let s:ft_reverse = " cterm=reverse gui=reverse "
-    let s:ft_italic  = " cterm=italic gui=italic "
-    let s:ft_italic_bold = " cterm=italic,bold gui=italic,bold "
+    let s:ft_bold    = ' cterm=bold gui=bold '
+    let s:ft_none    = ' cterm=none gui=none '
+    let s:ft_reverse = ' cterm=reverse gui=reverse '
+    let s:ft_italic  = ' cterm=italic gui=italic '
+    let s:ft_italic_bold = ' cterm=italic,bold gui=italic,bold '
   elseif s:mode == s:MODE_256_COLOR
-    let s:ft_bold    = " cterm=bold "
-    let s:ft_none    = " cterm=none "
-    let s:ft_reverse = " cterm=reverse "
-    let s:ft_italic  = " cterm=italic "
-    let s:ft_italic_bold = " cterm=italic,bold "
+    let s:ft_bold    = ' cterm=bold '
+    let s:ft_none    = ' cterm=none '
+    let s:ft_reverse = ' cterm=reverse '
+    let s:ft_italic  = ' cterm=italic '
+    let s:ft_italic_bold = ' cterm=italic,bold '
   else
-    let s:ft_bold    = ""
-    let s:ft_none    = " cterm=none "
-    let s:ft_reverse = " cterm=reverse "
-    let s:ft_italic  = ""
-    let s:ft_italic_bold = ""
+    let s:ft_bold    = ''
+    let s:ft_none    = ' cterm=none '
+    let s:ft_reverse = ' cterm=reverse '
+    let s:ft_italic  = ''
+    let s:ft_italic_bold = ''
   endif
 
   " Unless instructed otherwise either by theme setting or user overriding
 
   if s:themeOpt_allow_bold == 0
-    let s:ft_bold    = ""
+    let s:ft_bold    = ''
   endif
   if s:themeOpt_allow_italic == 0
-    let s:ft_italic = ""
+    let s:ft_italic = ''
     let s:ft_italic_bold = s:ft_bold
   endif
 
@@ -852,7 +852,7 @@ fun! s:convert_colors()
 
     for l:color in keys(s:palette)
       let l:value = s:palette[l:color]
-      if l:value[0] == ''
+      if l:value[0] ==# ''
         let l:value[0] = s:to_HEX[l:value[1]]
       endif
       let s:palette[l:color] = l:value
@@ -864,7 +864,7 @@ fun! s:convert_colors()
 
     for l:color in keys(s:palette)
       let l:value = s:palette[l:color]
-      if l:value[1] == ''
+      if l:value[1] ==# ''
         let l:value[1] = s:to_256(l:value[0])
       endif
       let s:palette[l:color] = l:value
@@ -1156,7 +1156,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi Folded' . s:fg_folded_fg . s:bg_folded_bg
   exec 'hi WildMenu' . s:fg_wildmenu_fg . s:bg_wildmenu_bg . s:ft_bold
 
-  if version >= 700
+  if v:version >= 700
     exec 'hi CursorLine'  . s:bg_cursorline . s:ft_none
     if s:mode == s:MODE_16_COLOR
       exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg
@@ -1167,12 +1167,12 @@ fun! s:apply_syntax_highlightings()
     exec 'hi PMenu' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
     exec 'hi PMenuSel' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_reverse
     if s:themeOpt_transparent_background
-      exec 'hi SignColumn' . s:fg_green . s:ft_none . "ctermbg=none"
+      exec 'hi SignColumn' . s:fg_green . s:ft_none . 'ctermbg=none'
     else
       exec 'hi SignColumn' . s:fg_green . s:bg_background . s:ft_none
     endif
   end
-  if version >= 703
+  if v:version >= 703
     exec 'hi ColorColumn'  . s:bg_cursorcolumn . s:ft_none
   end
 
@@ -1618,7 +1618,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi jsonNumber' . s:fg_orange
   exec 'hi jsonNull' . s:fg_purple . s:ft_bold
   exec 'hi jsonBoolean' . s:fg_green . s:ft_bold
-  exec 'hi jsonCommentError' . s:fg_pink . s:bg_background 
+  exec 'hi jsonCommentError' . s:fg_pink . s:bg_background
 
   " Go Highlighting
   exec 'hi goDirective' . s:fg_red
@@ -2016,11 +2016,11 @@ fun! s:apply_syntax_highlightings()
   exec 'hi awkSpecialPrintf' . s:fg_olive . s:ft_bold
 
   " Elm highlighting
-  exec 'hi elmImport' . s:fg_navy 
+  exec 'hi elmImport' . s:fg_navy
   exec 'hi elmAlias' . s:fg_aqua
   exec 'hi elmType' . s:fg_pink
   exec 'hi elmOperator' . s:fg_aqua . s:ft_bold
-  exec 'hi elmBraces' . s:fg_aqua . s:ft_bold 
+  exec 'hi elmBraces' . s:fg_aqua . s:ft_bold
   exec 'hi elmTypedef' . s:fg_blue .  s:ft_bold
   exec 'hi elmTopLevelDecl' . s:fg_green . s:ft_bold
 
@@ -2194,7 +2194,7 @@ command! -nargs=0 PaperColor :call g:PaperColor()
 
 hi clear
 syntax reset
-let g:colors_name = "PaperColor"
+let g:colors_name = 'PaperColor'
 
 call s:acquire_theme_data()
 call s:identify_color_mode()

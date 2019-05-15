@@ -1,3 +1,4 @@
+scriptencoding utf8
 " automatically try to compile after saving (works with update)
 augroup compilingTex
     autocmd!

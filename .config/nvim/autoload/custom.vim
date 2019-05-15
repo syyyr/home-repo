@@ -1,7 +1,9 @@
+scriptencoding utf8
 function! custom#CleanExtraSpaces()
-    let save_cursor = getpos(".")
+    let save_cursor = getpos('.')
     let old_query = getreg('/')
-    silent! %s/\s\+$//e
+    " this is a warning workaround, apparently :substitute isn't safe, but I don't care
+    execute 'silent! %s/\s\+$//e'
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
@@ -9,20 +11,20 @@ endfun
 function! custom#DiffToggle()
     if !g:diff
         let g:diff = 1
-        execute &diffopt =~# "horizontal" ? "" : "vert" "new | f scratch | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis"
+        execute &diffopt =~# 'horizontal' ? '' : 'vert' 'new | f scratch | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis'
     else
         let g:diff = 0
-        execute "bdelete scratch"
+        execute 'bdelete scratch'
         set wrap
     endif
 endfun
 
 " custom function for the modified sign (doesn't show anything on startscreen)
 function! custom#MyModified()
-    if !&modifiable && expand('%') != 'VIM'
+    if !&modifiable && expand('%') !=# 'VIM'
         return  '[-]'
     endif
-    if &mod
+    if &modified
         return '[+]'
     endif
     return ''
@@ -43,7 +45,7 @@ endfun
 
 function! custom#ShiftAndKeepVisualSelection(cmd)
     set nosmartindent
-    if mode() =~ '[Vv]'
+    if mode() =~# '[Vv]'
         return a:cmd . ":set smartindent\<CR>gv"
     else
         return a:cmd . ":set smartindent\<CR>"
@@ -53,13 +55,13 @@ endfunction
 " insert mode TAB completion
 function! custom#TabOrCompletion(direction)
     let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
+    if !col || getline('.')[col - 1] !~? '\k'
         return "\<TAB>"
     else
         if pumvisible() " when menu is visible, I don't want to select the 1st match
             return "\<C-E>\<C-N>"
         endif
-        if a:direction == 'f'
+        if a:direction ==# 'f'
             return "\<C-N>"
         else
             return "\<C-P>"

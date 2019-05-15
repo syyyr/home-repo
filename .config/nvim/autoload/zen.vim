@@ -40,8 +40,8 @@ function! s:syntax() abort
     syntax match ZenSep /^=.*=/
     syntax match ZenTitle /^vim-zen/
     syntax match ZenPlus /\[+].*:/
-    syntax match ZenMinus /\[-].*:/ 
-    syntax match ZenSpace /\[ ].*:/ 
+    syntax match ZenMinus /\[-].*:/
+    syntax match ZenSpace /\[ ].*:/
     syntax match ZenDelete /\[x.\{-}:/
 
     highlight link ZenPlus Function
@@ -49,8 +49,8 @@ function! s:syntax() abort
     highlight link ZenSpace Comment
     highlight link ZenSep Comment
     highlight link ZenTitle Special
-    highlight link ZenDelete Exception 
-endfunction 
+    highlight link ZenDelete Exception
+endfunction
 
 
 function! s:git_installed() abort
@@ -59,7 +59,7 @@ function! s:git_installed() abort
         echom "[vim-zen] git is required."
         echohl None
     endif
-endfunction 
+endfunction
 
 
 " list all installed plugins
@@ -67,17 +67,17 @@ function! s:list_plugins() abort
     let l:count = 4
     for l:plugin in keys(g:plugins)
         call append(line('$'), '[ ] ' . g:plugins[l:plugin]['name'] . ': ')
-        let s:plugin_display_order[g:plugins[l:plugin]['name']] = l:count 
+        let s:plugin_display_order[g:plugins[l:plugin]['name']] = l:count
         let l:count = l:count + 1
     endfor
     call s:syntax()
-    redraw 
-endfunction 
+    redraw
+endfunction
 
 
 function! s:populate_window(message, flag) abort
     let l:heading = 'vim-zen - ' . '[ ' . a:message . ' ]'
-    
+
     " when populating window for the first time
     if !(a:flag)
         call s:start_window()
@@ -89,7 +89,7 @@ function! s:populate_window(message, flag) abort
     endif
     call s:syntax()
     redraw
-endfunction 
+endfunction
 
 
 " source plugin files
@@ -103,7 +103,7 @@ function! s:load_plugin(plugin) abort
             "execute 'source' vimfile
         endfor
     endfor
-endfunction 
+endfunction
 
 
 " user defined commands for functions
@@ -112,13 +112,13 @@ function! s:define_commands() abort
     command! -nargs=* -bar -bang -complete=customlist,s:names ZenInstall call zen#install()
     command! -nargs=* -bar -bang -complete=customlist,s:names ZenRemove call zen#remove()
     command! -nargs=* -bar -bang -complete=customlist,s:names ZenUpdate call zen#update()
-endfunction 
+endfunction
 
 
 " load `g:plugins` with plugins in .vimrc
 function! zen#add(remote, ...)
     let l:plugin_name = split(a:remote, '/')[-1]
-    let l:plugin_dir = s:installation_path . '/' . l:plugin_name 
+    let l:plugin_dir = s:installation_path . '/' . l:plugin_name
 
 	if a:remote =~ '^https:\/\/.\+'
 		let l:remote_name = a:remote
@@ -145,8 +145,8 @@ endfunction
 " assign name to the plugin buffer window
 function! s:assign_buffer_name() abort
     let name = '[vim-zen]'
-    silent! execute "f " . l:name 
-endfunction 
+    silent! execute "f " . l:name
+endfunction
 
 
 " start a new buffer window for plugin operations
@@ -162,7 +162,7 @@ function! s:start_window() abort
     endif
     setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap cursorline
     call s:assign_buffer_name()
-endfunction 
+endfunction
 
 
 " install plugins
@@ -177,14 +177,14 @@ function! zen#install() abort
         let l:plugin = g:plugins[key]
         let l:install_path = s:installation_path . "/" . l:plugin['name']
         if !isdirectory(l:install_path)
-            let l:cmd = "git clone " . l:plugin['remote'] . " " . l:install_path 
+            let l:cmd = "git clone " . l:plugin['remote'] . " " . l:install_path
             call add(l:plugins_to_install, l:cmd)
         else
             call setline(l:count, '[-] ' . l:plugin['name'] . ': ' . 'Already installed.')
         endif
         let l:count = l:count + 1
-        redraw 
-    endfor 
+        redraw
+    endfor
 
     if len(l:plugins_to_install) == 0
         :
@@ -219,7 +219,7 @@ function! s:warning_prompt(message) abort
     call inputrestore()
     echo "\r"
     return (l:choice =~? '^y') ? 1 : 0
-endfunction 
+endfunction
 
 
 " remove unused plugins
@@ -233,9 +233,9 @@ function! zen#remove() abort
         call append(line('$'), 'No plugins installed.')
     endif
 
-    for l:dir in l:cloned_plugins 
+    for l:dir in l:cloned_plugins
         let l:plugin_dir_name = split(l:dir, '/')[-1]
-        let l:plugin_dir_path = s:installation_path . "/" . l:plugin_dir_name 
+        let l:plugin_dir_path = s:installation_path . "/" . l:plugin_dir_name
         if !has_key(g:plugins, l:plugin_dir_name)
             echom string(l:count)
             call add(l:unused_plugins, l:plugin_dir_path)
@@ -253,7 +253,7 @@ function! zen#remove() abort
 
     let l:count = 4
     if s:warning_prompt('Delete the following plugins?')
-        for l:item in l:unused_plugins 
+        for l:item in l:unused_plugins
             let l:plugin_name = split(l:item, '/')[-1]
             let l:cmd_result = system('rm -rf ' . l:item)
             call setline(l:count, '[x] ' . l:item . ': Removed!')
@@ -262,15 +262,15 @@ function! zen#remove() abort
         endfor
     endif
     call s:populate_window('Finished cleaning!', 1)
-endfunction 
+endfunction
 
 
 " update plugins
-function! zen#update() abort 
+function! zen#update() abort
     call s:populate_window('Updating plugins..', 0)
     call s:list_plugins()
     call s:parallel_operation_python('update', [])
-endfunction 
+endfunction
 
 
 " python code for multithreaded operations
@@ -287,7 +287,7 @@ class ZenThread(threading.Thread):
     def __init__(self, cmd, queue):
         threading.Thread.__init__(self)
         self.cmd = cmd
-        self.queue = queue 
+        self.queue = queue
 
     def run(self):
         (status, output) = commands.getstatusoutput(self.cmd)
@@ -309,7 +309,7 @@ def install():
     start_time = time.time()
     for cmd in plugins_to_install:
         plugin_name = cmd.split('/')[-1]
-        plugin_path = path + '/' + plugin_name 
+        plugin_path = path + '/' + plugin_name
         to_install = vim.eval('!isdirectory("{}")'.format(plugin_path))
         if to_install:
             thread = ZenThread(cmd, result_queue)
@@ -318,7 +318,7 @@ def install():
             vim.eval('setline({0}, "[+] {1}: Installing...")'.format(plugin_display_order[plugin_name], plugin_name))
         else:
             vim.eval('setline({0}, "[-] {1}: Already installed.")'.format(plugin_display_order[plugin_name], plugin_name))
-        vim.command('redraw') 
+        vim.command('redraw')
         count += 1
 
     while threading.active_count() > 1 or not result_queue.empty():
@@ -342,7 +342,7 @@ def update():
     commands = list()
     git_cmd = 'git -C'
     result_queue = Queue.Queue()
-    plugins = vim.eval('g:plugins') 
+    plugins = vim.eval('g:plugins')
     populate_window_message = 'Finished installation'
     plugin_display_order = vim.eval('s:plugin_display_order')
     start_time = time.time()
