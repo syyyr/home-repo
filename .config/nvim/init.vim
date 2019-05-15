@@ -1,5 +1,4 @@
-" custom functions, commands, and their associated mappings (must be first
-" since some plugins may use custom functions)
+" custom commands, and their associated mappings
 runtime commands.vim
 " plugins and their options
 runtime plugins.vim
