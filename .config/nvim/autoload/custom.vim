@@ -97,7 +97,7 @@ function! custom#AleIntegration()
 
     " check whitespace if ALE doesn't find anything
     let l:ws = search('\s$', 'nwc')
-    if l:ws
+    if l:ws && (mode() !=? 'i' || l:ws != getpos('.')[1])
         return 'WS: ' . l:ws
     endif
 
