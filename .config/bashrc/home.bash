@@ -6,18 +6,13 @@ umask 022
 
 export BROWSER=wslbrowser
 
-#enable C-Q and C-S in vim
-stty -ixon
-
 #locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-#env BS
 #export HOMEPC="yes"
 export DISPLAY=localhost:0
 
-#nighthours BS
 #win cmd autocomplete BS
 source $HOME/.completerc
 source $HOME/.rustup-comp
@@ -55,6 +50,7 @@ PATH="$HOME/gcc-4.7-mipsel/bin:$PATH"
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-source ~/.config/bashrc/env
-source ~/.config/bashrc/common
 source ~/.config/bashrc/alias
+source ~/.config/bashrc/common
+source ~/.config/bashrc/env
+source ~/.config/bashrc/functions

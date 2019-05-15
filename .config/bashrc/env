@@ -1,5 +1,0 @@
-export DAYSTART="9"
-export EDITOR=nvim
-export LESS="-RFS"
-export NIGHTSTART="22"
-export VISUAL=nvim

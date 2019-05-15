@@ -94,6 +94,6 @@ fi
 
 bind '"\e[18~":""'
 stty susp undef
+stty -ixon
 bind -x '"\C-z":"fg &> /dev/null"'
-export FZF_DEFAULT_COMMAND='find . -type d \( -name ".cargo" -or -name ".local" -or -name ".rustup" -or -name ".npm" -or -name ".git" -or -name ".cache" \) -prune -o -type f -print'
 source /usr/share/fzf/completion.bash
