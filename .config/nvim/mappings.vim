@@ -18,7 +18,7 @@ nnoremap <space> /
 nnoremap <C-space> ?
 
 " disable highlight
-nnoremap <silent> <A-cr> :nohlsearch
+nnoremap <silent> <A-cr> :nohlsearch<cr>
 
 " jump to next merge conflict
 nnoremap <silent> <A-c> /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
