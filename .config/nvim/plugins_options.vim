@@ -22,6 +22,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
 Plugin 'neoclide/coc.nvim'
 Plugin 'tpope/vim-dispatch'
+Plugin 'sakhnik/nvim-gdb'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
 
