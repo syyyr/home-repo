@@ -41,10 +41,10 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 
 " toggle linenumbers
-nnoremap <A-n> :setlocal number!<cr>
+nnoremap <silent> <A-n> :setlocal number!<cr>
 
 " toggle dark/light bg
-nnoremap <A-b> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap <silent> <A-b> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " buffer management
 nnoremap <A-d> :bdelete<cr>
