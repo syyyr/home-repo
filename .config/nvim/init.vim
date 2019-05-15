@@ -2,9 +2,9 @@
 " since some plugins may use custom functions)
 runtime commands.vim
 " plugins and their options
-runtime plugins_options.vim
+runtime plugins.vim
 " simple vim options "set smth="
-runtime vim_options.vim
+runtime options.vim
 " advanced vim options
 runtime startup.vim
 " simple mappings, that don't use functions/commands
