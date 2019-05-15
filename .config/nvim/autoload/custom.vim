@@ -43,15 +43,6 @@ function! custom#DrawStartscreen()
     endif
 endfun
 
-function! custom#ShiftAndKeepVisualSelection(cmd)
-    set nosmartindent
-    if mode() =~# '[Vv]'
-        return a:cmd . ":set smartindent\<CR>gv"
-    else
-        return a:cmd . ":set smartindent\<CR>"
-    endif
-endfunction
-
 " insert mode TAB completion
 function! custom#TabOrCompletion(direction)
     let col = col('.') - 1

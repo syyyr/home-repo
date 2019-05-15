@@ -94,3 +94,7 @@ noremap <F7> <nop>
 inoremap <F7> <nop>
 
 nnoremap <silent> <C-n> :20Lexplore<CR>
+
+" remain in visual after shift
+xnoremap > >gv
+xnoremap < <gv
