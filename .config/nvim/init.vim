@@ -8,6 +8,6 @@ runtime vim_options.vim
 " advanced vim options
 runtime startup.vim
 " simple mappings, that don't use functions/commands
-runtime basic_mapping.vim
+runtime mappings.vim
 " syntax highlighting and various color changes
 runtime colors.vim
