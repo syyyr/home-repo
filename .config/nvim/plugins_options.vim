@@ -27,7 +27,7 @@ set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
 
 " startscreen 🤔
-let g:Startscreen_function = function('Draw_startscreen')
+let g:Startscreen_function = function('custom#Draw_startscreen')
 
 " airline stuff
 if !exists('g:airline_symbols')
@@ -37,7 +37,7 @@ let g:airline_symbols.maxlinenr = ' ㏑'
 let g:bufferline_echo = 0
 let g:airline_theme='papercolor'
 let g:airline_powerline_fonts = 1
-let g:airline_section_c = '%<%f%{My_modified()} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%'
+let g:airline_section_c = '%<%f%{custom#My_modified()} %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%'
 
 " indentline
 let g:indentLine_char = '▏'
