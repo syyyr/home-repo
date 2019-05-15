@@ -1,8 +1,5 @@
-export LESS="-RFS" #scroll with mouse in less invoked from git
 export DAYSTART="9"
-export NIGHTSTART="22"
-
 export EDITOR=nvim
+export LESS="-RFS"
+export NIGHTSTART="22"
 export VISUAL=nvim
-alias realnano="/bin/nano"
-
