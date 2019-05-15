@@ -1146,6 +1146,8 @@ fun! s:apply_syntax_highlightings()
   exec 'hi Search' . s:fg_search_fg . s:bg_search_bg
   exec 'hi StatusLine' . s:fg_statusline_active_bg . s:bg_statusline_active_fg
   exec 'hi StatusLineNC' . s:fg_statusline_inactive_bg . s:bg_statusline_inactive_fg
+  exec 'hi StatusLineTerm' . s:fg_statusline_active_bg . s:bg_statusline_active_fg
+  exec 'hi StatusLineTermNC' . s:fg_statusline_inactive_bg . s:bg_statusline_inactive_fg
   exec 'hi Visual' . s:fg_visual_fg . s:bg_visual_bg
   exec 'hi Directory' . s:fg_blue
   exec 'hi ModeMsg' . s:fg_olive
@@ -1161,13 +1163,13 @@ fun! s:apply_syntax_highlightings()
     if s:mode == s:MODE_16_COLOR
       exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg
     else
-      exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:ft_none . s:ft_none
+      exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg . s:ft_none
     endif
     exec 'hi CursorColumn'  . s:bg_cursorcolumn . s:ft_none
     exec 'hi PMenu' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
     exec 'hi PMenuSel' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_reverse
     if s:themeOpt_transparent_background
-      exec 'hi SignColumn' . s:fg_green . s:ft_none . 'ctermbg=none'
+      exec 'hi SignColumn' . s:fg_green . s:ft_none
     else
       exec 'hi SignColumn' . s:fg_green . s:bg_background . s:ft_none
     endif
@@ -1520,7 +1522,7 @@ fun! s:apply_syntax_highlightings()
   exec 'hi mkdLink' . s:fg_blue . s:ft_bold
   exec 'hi mkdURL' . s:fg_comment
   exec 'hi mkdString' . s:fg_foreground
-  exec 'hi mkdBlockQuote' . s:fg_foreground . s:bg_popupmenu_bg
+  exec 'hi mkdBlockQuote' . s:fg_pink
   exec 'hi mkdLinkTitle' . s:fg_pink
   exec 'hi mkdDelimiter' . s:fg_aqua
   exec 'hi mkdRule' . s:fg_pink
@@ -1606,6 +1608,19 @@ fun! s:apply_syntax_highlightings()
   exec 'hi jsParens' . s:fg_blue
   exec 'hi jsBraces' . s:fg_blue
   exec 'hi jsNoise' . s:fg_blue
+
+  " Jsx Highlighting
+  " @target https://github.com/MaxMEllon/vim-jsx-pretty
+  exec 'hi jsxTagName' . s:fg_wine
+  exec 'hi jsxComponentName' . s:fg_wine
+  exec 'hi jsxAttrib' . s:fg_pink
+  exec 'hi jsxEqual' . s:fg_comment
+  exec 'hi jsxString' . s:fg_blue
+  exec 'hi jsxCloseTag' . s:fg_comment
+  exec 'hi jsxCloseString' . s:fg_comment
+  exec 'hi jsxDot' . s:fg_wine
+  exec 'hi jsxNamespace' . s:fg_wine
+  exec 'hi jsxPunct' . s:fg_comment
 
   " Json Highlighting
   " @target https://github.com/elzr/vim-json
