@@ -82,6 +82,9 @@ set complete=.,w,b,u
 " don't autoload file if it's changed outside of vim
 set noautoread
 
+" the time for CursorHold trigger
+set updatetime=300
+
 " don't use ignorecase in insert mode (because of completion mainly)
 augroup noInsertIgnoreCase
     autocmd!

@@ -86,3 +86,7 @@ let g:dispatch_no_maps = 1
 
 " coc.nvim
 inoremap <silent><expr> <c-space> coc#refresh()
+augroup cocHighlight
+    autocmd!
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
