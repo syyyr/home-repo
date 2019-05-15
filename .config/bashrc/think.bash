@@ -36,9 +36,8 @@ stty susp undef
 bind -x '"\C-z":"fg &> /dev/null"'
 
 source $HOME/.completerc
-source $HOME/.config/bashrc/alias
-source $HOME/.config/bashrc/common
-source $HOME/.config/bashrc/env
-source $HOME/.config/bashrc/functions
-source $HOME/.config/bashrc/think
+source $HOME/.config/bashrc/alias.bash
+source $HOME/.config/bashrc/common.bash
+source $HOME/.config/bashrc/env.bash
+source $HOME/.config/bashrc/functions.bash
 
