@@ -78,3 +78,6 @@ augroup cocHighlight
     autocmd!
     autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
+
+" remove netrw banner
+let g:netrw_banner = 0
