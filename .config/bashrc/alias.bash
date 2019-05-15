@@ -17,7 +17,6 @@ alias ls='ls --color=auto'
 alias makec="make clean"
 alias maket="make test"
 alias man="vman"
-alias nvim="nvim -p $VIMOPTIONS"
 alias pacman="pacman --color=auto"
 alias realnano="/bin/nano"
 alias rm="rm -I"
