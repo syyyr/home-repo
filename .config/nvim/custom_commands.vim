@@ -1,5 +1,5 @@
 " extra trailing ws delete
-fun! CleanExtraSpaces()
+function! CleanExtraSpaces()
     let save_cursor = getpos(".")
     let old_query = getreg('/')
     silent! %s/\s\+$//e
@@ -11,7 +11,7 @@ nmap <A-t> :Trailing<cr>
 
 " quick diff
 let g:diff = 0
-fun! DiffToggle()
+function! DiffToggle()
     if !g:diff
         let g:diff = 1
         execute &diffopt =~# "horizontal" ? "" : "vert" "new | f scratch | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis"
@@ -26,7 +26,7 @@ command DiffToggle :call DiffToggle()
 nnoremap <A-,> :DiffToggle<cr>
 
 " custom function for the modified sign (doesn't show anything on startscreen)
-fun! My_modified()
+function! My_modified()
     if !&modifiable && expand('%') != 'VIM'
         return  '[-]'
     endif
@@ -37,7 +37,7 @@ fun! My_modified()
 endfun
 
 " startscreen_function
-fun! Draw_startscreen()
+function! Draw_startscreen()
     setlocal foldmethod=manual
     IndentLinesDisable
     file VIM
