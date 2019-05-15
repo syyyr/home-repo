@@ -6,7 +6,7 @@ function! CleanExtraSpaces()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
-command Trailing :call CleanExtraSpaces()
+command! Trailing :call CleanExtraSpaces()
 nmap <A-t> :Trailing<cr>
 
 " quick diff
@@ -21,7 +21,7 @@ function! DiffToggle()
         set wrap
     endif
 endfun
-command DiffToggle :call DiffToggle()
+command! DiffToggle :call DiffToggle()
 " toggle unsaved changes diff
 nnoremap <A-,> :DiffToggle<cr>
 
