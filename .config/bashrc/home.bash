@@ -50,7 +50,7 @@ PATH="$HOME/gcc-4.7-mipsel/bin:$PATH"
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-source ~/.config/bashrc/alias
-source ~/.config/bashrc/common
-source ~/.config/bashrc/env
-source ~/.config/bashrc/functions
+source ~/.config/bashrc/alias.bash
+source ~/.config/bashrc/common.bash
+source ~/.config/bashrc/env.bash
+source ~/.config/bashrc/functions.bash
