@@ -58,6 +58,10 @@ function! custom#SynGroup()
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
 
+function! custom#TrailingWsLineNr(id)
+    let g:TrailingNr = search('\s$', 'nwc')
+endfun
+
 function! custom#AleIntegration()
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
     if l:problem != {}
@@ -69,10 +73,8 @@ function! custom#AleIntegration()
         return l:problem['type'] . ': ln ' . problem['lnum']
     endif
 
-    " check whitespace if ALE doesn't find anything
-    let l:ws = search('\s$', 'nwc')
-    if l:ws && (mode() !=? 'i' || l:ws != getpos('.')[1])
-        return 'WS: ' . l:ws
+    if g:TrailingNr && (mode() !=? 'i' || g:TrailingNr != getpos('.')[1])
+        return 'WS: ' . g:TrailingNr
     endif
 
     return ''
