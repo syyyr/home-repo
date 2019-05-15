@@ -18,7 +18,7 @@ set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=10
 
-" set 7 lines to the cursor - when moving vertically using j/k
+" set 7 lines to the cursor
 set scrolloff=7
 
 " sane opening new files
@@ -38,7 +38,7 @@ set matchpairs+=<:>,«:»
 " incremental commands
 set inccommand=split
 
-" left margin... idk
+" always show fold column, good for the margin
 set foldcolumn=1
 
 " better linebreak

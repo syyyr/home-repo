@@ -58,10 +58,12 @@ function! custom#SynGroup()
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
 
+" used with timer, to periodically check trailing whitespace
 function! custom#TrailingWsLineNr(id)
     let g:TrailingNr = search('\s$', 'nwc')
 endfun
 
+" statusline ale integration
 function! custom#AleIntegration()
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
     if l:problem != {}

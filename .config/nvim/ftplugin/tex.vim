@@ -15,6 +15,5 @@ inoremap <buffer> \v \verb¨
 
 set diffopt+=horizontal
 
-" I don't want the global mapping in Tex files. However, this doesn't solve
-" the timeout issue :/
+" I don't want the global mapping in Tex files
 inoremap <buffer> <nowait> { {
