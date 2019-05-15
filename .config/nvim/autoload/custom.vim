@@ -22,7 +22,7 @@ endfun
 " custom function for the modified sign (doesn't show anything on startscreen)
 function! custom#MyModified()
     if !&modifiable && expand('%') !=# 'VIM'
-        return  '[-]'
+        return '[-]'
     endif
     if &modified
         return '[+]'

@@ -58,7 +58,7 @@ set undolevels=5000
 set foldmethod=indent
 set foldnestmax=1
 
-" fuzzy file search
+" set path for :find
 set path=.
 set path=$PWD
 set path+=src/**
@@ -77,7 +77,7 @@ set clipboard=unnamedplus
 " menu = show menu, but not when one item would be listed
 set completeopt=longest,menu
 
-" default scans tagfiles
+" default, but doesn't scan tagfiles
 set complete=.,w,b,u
 
 " don't autoload file if it's changed outside of vim

@@ -13,7 +13,6 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
-Plugin 'haya14busa/vim-signjk-motion'
 Plugin 'junegunn/goyo.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
@@ -44,10 +43,6 @@ let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_gcc_options = '-std=c++17 -I src'
 let g:ale_tex_chktex_options = '-l .chktexrc'
 
-" sign-jk-motion
-map ů <Plug>(signjk-j)
-map § <Plug>(signjk-k)
-
 " gutentags
 let g:gutentags_exclude_project_root = ['/home/vk']
 let g:gutentags_generate_on_missing = 0
@@ -70,6 +65,7 @@ augroup END
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 
+" dispatch
 let g:dispatch_no_maps = 1
 
 " coc.nvim

@@ -21,7 +21,7 @@ nnoremap <C-space> ?
 nnoremap <silent> <A-cr> :noh<cr>
 
 " jump to next merge conflict
-nnoremap <silent> <A-c> :silent /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
+nnoremap <silent> <A-c> /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
 xnoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
 onoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
 
@@ -54,8 +54,8 @@ nnoremap <A-l> :bnext<cr>
 " move lines with alt+j,k
 nnoremap <A-j> mz:m+<cr>`z
 nnoremap <A-k> mz:m-2<cr>`z
-vnoremap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
-vnoremap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
+xnoremap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
+xnoremap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " tabs
 nnoremap <A-;> gt
@@ -74,7 +74,6 @@ nnoremap <S-Right> :vertical resize +4<CR>
 
 " accept the suggestion with <cr> or decline it with <esc>
 inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
-" inoremap <silent><expr> <ESC> pumvisible() ? \"<C-e>\" : \"<ESC>";
 
 " underscore text object
 xnoremap i_ :<C-u>normal! T_vt_<cr>

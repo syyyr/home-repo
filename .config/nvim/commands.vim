@@ -1,5 +1,5 @@
 command! Trailing :call custom#CleanExtraSpaces()
-nmap <A-t> :Trailing<cr>
+nnoremap <A-t> :Trailing<cr>
 
 " quick diff
 let g:diff = 0
