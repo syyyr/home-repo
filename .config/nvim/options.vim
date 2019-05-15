@@ -88,6 +88,9 @@ set updatetime=300
 
 set statusline=%#StatusLineNC#%{custom#AleIntegration()}%#StatusLine#%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
 
+" don't show completion messages
+set shortmess+=c
+
 " don't use ignorecase in insert mode (because of completion mainly)
 augroup noInsertIgnoreCase
     autocmd!
