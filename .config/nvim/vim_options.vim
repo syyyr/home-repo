@@ -64,7 +64,7 @@ set path+=src/**
 set path+=tests/**
 
 " pretty windows split :>
-let &fillchars='fold: ,vert:⏐'
+set fillchars=fold:\ ,vert:⏐
 
 " windows are vertically split the other way
 set splitright
