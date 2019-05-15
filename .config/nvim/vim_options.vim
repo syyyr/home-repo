@@ -85,7 +85,7 @@ set noautoread
 " the time for CursorHold trigger
 set updatetime=300
 
-set statusline=%#StatusLineNC#%{custom#AleIntegration()}%#StatusLine#%=%=%20f%h%{custom#My_modified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
+set statusline=%#StatusLineNC#%{custom#AleIntegration()}%#StatusLine#%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
 
 " don't use ignorecase in insert mode (because of completion mainly)
 augroup noInsertIgnoreCase

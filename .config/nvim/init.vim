@@ -1,6 +1,6 @@
 " custom functions, commands, and their associated mappings (must be first
 " since some plugins may use custom functions)
-runtime custom_commands.vim
+runtime commands.vim
 " plugins and their options
 runtime plugins_options.vim
 " simple vim options "set smth="

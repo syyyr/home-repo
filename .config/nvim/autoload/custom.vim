@@ -18,7 +18,7 @@ function! custom#DiffToggle()
 endfun
 
 " custom function for the modified sign (doesn't show anything on startscreen)
-function! custom#My_modified()
+function! custom#MyModified()
     if !&modifiable && expand('%') != 'VIM'
         return  '[-]'
     endif
@@ -29,7 +29,7 @@ function! custom#My_modified()
 endfun
 
 " startscreen_function
-function! custom#Draw_startscreen()
+function! custom#DrawStartscreen()
     setlocal foldmethod=manual
     IndentLinesDisable
     file VIM

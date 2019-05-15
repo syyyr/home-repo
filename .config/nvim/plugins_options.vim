@@ -25,7 +25,7 @@ set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
 
 " startscreen 🤔
-let g:Startscreen_function = function('custom#Draw_startscreen')
+let g:Startscreen_function = function('custom#DrawStartscreen')
 
 " indentline
 let g:indentLine_char = '▏'
