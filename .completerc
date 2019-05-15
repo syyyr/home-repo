@@ -17,7 +17,7 @@ _taskkill_complete() {
 }
 
 _vimrc_complete() {
-    COMPREPLY+=($( compgen -W "$(cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@)" "$2" ))
+    COMPREPLY+=($( cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${2//./\\.}|.+/${2//./\\.}" ))
 }
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
