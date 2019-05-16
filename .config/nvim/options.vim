@@ -91,6 +91,8 @@ set statusline=%#StatusLineNC#%{custom#AleIntegration()}%##%=%=%20f%h%{custom#My
 " don't show completion messages
 set shortmess+=c
 
+set diffopt+=algorithm:patience
+
 " don't use ignorecase in insert mode (because of completion mainly)
 augroup noInsertIgnoreCase
     autocmd!

@@ -8,6 +8,7 @@
 [diff]
     tool = nvimdiff
     ignoreSubmodules = dirty
+    algorithm = patience
 [difftool]
     prompt = false
 [difftool "nvimdiff"]
