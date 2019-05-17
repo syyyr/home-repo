@@ -93,6 +93,8 @@ set shortmess+=c
 
 set diffopt+=algorithm:patience
 
+set signcolumn=yes
+
 " don't use ignorecase in insert mode (because of completion mainly)
 augroup noInsertIgnoreCase
     autocmd!
