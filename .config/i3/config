@@ -109,7 +109,7 @@ font pango:Noto Sans 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper --working-directory=`xcwd`
+bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper
 bindsym $mod+t exec --no-startup-id xterm
 
 # kill focused window
