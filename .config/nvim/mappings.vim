@@ -97,3 +97,7 @@ nnoremap <silent> <C-n> :20Lexplore<CR>
 " remain in visual after shift
 xnoremap > >gv
 xnoremap < <gv
+
+" don't jump after identifier search
+nnoremap * *N
+nnoremap # #N
