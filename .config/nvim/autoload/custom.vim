@@ -58,13 +58,19 @@ function! custom#SynGroup()
     echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
 endfun
 
-" used with timer, to periodically check trailing whitespace
-function! custom#TrailingWsLineNr(id)
-    let g:TrailingNr = search('\s$', 'nwc')
+function! s:ParseWsGrep(id, data, event)
+    " By directly accessing the first line of the output, I can save a call to
+    " join(). This shouldn't be a problem, as the job output is buffered.
+    let b:TrailingNr = substitute(a:data[0], '\d\+\zs.*$', '', '')
+endfunction
+
+function! custom#TrailingWsCheck(id)
+    let s:id = jobstart(['grep', '-n', '-m', '1', '\s$'], {'on_stdout': function('s:ParseWsGrep'), 'stdout_buffered': 1 })
+    call chansend(s:id, getline(1, '$'))
+    call chanclose(s:id, 'stdin')
 endfun
 
-" statusline ale integration
-function! custom#AleIntegration()
+function! custom#StatuslineDiagnostics()
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
     if l:problem != {}
         return l:problem['type'] . ': ln ' . problem['lnum']
@@ -75,8 +81,8 @@ function! custom#AleIntegration()
         return l:problem['type'] . ': ln ' . problem['lnum']
     endif
 
-    if g:TrailingNr && (mode() !=? 'i' || g:TrailingNr != getpos('.')[1])
-        return 'WS: ' . g:TrailingNr
+    if exists('b:TrailingNr') && b:TrailingNr && mode() !=? 'i'
+        return 'WS: ' . b:TrailingNr
     endif
 
     return ''

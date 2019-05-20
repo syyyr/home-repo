@@ -86,7 +86,7 @@ set noautoread
 " the time for CursorHold trigger
 set updatetime=300
 
-set statusline=%#StatusLineNC#%{custom#AleIntegration()}%##%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
+set statusline=%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
 
 " don't show completion messages
 set shortmess+=c

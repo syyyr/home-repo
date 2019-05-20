@@ -17,5 +17,4 @@ augroup lastPostion
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
 
-let g:TrailingNr = 0
-call timer_start(2000, 'custom#TrailingWsLineNr', {'repeat': -1})
+call timer_start(1000, 'custom#TrailingWsCheck', {'repeat': -1})
