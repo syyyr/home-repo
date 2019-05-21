@@ -69,6 +69,8 @@ let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:dispatch_no_maps = 1
 
 " coc.nvim
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
 inoremap <silent><expr> <c-space> coc#refresh()
 augroup cocHighlight
     autocmd!

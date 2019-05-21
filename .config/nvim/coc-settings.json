@@ -6,5 +6,6 @@
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }
   },
-  "suggest.enablePreview":true
+  "suggest.enablePreview": true,
+  "diagnostic.warningSign": ">>"
 }
