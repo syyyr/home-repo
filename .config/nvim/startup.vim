@@ -18,3 +18,5 @@ augroup lastPostion
 augroup END
 
 call timer_start(1000, 'custom#TrailingWsCheck', {'repeat': -1})
+
+let g:tex_flavor='tex'
