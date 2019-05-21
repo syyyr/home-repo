@@ -71,6 +71,7 @@ function! custom#TrailingWsCheck(id)
 endfun
 
 function! custom#StatuslineDiagnostics()
+    " ALE integration
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
     if l:problem != {}
         return l:problem['type'] . ': ln ' . problem['lnum']
@@ -81,8 +82,21 @@ function! custom#StatuslineDiagnostics()
         return l:problem['type'] . ': ln ' . problem['lnum']
     endif
 
-    if exists('b:TrailingNr') && b:TrailingNr && mode() !=? 'i'
-        return 'WS: ' . b:TrailingNr
+    " coc.nvim integration
+    let l:info = CocAction('diagnosticList')
+    if len(l:info)
+        let l:first = l:info[0]
+        if l:first['file'] ==# expand('%:p')
+            if l:first['severity'] ==# 'Error'
+                return 'E: ln ' . l:first['lnum']
+            elseif l:first['severity'] ==# 'Warning'
+                return 'W: ln ' . l:first['lnum']
+            endif
+        endif
+    endif
+
+    if get(b:, 'TrailingNr', 0) && mode() !=? 'i'
+        return 'WS: ln ' . b:TrailingNr
     endif
 
     return ''
