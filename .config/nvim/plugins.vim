@@ -77,6 +77,9 @@ augroup cocHighlight
     autocmd!
     autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
+command! CocDefinition call CocActionAsync('jumpDefinition')
+command! CocDeclaration call CocActionAsync('jumpDeclaration')
+command! CocReferences call CocActionAsync('jumpReferences')
 
 " remove netrw banner
 let g:netrw_banner = 0
