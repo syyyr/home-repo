@@ -13,10 +13,8 @@ let g:PaperColor_Theme_Options = {
   \     },
   \   },
   \ }
-colorscheme PaperColor
 
 " highlight git merge conflicts
-highlight MergeConflict ctermbg=black ctermfg=red
 augroup mergeConflict
     autocmd!
     autocmd ColorScheme PaperColor highlight MergeConflict ctermbg=black ctermfg=red
@@ -29,4 +27,10 @@ augroup statusUnderline
     autocmd ColorScheme PaperColor highlight StatusLine cterm=underline,reverse,bold
 augroup END
 
-hi CocHighlightText ctermbg=222
+augroup cocHighlightColor
+    autocmd!
+    " TODO: change this color
+    autocmd ColorScheme PaperColor highlight CocHighlightText ctermbg=222
+augroup END
+
+colorscheme PaperColor
