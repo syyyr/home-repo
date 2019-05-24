@@ -38,7 +38,7 @@ let g:clever_f_smart_case = 1
 let vim_markdown_preview_pandoc=1
 
 "ale stuff
-let g:ale_linters = {'rust': ['rls'], 'cpp': [], 'typescript': []}
+let g:ale_linters = {'rust': ['rls'], 'cpp': [], 'typescript': [], 'c': []}
 let g:ale_c_parse_compile_commands = 1
 " this is still needed for header files
 let g:ale_cpp_gcc_options = '-std=c++17 -I src'
