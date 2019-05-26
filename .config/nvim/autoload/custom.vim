@@ -70,6 +70,23 @@ function! custom#TrailingWsCheck(id)
     call chanclose(s:id, 'stdin')
 endfun
 
+function! custom#CocCheck(id)
+    let l:info = CocAction('diagnosticList')
+    if len(l:info)
+        let l:first = l:info[0]
+        if l:first['file'] ==# expand('%:p')
+            if l:first['severity'] ==# 'Error'
+                let b:CocInfo = 'E: ln ' . l:first['lnum']
+            elseif l:first['severity'] ==# 'Warning'
+                let b:CocInfo = 'W: ln ' . l:first['lnum']
+            endif
+        endif
+    else
+        let b:CocInfo = ''
+    endif
+endfun
+
+
 function! custom#StatuslineDiagnostics()
     " ALE integration
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
@@ -83,16 +100,8 @@ function! custom#StatuslineDiagnostics()
     endif
 
     " coc.nvim integration
-    let l:info = CocAction('diagnosticList')
-    if len(l:info)
-        let l:first = l:info[0]
-        if l:first['file'] ==# expand('%:p')
-            if l:first['severity'] ==# 'Error'
-                return 'E: ln ' . l:first['lnum']
-            elseif l:first['severity'] ==# 'Warning'
-                return 'W: ln ' . l:first['lnum']
-            endif
-        endif
+    if get(b:, 'CocInfo', 0) !=# ''
+        return b:CocInfo
     endif
 
     if get(b:, 'TrailingNr', 0) && mode() !=? 'i'
