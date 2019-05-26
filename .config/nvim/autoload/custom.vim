@@ -86,7 +86,6 @@ function! custom#CocCheck(id)
     endif
 endfun
 
-
 function! custom#StatuslineDiagnostics()
     " ALE integration
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')

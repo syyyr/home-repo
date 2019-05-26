@@ -17,7 +17,10 @@ augroup lastPostion
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
 
-call timer_start(1000, 'custom#TrailingWsCheck', {'repeat': -1})
-call timer_start(1000, 'custom#CocCheck', {'repeat': -1})
+augroup statuslineIntegration
+    autocmd!
+    autocmd BufReadPost,TextChanged,InsertLeave * call custom#TrailingWsCheck('ds')
+    autocmd BufReadPost,TextChanged,InsertLeave * call timer_start(1000, 'custom#CocCheck', {'repeat': 0})
+augroup END
 
 let g:tex_flavor='tex'
