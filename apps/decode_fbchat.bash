@@ -2,9 +2,9 @@
 if [ $# != 1 ]; then
     exit 1
 fi
-FIXED_ESCAPE="$(sed 's/\\u00/\\x/g' $1)"
+FIXED_ESCAPE="$(sed 's/\\/\\\\/g;s/\\u00/\\x/g;s/\\n/\\\\n/g' $1)"
 FIXED_UNICODE="$(echo -e "$FIXED_ESCAPE")"
-PARSED_JSON="$(jq '.messages | map(.timestamp_ms,.sender_name,.content)[]' <<< $FIXED_UNICODE)"
+PARSED_JSON="$(jq '.messages | map(.timestamp_ms,.sender_name,.content)[]' <<< "$FIXED_UNICODE")"
 echo "parsed messages.json" >&2
 echo "$PARSED_JSON" >&2
 
