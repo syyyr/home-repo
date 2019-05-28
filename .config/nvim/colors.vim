@@ -29,8 +29,7 @@ augroup END
 
 augroup cocHighlightColor
     autocmd!
-    " TODO: change this color
-    autocmd ColorScheme PaperColor highlight CocHighlightText ctermbg=222
+    autocmd ColorScheme PaperColor if &background ==# 'light' | highlight CocHighlightText ctermbg=230 | else | highlight CocHighlightText ctermbg=23 | endif
 augroup END
 
 colorscheme PaperColor
