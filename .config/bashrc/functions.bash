@@ -7,6 +7,7 @@ wishlist()
         echo "$@" '>> ~/.wishlist'
     fi
 }
+
 wttr()
 {
     local request="wttr.in/${1-Prague}"
@@ -17,6 +18,10 @@ wttr()
 
 res()
 {
+    if [[ $# -ne 4 ]]; then
+        echo usage: res "<xrandr output> <x> <y> <hz>"
+        return
+    fi
     echo "cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2- | xargs xrandr --newmode"
     cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2- | xargs xrandr --newmode
     echo "cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2 | xargs xrandr --addmode $1"
