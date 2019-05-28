@@ -12,3 +12,5 @@ command! SumNumbers call custom#SumNumbers()
 " end with :Q XD
 command! -bang Q q<bang>
 command! -bang Qa qa<bang>
+
+command! SynStack echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')

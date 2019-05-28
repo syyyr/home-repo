@@ -52,12 +52,6 @@ function! custom#SumNumbers()
     let @a=l:old
 endfunction
 
-" custom function to get current syn group
-function! custom#SynGroup()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-
 function! s:ParseWsGrep(id, data, event)
     " By directly accessing the first line of the output, I can save a call to
     " join(). This shouldn't be a problem, as the job output is buffered.
