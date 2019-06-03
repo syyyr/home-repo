@@ -63,6 +63,7 @@ augroup END
 command! CocDefinition call CocActionAsync('jumpDefinition')
 command! CocDeclaration call CocActionAsync('jumpDeclaration')
 command! CocReferences call CocActionAsync('jumpReferences')
+command! CocHover call CocActionAsync('doHover')
 
 packadd! vim-dispatch
 let g:dispatch_no_maps = 1
