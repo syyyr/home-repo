@@ -27,7 +27,14 @@ let g:ale_cpp_gcc_options = '-std=c++17 -I src'
 let g:ale_tex_chktex_options = '-l .chktexrc'
 
 packadd! yang.vim
+
 packadd! goyo.vim
+augroup GoyoFix
+    autocmd!
+    autocmd User GoyoEnter nested set eventignore=FocusGained
+    autocmd User GoyoLeave nested set eventignore=
+augroup END
+
 packadd! php.vim
 
 packadd! vimtex
@@ -48,7 +55,6 @@ augroup END
 packadd! vim-commentary
 
 packadd! coc.nvim
-" coc.nvim
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -66,13 +72,6 @@ Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
 " end plugiiins
 
-
-" goyo
-augroup GoyoFix
-    autocmd!
-    autocmd User GoyoEnter nested set eventignore=FocusGained
-    autocmd User GoyoLeave nested set eventignore=
-augroup END
 
 " dispatch
 let g:dispatch_no_maps = 1
