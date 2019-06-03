@@ -10,8 +10,9 @@ let g:indentLine_char = '▏'
 
 packadd tabular
 
+packadd! vim-superman
+
 call zen#init()
-Plugin 'jez/vim-superman'
 Plugin 'mbbill/undotree'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rhysd/clever-f.vim'

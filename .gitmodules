@@ -7,3 +7,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/tabular"]
 	path = .local/share/nvim/site/pack/bundle/opt/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule ".local/share/nvim/site/pack/bundle/opt/vim-superman"]
+	path = .local/share/nvim/site/pack/bundle/opt/vim-superman
+	url = https://github.com/jez/vim-superman
