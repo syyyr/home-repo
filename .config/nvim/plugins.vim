@@ -16,8 +16,9 @@ packadd! vim-better-whitespace
 packadd! clever-f.vim
 let g:clever_f_smart_case = 1
 
+packadd! rust.vim
+
 call zen#init()
-Plugin 'rust-lang/rust.vim'
 Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
