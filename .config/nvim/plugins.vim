@@ -1,14 +1,14 @@
 scriptencoding utf8
 " plugiiins
 if argc() == 0
-    packadd startscreen.vim
+    packadd! startscreen.vim
     let g:Startscreen_function = function('custom#DrawStartscreen')
 endif
 
-packadd indentLine
+packadd! indentLine
 let g:indentLine_char = '▏'
 
-packadd tabular
+packadd! tabular
 
 packadd! vim-superman
 
