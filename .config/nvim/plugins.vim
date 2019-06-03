@@ -37,8 +37,20 @@ let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 packadd! vim-gutentags
 packadd! vim-commentary
 
+packadd! coc.nvim
+" coc.nvim
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
+inoremap <silent><expr> <c-space> coc#refresh()
+augroup cocHighlight
+    autocmd!
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
+command! CocDefinition call CocActionAsync('jumpDefinition')
+command! CocDeclaration call CocActionAsync('jumpDeclaration')
+command! CocReferences call CocActionAsync('jumpReferences')
+
 call zen#init()
-Plugin 'neoclide/coc.nvim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
@@ -65,18 +77,6 @@ augroup END
 
 " dispatch
 let g:dispatch_no_maps = 1
-
-" coc.nvim
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
-inoremap <silent><expr> <c-space> coc#refresh()
-augroup cocHighlight
-    autocmd!
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup END
-command! CocDefinition call CocActionAsync('jumpDefinition')
-command! CocDeclaration call CocActionAsync('jumpDeclaration')
-command! CocReferences call CocActionAsync('jumpReferences')
 
 " remove netrw banner
 let g:netrw_banner = 0
