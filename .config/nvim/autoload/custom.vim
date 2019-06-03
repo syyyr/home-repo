@@ -58,7 +58,7 @@ function! s:ParseWsGrep(id, data, event)
     let b:TrailingNr = substitute(a:data[0], '\d\+\zs.*$', '', '')
 endfunction
 
-function! custom#TrailingWsCheck(id)
+function! custom#TrailingWsCheck()
     let s:id = jobstart(['grep', '-n', '-m', '1', '\s$'], {'on_stdout': function('s:ParseWsGrep'), 'stdout_buffered': 1 })
     call chansend(s:id, getline(1, '$'))
     call chanclose(s:id, 'stdin')
