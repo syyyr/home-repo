@@ -4,9 +4,10 @@ if argc() == 0
     packadd startscreen.vim
     let g:Startscreen_function = function('custom#DrawStartscreen')
 endif
+
+packadd indentLine
+let g:indentLine_char = '▏'
 call zen#init()
-Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'Yggdroot/indentLine'
 Plugin 'godlygeek/tabular'
 Plugin 'jez/vim-superman'
 Plugin 'mbbill/undotree'
@@ -25,17 +26,10 @@ Plugin 'neoclide/coc.nvim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
-set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
-
-" indentline
-let g:indentLine_char = '▏'
 
 " clever f/F/t/T
 let g:clever_f_smart_case = 1
-
-" vim markdown preview
-let vim_markdown_preview_pandoc=1
 
 "ale stuff
 let g:ale_linters = {'rust': ['rls'], 'cpp': [], 'typescript': [], 'c': []}
