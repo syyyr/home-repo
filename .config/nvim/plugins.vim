@@ -19,8 +19,14 @@ let g:clever_f_smart_case = 1
 packadd! rust.vim
 packadd! HJKL
 
+packadd! ale
+let g:ale_linters = {'rust': ['rls'], 'cpp': [], 'typescript': [], 'c': []}
+let g:ale_c_parse_compile_commands = 1
+" this is still needed for header files
+let g:ale_cpp_gcc_options = '-std=c++17 -I src'
+let g:ale_tex_chktex_options = '-l .chktexrc'
+
 call zen#init()
-Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'StanAngeloff/php.vim'
@@ -33,12 +39,6 @@ Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
 " end plugiiins
 
-"ale stuff
-let g:ale_linters = {'rust': ['rls'], 'cpp': [], 'typescript': [], 'c': []}
-let g:ale_c_parse_compile_commands = 1
-" this is still needed for header files
-let g:ale_cpp_gcc_options = '-std=c++17 -I src'
-let g:ale_tex_chktex_options = '-l .chktexrc'
 
 " gutentags
 let g:gutentags_exclude_project_root = ['/home/vk']
