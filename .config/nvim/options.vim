@@ -86,7 +86,8 @@ set noautoread
 " the time for CursorHold trigger
 set updatetime=300
 
-set statusline=%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
+" double space before [paste] is needed, but I don't know why
+set statusline=%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'\ \ [paste]':''}%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
 
 " don't show completion messages
 set shortmess+=c
