@@ -30,8 +30,10 @@ packadd! yang.vim
 packadd! goyo.vim
 packadd! php.vim
 
+packadd! vimtex
+let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 call zen#init()
-Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
 Plugin 'neoclide/coc.nvim'
@@ -58,10 +60,6 @@ augroup GoyoFix
     autocmd User GoyoEnter nested set eventignore=FocusGained
     autocmd User GoyoLeave nested set eventignore=
 augroup END
-
-" tex
-let g:tex_conceal = 'amgs' " default but don't conceal delimiters
-let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 
 " dispatch
 let g:dispatch_no_maps = 1
