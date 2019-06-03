@@ -35,9 +35,9 @@ let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 
 packadd! vim-gutentags
+packadd! vim-commentary
 
 call zen#init()
-Plugin 'tpope/vim-commentary'
 Plugin 'neoclide/coc.nvim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'sakhnik/nvim-gdb'
