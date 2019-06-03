@@ -27,9 +27,9 @@ let g:ale_cpp_gcc_options = '-std=c++17 -I src'
 let g:ale_tex_chktex_options = '-l .chktexrc'
 
 packadd! yang.vim
+packadd! goyo.vim
 
 call zen#init()
-Plugin 'junegunn/goyo.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
