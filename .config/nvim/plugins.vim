@@ -69,8 +69,9 @@ command! CocReferences call CocActionAsync('jumpReferences')
 packadd! vim-dispatch
 let g:dispatch_no_maps = 1
 
+packadd! nvim-gdb
+
 call zen#init()
-Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
 " end plugiiins
 

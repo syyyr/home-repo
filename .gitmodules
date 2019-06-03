@@ -52,3 +52,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-dispatch"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
+[submodule ".local/share/nvim/site/pack/bundle/opt/nvim-gdb"]
+	path = .local/share/nvim/site/pack/bundle/opt/nvim-gdb
+	url = https://github.com/sakhnik/nvim-gdb
