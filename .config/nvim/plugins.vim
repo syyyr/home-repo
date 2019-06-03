@@ -17,9 +17,9 @@ packadd! clever-f.vim
 let g:clever_f_smart_case = 1
 
 packadd! rust.vim
+packadd! HJKL
 
 call zen#init()
-Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'junegunn/goyo.vim'
