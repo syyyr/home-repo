@@ -26,8 +26,9 @@ let g:ale_c_parse_compile_commands = 1
 let g:ale_cpp_gcc_options = '-std=c++17 -I src'
 let g:ale_tex_chktex_options = '-l .chktexrc'
 
+packadd! yang.vim
+
 call zen#init()
-Plugin 'nathanalderson/yang.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
