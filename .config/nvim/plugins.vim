@@ -66,15 +66,13 @@ command! CocDefinition call CocActionAsync('jumpDefinition')
 command! CocDeclaration call CocActionAsync('jumpDeclaration')
 command! CocReferences call CocActionAsync('jumpReferences')
 
+packadd! vim-dispatch
+let g:dispatch_no_maps = 1
+
 call zen#init()
-Plugin 'tpope/vim-dispatch'
 Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
 " end plugiiins
-
-
-" dispatch
-let g:dispatch_no_maps = 1
 
 " remove netrw banner
 let g:netrw_banner = 0
