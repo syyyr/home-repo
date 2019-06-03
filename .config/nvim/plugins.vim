@@ -71,8 +71,10 @@ let g:dispatch_no_maps = 1
 
 packadd! nvim-gdb
 
+packadd! typescript-vim
+
+
 call zen#init()
-Plugin 'leafgarland/typescript-vim'
 " end plugiiins
 
 " remove netrw banner

@@ -55,3 +55,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/nvim-gdb"]
 	path = .local/share/nvim/site/pack/bundle/opt/nvim-gdb
 	url = https://github.com/sakhnik/nvim-gdb
+[submodule ".local/share/nvim/site/pack/bundle/opt/typescript-vim"]
+	path = .local/share/nvim/site/pack/bundle/opt/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
