@@ -11,9 +11,9 @@ let g:indentLine_char = '▏'
 packadd! tabular
 packadd! vim-superman
 packadd! undotree
+packadd! vim-better-whitespace
 
 call zen#init()
-Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rhysd/clever-f.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-scripts/HJKL'
