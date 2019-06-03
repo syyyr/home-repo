@@ -9,9 +9,7 @@ packadd! indentLine
 let g:indentLine_char = '▏'
 
 packadd! tabular
-
 packadd! vim-superman
-
 packadd! undotree
 
 call zen#init()
