@@ -28,9 +28,9 @@ let g:ale_tex_chktex_options = '-l .chktexrc'
 
 packadd! yang.vim
 packadd! goyo.vim
+packadd! php.vim
 
 call zen#init()
-Plugin 'StanAngeloff/php.vim'
 Plugin 'lervag/vimtex'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
