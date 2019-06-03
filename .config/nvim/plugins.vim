@@ -1,7 +1,10 @@
 scriptencoding utf8
 " plugiiins
+if argc() == 0
+    packadd startscreen.vim
+    let g:Startscreen_function = function('custom#DrawStartscreen')
+endif
 call zen#init()
-Plugin 'Carpetsmoker/startscreen.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'Yggdroot/indentLine'
 Plugin 'godlygeek/tabular'
@@ -24,9 +27,6 @@ Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
 set runtimepath+=/home/vk/.local/share/nvim/plugged/indentLine/after
 " end plugiiins
-
-" startscreen 🤔
-let g:Startscreen_function = function('custom#DrawStartscreen')
 
 " indentline
 let g:indentLine_char = '▏'

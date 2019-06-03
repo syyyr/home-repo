@@ -53,6 +53,10 @@
 !.inputrc
 !.gitignore
 !.Xresources
+!.local/share/nvim
+!.local/share/nvim/site
+!.local/share/nvim/site/pack
+!.local/share/nvim/site/pack/**
 .config/google-chrome
 .config/chromium
 .config/chrome-remote-desktop
