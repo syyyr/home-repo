@@ -13,8 +13,10 @@ packadd! vim-superman
 packadd! undotree
 packadd! vim-better-whitespace
 
+packadd! clever-f.vim
+let g:clever_f_smart_case = 1
+
 call zen#init()
-Plugin 'rhysd/clever-f.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-scripts/HJKL'
 Plugin 'w0rp/ale'
@@ -29,9 +31,6 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'sakhnik/nvim-gdb'
 Plugin 'leafgarland/typescript-vim'
 " end plugiiins
-
-" clever f/F/t/T
-let g:clever_f_smart_case = 1
 
 "ale stuff
 let g:ale_linters = {'rust': ['rls'], 'cpp': [], 'typescript': [], 'c': []}
