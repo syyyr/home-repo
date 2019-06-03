@@ -7,8 +7,10 @@ endif
 
 packadd indentLine
 let g:indentLine_char = '▏'
+
+packadd tabular
+
 call zen#init()
-Plugin 'godlygeek/tabular'
 Plugin 'jez/vim-superman'
 Plugin 'mbbill/undotree'
 Plugin 'ntpeters/vim-better-whitespace'
