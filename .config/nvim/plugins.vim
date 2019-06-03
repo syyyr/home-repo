@@ -33,8 +33,10 @@ packadd! php.vim
 packadd! vimtex
 let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
+
+packadd! vim-gutentags
+
 call zen#init()
-Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tpope/vim-commentary'
 Plugin 'neoclide/coc.nvim'
 Plugin 'tpope/vim-dispatch'
