@@ -12,8 +12,9 @@ packadd! tabular
 
 packadd! vim-superman
 
+packadd! undotree
+
 call zen#init()
-Plugin 'mbbill/undotree'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rhysd/clever-f.vim'
 Plugin 'rust-lang/rust.vim'
