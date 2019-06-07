@@ -96,6 +96,8 @@ set diffopt+=algorithm:patience
 
 set signcolumn=yes
 
+set noruler
+
 " don't use ignorecase in insert mode (because of completion mainly)
 augroup noInsertIgnoreCase
     autocmd!
