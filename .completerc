@@ -17,7 +17,9 @@ _taskkill_complete() {
 }
 
 _vimrc_complete() {
-    COMPREPLY+=($( cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${2//./\\.}|.+/${2//./\\.}" ))
+    SANITIZED="${2//./\\.}"
+    SANITIZED="${SANITIZED/%\//}"
+    COMPREPLY+=($( cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${SANITIZED//./\\.}|.+/${SANITIZED//./\\.}[^/]*$" ))
 }
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
