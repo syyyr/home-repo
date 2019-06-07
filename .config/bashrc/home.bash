@@ -48,7 +48,8 @@ PATH="$HOME/apps/b_dogecoin-1.10.0/bin:$PATH"
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$HOME/gcc-4.7-mipsel/bin:$PATH"
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/mnt/buildroot/buildroot-toolchain-only/output/host/bin:$PATH"
 
 source ~/.config/bashrc/alias.bash
 source ~/.config/bashrc/common.bash
