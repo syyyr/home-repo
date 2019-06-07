@@ -34,6 +34,7 @@ endfun
 function! custom#DrawStartscreen()
     setlocal foldmethod=manual
     setlocal statusline=%#Conceal#
+    set filetype=startscreen
     " execute because of my trailing whitespace autism
     execute 'setlocal fillchars+=eob:\ '
     IndentLinesDisable
