@@ -30,28 +30,6 @@ function! custom#MyModified()
     return ''
 endfun
 
-" startscreen_function
-function! custom#DrawStartscreen()
-    setlocal foldmethod=manual
-    setlocal statusline=%#Conceal#
-    set filetype=startscreen
-    " execute because of my trailing whitespace autism
-    execute 'setlocal fillchars+=eob:\ '
-    IndentLinesDisable
-    file VIM
-    let random = system('echo $(($RANDOM % 5))')
-    if random == 0
-        silent! read ~/.local/share/thinking_alt.txt
-        call setpos('.', [0, 13, 91, 0])
-    else
-        silent! read ~/.local/share/thinking.txt
-        call setpos('.', [0, 14, 91, 0])
-    endif
-    setlocal modifiable
-    execute 'normal! r '
-    setlocal nomodifiable
-endfun
-
 function! custom#SumNumbers()
     normal! mm
     let l:old=@a

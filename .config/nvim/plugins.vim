@@ -14,7 +14,7 @@ packadd! vim-commentary
 
 if argc() == 0
     packadd! startscreen.vim
-    let g:Startscreen_function = function('custom#DrawStartscreen')
+    let g:Startscreen_function = function('setbufvar', [0, '&filetype', 'startscreen'])
 endif
 
 packadd! indentLine
