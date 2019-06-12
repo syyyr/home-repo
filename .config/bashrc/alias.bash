@@ -1,6 +1,7 @@
 alias :q="exit"
 alias bashrc="nvim ~/.bashrc"
 alias cd..="cd .."
+alias clone="git clone"
 alias crypto="run-parts ~/apps/crypto"
 alias email="vim -S ~/.config/writing.vim"
 alias explorer="taskkill -f explorer.exe; cmd explorer& exit"
