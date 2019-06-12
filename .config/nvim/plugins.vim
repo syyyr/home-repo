@@ -64,6 +64,7 @@ command! CocDefinition call CocActionAsync('jumpDefinition')
 command! CocDeclaration call CocActionAsync('jumpDeclaration')
 command! CocReferences call CocActionAsync('jumpReferences')
 command! CocHover call CocActionAsync('doHover')
+command! CocRename call CocActionAsync('rename')
 
 packadd! vim-dispatch
 let g:dispatch_no_maps = 1
