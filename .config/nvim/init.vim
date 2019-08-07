@@ -1,3 +1,4 @@
+runtime skeleton.vim
 " custom commands, and their associated mappings
 runtime commands.vim
 " plugins and their options
