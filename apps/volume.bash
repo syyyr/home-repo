@@ -89,7 +89,7 @@ elif [ ${VOL//%} -ge "33" ];then
     VOLUME_IMG="$VOLUME_MEDIUM"
 fi
 
-if [ "$(pacmd list-sinks |grep -c 'muted: yes')" = "1" ];then
+if [ "$(pacmd list-sinks | head -n20 |grep -c 'muted: yes')" = "1" ];then
     MUTED="(muted)"
     VOLUME_IMG="$VOLUME_MUTE"
 fi
