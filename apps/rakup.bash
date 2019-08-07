@@ -7,7 +7,7 @@ fi
 
 if [ -z "$2" ];then
     scp "$1" "rak@anip.icu:www/rakac/"
-    echo "https://rakac.anip.icu/$(basename $1)"
+    echo "https://rakac.anip.icu/$(basename "$1")"
 else
     if [ "$1" = "-" ]; then
         scp <(cat) rak@anip.icu:www/rakac/"$2"
