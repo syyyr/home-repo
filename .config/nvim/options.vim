@@ -9,9 +9,6 @@ set softtabstop=4 " tab is four spaces long
 set shiftwidth=4 " << >> 4 spaces
 set expandtab " spaces instead of tabs
 
-" indenting in txt files
-set smartindent
-
 " no esc delay
 set timeout
 set ttimeout
