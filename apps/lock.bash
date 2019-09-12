@@ -1,26 +1,20 @@
 #!/bin/bash
-# TODO: Make this faster somehow. The initial lock takes forever.
+systemctl --user start lock_generator.service
 kbacklight 0
 TOGGLE=no
 if ! volume silent | grep muted; then
     volume silent toggle
     TOGGLE=yes
 fi
-TIME="$(date '+%H:%M')"
-DATE="$(date '+%A, %d. %B')"
-convert /home/vk/.local/share/win10lock-template-res.png \
-    -font $HOME/.local/share/fonts/segoeuil.ttf \
-    -fill white \
-    -pointsize 127 -draw "text 40,893 '$TIME'" \
-    -pointsize 57 -draw "text 40,970 '$DATE'" \
-    -pointsize 169 -draw "text 1973,1190 '$TIME'" \
-    -pointsize 76 -draw "text 1973,1293 '$DATE'" \
-    /tmp/lockscreen.png
-systemctl --user start lock_generator.service
-/usr/local/bin/i3lock -n -i /tmp/lockscreen.png
+# The color here is for when the image doesn't exist (gets deleted from /tmp on
+# reboot).
+(sleep 7; xset dpms force off)&
+/usr/local/bin/i3lock -c 000000 -n -i /tmp/lockscreen.png
+
+# This kills the background subshell.
+kill $!
 systemctl --user stop lock_generator.service
 
 if [ $TOGGLE = "yes" ]; then
     volume silent toggle
 fi
-#xset dpms force off
