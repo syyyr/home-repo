@@ -21,8 +21,15 @@ _vimrc_complete() {
     SANITIZED="${SANITIZED/%\//}"
     COMPREPLY+=($( cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${SANITIZED//./\\.}|.+/${SANITIZED//./\\.}[^/]*$" ))
 }
+
+_bashrc_complete() {
+    SANITIZED="${2//./\\.}"
+    SANITIZED="${SANITIZED/%\//}"
+    COMPREPLY+=($( cd ~/.config/bashrc; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${SANITIZED//./\\.}|.+/${SANITIZED//./\\.}[^/]*$" ))
+}
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
 complete -F _kbd_pulsectl_complete kbdlightctl
 complete -F _taskkill_complete taskkill
 complete -F _vimrc_complete vimrc
+complete -F _bashrc_complete bashrc

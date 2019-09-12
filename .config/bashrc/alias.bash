@@ -1,5 +1,4 @@
 alias :q="exit"
-alias bashrc="nvim ~/.bashrc"
 alias cd..="cd .."
 alias c="git clone"
 alias cdp="cd -P"
