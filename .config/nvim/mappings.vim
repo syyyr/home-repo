@@ -21,7 +21,7 @@ nnoremap <C-space> ?
 nnoremap <A-cr> :nohlsearch<cr>:<BS>
 
 " jump to next merge conflict
-nnoremap <silent> <A-c> /\v^[<\|=>]{7}([^=].+)?$<CR>:noh<cr>
+nnoremap <silent> <A-c> :silent! keeppatterns /\v^[<\|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>
 xnoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
 onoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
 
