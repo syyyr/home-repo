@@ -1,5 +1,6 @@
 scriptencoding utf8
 
+packadd! vim-cmake-completion
 packadd! tabular
 packadd! vim-superman
 packadd! undotree

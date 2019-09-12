@@ -58,3 +58,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/typescript-vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim
+[submodule ".local/share/nvim/site/pack/bundle/opt/vim-cmake-completion"]
+	path = .local/share/nvim/site/pack/bundle/opt/vim-cmake-completion
+	url = https://github.com/richq/vim-cmake-completion
