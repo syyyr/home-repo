@@ -60,7 +60,15 @@ xnoremap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " tabs
 nnoremap <A-;> gt
 nnoremap <A-+> 1gt
-nnoremap <A-=> :tablast<CR>
+nnoremap <A-ě> 2gt
+nnoremap <A-š> 3gt
+nnoremap <A-č> 4gt
+nnoremap <A-ř> 5gt
+nnoremap <A-ž> 6gt
+nnoremap <A-ý> 7gt
+nnoremap <A-á> 8gt
+nnoremap <A-í> 9gt
+nnoremap <A-é> :tablast<CR>
 
 " quick semicolon marks
 nnoremap ; `P
