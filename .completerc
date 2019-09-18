@@ -17,15 +17,13 @@ _taskkill_complete() {
 }
 
 _vimrc_complete() {
-    SANITIZED="${2//./\\.}"
-    SANITIZED="${SANITIZED/%\//}"
-    COMPREPLY+=($( cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${SANITIZED//./\\.}|.+/${SANITIZED//./\\.}[^/]*$" ))
+    # TODO: This has to be improved to work with after/. If I type ftplugin/, I don't want the after/ directory.
+    # Maybe I'll use fzf for this.
+    COMPREPLY+=($( cd ~/.config/nvim; find -not -name "\.*" -type f | sed s@\./@@ | grep -F "$2" ))
 }
 
 _bashrc_complete() {
-    SANITIZED="${2//./\\.}"
-    SANITIZED="${SANITIZED/%\//}"
-    COMPREPLY+=($( cd ~/.config/bashrc; find -not -name "\.*" -type f | sed s@\./@@ | grep -E "^${SANITIZED//./\\.}|.+/${SANITIZED//./\\.}[^/]*$" ))
+    COMPREPLY+=($( cd ~/.config/bashrc; find -not -name "\.*" -type f | sed s@\./@@ | grep -F "$2"))
 }
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
