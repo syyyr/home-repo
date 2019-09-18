@@ -90,3 +90,9 @@ function! custom#StatuslineDiagnostics()
 
     return ''
 endfun
+
+function! custom#PutReg()
+    registers
+    let l:register = input(':normal! "')
+    execute 'normal! "' . l:register
+endfun

@@ -14,3 +14,6 @@ command! -bang Q q<bang>
 command! -bang Qa qa<bang>
 
 command! SynStack echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+
+" show registers and prompt for a register name and a command
+command! PutReg call custom#PutReg()
