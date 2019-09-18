@@ -11,7 +11,7 @@ convert /home/vk/.local/share/win10lock-template-res.png \
     -pointsize 169 -draw "text 1973,1190 '$TIME'" \
     -pointsize 76 -draw "text 1973,1293 '$DATE'" \
     /tmp/lockscreen.png
-    killall -USR1 i3lock
+killall -USR1 i3lock
 
 while true; do
     sleep 10
