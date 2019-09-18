@@ -1,3 +1,5 @@
+set termguicolors
+
 " colors
 let g:PaperColor_Theme_Options = {
   \   'theme': {
@@ -23,13 +25,13 @@ augroup END
 
 augroup statusUnderline
     autocmd!
-    autocmd ColorScheme PaperColor highlight StatusLineNC cterm=underline,reverse
-    autocmd ColorScheme PaperColor highlight StatusLine cterm=underline,reverse,bold
+    autocmd ColorScheme PaperColor highlight StatusLineNC cterm=underline,reverse gui=underline,reverse
+    autocmd ColorScheme PaperColor highlight StatusLine cterm=underline,reverse,bold gui=underline,reverse,bold
 augroup END
 
 augroup cocHighlightColor
     autocmd!
-    autocmd ColorScheme PaperColor if &background ==# 'light' | highlight CocHighlightText ctermbg=230 | else | highlight CocHighlightText ctermbg=23 | endif
+    autocmd ColorScheme PaperColor if &background ==# 'light' | highlight CocHighlightText ctermbg=230 guibg=230 | else | highlight CocHighlightText ctermbg=23 guibg=23 | endif
 augroup END
 
 colorscheme PaperColor

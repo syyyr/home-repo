@@ -1,5 +1,5 @@
 scriptencoding utf8
-hi startscreenThinking ctermbg=11
+hi startscreenThinking ctermbg=11 guibg=#fad43c
 syn clear
 syn match startscreenThinking "            ▄██▄▄▄▄▄▄▄▄▄▄▖\zs"
 syn match startscreenThinking "          ▄▄\zs█▛▀▀███▖   ▀▀▀▀█\ze▄▄"
