@@ -28,7 +28,7 @@ alias shuts="shutdown -s"
 alias sl="ls"
 alias sr="screen -r"
 alias steamX="startx $HOME/.config/steamrc"
-alias vim="nvim -p $VIMOPTIONS"
+alias vim="nvim"
 alias 🤔="cat ~/apps/thinking"
 for i in {1..64}; do
     alias make$i="make -j$i"
