@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO: python gives me some errors, I don't know why
 
 toWeighted()
 {
@@ -39,6 +40,22 @@ case "$arg" in
             DOWN="1"
         fi
         ;;
+    max)
+        if [[ $UP || $DOWN ]]; then
+            echo "Doesn't make sense to use up or down with max together."
+            exit 1
+        else
+            MAX="1"
+        fi
+        ;;
+    min)
+        if [[ $UP || $DOWN ]]; then
+            echo "Doesn't make sense to use up or down with min together."
+            exit 1
+        else
+            MIN="1"
+        fi
+        ;;
     show)
         ;;
     quiet)
@@ -76,6 +93,13 @@ if [ $UP ]; then
     if [ ! $QUIET ]; then echo "Raising brightness by $((UP*5))%"; fi
 fi
 
+if [ $MAX ]; then
+    light -S 100
+fi
+
+if [ $MIN ]; then
+    light -S 1
+fi
 if [ $QUIET ]; then
     exit 0
 fi

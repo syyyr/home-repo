@@ -55,6 +55,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up"
 bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down"
 bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up up"
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down down"
+bindsym Ctrl+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash max"
+bindsym Ctrl+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash min"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash up"
