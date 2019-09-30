@@ -5,12 +5,9 @@ packadd! tabular
 packadd! vim-superman
 packadd! undotree
 packadd! vim-better-whitespace
-packadd! rust.vim
 packadd! HJKL
 packadd! yang.vim
-packadd! php.vim
 packadd! nvim-gdb
-packadd! typescript-vim
 packadd! vim-commentary
 
 if argc() == 0
