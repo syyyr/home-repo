@@ -15,7 +15,6 @@ nnoremap <A-w> :update!<cr>
 
 " searching with space
 nnoremap <space> /
-nnoremap <C-space> ?
 
 " disable highlight
 nnoremap <A-cr> :nohlsearch<cr>:<BS>
