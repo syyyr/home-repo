@@ -1,6 +1,6 @@
 scriptencoding utf8
 set title " set title to NVIM
-set noshowmode " but not current moce
+set noshowmode
 set cursorline "line highlight
 
 filetype plugin indent on
@@ -94,10 +94,3 @@ set diffopt+=algorithm:patience
 set signcolumn=yes
 
 set noruler
-
-" don't use ignorecase in insert mode (because of completion mainly)
-augroup noInsertIgnoreCase
-    autocmd!
-    autocmd InsertEnter * set noignorecase
-    autocmd InsertLeave * set ignorecase
-augroup END
