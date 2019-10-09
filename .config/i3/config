@@ -40,8 +40,8 @@ bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
 
 # screenshot
-bindsym Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
-bindsym Control+Print exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
+bindsym --release Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
+bindsym --release Control+Print exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
 
 # lock
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
