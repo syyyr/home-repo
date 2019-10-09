@@ -10,5 +10,5 @@ else
     fi
 fi
 LOL="$(grep -Eo "[0-9]+$" $HOME/.local/share/voda/db)"
-echo Máš $((LOL)). vodu. To je $((LOL))*300 ml = $(((LOL)*300)) ml.
-echo Takže ještě $((12-LOL)) vod do 3,5 l.
+echo Máš $((LOL)). vodu. To je $((LOL))*200 ml = $(((LOL)*200)) ml.
+echo Takže ještě $((10-LOL)) vod do 2 l.
