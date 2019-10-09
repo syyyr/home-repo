@@ -1,5 +1,6 @@
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 export PKG_CONFIG_PATH=/opt/libyang/lib64/pkgconfig
 export PKG_CONFIG_PATH+=:/opt/sysrepo/lib64/pkgconfig
