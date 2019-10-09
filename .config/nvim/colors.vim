@@ -19,7 +19,7 @@ let g:PaperColor_Theme_Options = {
 " highlight git merge conflicts
 augroup mergeConflict
     autocmd!
-    autocmd ColorScheme PaperColor highlight MergeConflict ctermbg=black ctermfg=red
+    autocmd ColorScheme PaperColor highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red
     autocmd Syntax * syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$'
 augroup END
 
