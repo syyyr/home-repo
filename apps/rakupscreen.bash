@@ -5,13 +5,7 @@ get_image()
     base64 -d <<< "$IMAGE"
 }
 
-if [[ -t 0 ]]; then
-    IMAGE="$(xclip -se c -o -target image/png | base64)"
-else
-    IMAGE="$(base64)"
-fi
-
-
+IMAGE="$(xclip -se c -o -target image/png | base64)"
 
 if  ! $(get_image | pngcheck > /dev/null 2>&1) ; then
     echo "No picture in clipboard"
