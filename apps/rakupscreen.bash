@@ -23,11 +23,5 @@ FILENAME+=".png"
 echo "Saving to $FILENAME"
 get_image | ssh rak@anip.icu "cat > www/html/rofl/$FILENAME"
 
-if [ $# = 0 ]; then
-    exit 0
-fi
-
-if [ "$1" = "-c" ];then
-    echo "https://anip.icu/rofl/$FILENAME to clipboard"
-    echo "https://anip.icu/rofl/$FILENAME" | xclip -se c -r
-fi
+echo "https://anip.icu/rofl/$FILENAME to PRIMARY selection"
+echo "https://anip.icu/rofl/$FILENAME" | xclip -r
