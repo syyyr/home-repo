@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _brightness_complete() {
-    COMPREPLY+=($( compgen -W "up down toggle silent show quiet" "$2" ) )
+    COMPREPLY+=($( compgen -W "up down toggle silent show quiet min max" "$2" ) )
 }
 
 _volume_complete() {
