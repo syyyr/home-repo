@@ -24,6 +24,8 @@
 !.config/kbd_pulse.conf
 !.config/fontconfig
 !.config/fontconfig/fonts.conf
+!.config/pacman
+!.config/pacman/makepkg.conf
 !.local
 !.local/share
 !.local/share/mfw.png
