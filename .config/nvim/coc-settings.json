@@ -46,5 +46,6 @@
             ]
         }
     },
-    "diagnostic-languageserver.trace.server": "verbose"
+    "diagnostic-languageserver.trace.server": "verbose",
+    "rust.clippy_preference": "on"
 }
