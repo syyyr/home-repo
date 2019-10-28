@@ -9,6 +9,29 @@
   "suggest.enablePreview": true,
   "diagnostic.warningSign": ">>",
   "python.jediEnabled": false,
-  "tsserver.tsdk": "/home/vk/.local/lib/node_modules/typescript/lib",
-  "tsserver.implicitProjectConfig.checkJs": true
+  "tsserver.tsdk": "$HOME/.local/lib/node_modules/typescript/lib",
+  "tsserver.implicitProjectConfig.checkJs": true,
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint"
+  },
+  "diagnostic-languageserver.linters": {
+      "vint": {
+          "command": "vint",
+          "debounce": 100,
+          "args": ["%file"],
+          "offsetLine": 0,
+          "offsetColumn": 0,
+          "sourceName": "vint",
+          "formatLines": 1,
+          "formatPattern": [
+              "[^:]+:(\\d+):(\\d+):\\s*(.*$)",
+              {
+                  "line": 1,
+                  "column": 2,
+                  "message": 3
+              }
+          ]
+      }
+  },
+  "diagnostic-languageserver.trace.server": "verbose"
 }
