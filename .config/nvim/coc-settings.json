@@ -8,5 +8,7 @@
   },
   "suggest.enablePreview": true,
   "diagnostic.warningSign": ">>",
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "tsserver.tsdk": "/home/vk/.local/lib/node_modules/typescript/lib",
+  "tsserver.implicitProjectConfig.checkJs": true
 }
