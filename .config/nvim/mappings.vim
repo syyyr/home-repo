@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " idk why it's NotLikeThis
 nnoremap Y y$
 

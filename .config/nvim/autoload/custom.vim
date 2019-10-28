@@ -1,5 +1,5 @@
 scriptencoding utf8
-function! custom#CleanExtraSpaces()
+function! custom#CleanExtraSpaces() abort
     let save_cursor = getpos('.')
     let old_query = getreg('/')
     " this is a warning workaround, apparently :substitute isn't safe, but I don't care
@@ -8,7 +8,7 @@ function! custom#CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
-function! custom#DiffToggle()
+function! custom#DiffToggle() abort
     if !g:diff
         let g:diff = 1
         execute &diffopt =~# 'horizontal' ? '' : 'vert' 'new | f scratch | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis'
@@ -20,7 +20,7 @@ function! custom#DiffToggle()
 endfun
 
 " custom function for the modified sign (doesn't show anything on startscreen)
-function! custom#MyModified()
+function! custom#MyModified() abort
     if !&modifiable && expand('%') !=# 'VIM'
         return '[-]'
     endif
@@ -30,7 +30,7 @@ function! custom#MyModified()
     return ''
 endfun
 
-function! custom#SumNumbers()
+function! custom#SumNumbers() abort
     normal! mm
     let l:old=@a
     let @a=''
@@ -39,19 +39,19 @@ function! custom#SumNumbers()
     let @a=l:old
 endfunction
 
-function! s:ParseWsGrep(id, data, event)
+function! s:ParseWsGrep(id, data, event) abort
     " By directly accessing the first line of the output, I can save a call to
     " join(). This shouldn't be a problem, as the job output is buffered.
     let b:TrailingNr = substitute(a:data[0], '\d\+\zs.*$', '', '')
 endfunction
 
-function! custom#TrailingWsCheck()
+function! custom#TrailingWsCheck() abort
     let s:id = jobstart(['grep', '-n', '-m', '1', '\s$'], {'on_stdout': function('s:ParseWsGrep'), 'stdout_buffered': 1 })
     call chansend(s:id, getline(1, '$'))
     call chanclose(s:id, 'stdin')
 endfun
 
-function! custom#CocCheck(id)
+function! custom#CocCheck(id) abort
     let l:info = CocAction('diagnosticList')
     if len(l:info)
         let l:first = l:info[0]
@@ -67,7 +67,7 @@ function! custom#CocCheck(id)
     endif
 endfun
 
-function! custom#StatuslineDiagnostics()
+function! custom#StatuslineDiagnostics() abort
     " ALE integration
     let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
     if l:problem != {}
@@ -91,7 +91,7 @@ function! custom#StatuslineDiagnostics()
     return ''
 endfun
 
-function! custom#PutReg()
+function! custom#PutReg() abort
     registers
     let l:register = input(':normal! "')
     execute 'normal! "' . l:register
