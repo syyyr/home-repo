@@ -96,3 +96,11 @@ function! custom#PutReg() abort
     let l:register = input(':normal! "')
     execute 'normal! "' . l:register
 endfun
+
+function! custom#FirenvimOneline() abort
+    set laststatus=0
+    nnoremap <esc> :wq<cr>
+    inoremap <cr> <esc>:wq<cr>
+    nnoremap <cr> <esc>:wq<cr>
+    startinsert
+endfun

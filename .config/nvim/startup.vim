@@ -24,3 +24,7 @@ augroup statuslineIntegration
 augroup END
 
 let g:tex_flavor='tex'
+
+augroup firenvimOneline
+    autocmd BufEnter www.glowing-bear.org__sendMessage.txt call custom#FirenvimOneline()
+augroup END

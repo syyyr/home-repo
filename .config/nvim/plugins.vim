@@ -9,8 +9,11 @@ packadd! HJKL
 packadd! yang.vim
 packadd! nvim-gdb
 packadd! vim-commentary
+if get(g:, 'is_headless')
+    packadd! firenvim
+endif
 
-if argc() == 0
+if argc() == 0 && ! get(g:, 'is_headless')
     packadd! startscreen.vim
     let g:Startscreen_function = function('setbufvar', [0, '&filetype', 'startscreen'])
 endif

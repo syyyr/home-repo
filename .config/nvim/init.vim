@@ -1,3 +1,7 @@
+if len(nvim_list_uis()) == 0
+    let g:is_headless = 1
+endif
+
 runtime skeleton.vim
 " custom commands, and their associated mappings
 runtime commands.vim
