@@ -5,7 +5,6 @@ packadd! tabular
 packadd! vim-superman
 packadd! undotree
 packadd! vim-better-whitespace
-packadd! HJKL
 packadd! yang.vim
 packadd! nvim-gdb
 packadd! vim-commentary
