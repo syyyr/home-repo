@@ -62,3 +62,4 @@
 .config/google-chrome
 .config/chromium
 .config/chrome-remote-desktop
+.config/nvim/tags
