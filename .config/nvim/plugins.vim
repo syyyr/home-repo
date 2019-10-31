@@ -1,5 +1,12 @@
 scriptencoding utf8
 
+" I won't load plugins for firenvim to speed up launch
+" TODO: check which plugins I could load
+if get(g:, 'is_headless')
+    packadd! firenvim
+    finish
+endif
+
 packadd! vim-cmake-completion
 packadd! tabular
 packadd! vim-superman
@@ -8,11 +15,8 @@ packadd! vim-better-whitespace
 packadd! yang.vim
 packadd! nvim-gdb
 packadd! vim-commentary
-if get(g:, 'is_headless')
-    packadd! firenvim
-endif
 
-if argc() == 0 && ! get(g:, 'is_headless')
+if argc() == 0
     packadd! startscreen.vim
     let g:Startscreen_function = function('setbufvar', [0, '&filetype', 'startscreen'])
 endif
