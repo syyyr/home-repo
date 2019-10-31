@@ -30,7 +30,7 @@
             "command": "vint",
             "debounce": 100,
             "args": [
-                "%file"
+                "-"
             ],
             "offsetLine": 0,
             "offsetColumn": 0,
