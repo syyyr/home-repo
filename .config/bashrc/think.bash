@@ -7,6 +7,7 @@ export PKG_CONFIG_PATH+=:/opt/sysrepo/lib64/pkgconfig
 export PKG_CONFIG_PATH+=:/opt/Netopeer2/lib64/pkgconfig
 export PKG_CONFIG_PATH+=:/opt/libnetconf2/lib64/pkgconfig
 export LD_LIBRARY_PATH=/opt/docopt.cpp/lib64
+export LD_LIBRARY_PATH+=/opt/boost/lib
 export LD_LIBRARY_PATH+=:/opt/spdlog/lib64
 export LD_LIBRARY_PATH+=:/opt/libyang/lib64
 export LD_LIBRARY_PATH+=:/opt/sysrepo/lib64
@@ -18,6 +19,7 @@ export LD_LIBRARY_PATH+=:/opt/libnetconf2/lib64
 export LIBRARY_PATH=$LD_LIBRARY_PATH
 
 export CPLUS_INCLUDE_PATH=/usr/local/include/catch
+export CPLUS_INCLUDE_PATH+=:/opt/boost/include
 export CPLUS_INCLUDE_PATH+=:/opt/orangepi/include
 export CPLUS_INCLUDE_PATH+=:/opt/sysrepo/include
 export CPLUS_INCLUDE_PATH+=:/opt/libyang/include:/opt/docopt.cpp/include/docopt
