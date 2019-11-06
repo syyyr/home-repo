@@ -99,8 +99,10 @@ endfun
 
 function! custom#FirenvimOneline() abort
     set laststatus=0
+    set background=dark
     nnoremap <esc> :wq<cr>
-    inoremap <cr> <esc>:wq<cr>
-    nnoremap <cr> <esc>:wq<cr>
+    inoremap <expr> <esc> getline('.') == '' ? "\<esc>:wq\<cr>" : "\<esc>"
+    inoremap <silent> <cr> <esc>:silent !(sleep 0.3; xdotool key Return)&<cr>:wq<cr>
+    nnoremap <silent> <cr> <esc>:silent !(sleep 0.3; xdotool key Return)&<cr>:wq<cr>
     startinsert
 endfun
