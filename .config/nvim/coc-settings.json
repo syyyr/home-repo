@@ -20,7 +20,6 @@
     "suggest.enablePreview": true,
     "diagnostic.warningSign": ">>",
     "python.jediEnabled": false,
-    "tsserver.tsdk": "$HOME/.local/lib/node_modules/typescript/lib",
     "tsserver.implicitProjectConfig.checkJs": true,
     "diagnostic-languageserver.filetypes": {
         "vim": "vint"
