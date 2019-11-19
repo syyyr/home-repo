@@ -2,7 +2,7 @@
     "languageserver": {
         "clangd": {
             "command": "clangd",
-            "args": ["--background-index", "--clang-tidy"],
+            "args": ["--background-index", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"],
             "rootPatterns": [
                 "compile_flags.txt",
                 "compile_commands.json",
