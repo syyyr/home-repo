@@ -15,7 +15,7 @@ fi
 FILENAME=$(get_image | sha1sum | fold -w 7 | head -n1)
 FILENAME+=".png"
 echo "Saving to $FILENAME"
-get_image | ssh rak@anip.icu "cat > www/html/rofl/$FILENAME"
+get_image | ssh rak@anip.icu "cat > www/anip.icu/rofl/$FILENAME"
 
 echo "https://anip.icu/rofl/$FILENAME to PRIMARY selection"
 echo "https://anip.icu/rofl/$FILENAME" | xclip -r
