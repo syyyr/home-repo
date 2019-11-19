@@ -28,7 +28,7 @@ packadd! clever-f.vim
 let g:clever_f_smart_case = 1
 
 packadd! ale
-let g:ale_linters = {'python': [], 'rust': [], 'cpp': [], 'javascript': [], 'typescript': [], 'c': [], 'vim': []}
+let g:ale_linters = {'python': [], 'rust': [], 'cpp': [], 'javascript': [], 'typescript': [], 'c': [], 'vim': [], 'sh': []}
 let g:ale_tex_chktex_options = '-l .chktexrc'
 
 packadd! goyo.vim
