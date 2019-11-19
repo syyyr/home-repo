@@ -34,3 +34,34 @@ git_cmp()
 {
     nvim -d $2 <(git show $1:$2 )
 }
+
+if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
+    _js_commands="node npm npx nvm"
+    _lazy_nvm()
+    {
+        echo
+        echo -n "Loading nvm..."
+        unalias $_js_commands
+        source /usr/share/nvm/nvm.sh
+        source /usr/share/nvm/install-nvm-exec
+        source /usr/share/nvm/bash_completion
+        echo " done."
+        if [[ $# -ge 1 ]]; then
+            local command=$1
+            shift
+            $command $@
+        fi
+    }
+
+    for cmd in $_js_commands; do
+        alias $cmd="_lazy_nvm $cmd"
+    done
+
+    __nvm()
+    {
+        _lazy_nvm
+        echo "You may press TAB again for completion."
+    }
+
+    complete -o default -F __nvm nvm
+fi
