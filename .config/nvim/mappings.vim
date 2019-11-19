@@ -18,7 +18,7 @@ nnoremap <A-w> :update!<cr>
 nnoremap <space> /
 
 " disable highlight
-nnoremap <A-cr> :nohlsearch<cr>:<BS>
+nnoremap <A-cr> :nohlsearch<cr>:call coc#util#float_hide()<cr>:<BS>
 
 " jump to next merge conflict
 nnoremap <silent> <A-c> :silent! keeppatterns /\v^[<\|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>
