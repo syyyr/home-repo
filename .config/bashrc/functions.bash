@@ -32,7 +32,7 @@ res()
 
 git_cmp()
 {
-    nvim -d $2 <(git show $1:$2 )
+    nvim -d "$2" <(git show "$1":"$2") -c "let g:git_cmp_ft = &ft | windo let &ft = g:git_cmp_ft"
 }
 
 if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
