@@ -14,7 +14,6 @@ export LANG=en_US.UTF-8
 export DISPLAY=localhost:0
 
 #win cmd autocomplete BS
-source $HOME/.completerc
 source $HOME/.rustup-comp
 
 #screen BS

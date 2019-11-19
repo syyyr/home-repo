@@ -97,3 +97,4 @@ stty susp undef
 stty -ixon
 bind -x '"\C-z":"fg &> /dev/null"'
 source /usr/share/fzf/completion.bash
+source $HOME/.config/bashrc/completerc.bash

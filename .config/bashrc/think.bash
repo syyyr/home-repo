@@ -38,7 +38,6 @@ stty -ixon
 stty susp undef
 bind -x '"\C-z":"fg &> /dev/null"'
 
-source $HOME/.completerc
 source $HOME/.config/bashrc/alias.bash
 source $HOME/.config/bashrc/common.bash
 source $HOME/.config/bashrc/env.bash
