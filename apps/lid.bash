@@ -20,7 +20,7 @@ after=$(date "+%s")
 
 elapsed=$((after-before))
 echo -n "Lid was closed for $elapsed seconds. "
-if [[ $elapsed -gt $timeout ]]; then
+if [[ $elapsed -gt $timeout ]] && ! pgrep lock.bash; then
     echo "Locking the screen..."
     $HOME/apps/lock.bash
 else
