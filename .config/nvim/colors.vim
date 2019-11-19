@@ -34,4 +34,9 @@ augroup cocHighlightColor
     autocmd ColorScheme PaperColor if &background ==# 'light' | highlight CocHighlightText ctermbg=230 guibg=230 | else | highlight CocHighlightText ctermbg=23 guibg=23 | endif
 augroup END
 
+augroup todoColor
+    autocmd!
+    autocmd ColorScheme PaperColor hi Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default
+augroup END
+
 colorscheme PaperColor
