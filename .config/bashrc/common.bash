@@ -59,7 +59,7 @@ else
 fi
 
 if [ -n "$SSH_CLIENT" ]; then
-    PS1='$\[\033[38;5;83m\]\u@\h\[\033[00m\]:\[\033[38;5;63m\]\w\[\033[00m\]\n\$ '
+    PS1='\[\033[38;5;83m\]\u@\h\[\033[00m\]:\[\033[38;5;63m\]\w\[\033[00m\]\n\$ '
 fi
 unset color_prompt force_color_prompt
 
