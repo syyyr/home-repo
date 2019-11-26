@@ -29,7 +29,9 @@
 !.local
 !.local/share
 !.local/share/mfw.png
-!.local/share/chrono.png
+!.local/share/wall
+!.local/share/wall/chrono.png
+!.local/share/wall/ether.png
 !.local/share/win10lock.png
 !.local/share/win10lock-template.png
 !.local/share/thinking.txt
