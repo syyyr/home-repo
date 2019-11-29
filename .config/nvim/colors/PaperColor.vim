@@ -1141,7 +1141,6 @@ fun! s:apply_syntax_highlightings()
     exec 'hi FoldColumn' . s:fg_folded_fg . s:bg_background . s:ft_none
   endif
 
-  exec 'hi Cursor' . s:fg_cursor_fg . s:bg_cursor_bg
   exec 'hi SpecialKey' . s:fg_nontext
   exec 'hi Search' . s:fg_search_fg . s:bg_search_bg
   exec 'hi StatusLine' . s:fg_statusline_active_bg . s:bg_statusline_active_fg
@@ -2208,6 +2207,9 @@ command! -nargs=0 PaperColor :call g:PaperColor()
 " =============================== MAIN ========================================
 
 hi clear
+" I want the cursor to have a color depending on the text color. I don't if
+" this done the terminal or vim, but this works
+hi clear Cursor
 syntax reset
 let g:colors_name = 'PaperColor'
 
