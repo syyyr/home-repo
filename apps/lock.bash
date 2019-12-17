@@ -1,8 +1,8 @@
 #!/bin/bash
-kbacklight 0
+$HOME/bin/kbacklight 0
 TOGGLE=no
-if ! volume silent | grep muted; then
-    volume silent toggle
+if ! $HOME/bin/volume silent | grep muted; then
+    $HOME/bin/volume silent toggle
     TOGGLE=yes
 fi
 
@@ -23,5 +23,5 @@ xset dpms force on
 systemctl --user stop lock_generator.service
 
 if [ $TOGGLE = "yes" ]; then
-    volume silent toggle
+    $HOME/bin/volume silent toggle
 fi
