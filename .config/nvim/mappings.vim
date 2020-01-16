@@ -105,3 +105,9 @@ xnoremap < <gv
 " don't jump after identifier search
 nnoremap * *N
 nnoremap # #N
+
+nnoremap <C-P> "0p
+xnoremap <C-P> "0p
+inoremap <C-P> <C-R>0
+
+tnoremap <esc> <C-\><C-N>
