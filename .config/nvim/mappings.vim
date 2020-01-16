@@ -70,10 +70,6 @@ nnoremap <A-á> 8gt
 nnoremap <A-í> 9gt
 nnoremap <A-é> :tablast<CR>
 
-" quick semicolon marks
-nnoremap ; `P
-nnoremap ` mP
-
 " map LR arrows to resize, but keep UD arrows for scrolling
 nnoremap <Left> :vertical resize -2<CR>
 nnoremap <Right> :vertical resize +2<CR>
