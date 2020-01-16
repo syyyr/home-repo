@@ -1,5 +1,7 @@
 #!/bin/bash
-set -eu
+set -eux
+# Let this fail how many times it wants - after that, I'm sure the rest of the script will work.
+xset q
 
 wait_for() {
     echo "Waiting for: \"$1\""
