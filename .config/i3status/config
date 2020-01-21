@@ -18,7 +18,8 @@ order += "wireless _first_"
 order += "ethernet enp0s25"
 order += "diskdata"
 order += "lm_sensors"
-order += "battery all"
+order += "battery 0"
+order += "battery 1"
 order += "tztime local"
 
 
@@ -58,7 +59,18 @@ diskdata {
         color_worst = '#AA0000'
 }
 
-battery all {
+battery 0 {
+        format = "%status %percentage"
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "❓"
+        status_full = "💯"
+        last_full_capacity = true
+        integer_battery_capacity = true
+        threshold_type = precentage
+}
+
+battery 1 {
         format = "%status %percentage"
         status_chr = "⚡"
         status_bat = "🔋"
