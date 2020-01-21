@@ -22,7 +22,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbindkeys
 #exec --no-startup-id fluxgui
-exec --no-startup-id redshift-gtk -l 50.076435:14.421461 -t 6500K:2700K
 #exec --no-startup-id ~/bin/gdrive
 
 #suspend
