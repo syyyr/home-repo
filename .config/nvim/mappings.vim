@@ -8,7 +8,7 @@ nnoremap k gk
 nnoremap H ^
 nnoremap L $
 xnoremap H ^
-xnoremap L $
+xnoremap L g_
 
 " Fast saving. :update only saves if there are changes (it can't be used to
 " just update modified time)
