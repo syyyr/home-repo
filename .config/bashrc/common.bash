@@ -48,7 +48,8 @@ _STATUS()
     if [[ $1 = 0 ]]; then
         echo #${GOOD[$RANDOM % ${#GOOD[@]}]}
     else
-        echo ${BAD[$RANDOM % ${#BAD[@]}]}
+        echo -n ${BAD[$RANDOM % ${#BAD[@]}]}
+        echo -e ' \033[38;5;7m'${1}'\033[0m'
     fi
 }
 
