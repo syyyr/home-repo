@@ -49,7 +49,7 @@ _STATUS()
         echo #${GOOD[$RANDOM % ${#GOOD[@]}]}
     else
         echo -n ${BAD[$RANDOM % ${#BAD[@]}]}
-        echo -e ' \033[38;5;7m'${1}'\033[0m'
+        echo -e ' \033[38;5;7m\033[3m'${1}'\033[0m'
     fi
 }
 
