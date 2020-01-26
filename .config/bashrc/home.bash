@@ -17,9 +17,6 @@ source $HOME/.rustup-comp
 
 #screen BS
 export SCREENDIR=$HOME/.screen
-if [ -z "$STY" ]; then
-screen -wipe | sed '/No Sockets found in/Q'
-fi
 
 #x server BS
 if [ -z "$SSH_CLIENT" ]; then
