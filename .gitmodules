@@ -64,3 +64,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/firenvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/firenvim
 	url = https://github.com/glacambre/firenvim
+[submodule ".local/share/nvim/site/pack/bundle/opt/vim-pug"]
+	path = .local/share/nvim/site/pack/bundle/opt/vim-pug
+	url = https://github.com/digitaltoad/vim-pug.git
