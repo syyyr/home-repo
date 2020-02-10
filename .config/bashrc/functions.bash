@@ -78,7 +78,7 @@ obedy()
 
 gso()
 {
-    FILE="$(grep -rn --color=always "$@" | fzf -0 --height=50% --border --ansi)"
+    FILE="$(grep -rn --color=always "$*" | fzf -0 --height=50% --border --ansi)"
     case "$?" in
         0)
             VIM_ARG="$(sed -E 's/(.+):(.+):.*/\1 +\2/' <<< "$FILE")"
