@@ -65,3 +65,13 @@ if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
 
     complete -o default -F __nvm nvm
 fi
+
+obedy()
+{
+    for restaurace in "$HOME/bin/blox" "$HOME/bin/country" "$HOME/bin/husa"; do
+        if [[ -x "$restaurace" ]]; then
+            $restaurace $1
+            echo
+        fi
+    done
+}
