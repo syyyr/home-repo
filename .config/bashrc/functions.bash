@@ -75,3 +75,24 @@ obedy()
         fi
     done
 }
+
+gso()
+{
+    FILE="$(grep -rn --color=always "$@" | fzf -0 --height=50% --border --ansi)"
+    case "$?" in
+        0)
+            VIM_ARG="$(sed -E 's/(.+):(.+):.*/\1 +\2/' <<< "$FILE")"
+            vim $VIM_ARG
+            ;;
+        1)
+            echo "fzf: No match." >&1
+            ;;
+        2)
+            echo "fzf: Error." >&1
+            ;;
+        130)
+            ;;
+        *)
+            echo "error." >&1
+    esac
+}
