@@ -97,7 +97,7 @@ lm_sensors {
         chips = ['coretemp-isa-0000']
         sensors = ['package_id_0']
         format_sensor = '[\?if=input<40 ❄|[\?if=input<70 🌡️|🔥]]  \?color=input {input}'
-        format_chip = '{format_sensor}°C'
+        format_chip = '{format_sensor}  ° C'
         cache_timeout = 3
         thresholds = {
             'input': [(70, 'red'), (60, 'orange'), (55, 'yellow'), (40, 'lime'), (0, 'cyan')]
