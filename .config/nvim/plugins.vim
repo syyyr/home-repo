@@ -43,17 +43,6 @@ packadd! vimtex
 let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
 
-packadd! vim-gutentags
-let g:gutentags_exclude_project_root = ['/home/vk']
-let g:gutentags_generate_on_missing = 0
-let g:gutentags_generate_on_new = 0
-let g:gutentags_enabled = 0
-let g:gutentags_define_advanced_commands = 1
-augroup gutentags
-    autocmd!
-    autocmd FileType cpp let g:gutentags_enabled = 1
-augroup END
-
 packadd! coc.nvim
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
