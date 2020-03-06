@@ -13,6 +13,9 @@ wait_for() {
 }
 
 wait_for "button/lid LID close"
+if [[ -f /tmp/supress-lid-suspend ]]; then
+    exit 0
+fi
 before=$(date "+%s")
 echo "Suspending..."
 xset dpms force off
