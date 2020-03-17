@@ -37,6 +37,7 @@ bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
 bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
 bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
+bindsym XF86Search exec --no-startup-id "terminator.wrapper --title='__title__EmojiPicker' -e '/home/vk/apps/emoji.bash'"
 
 # screenshot
 bindsym --release Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
@@ -78,6 +79,7 @@ assign [class="vlc"] → 3
 assign [title="Katawa Shoujo"] → 3
 for_window [title="feh.*/tmp/screenshot"] fullscreen enable
 for_window [title="^suppress-lid-suspend$"] move scratchpad
+for_window [title="^__title__EmojiPicker$"] floating enable, resize set 800 329, move position center, border none
 
 
 #movement
