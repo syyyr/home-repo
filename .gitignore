@@ -13,6 +13,8 @@
 !.config/i3/config
 !.config/i3status
 !.config/i3status/config
+!.config/rofi
+!.config/rofi/config.rasi
 !.config/xfce4
 !.config/xfce4/terminal
 !.config/xfce4/terminal
