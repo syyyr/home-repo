@@ -6,10 +6,10 @@
 #mainbox {
     border: 2px;
     border-color: rgba(68, 68, 68, 100%);
-    padding: 0.5em 0px 0px 0.5em;
+    padding: 0.5em;
 }
 #listview {
-    margin: 0px 0px 0px 1em;
+    margin: 0px 1em 0px 1em;
 }
 #element.selected.normal {
     background-color: rgba(228, 228, 228, 100%);
