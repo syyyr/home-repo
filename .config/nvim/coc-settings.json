@@ -1,23 +1,6 @@
 {
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "args": ["--background-index", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"],
-            "rootPatterns": [
-                "compile_flags.txt",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ]
-        }
-    },
+    "clangd.arguments": ["--background-index", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"],
+    "clangd.semanticHighlighting": true,
     "suggest.enablePreview": true,
     "diagnostic.warningSign": ">>",
     "python.jediEnabled": false,
