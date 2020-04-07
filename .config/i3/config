@@ -37,7 +37,7 @@ bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
 bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
 bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
-bindsym --release XF86Search exec --no-startup-id "~/apps/emoji.bash"
+bindsym --release XF86Search exec --no-startup-id "~/apps/copypasta.bash"
 
 # screenshot
 bindsym --release Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
