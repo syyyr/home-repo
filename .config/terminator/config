@@ -23,7 +23,7 @@
     cursor_color = "#aaaaaa"
     font = Consolas NF 15
     foreground_color = "#444444"
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#0087af:#aa00aa:#5ed6d6:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#5ed6d6:#ff55ff:#5ed6d6:#ffffff"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0087af:#aa00aa:#5ed6d6:#aaaaaa:#555555:#ff5555:#4e9a06:#c1c100:#5ed6d6:#ff55ff:#5ed6d6:#ffffff"
     scrollback_infinite = True
     scrollbar_position = hidden
     show_titlebar = False
