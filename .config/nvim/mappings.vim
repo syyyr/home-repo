@@ -95,6 +95,7 @@ cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
 
 noremap <F7> <nop>
 inoremap <F7> <nop>
+cnoremap <F7> <nop>
 
 nnoremap <silent> <C-n> :20Lexplore<CR>
 
