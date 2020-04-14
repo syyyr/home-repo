@@ -102,3 +102,8 @@ gso()
             echo "error." >&1
     esac
 }
+
+string_diff()
+{
+    dwdiff -c <(echo "$1") <(echo "$2")
+}
