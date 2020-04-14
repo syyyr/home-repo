@@ -25,6 +25,7 @@ export XDG_RUNTIME_DIR=/home/vk/test
 export RUNLEVEL=3
 rm -rf .cache/sessions
 fi
+xmodmap -e 'keycode 126='
 
 #path BS
 PATH=""
