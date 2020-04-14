@@ -53,6 +53,7 @@ endfun
 
 function! custom#CocCheck(id) abort
     let l:info = CocAction('diagnosticList')
+    let b:CocInfo = ''
     if len(l:info)
         let l:first = l:info[0]
         if l:first['file'] ==# expand('%:p')
@@ -62,8 +63,6 @@ function! custom#CocCheck(id) abort
                 let b:CocInfo = 'W: ln ' . l:first['lnum']
             endif
         endif
-    else
-        let b:CocInfo = ''
     endif
 endfun
 
