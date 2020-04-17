@@ -61,6 +61,7 @@ set path=$PWD
 set path+=src/**
 set path+=tests/**
 set path+=dist/**
+set path+=public/**
 
 " pretty windows split :>
 set fillchars=fold:\ ,vert:⏐
