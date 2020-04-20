@@ -7,6 +7,9 @@
 !.config
 !.config/bashrc
 !.config/bashrc/**
+!.config/coc
+!.config/coc/extensions
+!.config/coc/extensions/package.json
 !.config/nvim
 !.config/nvim/**
 !.config/i3
