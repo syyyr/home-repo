@@ -34,6 +34,8 @@ endif
 
 packadd! indentLine
 let g:indentLine_char = '▏'
+let g:indentLine_fileTypeExclude = ['tab']
+
 
 packadd! clever-f.vim
 let g:clever_f_smart_case = 1
