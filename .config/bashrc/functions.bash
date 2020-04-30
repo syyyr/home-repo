@@ -40,17 +40,19 @@ if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
     _lazy_nvm()
     {
         echo
-        echo -n "Loading nvm..."
+        echo -n "Loading nvm..." >&1
         unalias $_js_commands
         source /usr/share/nvm/nvm.sh
         source /usr/share/nvm/install-nvm-exec
         source /usr/share/nvm/bash_completion
-        echo " done."
+        echo " done." >&1
         if [[ $# -ge 1 ]]; then
             local command=$1
             shift
             $command $@
         fi
+        source /usr/share/bash-completion/completions/npm
+        complete -o default -F _npm_completion npm
     }
 
     for cmd in $_js_commands; do
@@ -64,6 +66,7 @@ if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
     }
 
     complete -o default -F __nvm nvm
+    complete -o default -F __nvm npm
 fi
 
 obedy()
