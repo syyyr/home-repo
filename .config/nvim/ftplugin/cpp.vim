@@ -14,3 +14,5 @@ endfunction
 
 command! -bang -nargs=1 Print call s:PrintSomething("<args>", "<bang>")
 nnoremap <buffer> <expr> é expand('%:e') == 'cpp' ? ':e %:r.hpp<cr>' : ':e %:r.cpp<cr>'
+
+nnoremap <C-]> :CocDefinition<cr>
