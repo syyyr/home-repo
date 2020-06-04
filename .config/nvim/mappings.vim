@@ -112,3 +112,6 @@ xnoremap <C-P> "0p
 inoremap <C-P> <C-R>0
 
 tnoremap <esc> <C-\><C-N>
+
+nnoremap úc :cprev<cr>
+nnoremap )c :cnext<cr>
