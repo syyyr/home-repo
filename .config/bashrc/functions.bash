@@ -82,10 +82,31 @@ obedy()
 
 gso()
 {
-    if [[ $1 = "-i" ]]; then
-        local CASE=$1
-        shift
-    fi
+    while true; do
+        case $1 in
+            -a)
+                local OPEN_ALL="1"
+                shift
+                ;;
+            -i)
+                local CASE="-i"
+                shift
+                ;;
+            -ai)
+                local CASE="-i"
+                local OPEN_ALL="1"
+                shift
+                ;;
+            -ia)
+                local CASE="-i"
+                local OPEN_ALL="1"
+                shift
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
 
     if [[ $# -gt 1 ]] && [[ -d "${@: -1}" || -r "${@: -1}" ]]; then
         local ARGS="${*:1:$#-1}"
@@ -93,17 +114,27 @@ gso()
     else
         local ARGS="$*"
     fi
+
     # local is a command by itself, so first define local FILE and then assign,
     # so that the return code belongs to fzf
     local FILE
-    FILE="$(grep $CASE -Hrn --color=always "$ARGS" $DIRECTORY | fzf -0 --height=50% --border --ansi)"
+    local RESULTS="$(grep $CASE -Hrn --color=always "$ARGS" $DIRECTORY)"
+    if [[ "$RESULTS" = "" ]]; then
+        echo "No match." >&1
+        return 0
+    fi
+    if (("$OPEN_ALL")); then
+        nvim -q <(strip-ansi <<< "$RESULTS")
+        return 0
+    fi
+    FILE="$(fzf -0 --height=50% --border --ansi <<< "$RESULTS")"
     case "$?" in
         0)
             local VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
             vim $VIM_ARG
             ;;
         1)
-            echo "fzf: No match." >&1
+            echo "fzf: No match. This shouldn't happen." >&1
             ;;
         2)
             echo "fzf: Error." >&1
