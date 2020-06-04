@@ -71,6 +71,7 @@ fi
 
 obedy()
 {
+    local restaurace
     for restaurace in "$HOME/bin/blox" "$HOME/bin/country" "$HOME/bin/husa"; do
         if [[ -x "$restaurace" ]]; then
             $restaurace $1
@@ -82,20 +83,23 @@ obedy()
 gso()
 {
     if [[ $1 = "-i" ]]; then
-        CASE=$1
+        local CASE=$1
         shift
     fi
 
     if [[ $# -gt 1 ]] && [[ -d "${@: -1}" || -r "${@: -1}" ]]; then
-        ARGS="${*:1:$#-1}"
-        DIRECTORY=${@: -1}
+        local ARGS="${*:1:$#-1}"
+        local DIRECTORY=${@: -1}
     else
-        ARGS="$*"
+        local ARGS="$*"
     fi
+    # local is a command by itself, so first define local FILE and then assign,
+    # so that the return code belongs to fzf
+    local FILE
     FILE="$(grep $CASE -Hrn --color=always "$ARGS" $DIRECTORY | fzf -0 --height=50% --border --ansi)"
     case "$?" in
         0)
-            VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
+            local VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
             vim $VIM_ARG
             ;;
         1)
