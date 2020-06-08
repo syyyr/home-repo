@@ -7,12 +7,14 @@
 !.config
 !.config/bashrc
 !.config/bashrc/**
-!.config/nvim
-!.config/nvim/**
 !.config/i3
 !.config/i3/config
 !.config/i3status
 !.config/i3status/config
+!.config/npm
+!.config/npm/npmrc
+!.config/nvim
+!.config/nvim/**
 !.config/rofi
 !.config/rofi/config.rasi
 !.config/xfce4
