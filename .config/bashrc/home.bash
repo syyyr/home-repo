@@ -39,3 +39,6 @@ source $HOME/.config/bashrc/alias.bash
 source $HOME/.config/bashrc/common.bash
 source $HOME/.config/bashrc/env.bash
 source $HOME/.config/bashrc/functions.bash
+if [[ -f $HOME/.config/bashrc/ignore.bash ]]; then
+    source $HOME/.config/bashrc/ignore.bash
+fi
