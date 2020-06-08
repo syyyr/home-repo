@@ -118,13 +118,19 @@ gso()
     # local is a command by itself, so first define local FILE and then assign,
     # so that the return code belongs to fzf
     local FILE
-    local RESULTS="$(grep $CASE -Hrn --color=always "$ARGS" $DIRECTORY)"
+    if (("$OPEN_ALL")); then
+        local COLOR=
+    else
+        local COLOR=--color=always
+    fi
+
+    local RESULTS="$(grep $CASE -Hrn $COLOR "$ARGS" $DIRECTORY)"
     if [[ "$RESULTS" = "" ]]; then
         echo "No match." >&1
         return 0
     fi
     if (("$OPEN_ALL")); then
-        nvim -q <(strip-ansi <<< "$RESULTS")
+        nvim -q <(cat <<< "$RESULTS")
         return 0
     fi
     FILE="$(fzf -0 --height=50% --border --ansi <<< "$RESULTS")"
