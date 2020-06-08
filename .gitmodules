@@ -9,7 +9,7 @@
 	url = https://github.com/godlygeek/tabular
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-superman"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-superman
-	url = https://github.com/jez/vim-superman
+	url = https://github.com/syyyr/vim-superman
 [submodule ".local/share/nvim/site/pack/bundle/opt/undotree"]
 	path = .local/share/nvim/site/pack/bundle/opt/undotree
 	url = https://github.com/mbbill/undotree
