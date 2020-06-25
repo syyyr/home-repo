@@ -22,7 +22,7 @@ nnoremap <A-cr> :nohlsearch<cr>:call coc#util#float_hide()<cr>:call clever_f#res
 
 " jump to next merge conflict
 nnoremap <silent> <A-c> :silent! keeppatterns /\v^[<\|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>
-xnoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
+xnoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR><esc>:nohlsearch<cr>gv
 onoremap <silent> <A-c> /<C-U>\v^[<\|=>]{7}([^=].+)?$<CR>
 
 " smart way to move between windows
