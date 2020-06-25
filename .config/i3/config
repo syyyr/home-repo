@@ -75,7 +75,7 @@ bindsym $mod+shift+b exec --no-startup-id "~/apps/workspace_ball.bash"
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
 assign [title="Videostream"] → 3
-assign [class="vlc"] → 3
+assign [class="vlc"] → M
 #assign [window_role="browser"] → 2
 assign [title="Katawa Shoujo"] → 3
 for_window [title="feh.*/tmp/screenshot"] fullscreen enable
@@ -119,7 +119,7 @@ bindsym $mod+t exec --no-startup-id xterm
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_path | rofi -dmenu -p "> " | ${SHELL:-"/bin/sh"}
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
