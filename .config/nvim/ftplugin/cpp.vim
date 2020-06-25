@@ -3,7 +3,7 @@ set commentstring=//%s
 
 function! s:PrintSomething(args, ...)
     if search('iostream', 'nw') == 0
-        normal! ?^$i#include <iostream>
+        normal! ggO#include <iostream>
     endif
     if a:1 == '!'
         execute 'normal! ostd::cout << "' . a:args . '"' . " << std::endl;"
