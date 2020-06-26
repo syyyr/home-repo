@@ -72,7 +72,7 @@ fi
 obedy()
 {
     local restaurace
-    for restaurace in "$HOME/bin/blox" "$HOME/bin/country" "$HOME/bin/husa"; do
+    for restaurace in "$HOME/bin/blox" "$HOME/bin/country" "$HOME/bin/husa" "$HOME/bin/petnik"; do
         if [[ -x "$restaurace" ]]; then
             $restaurace $1
             echo
