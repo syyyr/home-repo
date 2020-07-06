@@ -6,9 +6,9 @@ function! s:PrintSomething(args, ...)
         normal! ggO#include <iostream>
     endif
     if a:1 == '!'
-        execute 'normal! ostd::cout << "' . a:args . '"' . " << std::endl;"
+        execute 'normal! ostd::cout << "' . a:args . '\n";'
     else
-        execute 'normal! ostd::cout << "' . a:args . '" << " = " << ' . a:args . " << std::endl;\<esc>"
+        execute 'normal! ostd::cout << "' . a:args . '" << " = " << ' . a:args . ' << "\n";'
     endif
 endfunction
 
