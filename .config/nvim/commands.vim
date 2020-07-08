@@ -18,4 +18,4 @@ command! SynStack echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "nam
 " show registers and prompt for a register name and a command
 command! PutReg call custom#PutReg()
 
-command! -nargs=1 SetMakePath set makeprg=cd\ <args>;\ make
+command! -nargs=1 SetMakePath set makeprg=make\ -C\ <args>
