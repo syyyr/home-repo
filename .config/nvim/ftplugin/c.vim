@@ -1,0 +1,1 @@
+nnoremap <C-]> :CocDefinition<cr>
