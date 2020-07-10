@@ -53,6 +53,9 @@ endfun
 
 function! custom#CocCheck(id) abort
     let l:info = CocAction('diagnosticList')
+    if type(l:info) != v:t_dict
+        return
+    endif
     let b:CocInfo = ''
     if len(l:info)
         let l:first = l:info[0]
