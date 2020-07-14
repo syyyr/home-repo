@@ -53,7 +53,7 @@ endfun
 
 function! custom#CocCheck(id) abort
     let l:info = CocAction('diagnosticList')
-    if type(l:info) != v:t_dict
+    if type(l:info) != v:t_list
         return
     endif
     let b:CocInfo = ''
