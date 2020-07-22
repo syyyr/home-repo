@@ -1,7 +1,6 @@
 alias :q="exit"
 alias cd..="cd .."
 alias cdp="cd -P"
-alias crypto="run-parts ~/apps/crypto"
 alias email="vim -S ~/.config/writing.vim"
 alias explorer="taskkill -f explorer.exe; cmd 'start /B explorer'& exit"
 alias fvim='vim `fzf`'
