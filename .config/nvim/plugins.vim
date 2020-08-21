@@ -16,15 +16,6 @@ packadd! vim-better-whitespace
 packadd! yang.vim
 packadd! nvim-gdb
 packadd! vim-commentary
-" packadd! vim-lsp-cxx-highlight
-" hi link LspCxxHlSymNamespace cppStatement
-" hi link LspCxxHlSymField Normal
-" hi link LspCxxHlSymField Normal
-" hi link LspCxxHlSymClass Statement
-" hi link LspCxxHlSymStruct Statement
-" hi link LspCxxHlSymEnum Statement
-" hi link LspCxxHlSymTypeAlias Statement
-" hi link LspCxxHlSymTypeParameter Statement
 
 
 if argc() == 0
