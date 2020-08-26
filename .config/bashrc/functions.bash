@@ -30,11 +30,6 @@ res()
     xrandr --output $1 --mode $(tr -d '"' <<< $(cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2))
 }
 
-git_cmp()
-{
-    nvim -d "$(git rev-parse --show-toplevel)/$1" <(git show HEAD:"$1") -c "let g:git_cmp_ft = &ft | windo let &ft = g:git_cmp_ft"
-}
-
 if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
     _js_commands="node npm npx nvm"
     _lazy_nvm()

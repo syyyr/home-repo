@@ -26,10 +26,6 @@ _bashrc_complete() {
     COMPREPLY+=($( cd ~/.config/bashrc; find -not -name "\.*" -type f | sed s@\./@@ | grep -F "$2"))
 }
 
-_git_cmp_complete() {
-    if [[ $3 = "git_cmp" ]]; then
-        COMPREPLY+=($( compgen -W "$(git diff --name-only)" "$2"))
-    fi
 }
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
@@ -37,4 +33,3 @@ complete -F _kbd_pulsectl_complete kbdlightctl
 complete -F _taskkill_complete taskkill
 complete -F _vimrc_complete vimrc
 complete -F _bashrc_complete bashrc
-complete -F _git_cmp_complete git_cmp
