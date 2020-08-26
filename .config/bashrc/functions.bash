@@ -151,3 +151,12 @@ string_diff()
 {
     dwdiff -c <(echo "$1") <(echo "$2")
 }
+
+twitch() {
+    if [[ $# != 1 ]]; then
+        echo "Usage: twitch <twitch_handle>" >&2
+        return 1
+    fi
+    chromium --new-window "https://www.twitch.tv/popout/$1/chat"
+    streamlink -v "http://twitch.tv/$1" best
+}
