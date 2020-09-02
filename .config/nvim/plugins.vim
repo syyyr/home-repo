@@ -18,9 +18,10 @@ if argc() == 0
 endif
 
 packadd! indentLine
+packadd! indent-blankline.nvim
 let g:indentLine_char = '▏'
 let g:indentLine_fileTypeExclude = ['tab']
-
+let g:indent_blankline_debug = v:true
 
 packadd! clever-f.vim
 let g:clever_f_smart_case = 1
