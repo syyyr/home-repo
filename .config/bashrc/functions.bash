@@ -154,8 +154,8 @@ string_diff()
 
 twitch() {
     if [[ $# != 1 ]]; then
-        echo "Usage: twitch <twitch_handle>" >&2
-        return 1
+        $HOME/apps/twitch_online.bash
+        return 0
     fi
     chromium --new-window "https://www.twitch.tv/popout/$1/chat"
     streamlink -v "http://twitch.tv/$1" best

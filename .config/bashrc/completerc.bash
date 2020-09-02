@@ -27,7 +27,8 @@ _bashrc_complete() {
 }
 
 _twitch_complete() {
-    COMPREPLY+=($( compgen -W "liquidwifi avenitoo lonesome_dreams" "$2" ) )
+    STREAMERS="$(twitch)"
+    COMPREPLY+=($( compgen -W "$STREAMERS" "$2" ) )
 }
 
 complete -F _brightness_complete brightness
