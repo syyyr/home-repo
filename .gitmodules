@@ -64,3 +64,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-pug"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/vim-colon-therapy"]
+	path = .local/share/nvim/site/pack/bundle/opt/vim-colon-therapy
+	url = https://github.com/scrooloose/vim-colon-therapy.git

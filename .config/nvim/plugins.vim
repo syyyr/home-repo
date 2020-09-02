@@ -7,6 +7,7 @@ if get(g:, 'is_headless')
     finish
 endif
 
+packadd! vim-colon-therapy
 packadd! vim-pug
 packadd! vim-cmake-completion
 packadd! tabular
