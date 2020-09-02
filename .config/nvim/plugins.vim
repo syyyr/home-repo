@@ -1,12 +1,5 @@
 scriptencoding utf8
 
-" I won't load plugins for firenvim to speed up launch
-" TODO: check which plugins I could load
-if get(g:, 'is_headless')
-    packadd! firenvim
-    finish
-endif
-
 packadd! vim-colon-therapy
 packadd! vim-pug
 packadd! vim-cmake-completion
