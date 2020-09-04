@@ -26,15 +26,10 @@ _bashrc_complete() {
     COMPREPLY+=($( cd ~/.config/bashrc; find -not -name "\.*" -type f | sed s@\./@@ | grep -F "$2"))
 }
 
-_twitch_complete() {
-    STREAMERS="$(twitch)"
-    COMPREPLY+=($( compgen -W "$STREAMERS" "$2" ) )
-}
-
 complete -F _brightness_complete brightness
 complete -F _volume_complete volume
 complete -F _kbd_pulsectl_complete kbdlightctl
 complete -F _taskkill_complete taskkill
 complete -F _vimrc_complete vimrc
 complete -F _bashrc_complete bashrc
-complete -F _twitch_complete twitch
+complete -C "$HOME/apps/twitch_online.bash" twitch
