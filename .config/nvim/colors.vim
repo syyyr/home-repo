@@ -16,17 +16,33 @@ let g:PaperColor_Theme_Options = {
   \   },
   \ }
 
+function s:GetStatusLineColors()
+    return &background ==# 'dark' ? 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234' : 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
+endfunction
+
+" PaperColor overrides
+augroup statusUnderline
+    autocmd!
+    autocmd ColorScheme PaperColor execute 'highlight StatusLineNC' s:GetStatusLineColors()  'cterm=underline gui=underline'
+    autocmd ColorScheme PaperColor execute 'highlight StatusLine' s:GetStatusLineColors()  'cterm=underline,bold gui=underline,bold'
+augroup END
+
+" TODO: fix this the same way as StatusLine
+augroup vertSplit
+    autocmd!
+    autocmd ColorScheme PaperColor highlight VertSplit guifg=#eeeeee guibg=#444444 ctermfg=255 ctermfg=238
+augroup END
+
+augroup endOfBuffer
+    autocmd!
+    autocmd ColorScheme PaperColor execute 'highlight clear EndOfBuffer | highlight link EndOfBuffer NonText'
+augroup END
+
 " highlight git merge conflicts
 augroup mergeConflict
     autocmd!
     autocmd ColorScheme PaperColor highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red
     autocmd Syntax * syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$'
-augroup END
-
-augroup statusUnderline
-    autocmd!
-    autocmd ColorScheme PaperColor highlight StatusLineNC cterm=underline,reverse gui=underline,reverse
-    autocmd ColorScheme PaperColor highlight StatusLine cterm=underline,reverse,bold gui=underline,reverse,bold
 augroup END
 
 augroup cocHighlightColor
