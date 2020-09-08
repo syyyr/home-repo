@@ -20,7 +20,7 @@ endif
 packadd! indentLine
 packadd! indent-blankline.nvim
 let g:indentLine_char = '▏'
-let g:indentLine_fileTypeExclude = ['tab']
+let g:indentLine_fileTypeExclude = ['tab', 'help']
 let g:indent_blankline_debug = v:true
 
 packadd! clever-f.vim
