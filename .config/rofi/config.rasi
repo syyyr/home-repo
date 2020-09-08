@@ -1,17 +1,21 @@
+configuration {
+    dpi: 0;
+}
+
 * {
     foreground: rgba(68, 68, 68, 100%);
     background-color: rgba(238, 238, 238, 100%);
     font: "Consolas NF 15";
 }
-#mainbox {
+mainbox {
     border: 2px;
     border-color: rgba(68, 68, 68, 100%);
     padding: 0.5em;
 }
-#listview {
+listview {
     margin: 0px 1em 0px 1em;
 }
-#element.selected.normal {
+element.selected.normal {
     background-color: rgba(228, 228, 228, 100%);
 }
 /* vim:ft=css
