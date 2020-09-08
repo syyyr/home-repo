@@ -27,10 +27,13 @@ augroup statusUnderline
     autocmd ColorScheme PaperColor execute 'highlight StatusLine' s:GetStatusLineColors()  'cterm=underline,bold gui=underline,bold'
 augroup END
 
-" TODO: fix this the same way as StatusLine
+function s:GetVertSplitColors()
+    return &background ==# 'dark' ? 'guifg=#1c1c1c guibg=#d0d0d0 ctermfg=252 ctermbg=234' : 'guifg=#eeeeee guibg=#444444 ctermfg=255 ctermfg=238'
+endfunction
+
 augroup vertSplit
     autocmd!
-    autocmd ColorScheme PaperColor highlight VertSplit guifg=#eeeeee guibg=#444444 ctermfg=255 ctermfg=238
+    autocmd ColorScheme PaperColor execute 'highlight VertSplit' s:GetVertSplitColors()
 augroup END
 
 augroup endOfBuffer
