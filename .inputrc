@@ -1,3 +1,4 @@
 $include /etc/inputrc
 "\es":"\C-asudo \C-e"
-
+# Color the common prefix
+set colored-completion-prefix On
