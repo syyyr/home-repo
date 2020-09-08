@@ -1,4 +1,4 @@
-set -eu
+#!/bin/bash
 if [[ -z "$TWITCH_CLIENT_ID" ]]; then
     echo "TWITCH_CLIENT_ID not set. Use environment to set it (or edit this script)."
     exit 1
@@ -57,4 +57,4 @@ if [[ ! -f "$ONLINE_CACHE" ]] || find "$ONLINE_CACHE" -not -newermt "-$ONLINE_CA
     update_online_cache
 fi
 
-echo $(cat "$ONLINE_CACHE")
+cat "$ONLINE_CACHE"
