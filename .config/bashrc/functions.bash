@@ -18,6 +18,10 @@ wttr()
 
 res()
 {
+    if ! type cvt &> /dev/null; then
+        echo 'cvt is not installed in $PATH.'
+        return 1
+    fi
     if [[ "$#" -ne 4 ]]; then
         echo 'usage: res <xrandr output> <x> <y> <hz>'
         return
@@ -151,10 +155,18 @@ gso()
 
 string_diff()
 {
+    if ! type dwdiff &> /dev/null; then
+        echo 'dwdiff is not installed in $PATH'
+        return 1
+    fi
     dwdiff -c <(echo "$1") <(echo "$2")
 }
 
 twitch() {
+    if ! type streamlink &> /dev/null; then
+        echo 'streamlink is not installed in $PATH'
+        return 1
+    fi
     if [[ $# != 1 ]]; then
         "$HOME/apps/twitch_online.bash"
         return 0
