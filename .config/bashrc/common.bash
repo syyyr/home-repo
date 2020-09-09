@@ -38,15 +38,6 @@ if [ -n "$SSH_CLIENT" ]; then
     PS1='\[\033[38;5;83m\]\u@\h\[\033[00m\]:\[\033[38;5;63m\]\w\[\033[00m\]\n\$ '
 fi
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 if [ -x /usr/bin/dircolors ]; then
     test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
