@@ -38,9 +38,11 @@ if [ -n "$SSH_CLIENT" ]; then
     PS1='\[\033[38;5;83m\]\u@\h\[\033[00m\]:\[\033[38;5;63m\]\w\[\033[00m\]\n\$ '
 fi
 
-bind '"\e[18~":""'
 stty susp undef
 stty -ixon
+
+# This cannot be done in .inputrc
 bind -x '"\C-z":"fg &> /dev/null"'
+
 source /usr/share/fzf/completion.bash
 source "$HOME/.config/bashrc/completerc.bash"
