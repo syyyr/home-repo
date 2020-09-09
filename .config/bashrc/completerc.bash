@@ -3,11 +3,11 @@
 _vimrc_complete() {
     # TODO: This has to be improved to work with after/. If I type ftplugin/, I don't want the after/ directory.
     # Maybe I'll use fzf for this.
-    COMPREPLY+=($( cd ~/.config/nvim; find -not -name '\.*' -type f | sed s@\./@@ | grep -F "$2" ))
+    COMPREPLY+=($( cd "$HOME/.config/nvim"; find -not -name '\.*' -type f | sed s@\./@@ | grep -F "$2" ))
 }
 
 _bashrc_complete() {
-    COMPREPLY+=($( cd ~/.config/bashrc; find -not -name '\.*' -type f | sed s@\./@@ | grep -F "$2"))
+    COMPREPLY+=($( cd "$HOME/.config/bashrc"; find -not -name '\.*' -type f | sed s@\./@@ | grep -F "$2"))
 }
 
 complete -W 'up down silent show quiet min max'  brightness

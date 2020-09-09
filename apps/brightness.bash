@@ -116,7 +116,7 @@ if [ $SILENT ]; then
     exit 0
 fi
 
-BRIGHTNESS_IMG='/home/vk/.local/share/icons/blue/brightness.png'
+BRIGHTNESS_IMG="$HOME/.local/share/icons/blue/brightness.png"
 ARGS='-t 2000 -R /tmp/brightness-not-id'
 ARGS+=" -h string:image_path:$BRIGHTNESS_IMG"
 notify-send $ARGS 'Brightness' "$BRIGHT"%

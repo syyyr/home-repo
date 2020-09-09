@@ -1,10 +1,10 @@
 wishlist()
 {
     if [ -z "$@" ]; then
-        cat ~/.wishlist
+        cat "$HOME/.wishlist"
     else
-        echo "$@" >> ~/.wishlist
-        echo "$@" '>> ~/.wishlist'
+        echo "$@" >> "$HOME/.wishlist"
+        echo "$@" '>> $HOME/.wishlist'
     fi
 }
 

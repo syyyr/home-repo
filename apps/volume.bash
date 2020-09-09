@@ -75,10 +75,10 @@ if [ $QUIET ]; then
     exit 0
 fi
 
-VOLUME_HIGH='/home/vk/.local/share/icons/blue/volume-high.png'
-VOLUME_MEDIUM='/home/vk/.local/share/icons/blue/volume-medium.png'
-VOLUME_LOW='/home/vk/.local/share/icons/blue/volume-low.png'
-VOLUME_MUTE='/home/vk/.local/share/icons/blue/volume-mute.png'
+VOLUME_HIGH="$HOME/.local/share/icons/blue/volume-high.png"
+VOLUME_MEDIUM="$HOME/.local/share/icons/blue/volume-medium.png"
+VOLUME_LOW="$HOME/.local/share/icons/blue/volume-low.png"
+VOLUME_MUTE="$HOME/.local/share/icons/blue/volume-mute.png"
 
 VOL=$(pacmd list-sinks | grep -Eom1 '[[:digit:]]*%' | tail -n1)
 

@@ -2,11 +2,11 @@ alias :q='exit'
 alias cd..='cd ..'
 alias cdp='cd -P'
 alias dc='cd'
-alias email='vim -S ~/.config/writing.vim'
+alias email="vim -S $HOME/.config/writing.vim"
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
 alias fvim='vim `fzf`'
 alias get_screen='xclip -se c -o -target image/png'
-alias i3config='nvim ~/.config/i3/config'
+alias i3config="nvim $HOME/.config/i3/config"
 alias l='ls -CF'
 alias la='ls -A'
 alias league="startx $HOME/.config/leaguerc"
@@ -26,7 +26,7 @@ alias sl='ls'
 alias sr='screen -r'
 alias steamX="startx $HOME/.config/steamrc"
 alias vim='nvim'
-alias 🤔='cat ~/apps/thinking'
+alias 🤔="cat $HOME/apps/thinking"
 for i in {1..64}; do
     alias "make$i"="make -j$i"
 done; unset i;

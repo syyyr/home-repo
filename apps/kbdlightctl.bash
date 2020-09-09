@@ -4,13 +4,13 @@ ARG=$2
 
 case $1 in
     pulse)
-        echo INTERVAL=${ARG:-3000} > ~/.config/kbdpulse.conf
+        echo INTERVAL=${ARG:-3000} > "$HOME/.config/kbdpulse.conf"
         systemctl --quiet --user stop kbdlighttimeout
         systemctl --quiet --user restart kbdpulse
         STATE='pulsing'
         ;;
     timeout)
-        echo TIMEOUT=${ARG:-30} > ~/.config/kbdlighttimeout.conf
+        echo TIMEOUT=${ARG:-30} > "$HOME/.config/kbdlighttimeout.conf"
         systemctl --quiet --user stop kbdpulse
         systemctl --quiet --user restart kbdlighttimeout
         kbacklight 2
@@ -38,7 +38,7 @@ case $1 in
         fi
 esac
 
-KEYBOARD_IMG='/home/vk/.local/share/icons/blue/keyboard.png'
+KEYBOARD_IMG="$HOME/.local/share/icons/blue/keyboard.png"
 LAST="`cat /tmp/kbd-not-id`"
 ARGS="-t 2000 -r ${LAST:-"0"} -p"
 ARGS+=" -h string:image_path:$KEYBOARD_IMG"

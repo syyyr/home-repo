@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ $# -eq 0 ]]; then
-    nvim -p ~/.config/bashrc/*
+    nvim -p "$HOME/.config/bashrc/"*
 else
-    nvim -p $(printf '/home/vk/.config/bashrc/%s ' "$@")
+    nvim -p $(printf "$HOME/.config/bashrc/%s " "$@")
 fi

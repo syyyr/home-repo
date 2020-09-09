@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ $# -eq 0 ]]; then
-    nvim -p ~/.config/nvim/*.vim ~/.config/nvim/autoload/custom.vim
+    nvim -p "$HOME/.config/nvim/"*".vim" "$HOME/.config/nvim/autoload/custom.vim"
 else
-    nvim -p $(printf '/home/vk/.config/nvim/%s ' "$@")
+    nvim -p $(printf "$HOME/.config/nvim/%s " "$@")
 fi
