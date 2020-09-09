@@ -21,7 +21,6 @@ export SCREENDIR=$HOME/.screen
 #x server BS
 if [ -z "$SSH_CLIENT" ]; then
 export DISPLAY=localhost:0
-export XDG_RUNTIME_DIR=/home/vk/test
 export RUNLEVEL=3
 rm -rf .cache/sessions
 fi
