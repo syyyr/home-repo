@@ -6,7 +6,7 @@ case $- in
     *i*) ;;
       *) return;;
 esac
-# don't put duplicate lines or lines starting with space in the history.
+# don't put duplicate lines in the history.
 HISTCONTROL='ignoredups'
 
 # append to the history file, don't overwrite it
