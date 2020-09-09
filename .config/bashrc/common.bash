@@ -38,15 +38,6 @@ if [ -n "$SSH_CLIENT" ]; then
     PS1='\[\033[38;5;83m\]\u@\h\[\033[00m\]:\[\033[38;5;63m\]\w\[\033[00m\]\n\$ '
 fi
 
-if [ -x /usr/bin/dircolors ]; then
-    test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 bind '"\e[18~":""'
 stty susp undef
 stty -ixon

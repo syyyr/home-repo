@@ -6,6 +6,7 @@ alias email="vim -S $HOME/.config/writing.vim"
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
 alias fvim='vim `fzf`'
 alias get_screen='xclip -se c -o -target image/png'
+alias grep='grep --color=auto'
 alias i3config="nvim $HOME/.config/i3/config"
 alias l='ls -CF'
 alias la='ls -A'
