@@ -24,3 +24,4 @@ augroup statuslineIntegration
 augroup END
 
 let g:tex_flavor='tex'
+let g:is_bash=1
