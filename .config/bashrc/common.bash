@@ -44,5 +44,7 @@ stty -ixon
 # This cannot be done in .inputrc
 bind -x '"\C-z":"fg &> /dev/null"'
 
+eval "$(dircolors)"
+
 source /usr/share/fzf/completion.bash
 source "$HOME/.config/bashrc/completerc.bash"
