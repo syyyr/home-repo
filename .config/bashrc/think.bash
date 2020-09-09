@@ -18,9 +18,6 @@ export CPLUS_INCLUDE_PATH+=:"/opt/cesnet/Catch/include"
 export CPLUS_INCLUDE_PATH+=:"/opt/cesnet/libnetconf2/include"
 
 export SCREENDIR="$HOME/.screen"
-stty -ixon
-stty susp undef
-bind -x '"\C-z":"fg &> /dev/null"'
 
 source "$HOME/.config/bashrc/alias.bash"
 source "$HOME/.config/bashrc/common.bash"
