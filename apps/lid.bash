@@ -12,23 +12,23 @@ wait_for() {
     echo "Got: \"$1\""
 }
 
-wait_for "button/lid LID close"
-if [[ -f /tmp/supress-lid-suspend ]]; then
+wait_for 'button/lid LID close'
+if [[ -f "/tmp/supress-lid-suspend" ]]; then
     exit 0
 fi
 before=$(date "+%s")
-echo "Suspending..."
+echo 'Suspending...'
 xset dpms force off
 systemctl suspend
-wait_for "button/lid LID open"
+wait_for 'button/lid LID open'
 after=$(date "+%s")
 
 elapsed=$((after-before))
 echo -n "Lid was closed for $elapsed seconds. "
 if [[ $elapsed -gt $timeout ]] && ! pgrep lock.bash; then
-    echo "Locking the screen..."
+    echo 'Locking the screen...'
     $HOME/apps/lock.bash
 else
-    echo "Not locking the screen."
+    echo 'Not locking the screen.'
     xset dpms force on
 fi

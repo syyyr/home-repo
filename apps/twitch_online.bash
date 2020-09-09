@@ -12,7 +12,7 @@ fi
 CACHE_DIR="$HOME/.local/share/twitch_online"
 ID_CACHE="$CACHE_DIR/ids"
 ONLINE_CACHE="$CACHE_DIR/online"
-ONLINE_CACHE_TTL="60"
+ONLINE_CACHE_TTL='60'
 CURL_HEADERS="-H Client-ID:$TWITCH_CLIENT_ID -H Accept:application/vnd.twitchtv.v5+json"
 
 update_id_cache() {

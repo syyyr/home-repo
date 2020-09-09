@@ -10,7 +10,7 @@ case "$arg" in
         if [ $UP ]; then
             UP=$((UP+1))
         else
-            UP="1"
+            UP='1'
         fi
 
         #amixer -q -D pulse set Master 5%+
@@ -23,7 +23,7 @@ case "$arg" in
         if [ $DOWN ]; then
             DOWN=$((DOWN+1))
         else
-            DOWN="1"
+            DOWN='1'
         fi
         #amixer -q -D pulse set Master 5%-
         ;;
@@ -32,15 +32,15 @@ case "$arg" in
             echo "Won't toggle more than once."
         fi
 
-        TOGGLE="1"
+        TOGGLE='1'
         ;;
     show)
         ;;
     quiet)
-        QUIET="1";
+        QUIET='1';
         ;;
     silent)
-        SILENT="1";
+        SILENT='1';
         ;;
     *)
         echo "Unknown argument: $arg"
@@ -75,10 +75,10 @@ if [ $QUIET ]; then
     exit 0
 fi
 
-VOLUME_HIGH="/home/vk/.local/share/icons/blue/volume-high.png"
-VOLUME_MEDIUM="/home/vk/.local/share/icons/blue/volume-medium.png"
-VOLUME_LOW="/home/vk/.local/share/icons/blue/volume-low.png"
-VOLUME_MUTE="/home/vk/.local/share/icons/blue/volume-mute.png"
+VOLUME_HIGH='/home/vk/.local/share/icons/blue/volume-high.png'
+VOLUME_MEDIUM='/home/vk/.local/share/icons/blue/volume-medium.png'
+VOLUME_LOW='/home/vk/.local/share/icons/blue/volume-low.png'
+VOLUME_MUTE='/home/vk/.local/share/icons/blue/volume-mute.png'
 
 VOL=$(pacmd list-sinks | grep -Eom1 '[[:digit:]]*%' | tail -n1)
 
@@ -100,6 +100,6 @@ if [ $SILENT ]; then
     exit 0
 fi
 
-ARGS="-t 2000 -R /tmp/vol-not-id"
+ARGS='-t 2000 -R /tmp/vol-not-id'
 ARGS+=" -h string:image_path:$VOLUME_IMG"
 notify-send $ARGS "Volume" "$VOL"

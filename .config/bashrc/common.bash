@@ -7,14 +7,14 @@ case $- in
       *) return;;
 esac
 # don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoredups
+HISTCONTROL='ignoredups'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=50000
-HISTFILESIZE=50000
+HISTSIZE='50000'
+HISTFILESIZE='50000'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -22,7 +22,7 @@ shopt -s checkwinsize
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt='yes';;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -48,7 +48,7 @@ _STATUS()
     if [[ $1 = 0 ]]; then
         echo #${GOOD[$RANDOM % ${#GOOD[@]}]}
     else
-        echo -n ${BAD[$RANDOM % ${#BAD[@]}]}
+        echo -n "${BAD[$RANDOM%${#BAD[@]}]}"
         echo -e ' \033[38;5;7m\033[3m'${1}'\033[0m'
     fi
 }
@@ -96,4 +96,4 @@ stty susp undef
 stty -ixon
 bind -x '"\C-z":"fg &> /dev/null"'
 source /usr/share/fzf/completion.bash
-source $HOME/.config/bashrc/completerc.bash
+source "$HOME/.config/bashrc/completerc.bash"

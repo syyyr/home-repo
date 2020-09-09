@@ -8,12 +8,12 @@ get_image()
 IMAGE="$(xclip -se c -o -target image/png | base64)"
 
 if  ! $(get_image | pngcheck > /dev/null 2>&1) ; then
-    echo "No picture in clipboard"
+    echo 'No picture in clipboard'
     exit 1
 fi
 
 FILENAME=$(get_image | sha1sum | fold -w 7 | head -n1)
-FILENAME+=".png"
+FILENAME+='.png'
 echo "Saving to $FILENAME"
 get_image | ssh rak@anip.icu "cat > www/anip.icu/rofl/$FILENAME"
 

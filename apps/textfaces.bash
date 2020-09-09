@@ -100,15 +100,15 @@ FACES[87]='¯\_(ツ)_/¯'
 IFS=$'\n'
 COUNT=1
 
-if [ $# -eq 0 ]; then
-    {  for face in ${FACES[*]}; do echo $COUNT $face; COUNT=$((COUNT+1)); done; } | column
-    echo -n "Choose a face: [1-90] "
+if [ $# -eq "0" ]; then
+    {  for face in ${FACES[*]}; do echo "$COUNT" "$face"; COUNT="$((COUNT+1))"; done; } | column
+    echo -n 'Choose a face: [1-90] '
     read INPUT
 else
-    INPUT=$1
+    INPUT="$1"
 fi
 
-if ! checkinput $INPUT; then
+if ! checkinput "$INPUT"; then
     exit 1
 fi
 

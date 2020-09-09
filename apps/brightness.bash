@@ -26,7 +26,7 @@ case "$arg" in
         if [ $UP ]; then
             UP=$((UP+1))
         else
-            UP="1"
+            UP='1'
         fi
         ;;
     down)
@@ -37,7 +37,7 @@ case "$arg" in
         if [ $DOWN ]; then
             DOWN=$((DOWN+1))
         else
-            DOWN="1"
+            DOWN='1'
         fi
         ;;
     max)
@@ -45,7 +45,7 @@ case "$arg" in
             echo "Doesn't make sense to use up or down with max together."
             exit 1
         else
-            MAX="1"
+            MAX='1'
         fi
         ;;
     min)
@@ -53,16 +53,16 @@ case "$arg" in
             echo "Doesn't make sense to use up or down with min together."
             exit 1
         else
-            MIN="1"
+            MIN='1'
         fi
         ;;
     show)
         ;;
     quiet)
-        QUIET="1";
+        QUIET='1';
         ;;
     silent)
-        SILENT="1";
+        SILENT='1';
         ;;
     *)
         echo "Unknown argument: $arg"
@@ -71,7 +71,7 @@ case "$arg" in
 esac
 done
 
-if [[ $(round $(light) 0) -le "2"  && -n  $DOWN ]]; then
+if [[ $(round $(light) 0) -le '2'  && -n  $DOWN ]]; then
     light -S 1
     unset DOWN
 fi
@@ -116,7 +116,7 @@ if [ $SILENT ]; then
     exit 0
 fi
 
-BRIGHTNESS_IMG="/home/vk/.local/share/icons/blue/brightness.png"
-ARGS="-t 2000 -R /tmp/brightness-not-id"
+BRIGHTNESS_IMG='/home/vk/.local/share/icons/blue/brightness.png'
+ARGS='-t 2000 -R /tmp/brightness-not-id'
 ARGS+=" -h string:image_path:$BRIGHTNESS_IMG"
-notify-send $ARGS "Brightness" "$BRIGHT"%
+notify-send $ARGS 'Brightness' "$BRIGHT"%

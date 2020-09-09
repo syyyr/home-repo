@@ -35,10 +35,10 @@ PATH="/usr/local/bin:$PATH"
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
 
-source $HOME/.config/bashrc/alias.bash
-source $HOME/.config/bashrc/common.bash
-source $HOME/.config/bashrc/env.bash
-source $HOME/.config/bashrc/functions.bash
-if [[ -f $HOME/.config/bashrc/ignore.bash ]]; then
-    source $HOME/.config/bashrc/ignore.bash
+source "$HOME/.config/bashrc/alias.bash"
+source "$HOME/.config/bashrc/common.bash"
+source "$HOME/.config/bashrc/env.bash"
+source "$HOME/.config/bashrc/functions.bash"
+if [[ -f "$HOME/.config/bashrc/ignore.bash" ]]; then
+    source "$HOME/.config/bashrc/ignore.bash"
 fi

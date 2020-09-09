@@ -13,34 +13,34 @@ wttr()
     local request="wttr.in/${1-Prague}"
     [ "$COLUMNS" -lt 125 ] && request+='?n'
     request+='?q?F'
-    curl -H "Accept-Language: cs" --compressed "$request"
+    curl -H 'Accept-Language: cs' --compressed "$request"
 }
 
 res()
 {
-    if [[ $# -ne 4 ]]; then
-        echo usage: res "<xrandr output> <x> <y> <hz>"
+    if [[ "$#" -ne 4 ]]; then
+        echo 'usage: res <xrandr output> <x> <y> <hz>'
         return
     fi
     echo "cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2- | xargs xrandr --newmode"
-    cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2- | xargs xrandr --newmode
+    cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2- | xargs xrandr --newmode
     echo "cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2 | xargs xrandr --addmode $1"
-    cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2 | xargs xrandr --addmode $1
-    echo "xrandr --output $1 --mode $(cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2)"
-    xrandr --output $1 --mode $(tr -d '"' <<< $(cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2))
+    cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2 | xargs xrandr --addmode "$1"
+    echo "xrandr --output $1 --mode $(cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2)"
+    xrandr --output "$1" --mode $(tr -d '"' <<< $(cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2))
 }
 
 if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
-    _js_commands="node npm npx nvm"
+    _js_commands='node npm npx nvm'
     _lazy_nvm()
     {
         echo
-        echo -n "Loading nvm..." >&1
+        echo -n 'Loading nvm...' >&1
         unalias $_js_commands
         source /usr/share/nvm/nvm.sh
         source /usr/share/nvm/install-nvm-exec
         source /usr/share/nvm/bash_completion
-        echo " done." >&1
+        echo ' done.' >&1
         if [[ $# -ge 1 ]]; then
             local command=$1
             shift
@@ -51,13 +51,13 @@ if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
     }
 
     for cmd in $_js_commands; do
-        alias $cmd="_lazy_nvm $cmd"
+        alias "$cmd"="_lazy_nvm $cmd"
     done
 
     __nvm()
     {
         _lazy_nvm
-        echo "You may press TAB again for completion."
+        echo 'You may press TAB again for completion.'
     }
 
     complete -o default -F __nvm nvm
@@ -80,21 +80,21 @@ gso()
     while true; do
         case $1 in
             -a)
-                local OPEN_ALL="1"
+                local OPEN_ALL='1'
                 shift
                 ;;
             -i)
-                local CASE="-i"
+                local CASE='-i'
                 shift
                 ;;
             -ai)
-                local CASE="-i"
-                local OPEN_ALL="1"
+                local CASE='-i'
+                local OPEN_ALL='1'
                 shift
                 ;;
             -ia)
-                local CASE="-i"
-                local OPEN_ALL="1"
+                local CASE='-i'
+                local OPEN_ALL='1'
                 shift
                 ;;
             *)
@@ -105,7 +105,7 @@ gso()
 
     if [[ $# -gt 1 ]] && [[ -d "${@: -1}" || -r "${@: -1}" ]]; then
         local ARGS="${*:1:$#-1}"
-        local DIRECTORY=${@: -1}
+        local DIRECTORY=${@:-1}
     else
         local ARGS="$*"
     fi
@@ -120,8 +120,8 @@ gso()
     fi
 
     local RESULTS="$(grep $CASE -Hrn $COLOR "$ARGS" $DIRECTORY)"
-    if [[ "$RESULTS" = "" ]]; then
-        echo "No match." >&1
+    if [[ "$RESULTS" = '' ]]; then
+        echo 'No match.' >&1
         return 0
     fi
     if (("$OPEN_ALL")); then
@@ -138,12 +138,12 @@ gso()
             echo "fzf: No match. This shouldn't happen." >&1
             ;;
         2)
-            echo "fzf: Error." >&1
+            echo 'fzf: Error.' >&1
             ;;
         130)
             ;;
         *)
-            echo "error." >&1
+            echo 'error.' >&1
     esac
 }
 
@@ -154,7 +154,7 @@ string_diff()
 
 twitch() {
     if [[ $# != 1 ]]; then
-        $HOME/apps/twitch_online.bash
+        "$HOME/apps/twitch_online.bash"
         return 0
     fi
     chromium --new-window "https://www.twitch.tv/popout/$1/chat"

@@ -4,7 +4,7 @@
 TIME="$(date '+%H:%M')"
 DATE="$(date '+%A, %d. %B')"
 convert /home/vk/.local/share/win10lock-template-res.png \
-    -font $HOME/.local/share/fonts/segoeuil.ttf \
+    -font "$HOME/.local/share/fonts/segoeuil.ttf" \
     -fill white \
     -pointsize 127 -draw "text 40,893 '$TIME'" \
     -pointsize 57 -draw "text 40,970 '$DATE'" \
@@ -18,7 +18,7 @@ while true; do
     TIME="$(date '+%H:%M')"
     DATE="$(date '+%A, %d. %B')"
     convert /home/vk/.local/share/win10lock-template-res.png \
-        -font $HOME/.local/share/fonts/segoeuil.ttf \
+        -font "$HOME/.local/share/fonts/segoeuil.ttf" \
         -fill white \
         -pointsize 127 -draw "text 40,893 '$TIME'" \
         -pointsize 57 -draw "text 40,970 '$DATE'" \

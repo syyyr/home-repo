@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -eq 0 ]; then
-    echo No service specified.
+    echo 'No service specified.'
     exit 1
 fi
 
