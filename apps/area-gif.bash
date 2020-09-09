@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-exec &> ~/log.out
 notify-send -t 3000 -R /tmp/area-gif-not-id "Select area..."
 escrotum -rs /tmp/area-gif.webm
 notify-send -t 100000 -R /tmp/area-gif-not-id "Converting to gif..."
