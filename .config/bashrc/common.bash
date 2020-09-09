@@ -1,5 +1,5 @@
-if [ -z "$STY" ]; then
-screen -wipe | sed '/No Sockets found in/Q'
+if [[ -z "$STY" ]] && screen -ls > /dev/null; then
+    screen -wipe
 fi
 
 case $- in
