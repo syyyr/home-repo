@@ -8,13 +8,11 @@
     "diagnostic-languageserver.filetypes": {
         "vim": "vint"
     },
-    "diagnostic-languageserver.linters": {
+    "diagnostic-languageserver.linters":{
         "vint": {
             "command": "vint",
             "debounce": 100,
-            "args": [
-                "-"
-            ],
+            "args": ["--enable-neovim", "-s", "-" ],
             "offsetLine": 0,
             "offsetColumn": 0,
             "sourceName": "vint",
