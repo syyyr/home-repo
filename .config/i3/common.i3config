@@ -25,6 +25,14 @@ bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 bindsym $mod+b workspace 2; exec --no-startup-id chromium
 #bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
+# fun stuff
+bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3/config\\""
+bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3status/config\\""
+bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
+bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
+bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
+bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
+
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up"
 bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down"

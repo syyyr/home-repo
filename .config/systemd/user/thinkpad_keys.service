@@ -1,0 +1,9 @@
+[Unit]
+Description=Thinkpad key translator
+
+[Service]
+Type=simple
+ExecStart=/home/vk/apps/thinkpad_keys.bash
+
+[Install]
+WantedBy=default.target

@@ -5,12 +5,6 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natu
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5
 
-bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3/config\\""
-bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3status/config\\""
-bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
-bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
-bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
-bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
 bindsym --release XF86Search exec --no-startup-id "~/apps/copypasta.bash"
 bindsym --release $mod+F12 exec --no-startup-id "~/apps/copypasta.bash"
 
