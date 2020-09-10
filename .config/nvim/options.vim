@@ -96,3 +96,5 @@ set diffopt+=algorithm:patience
 set signcolumn=yes
 
 set noruler
+
+set textwidth=120
