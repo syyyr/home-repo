@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+"$HOME/apps/check_available.bash" escrotum ffmpeg notify-send convert || exit 1
 
 notify-send -t 3000 -R /tmp/area-gif-not-id "Select area..."
 escrotum -rs /tmp/area-gif.webm
