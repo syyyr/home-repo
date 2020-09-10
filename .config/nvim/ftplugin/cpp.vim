@@ -1,4 +1,5 @@
 " deafult is /* */
+scriptencoding utf8
 set commentstring=//%s
 
 function! s:AddIostream()
