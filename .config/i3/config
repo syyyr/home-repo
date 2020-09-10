@@ -25,7 +25,7 @@ bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t b
  -b 'Reboot' 'systemctl reboot'\
  -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
 
-# xd
+# T440s
 bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3/config\\""
 bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3status/config\\""
 bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
@@ -34,6 +34,9 @@ bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
 bindsym --release XF86Search exec --no-startup-id "~/apps/copypasta.bash"
 bindsym --release $mod+F12 exec --no-startup-id "~/apps/copypasta.bash"
+
+# T14s
+bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
 
 # screenshot
 bindsym --release Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
