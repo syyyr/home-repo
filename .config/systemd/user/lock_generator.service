@@ -1,9 +1,0 @@
-[Unit]
-Description=Lockscreen generator service
-
-[Service]
-Type=simple
-ExecStart=/home/vk/apps/lock_generator.bash
-
-[Install]
-WantedBy=default.target
