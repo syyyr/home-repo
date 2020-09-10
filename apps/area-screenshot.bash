@@ -6,4 +6,4 @@ feh /tmp/screenshot &
 escrotum -s -C
 killall feh
 rm /tmp/screenshot
-rakupscreen
+"$HOME/apps/rakupscreen.bash"
