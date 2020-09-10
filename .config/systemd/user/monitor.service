@@ -1,0 +1,9 @@
+[Unit]
+Description=Monitor service
+
+[Service]
+Type=simple
+ExecStart=/home/vk/apps/monitor.bash
+
+[Install]
+WantedBy=default.target

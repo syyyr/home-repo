@@ -1,0 +1,7 @@
+[Unit]
+Description=Keyboard Light Timeout service
+
+[Service]
+EnvironmentFile= /home/vk/.config/kbdpulse.conf
+Type=simple
+ExecStart=/home/vk/apps/kbdlightpulse.bin

@@ -1,0 +1,7 @@
+[Unit]
+Description=Keyboard Light Timeout service
+
+[Service]
+EnvironmentFile= /home/vk/.config/kbdlighttimeout.conf
+Type=simple
+ExecStart=/home/vk/apps/kbdlighttimeout.bin "/dev/input/by-path/platform-i8042-serio-0-event-kbd" "/sys/devices/platform/thinkpad_acpi/leds/tpacpi::kbd_backlight/brightness"

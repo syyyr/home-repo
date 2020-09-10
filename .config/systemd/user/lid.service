@@ -1,0 +1,11 @@
+[Unit]
+Description=Lid handling service
+
+[Service]
+Type=simple
+Environment="timeout=60"
+ExecStart=/home/vk/apps/lid.bash
+Restart=always
+
+[Install]
+WantedBy=default.target
