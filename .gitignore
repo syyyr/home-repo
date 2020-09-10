@@ -66,6 +66,7 @@
 !.xinitrc
 !.inputrc
 !.gitignore
+!.xprofile
 !.Xresources
 !.local/share/nvim
 !.local/share/nvim/site
