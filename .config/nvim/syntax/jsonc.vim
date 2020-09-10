@@ -1,9 +1,9 @@
 " jsonc syntax file
 " Copied from the default json syntax file but comments are not errors.
 
-if !exists("main_syntax")
+if !exists('main_syntax')
   " quit when a syntax file was already loaded
-  if exists("b:current_syntax")
+  if exists('b:current_syntax')
     finish
   endif
   let main_syntax = 'jsonc'
@@ -37,7 +37,7 @@ syn match   jsoncEscape    "\\u\x\{4}" contained
 syn match   jsoncNumber    "-\=\<\%(0\|[1-9]\d*\)\%(\.\d\+\)\=\%([eE][-+]\=\d\+\)\=\>\ze[[:blank:]\r\n]*[,}\]]"
 
 " ERROR WARNINGS **********************************************
-if (!exists("g:vim_jsonc_warnings") || g:vim_jsonc_warnings==1)
+if (!exists('g:vim_jsonc_warnings') || g:vim_jsonc_warnings==1)
 	" Syntax: Strings should always be enclosed with quotes.
 	syn match   jsoncNoQuotesError  "\<[[:alpha:]][[:alnum:]]*\>"
 	syn match   jsoncTripleQuotesError  /"""/
@@ -96,7 +96,7 @@ hi def link jsoncBoolean         Boolean
 hi def link jsoncKeyword         Label
 hi def link jsoncComment         Comment
 
-if (!exists("g:vim_jsonc_warnings") || g:vim_jsonc_warnings==1)
+if (!exists('e:vim_jsonc_warnings') || g:vim_jsonc_warnings==1)
 hi def link jsoncNumError        Error
 hi def link jsoncSemicolonError  Error
 hi def link jsoncTrailingCommaError     Error
@@ -108,8 +108,8 @@ endif
 hi def link jsoncQuote           Quote
 hi def link jsoncNoise           Noise
 
-let b:current_syntax = "jsonc"
-if main_syntax == 'jsonc'
+let b:current_syntax = 'jsonc'
+if main_syntax ==# 'jsonc'
   unlet main_syntax
 endif
 
