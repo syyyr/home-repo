@@ -1,16 +1,7 @@
-# i3status configuration file.
-# see "man i3status" for documentation.
-
-# It is important that this file is edited as UTF-8.
-# The following line should contain a sharp s:
-# ß
-# If the above line is not correctly displayed, fix your editor first!
-
 general {
         colors = true
         interval = 5
 }
-
 
 order += "keyboard_locks"
 order += "volume master"
@@ -22,7 +13,6 @@ order += "lm_sensors"
 order += "battery 0"
 order += "battery 1"
 order += "tztime local"
-
 
 keyboard_locks {
         cache_timeout = 10
@@ -43,7 +33,11 @@ wireless _first_ {
 }
 
 ethernet enp0s25 {
-        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = ""
+}
+
+ethernet enp2s0f0 {
         format_up = "E: %ip (%speed)"
         format_down = ""
 }
