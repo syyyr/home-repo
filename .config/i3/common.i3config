@@ -1,14 +1,3 @@
-# T440s
-exec --no-startup-id xinput set-prop "Synaptics TM2668-002" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "Synaptics TM2668-002" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" -0.5
-
-# T14s
-exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
-
 exec --no-startup-id numlockx on
 exec --no-startup-id setxkbmap cz qwerty
 exec --no-startup-id nm-applet
@@ -24,19 +13,6 @@ bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t b
  -b 'Shutdown' 'shutdown now'\
  -b 'Reboot' 'systemctl reboot'\
  -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
-
-# T440s
-bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3/config\\""
-bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim ~/.config/i3status/config\\""
-bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
-bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
-bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
-bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
-bindsym --release XF86Search exec --no-startup-id "~/apps/copypasta.bash"
-bindsym --release $mod+F12 exec --no-startup-id "~/apps/copypasta.bash"
-
-# T14s
-bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
 
 # screenshot
 bindsym --release Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
@@ -205,7 +181,7 @@ bindsym $mod+Shift+eacute move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec --no-startup-id ~/apps/reload_i3.bash
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e  exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 

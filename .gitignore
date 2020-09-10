@@ -8,9 +8,11 @@
 !.config/bashrc
 !.config/bashrc/**
 !.config/i3
-!.config/i3/config
+!.config/i3/**
+.config/i3/config
 !.config/i3status
-!.config/i3status/config
+!.config/i3status/**
+.config/i3status/config
 !.config/npm
 !.config/npm/npmrc
 !.config/nvim
