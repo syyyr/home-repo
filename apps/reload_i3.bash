@@ -3,12 +3,12 @@ I3_CONFIG_DIR="$HOME/.config/i3"
 I3STATUS_CONFIG_DIR="$HOME/.config/i3status"
 DEVICE_NAME="$("$HOME/apps/device_name.bash")"
 if [[ "$DEVICE_NAME" =~ T14s ]]; then
-    DEVICE_SPECIFIC="$I3_CONFIG_DIR/t14s.i3config"
+    DEVICE_SPECIFIC="$I3_CONFIG_DIR/t14s"
     ETHERNET='enp2s0f0'
     SECOND_BATTERY=
     DEVICE_NAME_SHORT="T14s"
 elif [[ "$DEVICE_NAME" =~ T440s ]]; then
-    DEVICE_SPECIFIC="$I3_CONFIG_DIR/t440s.i3config"
+    DEVICE_SPECIFIC="$I3_CONFIG_DIR/t440s"
     ETHERNET='enp0s25'
     SECOND_BATTERY='order += "battery 1"'
     DEVICE_NAME_SHORT="T440s"
@@ -16,7 +16,7 @@ else
     echo "reload_i3: Unknown device: $DEVICE_NAME" >&2
 fi
 
-cat "$DEVICE_SPECIFIC" "$I3_CONFIG_DIR/common.i3config" > "$I3_CONFIG_DIR/config"
+cat "$DEVICE_SPECIFIC" "$I3_CONFIG_DIR/common" > "$I3_CONFIG_DIR/config"
 
 
 cat > "$I3STATUS_CONFIG_DIR/config" <<EOF

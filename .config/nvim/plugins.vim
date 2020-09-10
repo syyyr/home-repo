@@ -1,5 +1,6 @@
 scriptencoding utf8
 
+packadd! i3config.vim
 packadd! vim-colon-therapy
 packadd! vim-pug
 packadd! vim-cmake-completion
