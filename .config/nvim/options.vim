@@ -98,3 +98,4 @@ set signcolumn=yes
 set noruler
 
 set textwidth=120
+set formatoptions-=t
