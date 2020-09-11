@@ -174,6 +174,11 @@ rm()
     if [[ "$1" = "-rf" ]]; then
         shift
         if [[ "$*" = "$(echo *)" ]]; then
+            if [[ "$(pwd)" = "$HOME" ]]; then
+                echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
+                echo 'Aborting.'
+                return 1
+            fi
             if [[ "$*" = "*" ]]; then
                 COUNT=0
             else
