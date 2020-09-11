@@ -1,6 +1,7 @@
 # T14s-specific config
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Click Method Enabled" 0 1
 
 bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
