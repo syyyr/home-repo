@@ -17,7 +17,7 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     --datepos="240:ty+80"'
 fi
 
-$HOME/bin/kbacklight 0
+"$HOME/apps/kbacklight.bash" 0
 TOGGLE=no
 if ! "$HOME/bin/volume" silent | grep muted; then
     "$HOME/bin/volume" silent toggle
