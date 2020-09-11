@@ -18,7 +18,7 @@ wttr()
 
 res()
 {
-    check_available cvt || return 1
+    "$HOME/apps/check_available.bash"  cvt || return 1
 
     if [[ "$#" -ne 4 ]]; then
         echo 'usage: res <xrandr output> <x> <y> <hz>'
@@ -153,18 +153,48 @@ gso()
 
 string_diff()
 {
-    check_available dwdiff || return 1
+    "$HOME/apps/check_available.bash"  dwdiff || return 1
 
     dwdiff -c <(echo "$1") <(echo "$2")
 }
 
 twitch()
 {
-    check_available dwdiff || return 1
+    "$HOME/apps/check_available.bash" streamlink chromium || return 1
     if [[ $# != 1 ]]; then
         "$HOME/apps/twitch_online.bash"
         return 0
     fi
     chromium --new-window "https://www.twitch.tv/popout/$1/chat"
     streamlink -v "http://twitch.tv/$1" best
+}
+
+rm()
+{
+    if [[ "$1" = "-rf" ]]; then
+        shift
+        if [[ "$*" = "$(echo *)" ]]; then
+            if [[ "$*" = "*" ]]; then
+                COUNT=0
+            else
+                COUNT="$#"
+            fi
+            echo "You are about to remove $COUNT file$([[ $COUNT -ne 1 ]] && echo "s") from $(pwd)."
+            echo -n 'Is that okay? [y/n] '
+            if ! read -t 10; then
+                echo 'No reply. Aborting just to be safe.'
+                return 1
+            fi
+
+            if [[ "$REPLY" != "y" ]]; then
+                echo 'Aborting.'
+                return 1
+            fi
+        fi
+        echo /usr/bin/rm -rf "$@"
+        /usr/bin/rm -rf "$@"
+    else
+        /usr/bin/rm "$@"
+    fi
+
 }
