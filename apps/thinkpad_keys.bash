@@ -7,4 +7,5 @@ acpi_listen | sed -u -n "s@ibm/hotkey LEN0268:00 00000080 0000131@@p" | while tr
     [[ number -eq 9 ]] && key=XF86LaunchA
     echo "$key"
     xdotool key "$key"
+    key=
 }; done
