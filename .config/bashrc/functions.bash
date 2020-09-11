@@ -179,7 +179,7 @@ rm()
             else
                 COUNT="$#"
             fi
-            echo "You are about to remove $COUNT file$([[ $COUNT -ne 1 ]] && echo "s") from $(pwd)."
+            echo -e "You are about to remove $COUNT file$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$(pwd)${BASH_COLOR_NORMAL}."
             echo -n 'Is that okay? [y/n] '
             if ! read -t 10; then
                 echo 'No reply. Aborting just to be safe.'
@@ -196,5 +196,4 @@ rm()
     else
         /usr/bin/rm "$@"
     fi
-
 }
