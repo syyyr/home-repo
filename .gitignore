@@ -26,7 +26,6 @@
 !.config/xfce4/terminal/terminalrc.light
 !.config/terminator
 !.config/terminator/config
-!.config/kbdlighttimeout.conf
 !.config/kbdpulse.conf
 !.config/fontconfig
 !.config/fontconfig/fonts.conf
@@ -36,6 +35,8 @@
 !.config/systemd/user
 !.config/systemd/user
 !.config/systemd/user/**
+!.config/kbacklight_timeout
+!.config/kbacklight_timeout/config
 !.local
 !.local/share
 !.local/share/mfw.png

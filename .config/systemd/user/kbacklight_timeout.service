@@ -1,0 +1,7 @@
+[Unit]
+Description=Keyboard Light Timeout service
+
+[Service]
+EnvironmentFile=/home/vk/.config/kbacklight_timeout/config
+Type=simple
+ExecStart=/home/vk/apps/kbacklight_timeout.bash

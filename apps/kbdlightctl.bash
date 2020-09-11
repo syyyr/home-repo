@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 ARG=$2
 
 case $1 in
@@ -36,6 +37,10 @@ case $1 in
             kbacklight 2
             STATE='timeout'
         fi
+        ;;
+    *)
+        echo No command specified. >&2
+        exit 1
 esac
 
 KEYBOARD_IMG="$HOME/.local/share/icons/blue/keyboard.png"
