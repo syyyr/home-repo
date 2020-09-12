@@ -1,0 +1,32 @@
+[global]
+    geometry = "300x100-30+20"
+    shrink = yes
+    notification_height = 0
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 8
+    frame_width = 2
+    frame_color = "#444444"
+    separator_color = frame
+    idle_threshold = 120
+    font = Consolas NF 15
+    line_height = 2
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    word_wrap = no
+    verbosity = mesg
+    corner_radius = 6
+
+[urgency_low]
+    background = "#eeeeee"
+    foreground = "#444444"
+
+[urgency_normal]
+    background = "#eeeeee"
+    foreground = "#444444"
+
+[urgency_critical]
+    background = "#eeeeee"
+    foreground = "#444444"
+
+# vim: ft=cfg
