@@ -100,6 +100,6 @@ if [ $SILENT ]; then
     exit 0
 fi
 
-ARGS='-t 2000 -R /tmp/vol-not-id'
+ARGS='-t 2000 -h string:x-canonical-private-synchronous:volume'
 ARGS+=" -h string:image_path:$VOLUME_IMG"
 notify-send $ARGS "Volume" "$VOL"

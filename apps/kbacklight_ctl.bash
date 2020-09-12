@@ -34,7 +34,6 @@ else
 fi
 
 KEYBOARD_IMG="$HOME/.local/share/icons/blue/keyboard.png"
-LAST="`cat /tmp/kbd-not-id`"
-ARGS="-t 2000 -r ${LAST:-"0"} -p"
+ARGS='-t 2000 -h string:x-canonical-private-synchronous:kbacklight'
 ARGS+=" -h string:image_path:$KEYBOARD_IMG"
-notify-send $ARGS 'Keyboard' "$STATE" > /tmp/kbd-not-id
+notify-send $ARGS 'Keyboard' "$STATE"
