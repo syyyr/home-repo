@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -e
+ARG=$2
+
+case $1 in
+    timeout)
+        echo TIMEOUT=${ARG:-30} > "$HOME/.config/kbacklight_timeout/config"
+        systemctl --quiet --user restart kbacklight_timeout
+        STATE='timeout'
+        ;;
+    manual)
+        systemctl --quiet --user stop kbacklight_timeout
+        STATE='manual'
+        ;;
+    toggle)
+        if systemctl --quiet --user is-active kbacklight_timeout; then
+            systemctl --quiet --user stop kbacklight_timeout
+            STATE='manual'
+        else
+            systemctl --quiet --user start kbacklight_timeout
+            STATE='timeout'
+        fi
+        ;;
+    *)
+        echo No command specified. >&2
+        exit 1
+esac
+
+KEYBOARD_IMG="$HOME/.local/share/icons/blue/keyboard.png"
+LAST="`cat /tmp/kbd-not-id`"
+ARGS="-t 2000 -r ${LAST:-"0"} -p"
+ARGS+=" -h string:image_path:$KEYBOARD_IMG"
+notify-send $ARGS 'Keyboard' "$STATE" > /tmp/kbd-not-id
