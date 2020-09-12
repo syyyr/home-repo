@@ -47,4 +47,5 @@ bind -x '"\C-z":"fg &> /dev/null"'
 eval "$(dircolors)"
 
 source /usr/share/fzf/completion.bash
+source "$HOME/.config/bashrc/colors.bash"
 source "$HOME/.config/bashrc/completerc.bash"

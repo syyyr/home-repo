@@ -1,3 +1,9 @@
-echo -e '\033[01mlol ze nano 😂'
+#!/bin/bash
+source "$HOME/.config/bashrc/colors.bash"
+echo -e "${BASH_COLOR_BOLD}lol ze nano 😂${BASH_COLOR_NORMAL}"
 sleep 1.5
-/usr/bin/nano $@ | lolcat
+if "$HOME/apps/check_available.bash" lolcat &> /dev/null; then
+    /usr/bin/nano "$@" | lolcat
+else
+    /usr/bin/nano "$@"
+fi
