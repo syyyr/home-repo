@@ -1,4 +1,5 @@
 #!/bin/bash
+"$HOME/apps/check_available.bash" light python || exit 1
 
 case "$1" in
     # The rates at which changes happen aren't the same, the increasing is slower. I don't mind however, as increasing is

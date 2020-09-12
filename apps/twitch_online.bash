@@ -1,4 +1,6 @@
 #!/bin/bash
+"$HOME/apps/check_available.bash" jq || exit 1
+
 if [[ -z "$TWITCH_CLIENT_ID" ]]; then
     echo "TWITCH_CLIENT_ID not set. Use environment to set it (or edit this script)."
     exit 1
