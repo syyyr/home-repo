@@ -12,10 +12,13 @@
     font = Consolas NF 15
     line_height = 2
     format = "<b>%s</b>\n%b"
-    alignment = left
+    alignment = right
     word_wrap = no
     verbosity = mesg
     corner_radius = 6
+    icon_position = left
+    max_icon_size = 50
+
 
 [urgency_low]
     background = "#eeeeee"

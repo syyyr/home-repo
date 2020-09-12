@@ -34,20 +34,17 @@ bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbacklight_ctl.bash toggle"
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up"
-bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down"
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up up"
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash down down"
+bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash increase"
+bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash decrease"
 bindsym Ctrl+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash max"
 bindsym Ctrl+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash min"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash up"
-bindsym XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash down"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash increase 5"
+bindsym XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash decrease 5"
 bindsym XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
-
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash up up"
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash down down"
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash increase 10"
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash decrease 10"
 bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
 
 bindsym XF86Display exec --no-startup-id "~/apps/area-gif.bash"

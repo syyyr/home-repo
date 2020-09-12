@@ -10,8 +10,8 @@ _bashrc_complete() {
     COMPREPLY+=($( cd "$HOME/.config/bashrc"; find -not -name '\.*' -type f | sed s@\./@@ | grep -F "$2"))
 }
 
-complete -W 'up down silent show quiet min max'  brightness
-complete -W 'up down toggle silent show quiet' volume
+complete -W 'increase decrease min max'  brightness
+complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
 complete -C "$HOME/bin/tasklist" taskkill
 complete -F _vimrc_complete vimrc
