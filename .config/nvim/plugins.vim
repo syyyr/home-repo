@@ -12,12 +12,6 @@ packadd! yang.vim
 packadd! nvim-gdb
 packadd! vim-commentary
 
-
-if argc() == 0
-    packadd! startscreen.vim
-    let g:Startscreen_function = function('setbufvar', [0, '&filetype', 'startscreen'])
-endif
-
 packadd! indentLine
 packadd! indent-blankline.nvim
 let g:indentLine_char = '▏'
