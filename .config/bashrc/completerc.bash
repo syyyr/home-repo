@@ -12,7 +12,7 @@ _bashrc_complete() {
 
 complete -W 'up down silent show quiet min max'  brightness
 complete -W 'up down toggle silent show quiet' volume
-complete -W 'pulse cycle manual timeout' kbdlightctl
+complete -W 'toggle manual timeout' kbacklight_ctl
 complete -C "$HOME/bin/tasklist" taskkill
 complete -F _vimrc_complete vimrc
 complete -F _bashrc_complete bashrc

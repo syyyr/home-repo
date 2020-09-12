@@ -31,7 +31,7 @@ bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"
 bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
 bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
 bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
-bindsym XF86LaunchA exec --no-startup-id "~/apps/kbdlightctl.bash cycle"
+bindsym XF86LaunchA exec --no-startup-id "~/apps/kbacklight_ctl.bash toggle"
 
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash up"

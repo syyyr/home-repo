@@ -27,6 +27,12 @@ case $1 in
         exit 1
 esac
 
+if [[ "$STATE" = "manual" ]]; then
+    "$HOME/apps/kbacklight.bash" 0
+else
+    "$HOME/apps/kbacklight.bash" 2
+fi
+
 KEYBOARD_IMG="$HOME/.local/share/icons/blue/keyboard.png"
 LAST="`cat /tmp/kbd-not-id`"
 ARGS="-t 2000 -r ${LAST:-"0"} -p"
