@@ -1,4 +1,6 @@
 #!/bin/bash
+"$HOME/apps/check_available.bash" rofi || exit 1
+
 PASTAS='thinking 🤔
 tears 😭
 joy 😂
