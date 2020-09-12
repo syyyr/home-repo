@@ -18,9 +18,10 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
 fi
 
 "$HOME/apps/kbacklight.bash" 0
+# TODO: if you take out headphones, the speakers get unumuted
 TOGGLE=no
-if ! "$HOME/bin/volume" silent | grep muted; then
-    "$HOME/bin/volume" silent toggle
+if ! "$HOME/apps/volume.bash" | grep muted; then
+    "$HOME/apps/volume.bash" toggle
     TOGGLE='yes'
 fi
 
@@ -32,5 +33,5 @@ echo -n "$ARGS" | xargs i3lock -n
 kill "$SCREENOFF_PID" 2> /dev/null
 
 if [ $TOGGLE = "yes" ]; then
-    "$HOME/bin/volume" silent toggle
+    "$HOME/apps/volume.bash" toggle
 fi
