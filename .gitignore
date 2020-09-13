@@ -7,6 +7,8 @@
 !.config/bashrc/**
 !.config/dunst
 !.config/dunst/dunstrc
+!.config/etc
+!.config/etc/**
 !.config/fontconfig
 !.config/fontconfig/fonts.conf
 !.config/i3
