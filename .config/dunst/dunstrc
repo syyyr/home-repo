@@ -19,7 +19,7 @@
     icon_position = left
     max_icon_size = 50
     ellipsize = end
-
+    markup = full
 
 [urgency_low]
     background = "#eeeeee"
