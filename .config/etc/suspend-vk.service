@@ -1,0 +1,14 @@
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=vk
+Type=simple
+Environment=DISPLAY=:0
+ExecStartPre= -touch /tmp/suspend_time
+ExecStart=/home/vk/apps/lock.bash
+ExecStartPost= -/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target

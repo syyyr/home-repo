@@ -1,0 +1,11 @@
+[Unit]
+Description=User resume actions
+After=suspend.target
+
+[Service]
+User=vk
+Type=simple
+ExecStart=/home/vk/apps/resume.bash
+
+[Install]
+WantedBy=suspend.target
