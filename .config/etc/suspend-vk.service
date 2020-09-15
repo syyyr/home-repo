@@ -7,7 +7,7 @@ User=vk
 Type=simple
 Environment=DISPLAY=:0
 ExecStartPre= -touch /tmp/suspend_time
-ExecStart=/home/vk/apps/lock.bash
+ExecStart=/home/vk/apps/lock.bash no-off
 ExecStartPost= -/usr/bin/sleep 1
 
 [Install]

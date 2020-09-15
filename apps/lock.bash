@@ -25,12 +25,17 @@ if ! "$HOME/apps/volume.bash" | grep muted; then
     TOGGLE='yes'
 fi
 
-(sleep 7; xset dpms force off)&
-SCREENOFF_PID="$!"
+if [[ "$1" != "no-off" ]]; then
+    (sleep 7; xset dpms force off)&
+    SCREENOFF_PID="$!"
+fi
+
 
 echo -n "$ARGS" | xargs i3lock -n
 
-kill "$SCREENOFF_PID" 2> /dev/null
+if [[ "$1" != "no-off" ]]; then
+    kill "$SCREENOFF_PID" 2> /dev/null
+fi
 
 if [ $TOGGLE = "yes" ]; then
     "$HOME/apps/volume.bash" toggle
