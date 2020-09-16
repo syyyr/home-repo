@@ -187,6 +187,7 @@ rm()
             echo -e "You are about to remove $COUNT thing$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$(pwd)${BASH_COLOR_NORMAL}."
             echo -n 'Is that okay? [y/n] '
             if ! read -t 10; then
+                echo
                 echo 'No reply. Aborting just to be safe.'
                 return 1
             fi
