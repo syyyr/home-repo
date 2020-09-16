@@ -1,9 +1,11 @@
 [Unit]
 Description=Thinkpad key translator
+After=graphical.target
 
 [Service]
 Type=simple
 ExecStart=/home/vk/apps/thinkpad_keys.bash
+Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical.target
