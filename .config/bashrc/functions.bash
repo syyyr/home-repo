@@ -171,20 +171,33 @@ twitch()
 
 rm()
 {
-    if [[ "$1" = "-rf" ]]; then
+    if [[ "$1" = "-rf" ]] && [[ "$#" -gt "1" ]]; then
         shift
-        if [[ "$*" = "$(echo *)" ]]; then
-            if [[ "$(pwd)" = "$HOME" ]]; then
+        DIRNAME="$(realpath "$1" | xargs dirname)"
+        REQUEST="$(echo "$*" | xargs realpath | sort)"
+        COMPARE_TO="$(echo "$DIRNAME"/* | xargs realpath | sort)"
+        if [[ "$REQUEST" =~ ^$HOME$ ]]; then
+            echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove your home directory.${BASH_COLOR_NORMAL}"
+            echo 'Aborting.'
+            return 1
+        fi
+        if [[ "$REQUEST" = "$COMPARE_TO" ]]; then
+            if [[ "$DIRNAME" = "$HOME" ]]; then
                 echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
                 echo 'Aborting.'
                 return 1
             fi
-            if [[ "$*" = "*" ]]; then
+            if [[ "${*: -1}" = "*" ]]; then
                 COUNT=0
             else
                 COUNT="$#"
             fi
-            echo -e "You are about to remove $COUNT thing$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$(pwd)${BASH_COLOR_NORMAL}."
+            echo -e "You are about to remove $COUNT thing$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$DIRNAME${BASH_COLOR_NORMAL}:"
+            echo "$REQUEST" | head -n10
+            NUMBER_OF_FILES="$(echo "$REQUEST" | wc -l)"
+            if [[ "$NUMBER_OF_FILES" -gt 10 ]]; then
+                echo "...and $(($NUMBER_OF_FILES - 10)) more."
+            fi
             echo -n 'Is that okay? [y/n] '
             if ! read -t 10; then
                 echo
@@ -199,7 +212,7 @@ rm()
             echo /usr/bin/rm -rf "$@"
         fi
         /usr/bin/rm -rf "$@"
-        return 0
+        return "$?"
     fi
 
     /usr/bin/rm "$@"
