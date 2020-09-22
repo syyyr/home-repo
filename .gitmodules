@@ -19,9 +19,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/rust.vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/rust.vim
 	url = https://github.com/rust-lang/rust.vim
-[submodule ".local/share/nvim/site/pack/bundle/opt/HJKL"]
-	path = .local/share/nvim/site/pack/bundle/opt/HJKL
-	url = https://github.com/vim-scripts/HJKL
 [submodule ".local/share/nvim/site/pack/bundle/opt/yang.vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/yang.vim
 	url = https://github.com/nathanalderson/yang.vim
