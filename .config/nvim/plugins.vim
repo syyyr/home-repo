@@ -9,7 +9,6 @@ packadd! vim-superman
 packadd! undotree
 packadd! vim-better-whitespace
 packadd! yang.vim
-packadd! nvim-gdb
 packadd! vim-commentary
 
 packadd! indentLine
