@@ -70,17 +70,6 @@ function! custom#CocCheck(id) abort
 endfun
 
 function! custom#StatuslineDiagnostics() abort
-    " ALE integration
-    let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'error')
-    if l:problem != {}
-        return l:problem['type'] . ': ln ' . problem['lnum']
-    endif
-
-    let l:problem = ale#statusline#FirstProblem(bufnr('%'), 'warning')
-    if l:problem != {}
-        return l:problem['type'] . ': ln ' . problem['lnum']
-    endif
-
     " coc.nvim integration
     if get(b:, 'CocInfo', 0) !=# ''
         return b:CocInfo

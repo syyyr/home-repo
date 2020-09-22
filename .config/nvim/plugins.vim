@@ -21,14 +21,6 @@ let g:indent_blankline_debug = v:true
 packadd! clever-f.vim
 let g:clever_f_smart_case = 1
 
-" Running ALE with indent_blankline slows down exiting neovim
-" TODO: consider removing ALE. coc does almost everything by now
-if !get(g:, 'is_headless')
-    packadd! ale
-    let g:ale_linters = {'python': [], 'rust': [], 'cpp': [], 'javascript': [], 'typescript': [], 'c': [], 'vim': [], 'sh': []}
-    let g:ale_tex_chktex_options = '-l .chktexrc'
-endif
-
 packadd! goyo.vim
 augroup goyoFix
     autocmd!
