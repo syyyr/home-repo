@@ -23,6 +23,7 @@ export RUNLEVEL="3"
 rm -rf "$HOME/.cache/sessions"
 fi
 xmodmap -e 'keycode 126='
+export SDL_RENDER_DRIVER=software # We don't have hardware rendering on WSL, so let's just use software by default
 
 #path BS
 PATH=""
