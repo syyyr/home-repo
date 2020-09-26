@@ -1,5 +1,5 @@
 #!/bin/bash
-"$HOME/apps/check_available.bash" rofi || exit 1
+"$HOME/apps/check_available.bash" rofi xdotool nohup xclip || exit 1
 
 PASTAS='thinking 🤔
 tears 😭
