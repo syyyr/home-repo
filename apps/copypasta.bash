@@ -33,5 +33,5 @@ RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 # I have no idea why this doesn't work without nohup, when this script gets run by i3, but OK
 if [[ -n "$RES" ]]; then
     nohup xclip -rmlastnl -se c <<< "$RES" &> /dev/null
-    xvkbd -text '\CV'
+    xdotool type "$RES"
 fi
