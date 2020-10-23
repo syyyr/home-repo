@@ -11,7 +11,7 @@ if [ -z "$2" ];then
     xclip <<< "https://rakac.anip.icu/$(basename "$1")"
 else
     if [ "$1" = "-" ]; then
-        scp <(cat) "rak@anip.icu:www/rakac/$2"
+        cat | ssh "rak@anip.icu" "cat > www/rakac/$2"
     else
         scp "$1" "rak@anip.icu:www/rakac/$2"
     fi
