@@ -99,3 +99,5 @@ set noruler
 
 set textwidth=120
 set formatoptions-=t
+
+set pastetoggle=<F6>
