@@ -61,3 +61,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/i3config.vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/i3config.vim
 	url = https://github.com/mboughaba/i3config.vim.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/vim-qml"]
+	path = .local/share/nvim/site/pack/bundle/opt/vim-qml
+	url = https://github.com/peterhoeg/vim-qml.git

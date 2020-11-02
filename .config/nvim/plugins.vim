@@ -10,6 +10,7 @@ packadd! undotree
 packadd! vim-better-whitespace
 packadd! yang.vim
 packadd! vim-commentary
+packadd! vim-qml
 
 packadd! indentLine
 packadd! indent-blankline.nvim
