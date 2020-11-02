@@ -29,9 +29,9 @@ VOLUME_IMG="$VOLUME_LOW"
 if pamixer --get-mute > /dev/null;then
     MUTED="(muted)"
     VOLUME_IMG="$VOLUME_MUTE"
-elif [ ${VOL//%} -ge "66" ];then
+elif [[ "${VOL//%}" -ge "66" ]];then
     VOLUME_IMG="$VOLUME_HIGH"
-elif [ ${VOL//%} -ge "33" ];then
+elif [[ "${VOL//%}" -ge "33" ]];then
     VOLUME_IMG="$VOLUME_MEDIUM"
 fi
 
