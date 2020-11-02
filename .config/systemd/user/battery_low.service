@@ -1,0 +1,6 @@
+[Unit]
+Description=Check battery life
+
+[Service]
+Type=simple
+ExecStart=/home/vk/apps/battery.bash

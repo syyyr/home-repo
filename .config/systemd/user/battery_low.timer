@@ -1,0 +1,8 @@
+[Unit]
+Description=Check battery life every so often
+
+[Timer]
+OnUnitActiveSec=10min
+
+[Install]
+WantedBy=default.target
