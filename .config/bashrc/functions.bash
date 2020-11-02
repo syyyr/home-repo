@@ -106,10 +106,10 @@ gso()
     done
 
     if [[ $# -gt 1 ]] && [[ -d "${@: -1}" || -r "${@: -1}" ]]; then
-        local ARGS="${*:1:$#-1}"
-        local DIRECTORY=${@:-1}
+        local ARGS="${@:1:$#-1}"
+        local DIRECTORY=${@: -1}
     else
-        local ARGS="$*"
+        local ARGS="$@"
     fi
 
     # local is a command by itself, so first define local FILE and then assign,
