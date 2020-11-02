@@ -33,6 +33,9 @@ b 🅱️'
 SELECTED_PASTA="$(rofi -dmenu -sort -matching fuzzy -p "> " <<< "$PASTAS")"
 RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 
+# Leave some time to allow focus switch back to whatever app I'm using
+sleep 1
+
 # I have no idea why this doesn't work without nohup, when this script gets run by i3, but OK
 if [[ -n "$RES" ]]; then
     nohup xclip -rmlastnl -se c <<< "$RES" &> /dev/null
