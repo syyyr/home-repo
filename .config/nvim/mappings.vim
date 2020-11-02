@@ -16,6 +16,7 @@ nnoremap <A-w> :update!<cr>
 
 " searching with space
 nnoremap <space> /
+xnoremap <space> /
 
 " disable highlight
 nnoremap <A-cr> :nohlsearch<cr>:call coc#util#float_hide()<cr>:call clever_f#reset()<cr>:<BS>
