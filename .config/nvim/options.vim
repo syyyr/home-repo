@@ -101,3 +101,5 @@ set textwidth=120
 set formatoptions-=t
 
 set pastetoggle=<F6>
+
+set makeprg=make\ -C\ build
