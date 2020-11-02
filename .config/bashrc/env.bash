@@ -6,3 +6,4 @@ export NIGHTSTART='22'
 export NVM_DIR="$HOME/.local/nvm"
 export VISUAL='nvim'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
+export QT_QPA_PLATFORMTHEME="qt5ct"
