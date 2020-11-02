@@ -10,9 +10,12 @@ ok_hand 👌
 :* 😘
 angery 😠
 pray 🙏
+hands 🙌
 rofl 🤣
 heart ❤
 heart_eyes 😍
+sunglasses 😎
+diamond 💎
 eyes 👀
 roll 🙄
 sweat 😅
