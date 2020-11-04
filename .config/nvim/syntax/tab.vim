@@ -4,8 +4,8 @@ endif
 
 syntax match tabSpecial "[a-z]" contained
 syntax match tabNote "[a-z0-9]\+" contained contains=tabSpecial
-syntax match tabStart "^[eBGDCAE]|" contained
-syntax region tabTabLine start="^[eBGDCAE]|-" end="$" contains=CONTAINED oneline contained
+syntax match tabStart "^[a-gA-G][# ]\?|" contained
+syntax region tabTabLine start="^[a-gA-G][# ]\?|-" end="$" contains=CONTAINED oneline contained
 
 syntax match tabText "^.\([^|].*\)\?" contains=tabTabLine,tabTextNote
 
