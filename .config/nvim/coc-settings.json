@@ -3,7 +3,6 @@
     "clangd.semanticHighlighting": true,
     "suggest.enablePreview": true,
     "diagnostic.warningSign": ">>",
-    "python.jediEnabled": false,
     "tsserver.implicitProjectConfig.checkJs": true,
     "diagnostic-languageserver.filetypes": {
         "vim": "vint"
@@ -28,5 +27,6 @@
         }
     },
     "diagnostic-languageserver.trace.server": "verbose",
-    "rust.clippy_preference": "on"
+    "rust.clippy_preference": "on",
+    "coc.source.omni.filetypes": ["sshconfig"]
 }
