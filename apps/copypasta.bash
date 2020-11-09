@@ -12,6 +12,7 @@ angery 😠
 pray 🙏
 hands 🙌
 rofl 🤣
+party 🎉
 heart ❤
 heart_eyes 😍
 sunglasses 😎
@@ -30,7 +31,7 @@ sushi 🍣
 linux/interject I'\''d just like to interject for a moment. What you'\''re referring to as Linux, is in fact, GNU/Linux, or as I'\''ve recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.
 b 🅱️'
 
-SELECTED_PASTA="$(rofi -dmenu -sort -matching fuzzy -p "> " <<< "$PASTAS")"
+SELECTED_PASTA="$(rofi -dmenu -p "> " -sort -matching fuzzy -scroll-method 1 <<< "$PASTAS")"
 RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 
 # Leave some time to allow focus switch back to whatever app I'm using
