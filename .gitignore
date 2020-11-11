@@ -9,6 +9,7 @@
 !.config/dunst/dunstrc
 !.config/etc
 !.config/etc/**
+!.config/git
 !.config/fontconfig
 !.config/fontconfig/fonts.conf
 !.config/i3
@@ -38,7 +39,6 @@
 !.config/xfce4/terminal
 !.config/xfce4/terminal/terminalrc.dark
 !.config/xfce4/terminal/terminalrc.light
-!.gitconfig
 !.gitignore
 !.inputrc
 !.local
