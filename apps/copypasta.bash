@@ -1,5 +1,5 @@
 #!/bin/bash
-"$HOME/apps/check_available.bash" rofi xdotool nohup xclip || exit 1
+"$HOME/apps/check_available.bash" rofi xvkbd nohup xclip || exit 1
 
 PASTAS='thinking 🤔
 tears 😭
@@ -34,11 +34,10 @@ b 🅱️'
 SELECTED_PASTA="$(rofi -dmenu -p "> " -sort -matching fuzzy -scroll-method 1 <<< "$PASTAS")"
 RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 
-# Leave some time to allow focus switch back to whatever app I'm using
-sleep 1
-
 # I have no idea why this doesn't work without nohup, when this script gets run by i3, but OK
 if [[ -n "$RES" ]]; then
     nohup xclip -rmlastnl -se c <<< "$RES" &> /dev/null
-    xdotool type "$RES"
+    # Leave some time to allow focus switch back to whatever app I'm using
+    sleep 0.3
+    xvkbd -text '\CV'
 fi
