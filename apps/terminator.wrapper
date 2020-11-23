@@ -1,5 +1,5 @@
 #!/bin/bash
-HOURS=$(date +%H)
+HOURS=$(date +%k)
 if [[ "$HOURS" -lt "${DAYSTART:-8}" ]] || [[ "$HOURS" -ge "${NIGHTSTART:-22}" ]]; then
     echo je noc
     PROFILE="-p dark"
