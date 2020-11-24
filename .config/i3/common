@@ -28,9 +28,8 @@ bindsym $mod+b workspace 2; exec --no-startup-id chromium
 # fun stuff
 bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e $HOME/apps/i3config.bash"
 bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3status/common ~/apps/reload_i3.bash\\""
-bindsym XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '🤔'"
-bindsym Shift+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '😂'"
-bindsym Ctrl+XF86Explorer exec --no-startup-id "xclip -rmlastnl -se c <<< '👌'"
+bindsym XF86Explorer exec --no-startup-id "dunstctl close"
+bindsym Shift+XF86Explorer exec --no-startup-id "dunstctl close-all"
 bindsym XF86LaunchA exec --no-startup-id "~/apps/kbacklight_ctl.bash toggle"
 
 # brightness
