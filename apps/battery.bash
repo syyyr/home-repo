@@ -4,6 +4,7 @@ export DISPLAY=":0"
 "$HOME/apps/check_available.bash" ffplay || exit 1
 
 if ! (acpi -a | grep "off-line" > /dev/null); then
+    echo 'Battery is being charged.'
     exit 0
 fi
 BATTERY_LEVEL=$(acpi | grep -oE "[0-9]+%" | sed 's/%//')
