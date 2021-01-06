@@ -8,3 +8,6 @@ set colored-completion-prefix On
 set visible-stats On
 # Color files by types
 set colored-stats On
+
+# Don't highlight pasting
+set enable-bracketed-paste off
