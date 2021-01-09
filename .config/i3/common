@@ -15,7 +15,7 @@ bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t b
  -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
 
 # screenshot
-bindsym --release Print exec --no-startup-id "escrotum -C; notify-send -t 2000 Screenshotted."
+bindsym --release Print exec --no-startup-id "escrotum -C; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
 bindsym --release $mod+Shift+s exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
 
 # lock
