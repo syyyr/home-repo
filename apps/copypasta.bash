@@ -19,7 +19,9 @@ sunglasses 😎
 diamond 💎
 eyes 👀
 roll 🙄
+smoke/exhale 😤
 sweat 😅
+sweat 🥵
 hundred/100 💯
 fear/scared 😱
 honk/goose 🦢
