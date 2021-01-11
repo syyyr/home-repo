@@ -13,7 +13,7 @@ VISIBLE_BATTERY_LEVEL=$((BATTERY_LEVEL + 1))
 if [[ "$BATTERY_LEVEL" -le "$THRESHOLD" ]]; then
     echo 'Battery is low.'
     KEYBOARD_IMG="$HOME/.local/share/icons/blue/battery-low.png"
-    ARGS='-t 5000 -h string:x-canonical-private-synchronous:kbacklight'
+    ARGS='-u critical -t 5000 -h string:x-canonical-private-synchronous:kbacklight'
     ARGS+=" -i $KEYBOARD_IMG"
     notify-send $ARGS 'Battery low' "$BATTERY_LEVEL%"
     ffplay ~/.local/share/notification.mp3 -nodisp -autoexit
