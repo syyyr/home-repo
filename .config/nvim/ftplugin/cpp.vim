@@ -31,7 +31,6 @@ endfunction
 
 command! -bang -nargs=1 Print call s:PrintSomething("<args>", "<bang>")
 command! -bang Printthis call s:PrintThis("<bang>")
-nnoremap <buffer> <expr> é expand('%:e') == 'cpp' ? (filereadable(expand('%:r') . '.hpp') ? ':e %:r.hpp<cr>' : ':e %:r.h<cr>' ) : ':e %:r.cpp<cr>'
 
 nnoremap <C-]> :CocDefinition<cr>
 nnoremap <C-W><C-]> <c-w><c-s>:CocDefinition<cr>
