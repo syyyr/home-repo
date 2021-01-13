@@ -19,7 +19,7 @@ nnoremap <space> /
 xnoremap <space> /
 
 " disable highlight
-nnoremap <A-cr> :nohlsearch<cr>:call coc#util#float_hide()<cr>:call clever_f#reset()<cr>:<BS>
+nnoremap <A-cr> :call custom#CleanScreen()<CR>:nohlsearch<CR>:<BS>
 
 " jump to next merge conflict
 nnoremap <silent> <A-c> :silent! keeppatterns /\v^[<\|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>

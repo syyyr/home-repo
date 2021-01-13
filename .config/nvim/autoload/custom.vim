@@ -30,6 +30,11 @@ function! custom#MyModified() abort
     return ''
 endfun
 
+function! custom#CleanScreen() abort
+    call coc#float#close_all()
+    call clever_f#reset()
+endfun
+
 function! custom#SumNumbers() abort
     normal! mm
     let l:old=@a
