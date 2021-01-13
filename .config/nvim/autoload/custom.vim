@@ -57,7 +57,12 @@ function! custom#TrailingWsCheck() abort
 endfun
 
 function! custom#CocCheck(id) abort
-    let l:info = CocAction('diagnosticList')
+    try
+        let l:info = CocAction('diagnosticList')
+    catch /coc.nvim not ready/
+        return
+    endtry
+
     if type(l:info) != v:t_list
         return
     endif
