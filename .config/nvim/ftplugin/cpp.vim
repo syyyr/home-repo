@@ -25,6 +25,7 @@ function! s:PrintThis(delete)
         normal! "kyy"kP
     endif
     substitute /;$//e
+    normal! ^y$i"pa = " << 
     normal! Istd::cout << 
     normal! A << "\n";
 endfunction
