@@ -25,6 +25,7 @@ sweat 🥵
 hundred/100 💯
 fear/scared 😱
 honk/goose 🦢
+puke 🤮
 devil 😈
 shrug ¯\_(ツ)_/¯
 tm ™
