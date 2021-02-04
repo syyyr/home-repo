@@ -1,5 +1,5 @@
 alias :q='exit'
-alias calc="python"
+alias calc="python -q"
 alias cd..='cd ..'
 alias cdp='cd -P'
 alias dc='cd'
