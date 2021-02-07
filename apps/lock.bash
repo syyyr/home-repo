@@ -1,6 +1,17 @@
 #!/bin/bash
 "$HOME/apps/check_available.bash" i3lock || exit 1
 
+get_muted()
+{
+    if "$HOME/apps/volume.bash" | grep muted; then
+        echo 0
+        return 0
+    else
+        echo 1
+        return 1
+    fi
+}
+
 if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     ARGS='
     -k
@@ -21,11 +32,7 @@ fi
 
 "$HOME/apps/kbacklight.bash" 0
 # TODO: if you take out headphones, the speakers get unumuted
-TOGGLE=no
-if ! "$HOME/apps/volume.bash" | grep muted; then
-    "$HOME/apps/volume.bash" toggle
-    TOGGLE='yes'
-fi
+MUTED_BEFORE=$(get_muted)
 
 if [[ "$1" != "no-off" ]]; then
     (sleep 7; xset dpms force off)&
@@ -39,6 +46,8 @@ if [[ "$1" != "no-off" ]]; then
     kill "$SCREENOFF_PID" 2> /dev/null
 fi
 
-if [ $TOGGLE = "yes" ]; then
+MUTED_NOW=$(get_muted)
+
+if [[ $MUTED_BEFORE != $MUTED_NOW ]]; then
     "$HOME/apps/volume.bash" toggle
 fi
