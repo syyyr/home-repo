@@ -4,14 +4,34 @@
             jq -r '.messages |
             map(
                     (.timestamp_ms / 1000 | localtime | strftime("%d. %m. %Y %H:%M:%S\t")) +
-                    .sender_name + ":\t" +
-                    (if .content then
-                    (.content | gsub("\n"; "NEW_LINE"))
-                    elif .gifs then
-                        "sent a GIF."
-                    elif .photos then
-                        "sent a photo."
-                    else "<unsent message>" end) ) | .[] '
+                    .sender_name + ":\t" + (
+                        if .type == "Share" then
+                            .content + " " + .share.link
+                        elif .call_duration then
+                            .content + " Call duration: " + (.call_duration | tostring)
+                        elif .gifs then
+                            if .content then .content else "sent a GIF." end
+                        elif .audio_files then
+                            if .content then .content else "sent an audio file." end
+                        elif .photos then
+                            if .content then .content else "sent a photo." end
+                        elif .sticker then
+                            "sent a sticker."
+                        elif .videos then
+                            if .content then .content else "sent a video." end
+                        elif .file then
+                            if .content then .content else "sent a file." end
+                        elif .content then
+                            (.content | gsub("\n"; "NEW_LINE"))
+                        else "<unsent message>" end
+                    ) + (
+                        if .reactions then
+                            "     (" + (.reactions | map(.actor + " reacted with " + .reaction) | join( "  ")) + ")"
+                        else
+                            ""
+                        end
+                    )
+                    ) | .[] '
     done
 } | tac > temp_decoded
 awk '
