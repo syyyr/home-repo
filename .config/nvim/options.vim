@@ -103,3 +103,5 @@ set formatoptions-=t
 set pastetoggle=<F6>
 
 set makeprg=make\ -C\ build
+
+set commentstring=#\ %s
