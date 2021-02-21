@@ -1,7 +1,7 @@
 refresh_video_url()
 {
     echo -n Getting new video link...
-    VIDEO_LINK="$(python "$LIBFILE" "$ORIGINAL_URL")"
+    VIDEO_LINK="$(python3 "$LIBFILE" "$ORIGINAL_URL")"
     echo " done."
 }
 
