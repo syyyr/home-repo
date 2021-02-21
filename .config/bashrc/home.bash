@@ -8,7 +8,8 @@ export BROWSER="wslbrowser"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-export DISPLAY="localhost:0"
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+export LIBGL_ALWAYS_INDIRECT=1
 
 #win cmd autocomplete BS
 source "$HOME/.rustup-comp"
@@ -18,7 +19,6 @@ export SCREENDIR="$HOME/.screen"
 
 #x server BS
 if [ -z "$SSH_CLIENT" ]; then
-export DISPLAY="localhost:0"
 export RUNLEVEL="3"
 rm -rf "$HOME/.cache/sessions"
 fi
