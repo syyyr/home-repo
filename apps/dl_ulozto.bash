@@ -1,7 +1,7 @@
 refresh_video_url()
 {
     echo -n Getting new video link...
-    VIDEO_LINK="$(python "$HOME/apps/lib/get_ulozto_video_link.py" "$ORIGINAL_URL")"
+    VIDEO_LINK="$(python "$LIBFILE" "$ORIGINAL_URL")"
     echo " done."
 }
 
@@ -26,6 +26,20 @@ if [[ $# != 2 ]]; then
 fi
 FILENAME="$1"
 ORIGINAL_URL="$2"
+
+if [[ -n "$DL_ULOZTO_LIB" ]]; then
+    LIBFILE="$DL_ULOZTO_LIB"
+elif pushd "${BASH_SOURCE%/*}/" > /dev/null && [[ -f lib/get_ulozto_video_link.py ]]; then
+    LIBFILE="$(realpath "lib/get_ulozto_video_link.py")"
+    popd > /dev/null
+else
+    echo "Couldn't find the LIBFILE".
+    echo "Default location is $(realpath "${BASH_SOURCE%/*}")/lib/get_ulozto_video_link.py".
+    echo "This is the default location if you clone the whole repo."
+    echo 'Alternatively, you can specify the location with the $DL_ULOZTO_LIB'
+    exit 1
+fi
+
 echo Downloading "$ORIGINAL_URL"
 
 refresh_video_url
