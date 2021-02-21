@@ -2,7 +2,7 @@ refresh_video_url()
 {
     echo -n Getting new video link...
     VIDEO_LINK="$(python3 "$LIBFILE" "$ORIGINAL_URL" 2> /dev/null)"
-    if [[ "$?" ]]; then
+    if [[ "$?" -ne 0 ]]; then
         echo
         echo "Unable to get a download link. Possible reasons:" >&2
         echo "    1) You didn't specify a valid ulozto link." >&2
