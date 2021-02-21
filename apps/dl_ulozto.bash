@@ -1,7 +1,16 @@
 refresh_video_url()
 {
     echo -n Getting new video link...
-    VIDEO_LINK="$(python3 "$LIBFILE" "$ORIGINAL_URL")"
+    VIDEO_LINK="$(python3 "$LIBFILE" "$ORIGINAL_URL" 2> /dev/null)"
+    if [[ "$?" ]]; then
+        echo
+        echo "Unable to get a download link. Possible reasons:" >&2
+        echo "    1) You didn't specify a valid ulozto link." >&2
+        echo "    2) ulozto could be blocked in your country." >&2
+        echo "    3) Your computer is so slow, that it took more than 10 seconds to load the ulozto webpage. In that case, open
+       $LIBFILE and try to increase the timeout inside the waitForElem function." >&2
+        exit 1
+    fi
     echo " done."
 }
 
@@ -33,10 +42,10 @@ elif pushd "${BASH_SOURCE%/*}/" > /dev/null && [[ -f lib/get_ulozto_video_link.p
     LIBFILE="$(realpath "lib/get_ulozto_video_link.py")"
     popd > /dev/null
 else
-    echo "Couldn't find the LIBFILE".
-    echo "Default location is $(realpath "${BASH_SOURCE%/*}")/lib/get_ulozto_video_link.py".
-    echo "This is the default location if you clone the whole repo."
-    echo 'Alternatively, you can specify the location with the $DL_ULOZTO_LIB'
+    echo "Couldn't find the LIBFILE". >&2
+    echo "Default location is $(realpath "${BASH_SOURCE%/*}")/lib/get_ulozto_video_link.py". >&2
+    echo "This is the default location if you clone the whole repo." >&2
+    echo 'Alternatively, you can specify the location with the $DL_ULOZTO_LIB.' >&2
     exit 1
 fi
 

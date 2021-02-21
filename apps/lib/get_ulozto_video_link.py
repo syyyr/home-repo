@@ -12,7 +12,10 @@ if len(sys.argv) != 2:
 
 
 def waitForElem(browser, locator):
-    return WebDriverWait(browser, 10).until(EC.presence_of_element_located(locator))
+    try:
+        return WebDriverWait(browser, 10).until(EC.presence_of_element_located(locator))
+    except:
+        sys.exit(1)
 
 
 options = webdriver.ChromeOptions()
