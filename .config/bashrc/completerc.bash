@@ -6,8 +6,9 @@ __impl_path_compl() {
 
 _setup_path_compl() {
     eval "_$1_complete() {
-        cd '$2'
+        pushd '$2' > /dev/null
         FZF_COMPLETION_TRIGGER="" __fzf_generic_path_completion __impl_path_compl '-m' ''
+        popd > /dev/null
     }"
     complete -F "_$1_complete" "$1"
 }
