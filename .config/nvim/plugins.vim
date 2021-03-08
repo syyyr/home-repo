@@ -18,6 +18,9 @@ let g:indentLine_char = '▏'
 let g:indentLine_fileTypeExclude = ['tab', 'help']
 let g:indent_blankline_debug = v:true
 
+let g:linuxsty_patterns = ['/linux/']
+packadd! vim-linux-coding-style
+
 packadd! clever-f.vim
 let g:clever_f_smart_case = 1
 
