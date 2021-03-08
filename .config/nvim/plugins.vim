@@ -49,6 +49,8 @@ command! CocReferences call CocActionAsync('jumpReferences')
 command! CocHover call CocActionAsync('doHover')
 command! CocRename call CocActionAsync('rename')
 command! CF CocFix
+command! CR CocRename
+command! CS CocList symbols
 nnoremap <silent> <c-space> :CocHover<cr>
 
 packadd! vim-dispatch
