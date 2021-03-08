@@ -22,8 +22,7 @@ bindsym --release $mod+Shift+s exec --no-startup-id "~/apps/area-screenshot.bash
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 
 # browser
-bindsym $mod+b workspace 2; exec --no-startup-id chromium
-#bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
+bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
 # fun stuff
 bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e $HOME/apps/i3config.bash"
