@@ -217,3 +217,8 @@ rm()
 
     /usr/bin/rm "$@"
 }
+
+compress()
+{
+    ffmpeg -i "$1" "${1/./-compressed.}"
+}
