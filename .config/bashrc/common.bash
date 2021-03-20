@@ -47,5 +47,11 @@ bind -x '"\C-z":"fg &> /dev/null"'
 eval "$(dircolors)"
 
 source /usr/share/fzf/completion.bash
+source "$HOME/.config/bashrc/alias.bash"
 source "$HOME/.config/bashrc/colors.bash"
 source "$HOME/.config/bashrc/completerc.bash"
+source "$HOME/.config/bashrc/env.bash"
+source "$HOME/.config/bashrc/functions.bash"
+if [[ -f "$HOME/.config/bashrc/ignore.bash" ]]; then
+    source "$HOME/.config/bashrc/ignore.bash"
+fi
