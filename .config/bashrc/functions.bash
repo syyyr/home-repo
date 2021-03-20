@@ -222,3 +222,8 @@ compress()
 {
     ffmpeg -i "$1" "${1/./-compressed.}"
 }
+
+try()
+{
+    while ! "$@"; do :; done
+}
