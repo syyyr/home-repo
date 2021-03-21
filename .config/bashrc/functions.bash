@@ -220,7 +220,7 @@ rm()
 
 compress()
 {
-    ffmpeg -i "$1" "${1/./-compressed.}"
+    ffmpeg -i "$1" "$(sed -r 's/\.[^\.]+$/.mp4/' <<< "$1")"
 }
 
 try()
