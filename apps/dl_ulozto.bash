@@ -83,7 +83,8 @@ while true; do
         *)
             echo curl: exit code $RET
             echo "$OUT"
-            break
+            echo "$RET" >> ~/dl_ulozto.log
+            echo "$OUT" >> ~/dl_ulozto.log
             ;;
     esac
 done

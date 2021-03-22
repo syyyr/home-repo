@@ -1,5 +1,16 @@
 #!/bin/bash
 
+exec &> /home/vk/.local/vymena.log
+
+# TODO: refactor this to a script
+show_notif()
+{
+    POWERSHELL="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+    if [[ -f "$POWERSHELL" ]]; then
+        "$POWERSHELL" 'C:\Users\sirve\Documents\show_notif.ps1' "$1" "$2" 'C:\Users\sirve\Documents\extra.ico' > /dev/null
+    fi
+}
+
 DATE_REGEX="$(date -d "Wednesday" '+%d.*%-m.*%y')"
 
 JSON="$(python3 "$HOME/apps/lib/search_ulozto.py" "výměna manželek" "$DATE_REGEX")"
@@ -21,10 +32,7 @@ if [[ -f "$OUT_FILE" ]]; then
     exit 0
 fi
 
-POWERSHELL="/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
-if [[ -f "$POWERSHELL" ]]; then
-    "$POWERSHELL" 'C:\Users\sirve\Documents\show_notif.ps1' '"Výměna manželek"' '"Stahuji novou výměnu."' > /dev/null
-fi
+show_notif '"Výměna manželek"' '"Stahuji novou výměnu."'
 
 
 "$HOME/apps/dl_ulozto.bash" "$OUT_FILE" "$LINK"
@@ -34,6 +42,4 @@ if [[ "$EXTENSION" != "mp4" ]]; then
 fi
 rakup "$OUT_FILE"
 
-if [[ -f "$POWERSHELL" ]]; then
-    "$POWERSHELL" 'C:\Users\sirve\Documents\show_notif.ps1' '"Výměna manželek"' '"Hotovo."' > /dev/null
-fi
+show_notif '"Výměna manželek"' '"Hotovo"'
