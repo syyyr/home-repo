@@ -13,3 +13,5 @@ nnoremap <buffer> <expr> 8 getline('.')[col('.')-1] == "-" ? "r8" : "ciw8\<esc>"
 nnoremap <buffer> <expr> 9 getline('.')[col('.')-1] == "-" ? "r9" : "ciw9\<esc>"
 nnoremap <buffer> b ?\d\+<cr>:nohl<cr>
 nnoremap <buffer> w /\d\+<cr>:nohl<cr>
+nnoremap <buffer> H 0/\d\+<cr>:nohl<cr>
+nnoremap <buffer> L $?\d\+<cr>:nohl<cr>
