@@ -67,3 +67,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-linux-coding-style"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-linux-coding-style
 	url = https://github.com/vivien/vim-linux-coding-style.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/vim-cpp-modern"]
+	path = .local/share/nvim/site/pack/bundle/opt/vim-cpp-modern
+	url = https://github.com/bfrg/vim-cpp-modern.git

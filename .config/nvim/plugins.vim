@@ -11,6 +11,7 @@ packadd! vim-better-whitespace
 packadd! yang.vim
 packadd! vim-commentary
 packadd! vim-qml
+packadd! vim-cpp-modern
 
 packadd! indentLine
 packadd! indent-blankline.nvim
