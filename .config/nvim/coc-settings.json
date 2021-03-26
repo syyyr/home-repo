@@ -26,6 +26,12 @@
             ]
         }
     },
+    "languageserver": {
+        "yang": {
+            "command": "/home/vk/down/yang-language-server-0.3.1/bin/yang-language-server",
+            "filetypes": ["yang"]
+        }
+    },
     "diagnostic-languageserver.trace.server": "verbose",
     "rust.clippy_preference": "on",
     "coc.source.omni.filetypes": ["sshconfig"]
