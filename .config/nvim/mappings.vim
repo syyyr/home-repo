@@ -116,3 +116,5 @@ tnoremap <esc> <C-\><C-N>
 
 nnoremap úc :cprev<cr>
 nnoremap )c :cnext<cr>
+
+nnoremap Q <nop>
