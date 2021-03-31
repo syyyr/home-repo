@@ -225,5 +225,5 @@ compress()
 
 try()
 {
-    while ! "$@"; do :; done
+    while ! "$@"; do sleep 0.1; done
 }
