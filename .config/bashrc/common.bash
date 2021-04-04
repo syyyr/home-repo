@@ -16,15 +16,18 @@ HISTFILESIZE='50000'
 
 _STATUS()
 {
+    echo -en '\033[38;5;7m\033[3m'
+    date "+%H:%M:%S" | tr -d '\n'
     # local GOOD=(👍 😂 👌)
     local BAD=(👎 😭 😤)
     if [[ "$1" -eq 0 ]]; then
         :
         # echo ${GOOD[$RANDOM % ${#GOOD[@]}]}
     else
-        echo -n "${BAD[$RANDOM%${#BAD[@]}]}"
-        echo -e ' \033[38;5;7m\033[3m'${1}'\033[0m'
+        echo -n " ${BAD[$RANDOM%${#BAD[@]}]}"
+        echo -n " ${1}"
     fi
+    echo -en '\033[0m'
 }
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(_STATUS $?)\n$ '
