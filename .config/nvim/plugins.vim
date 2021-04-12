@@ -3,7 +3,6 @@ scriptencoding utf8
 packadd! i3config.vim
 packadd! vim-colon-therapy
 packadd! vim-pug
-packadd! tabular
 packadd! vim-superman
 packadd! undotree
 packadd! vim-better-whitespace
@@ -15,6 +14,10 @@ packadd! readline.vim
 
 packadd! indentLine
 packadd! indent-blankline.nvim
+
+let g:no_default_tabular_maps = 1
+packadd! tabular
+
 let g:indentLine_char = '▏'
 let g:indentLine_fileTypeExclude = ['tab', 'help']
 let g:indent_blankline_debug = v:true
