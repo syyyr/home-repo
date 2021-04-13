@@ -70,3 +70,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-cpp-modern"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-cpp-modern
 	url = https://github.com/bfrg/vim-cpp-modern.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/readline.vim"]
+	path = .local/share/nvim/site/pack/bundle/opt/readline.vim
+	url = https://github.com/ryvnf/readline.vim.git

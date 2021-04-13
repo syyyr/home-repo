@@ -12,6 +12,7 @@ packadd! yang.vim
 packadd! vim-commentary
 packadd! vim-qml
 packadd! vim-cpp-modern
+packadd! readline.vim
 
 packadd! indentLine
 packadd! indent-blankline.nvim
