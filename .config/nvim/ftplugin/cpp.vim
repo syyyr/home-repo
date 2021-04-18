@@ -11,9 +11,9 @@ endfunction
 function! s:PrintSomething(args, ...)
     call s:AddIostream()
     if a:1 == '!'
-        execute 'normal! ostd::cout << "' . a:args . '\n";'
+        execute 'normal! ostd::cerr << "' . a:args . '\n";'
     else
-        execute 'normal! ostd::cout << "' . a:args . '" << " = " << ' . a:args . ' << "\n";'
+        execute 'normal! ostd::cerr << "' . a:args . '" << " = " << ' . a:args . ' << "\n";'
     endif
 endfunction
 
@@ -26,7 +26,7 @@ function! s:PrintThis(delete)
     endif
     substitute /;$//e
     normal! ^y$i"pa = " << 
-    normal! Istd::cout << 
+    normal! Istd::cerr << 
     normal! A << "\n";
 endfunction
 
