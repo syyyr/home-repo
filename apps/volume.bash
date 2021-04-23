@@ -4,11 +4,11 @@
 case "$1" in
     increase)
         pamixer --allow-boost --increase "$2"
-        echo "Lowering volume."
+        echo "Raising volume."
         ;;
     decrease)
         pamixer --allow-boost --decrease "$2"
-        echo "Raising volume."
+        echo "Lowering volume."
         ;;
     toggle)
         pamixer --toggle-mute
