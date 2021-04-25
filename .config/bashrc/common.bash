@@ -33,8 +33,9 @@ _GEN_PROMPT()
     # FIXME: make this code a littler cleaner, perhaps get rid of shell expansion completely and generate everything myself
     # ERROR has to be generated first, otherwise $? gets overwritten
     local ERROR="$(_PROMPT_ERROR "$?")"
-    local USER="$(whoami | tr -d '\n')"
-    local TEMPLATE_COLORLESS='\u@\h:\w'"$ERROR"
+    local TO_EXPAND='\u'
+    USER="${TO_EXPAND@P}"
+    local TEMPLATE_COLORLESS="$USER"'@\h:\w'"$ERROR"
     local PREFIX_COLORLESS="${TEMPLATE_COLORLESS@P}"
     # 8 because eight characters for the date
     local NUM_SPACES="$((${COLUMNS} - ${#PREFIX_COLORLESS} - 8))"
