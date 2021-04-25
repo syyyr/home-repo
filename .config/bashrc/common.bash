@@ -14,10 +14,9 @@ shopt -s histappend
 HISTSIZE='50000'
 HISTFILESIZE='50000'
 
-_PROMPT_EMOJI()
+_PROMPT_ERROR()
 {
-    echo -en '\033[38;5;7m\033[3m'
-    date "+%H:%M:%S" | tr -d '\n'
+    # FIXME: perhaps merge this with the prompt function
     # local GOOD=(👍 😂 👌)
     local BAD=(👎 😭 😤)
     if [[ "$1" -eq 0 ]]; then
@@ -27,10 +26,25 @@ _PROMPT_EMOJI()
         echo -n " ${BAD[$RANDOM%${#BAD[@]}]}"
         echo -n " ${1}"
     fi
-    echo -en '\033[0m'
 }
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(_PROMPT_EMOJI $?)\n$ '
+_GEN_PROMPT()
+{
+    # FIXME: make this code a littler cleaner, perhaps get rid of shell expansion completely and generate everything myself
+    local ERROR="$(_PROMPT_ERROR "$?")"
+    local TEMPLATE_COLORLESS='\u@\h:\w'"$ERROR"
+    local PREFIX_COLORLESS="${TEMPLATE_COLORLESS@P}"
+    # 8 because eight characters for the date
+    local NUM_SPACES="$((${COLUMNS} - ${#PREFIX_COLORLESS} - 8))"
+    if [[ "$ERROR" ]]; then
+        # Emojis actually take up two columns, but bash counts them as 1 character.
+        NUM_SPACES="$(("$NUM_SPACES" - 1))"
+    fi
+    local SPACES="$(printf ' %.0s' $(seq 1 "${NUM_SPACES}"))"
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'"${ERROR}${SPACES}"'\[\033[38;5;7;3m\]$(date "+%H:%M:%S" | tr -d '\n')\[\033[00m\]\n$ '
+}
+
+PROMPT_COMMAND=_GEN_PROMPT
 
 stty susp undef
 stty -ixon
