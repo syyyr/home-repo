@@ -14,7 +14,7 @@ shopt -s histappend
 HISTSIZE='50000'
 HISTFILESIZE='50000'
 
-_STATUS()
+_PROMPT_EMOJI()
 {
     echo -en '\033[38;5;7m\033[3m'
     date "+%H:%M:%S" | tr -d '\n'
@@ -30,7 +30,7 @@ _STATUS()
     echo -en '\033[0m'
 }
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(_STATUS $?)\n$ '
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(_PROMPT_EMOJI $?)\n$ '
 
 stty susp undef
 stty -ixon
