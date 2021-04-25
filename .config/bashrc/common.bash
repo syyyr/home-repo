@@ -43,7 +43,7 @@ _GEN_PROMPT()
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
     local SPACES="$(printf ' %.0s' $(seq 1 "${NUM_SPACES}"))"
-    PS1='\[\033[01;32m\]'"${USER}"'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'"${ERROR}${SPACES}"'\[\033[38;5;7;3m\]$(date "+%H:%M:%S" | tr -d '\n')\[\033[00m\]\n$ '
+    PS1='\[\033[01;32m\]'"${USER}"'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[38;5;7;3m\]'"${ERROR}${SPACES}"'$(date "+%H:%M:%S" | tr -d '\n')\[\033[00m\]\n$ '
 }
 
 PROMPT_COMMAND=_GEN_PROMPT
