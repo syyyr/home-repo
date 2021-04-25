@@ -28,23 +28,28 @@ _PROMPT_ERROR()
     fi
 }
 
+expand_prompt()
+{
+    echo -n "${1@P}"
+}
+
 _GEN_PROMPT()
 {
-    # FIXME: make this code a littler cleaner, perhaps get rid of shell expansion completely and generate everything myself
     # ERROR has to be generated first, otherwise $? gets overwritten
     local ERROR="$(_PROMPT_ERROR "$?")"
-    local TO_EXPAND='\u'
-    USER="${TO_EXPAND@P}"
-    local TEMPLATE_COLORLESS="$USER"'@\h:\w'"$ERROR"
-    local PREFIX_COLORLESS="${TEMPLATE_COLORLESS@P}"
-    # 8 because eight characters for the date
-    local NUM_SPACES="$((${COLUMNS} - ${#PREFIX_COLORLESS} - 8))"
+    local GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
+    local USER_HOST="$(expand_prompt '\u@\h')"
+    local WORKDIR="$(expand_prompt '\w')"
+    local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR}${ERROR}"
+    local TIME="$(date "+%H:%M:%S" | tr -d '\n')"
+    # Eight characters for the date.
+    local NUM_SPACES="$((${COLUMNS} - ${#PROMPT_COLORLESS} - 8))"
     if [[ "$ERROR" ]]; then
         # Emojis actually take up two columns, but bash counts them as 1 character.
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
     local SPACES="$(printf ' %.0s' $(seq 1 "${NUM_SPACES}"))"
-    PS1='\[\033[01;32m\]'"${USER}"'@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[38;5;7;3m\]'"${ERROR}${SPACES}"'$(date "+%H:%M:%S" | tr -d '\n')\[\033[00m\]\n$ '
+    PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${CURSIVE_GRAY}${ERROR}${SPACES}${TIME}${NORMAL_COLOR}"'\n$ '
 }
 
 PROMPT_COMMAND=_GEN_PROMPT
