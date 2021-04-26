@@ -27,6 +27,7 @@ _GEN_PROMPT()
         local BAD=(👎 😭 😤)
         local ERROR=" ${BAD[$RANDOM%${#BAD[@]}]} $CODE"
     fi
+
     if [[ "$_COMMAND_START_TIME" ]]; then
         local CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
         # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
@@ -35,11 +36,14 @@ _GEN_PROMPT()
         fi
         unset _COMMAND_START_TIME
     fi
+
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
+
     local USER_HOST="$(expand_prompt '\u@\h')"
     local WORKDIR="$(expand_prompt '\w')"
-    local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR}${ERROR}"
     local TIME="$(date "+%H:%M:%S" | tr -d '\n')"
+
+    local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR}${ERROR}"
     # Eight characters for the date.
     local NUM_SPACES="$((${COLUMNS} - ${#PROMPT_COLORLESS} - ${#LAST_COMMAND_DURATION} - 8))"
     if [[ "$ERROR" ]]; then
@@ -47,9 +51,13 @@ _GEN_PROMPT()
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
     local SPACES="$(printf ' %.0s' $(seq 1 "${NUM_SPACES}"))"
+
+    # Set the title.
     echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"
+
     PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${CURSIVE_GRAY}${ERROR}${SPACES}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
 }
+
 PROMPT_COMMAND=_GEN_PROMPT
 
 _SAVE_STARTUP_TIME()
