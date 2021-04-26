@@ -14,20 +14,6 @@ shopt -s histappend
 HISTSIZE='50000'
 HISTFILESIZE='50000'
 
-_PROMPT_ERROR()
-{
-    # FIXME: perhaps merge this with the prompt function
-    # local GOOD=(👍 😂 👌)
-    local BAD=(👎 😭 😤)
-    if [[ "$1" -eq 0 ]]; then
-        :
-        # echo ${GOOD[$RANDOM % ${#GOOD[@]}]}
-    else
-        echo -n " ${BAD[$RANDOM%${#BAD[@]}]}"
-        echo -n " ${1}"
-    fi
-}
-
 expand_prompt()
 {
     echo -n "${1@P}"
@@ -35,8 +21,12 @@ expand_prompt()
 
 _GEN_PROMPT()
 {
-    # ERROR has to be generated first, otherwise $? gets overwritten
-    local ERROR="$(_PROMPT_ERROR "$?")"
+    # Have to save the error code, otherwise it'll by be overwritten immediately (by the `[[` command).
+    local CODE="$?"
+    if [[ "$CODE" -ne 0 ]]; then
+        local BAD=(👎 😭 😤)
+        local ERROR=" ${BAD[$RANDOM%${#BAD[@]}]} $CODE"
+    fi
     if [[ "$_COMMAND_START_TIME" ]]; then
         local CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
         # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
