@@ -5,6 +5,4 @@ export PATH="/opt/cesnet/bin:$PATH"
 export PATH="/opt/cesnet-au/bin:$PATH"
 export PATH="/opt/cesnet-t/bin:$PATH"
 
-export SCREENDIR="$HOME/.screen"
-
 source "$HOME/.config/bashrc/common.bash"

@@ -10,9 +10,6 @@ export LIBGL_ALWAYS_INDIRECT=1
 # win cmd autocomplete BS
 source "$HOME/.rustup-comp"
 
-# screen BS
-export SCREENDIR="$HOME/.screen"
-
 # x server BS
 if [ -z "$SSH_CLIENT" ]; then
 export RUNLEVEL="3"
