@@ -57,6 +57,7 @@ _GEN_PROMPT()
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
     local SPACES="$(printf ' %.0s' $(seq 1 "${NUM_SPACES}"))"
+    echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"
     PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}\\a${CURSIVE_GRAY}${ERROR}${SPACES}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
 }
 PROMPT_COMMAND=_GEN_PROMPT
