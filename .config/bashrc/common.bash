@@ -19,6 +19,27 @@ expand_prompt()
     echo -n "${1@P}"
 }
 
+format_exec_time()
+{
+    MILLI="$1"
+    echo "$MILLI" | bc <(echo '
+        input = read();
+        min = input/60/1000;
+        if (min >= 3) { /* from three minutes onward, we will show to output in the XXm XX.XXs format. */
+            print min;
+            print "m ";
+            input-=min*60*1000
+        }
+        scale=3;
+        sec=input/1000;
+        if (sec < 1) {
+            print "0";
+        }
+        print sec;
+        print "s";
+    ')
+}
+
 _GEN_PROMPT()
 {
     # Have to save the error code, otherwise it'll by be overwritten immediately (by the `[[` command).
@@ -32,7 +53,7 @@ _GEN_PROMPT()
         local CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
         # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
         if [[ $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) -ge 1000 ]]; then
-            local LAST_COMMAND_DURATION=" ($(bc <<< "scale=3; $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) / 1000")s)"
+            local LAST_COMMAND_DURATION=" ($(format_exec_time $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
         fi
         unset _COMMAND_START_TIME
     fi
