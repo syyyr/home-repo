@@ -12,8 +12,8 @@ source "$HOME/.rustup-comp"
 
 # x server BS
 if [ -z "$SSH_CLIENT" ]; then
-export RUNLEVEL="3"
-rm -rf "$HOME/.cache/sessions"
+    export RUNLEVEL="3"
+    rm -rf "$HOME/.cache/sessions"
 fi
 xmodmap -e 'keycode 126='
 export SDL_RENDER_DRIVER=software # We don't have hardware rendering on WSL, so let's just use software by default
