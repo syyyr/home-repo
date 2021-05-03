@@ -122,7 +122,6 @@ gso()
     fi
 
     echo "grep $CASE -IHrn $COLOR $ARGS $DIRECTORY"
-    # FIXME: this doesn't exactly work, the args aren't begin properly parsed
     local RESULTS="$(grep $CASE -IHrn $COLOR "$ARGS" $DIRECTORY)"
     if [[ "$RESULTS" = '' ]]; then
         echo 'No match.' >&1
