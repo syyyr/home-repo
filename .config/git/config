@@ -20,3 +20,5 @@
 [sendemail]
     smtpServer = /home/vk/bin/sendgmail
     smtpServerOption = -sender=sir.venceslas@gmail.com
+[init]
+	defaultBranch = main
