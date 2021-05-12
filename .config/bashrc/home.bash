@@ -17,6 +17,7 @@ if [ -z "$SSH_CLIENT" ]; then
 fi
 xmodmap -e 'keycode 126='
 export SDL_RENDER_DRIVER=software # We don't have hardware rendering on WSL, so let's just use software by default
+export QMLSCENE_DEVICE=softwarecontext
 
 # path BS
 PATH=""
