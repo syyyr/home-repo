@@ -18,16 +18,16 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     -i '$HOME'/.local/share/win10lock-template.png
     --time-font=Segoeui
     --date-font=Segoeui
-    --timesize=130
-    --datesize=59
-    --timestr="%H:%M"
-    --datestr="%A, %d. %B"
-    --datecolor=FFFFFF
-    --timecolor=FFFFFF
-    --timepos=80:913
+    --time-size=130
+    --date-size=59
+    --time-str="%H:%M"
+    --date-str="%A, %d. %B"
+    --date-color=FFFFFF
+    --time-color=FFFFFF
+    --time-pos=80:913
     --date-align=1
     --time-align=1
-    --datepos="80:ty+80"'
+    --date-pos="80:ty+80"'
 fi
 
 "$HOME/apps/kbacklight.bash" 0
