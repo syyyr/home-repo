@@ -6,6 +6,7 @@ tears 😭
 joy 😂
 :DD/grin 😁
 ok_hand 👌
+thumbs_up 👍
 :D 😀
 :* 😘
 angery 😠
@@ -16,6 +17,7 @@ party 🎉
 heart ❤
 heart_eyes 😍
 sunglasses 😎
+checkmark ✅
 diamond 💎
 eyes 👀
 roll 🙄
