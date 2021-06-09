@@ -28,7 +28,7 @@
     },
     "languageserver": {
         "yang": {
-            "command": "/home/vk/down/yang-language-server-0.3.1/bin/yang-language-server",
+            "command": "/usr/bin/yang-language-server",
             "filetypes": ["yang"]
         }
     },
