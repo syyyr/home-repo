@@ -20,11 +20,13 @@ export SDL_RENDER_DRIVER=software # We don't have hardware rendering on WSL, so 
 export QMLSCENE_DEVICE=softwarecontext
 
 # path BS
-PATH=""
-PATH="$HOME/.local/bin"
-PATH="/usr/bin/core_perl:$PATH"
-PATH="/usr/local/bin:$PATH"
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
+export PATH=""
+export PATH="$HOME/.local/bin"
+export PATH="/usr/bin/core_perl:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/cesnet/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
+
 
 source "$HOME/.config/bashrc/common.bash"
