@@ -62,6 +62,7 @@ set path+=src/**
 set path+=tests/**
 set path+=dist/**
 set path+=public/**
+set path+=include/**
 
 " pretty windows split :>
 set fillchars=fold:\ ,vert:⏐
