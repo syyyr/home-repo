@@ -159,12 +159,12 @@ string_diff()
 
 twitch()
 {
-    "$HOME/apps/check_available.bash" streamlink chromium || return 1
+    "$HOME/apps/check_available.bash" streamlink google-chrome-stable || return 1
     if [[ $# != 1 ]]; then
         "$HOME/apps/twitch_online.bash"
         return 0
     fi
-    chromium --new-window "https://www.twitch.tv/popout/$1/chat"
+    google-chrome-stable --new-window "https://www.twitch.tv/popout/$1/chat"
     streamlink -v "http://twitch.tv/$1" best
 }
 
