@@ -28,5 +28,6 @@ export PATH="/opt/cesnet/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games" #default
 
+alias wsl_clearcache="echo 1 | sudo tee /proc/sys/vm/drop_caches"
 
 source "$HOME/.config/bashrc/common.bash"
