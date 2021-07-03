@@ -25,3 +25,4 @@ augroup END
 
 let g:tex_flavor='tex'
 let g:is_bash=1
+let g:markdown_syntax_conceal = 0
