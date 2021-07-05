@@ -11,7 +11,6 @@ packadd! vim-qml
 packadd! vim-cpp-modern
 packadd! readline.vim
 
-packadd! indentLine
 packadd! indent-blankline.nvim
 
 let g:no_default_tabular_maps = 1
