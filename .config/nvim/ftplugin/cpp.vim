@@ -1,6 +1,4 @@
-" deafult is /* */
 scriptencoding utf8
-set commentstring=//%s
 
 function! s:AddIostream()
     if search('iostream', 'nw') == 0
