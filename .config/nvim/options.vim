@@ -92,6 +92,9 @@ set statusline=%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'\ \ 
 " don't show completion messages
 set shortmess+=c
 
+" don't show :intro message
+set shortmess+=I
+
 set diffopt+=algorithm:patience
 
 set signcolumn=yes
