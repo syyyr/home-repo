@@ -12,13 +12,15 @@ packadd! vim-cpp-modern
 packadd! readline.vim
 
 packadd! indent-blankline.nvim
+lua << EOF
+require("indent_blankline").setup {
+    char = '▏',
+    buftype_exclude = {'tab', 'help'}
+}
+EOF
 
 let g:no_default_tabular_maps = 1
 packadd! tabular
-
-let g:indentLine_char = '▏'
-let g:indentLine_fileTypeExclude = ['tab', 'help']
-let g:indent_blankline_debug = v:true
 
 let g:linuxsty_patterns = ['/linux/']
 packadd! vim-linux-coding-style
