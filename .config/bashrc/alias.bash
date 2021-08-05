@@ -2,6 +2,7 @@ alias :q='exit'
 alias calc="python -q"
 alias cd..='cd ..'
 alias cdp='cd -P'
+alias ctest='ctest --output-on-failure'
 alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias dc='cd'
 alias email="vim -S $HOME/.config/writing.vim"
