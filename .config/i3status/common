@@ -85,7 +85,7 @@ lm_sensors T440s {
 
 lm_sensors T14s {
         chips = ['thinkpad-isa-0000']
-        sensors = ['temp1']
+        sensors = ['cpu']
         format_sensor = '[\?if=input<40 ❄|[\?if=input<70 🌡️|🔥]]  \?color=input {input}'
         format_chip = '{format_sensor}  ° C'
         cache_timeout = 3
