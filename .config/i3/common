@@ -3,6 +3,7 @@ exec --no-startup-id setxkbmap cz qwerty
 exec --no-startup-id nm-applet --no-agent
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbindkeys
+exec --no-startup-id zulip
 #exec --no-startup-id fluxgui
 #exec --no-startup-id ~/bin/gdrive
 
