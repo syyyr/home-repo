@@ -3,20 +3,35 @@ configuration {
 }
 
 * {
-    foreground: rgba(68, 68, 68, 100%);
-    background-color: rgba(238, 238, 238, 100%);
     font: "Consolas NF 15";
 }
+
+window {
+    padding: 0px;
+    border: 0px;
+}
+
 mainbox {
     border: 2px;
-    border-color: rgba(68, 68, 68, 100%);
+    background-color: rgba(238, 238, 238, 100%);
     padding: 0.5em;
 }
+
 listview {
     margin: 0px 1em 0px 1em;
 }
+
 element.selected.normal {
     background-color: rgba(228, 228, 228, 100%);
+    text-color: rgba(68, 68, 68, 100%);
+}
+
+element.normal.normal {
+    background-color: inherit;
+}
+
+element.alternate.normal {
+    background-color: inherit;
 }
 /* vim:ft=css
 
