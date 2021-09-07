@@ -19,20 +19,28 @@ mainbox {
 
 listview {
     margin: 0px 1em 0px 1em;
+    border: 0px;
 }
 
 element.selected.normal {
     background-color: rgba(228, 228, 228, 100%);
-    text-color: rgba(68, 68, 68, 100%);
+    text-color: rgba(0, 0, 0, 100%);
 }
 
 element.normal.normal {
     background-color: inherit;
+    text-color: inherit;
 }
 
 element.alternate.normal {
     background-color: inherit;
+    text-color: inherit;
 }
+
+num-filtered-rows,case-indicator,num-rows {
+    enabled: false;
+}
+
 /* vim:ft=css
 
 
