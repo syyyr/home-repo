@@ -26,6 +26,7 @@ sweat 😅
 sweat 🥵
 hundred/100 💯
 fear/scared 😱
+rock 🤘
 honk/goose 🦢
 puke 🤮
 devil 😈
