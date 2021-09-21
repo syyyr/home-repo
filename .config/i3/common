@@ -19,6 +19,9 @@ bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t b
 bindsym --release Print exec --no-startup-id "escrotum -C; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
 bindsym --release $mod+Shift+s exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
 
+# zulip
+bindsym --release $mod+z exec --no-startup-id zulip
+
 # lock
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 
