@@ -20,7 +20,7 @@ bindsym --release Print exec --no-startup-id "escrotum -C; ~/apps/rakupscreen.ba
 bindsym --release $mod+Shift+s exec --no-startup-id "~/apps/area-screenshot.bash; notify-send -t 2000 Screenshotted."
 
 # zulip
-bindsym --release $mod+z exec --no-startup-id zulip
+bindsym --release $mod+z exec --no-startup-id zulip; workspace 2
 
 # lock
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
@@ -55,6 +55,7 @@ bindsym $mod+shift+b exec --no-startup-id "~/apps/workspace_ball.bash"
 
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
+assign [title="Zulip"] → 2
 assign [title="Videostream"] → 3
 assign [class="vlc"] → M
 assign [class="TeamSpeak 3"] → M
