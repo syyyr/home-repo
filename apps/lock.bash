@@ -34,6 +34,10 @@ fi
 # TODO: if you take out headphones, the speakers get unumuted
 MUTED_BEFORE=$(get_muted)
 
+if [[ $MUTED_BEFORE != 0 ]]; then
+    "$HOME/apps/volume.bash" toggle
+fi
+
 if [[ "$1" != "no-off" ]]; then
     (sleep 7; xset dpms force off)&
     SCREENOFF_PID="$!"
