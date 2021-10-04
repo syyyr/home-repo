@@ -228,6 +228,12 @@ compress()
     ffmpeg -i "$1" "$(sed -r 's/\.[^\.]+$/.mp4/' <<< "$1")"
 }
 
+play_not_sound()
+{
+    "$HOME/apps/check_available.bash" ffplay || exit 1
+    ffplay ~/.local/share/notification.mp3 -nodisp -autoexit
+}
+
 try()
 {
     while ! "$@"; do sleep 0.1; done
