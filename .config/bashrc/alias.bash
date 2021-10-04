@@ -7,6 +7,7 @@ alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias dc='cd'
 alias email="vim -S $HOME/.config/writing.vim"
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
+alias free='free -h'
 alias fvim='vim `fzf`'
 alias get_screen='xclip -se c -o -target image/png'
 alias grep='grep --color=auto'
