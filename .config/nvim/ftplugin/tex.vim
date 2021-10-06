@@ -1,4 +1,10 @@
 scriptencoding utf8
+
+
+let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+let g:tex_conceal = 'amgs' " default but don't conceal delimiters
+packadd vimtex
+
 " automatically try to compile after saving (works with update)
 augroup compilingTex
     autocmd!
