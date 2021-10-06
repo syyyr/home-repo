@@ -33,3 +33,5 @@ command! -bang Printthis call s:PrintThis("<bang>")
 
 nnoremap <C-]> :CocDefinition<cr>
 nnoremap <C-W><C-]> <c-w><c-s>:CocDefinition<cr>
+
+iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>
