@@ -1,5 +1,5 @@
 {
-    "clangd.arguments": ["--background-index", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"],
+    "clangd.arguments": ["--background-index", "-j=6", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"],
     "clangd.semanticHighlighting": true,
     "suggest.enablePreview": true,
     "diagnostic.warningSign": ">>",
