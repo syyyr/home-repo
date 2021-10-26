@@ -10,6 +10,8 @@ thumbs_up 👍
 :D 😀
 :* 😘
 angery 😠
+angery2 😡
+angery3 🤬
 pray 🙏
 hands 🙌
 rofl 🤣
@@ -18,6 +20,7 @@ heart ❤
 heart_eyes 😍
 sunglasses 😎
 checkmark ✅
+goto 𝓰𝓸𝓽𝓸
 diamond 💎
 eyes 👀
 roll 🙄
