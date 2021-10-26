@@ -6,4 +6,4 @@ exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Click 
 bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
 
-bindsym --release XF86AudioMicMute exec --no-startup-id pamixer --source 1 --toggle-mute
+bindsym --release XF86AudioMicMute exec --no-startup-id "bash -c 'pamixer --source 1 --toggle-mute; ~/apps/mic_led.bash'"
