@@ -121,8 +121,8 @@ gso()
         local COLOR=--color=always
     fi
 
-    echo "grep $CASE -IHrn $COLOR $ARGS $DIRECTORY"
-    local RESULTS="$(grep $CASE -IHrn $COLOR "$ARGS" $DIRECTORY)"
+    echo "grep $CASE --exclude-dir=.git -IHrn $COLOR $ARGS $DIRECTORY"
+    local RESULTS="$(grep $CASE --exclude-dir=.git -IHrn $COLOR "$ARGS" $DIRECTORY)"
     if [[ "$RESULTS" = '' ]]; then
         echo 'No match.' >&1
         return 0
