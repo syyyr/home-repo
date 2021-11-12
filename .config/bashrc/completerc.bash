@@ -48,11 +48,15 @@ __try_compl() {
     __do_completion_for "${COMP_WORDS[0]}"
 }
 
+__twitch_compl() {
+    COMPREPLY=( $(compgen -W "$("$HOME/apps/twitch_online.bash")" "${COMP_WORDS[${COMP_CWORD}]}") )
+}
+
 complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
 complete -C "$HOME/bin/tasklist" taskkill
 _setup_path_compl "vimrc" "$HOME/.config/nvim"
 _setup_path_compl "bashrc" "$HOME/.config/bashrc"
-complete -C "$HOME/apps/twitch_online.bash" twitch
+complete -F __twitch_compl twitch
 complete -F __try_compl try
