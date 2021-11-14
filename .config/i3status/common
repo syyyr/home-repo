@@ -38,15 +38,14 @@ diskdata {
         color_worst = '#AA0000'
 }
 
-battery 0 {
-        format = "%status %percentage"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "❓"
-        status_full = "💯"
+battery_level 0 {
+        format = '{status} [\?color=white {percent}%]'
+        format_status_charging = "⚡"
+        format_status_discharging = "🔋"
+        format_status_degraded = "🔋"
+        format_status_full = "👌"
+        threshold_full = 80
         last_full_capacity = true
-        integer_battery_capacity = true
-        threshold_type = precentage
 }
 
 battery 1 {

@@ -26,7 +26,7 @@ order += "wireless _first_"
 order += "ethernet $ETHERNET"
 order += "diskdata"
 order += "lm_sensors $DEVICE_NAME_SHORT"
-order += "battery 0"
+order += "battery_level 0"
 $SECOND_BATTERY
 order += "tztime local"
 EOF
