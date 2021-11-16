@@ -225,7 +225,7 @@ rm()
 
 compress()
 {
-    ffmpeg -i "$1" "$(sed -r 's/\.[^\.]+$/.mp4/' <<< "$1")"
+    ffmpeg -i "$1" "$2"
 }
 
 play_not_sound()
