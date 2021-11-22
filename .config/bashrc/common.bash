@@ -25,10 +25,17 @@ format_exec_time()
     echo "$MILLI" | bc <(echo '
         input = read();
         min = input/60/1000;
+        if (min >= 180) { /* after three hours, well also show hours */
+            hours = min/60;
+            print hours
+            print "h ";
+            input-=hours*60*60*1000;
+        }
+        min = input/60/1000;
         if (min >= 3) { /* from three minutes onward, we will show to output in the XXm XX.XXs format. */
             print min;
             print "m ";
-            input-=min*60*1000
+            input-=min*60*1000;
         }
         scale=3;
         sec=input/1000;
