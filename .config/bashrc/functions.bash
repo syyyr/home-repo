@@ -238,3 +238,13 @@ try()
 {
     while ! "$@"; do sleep 0.1; done
 }
+
+do_auracle_update()
+{
+    for i in $(auracle -q outdated); do
+        pushd $i
+        git reset --hard
+        makepkg -si --noconfirm
+        popd
+    done
+}
