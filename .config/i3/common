@@ -16,8 +16,10 @@ bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t b
  -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
 
 # screenshot
-bindsym --release Print exec --no-startup-id "scrot - | xclip -se c -target image/png; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
-bindsym --release $mod+Shift+s exec --no-startup-id "scrot -s -f - | xclip -se c -target image/png; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
+bindsym --release Print exec --no-startup-id \
+    "scrot --silent - | xclip -se c -target image/png; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
+bindsym --release $mod+Shift+s exec --no-startup-id \
+    "scrot --silent -s -f - | xclip -se c -target image/png; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
 
 # zulip
 bindsym --release $mod+z exec --no-startup-id zulip; workspace 2
