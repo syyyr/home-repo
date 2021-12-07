@@ -23,6 +23,7 @@ checkmark ✅
 goto 𝓰𝓸𝓽𝓸
 diamond 💎
 eyes 👀
+strong/arm 💪
 roll 🙄
 smoke/exhale 😤
 sweat 😅
