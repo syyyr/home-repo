@@ -11,6 +11,8 @@ augroup compilingTex
     autocmd BufWritePost *.tex silent Make!
 augroup END
 
+set makeprg=make
+
 inoremap <buffer> \tit \textit{
 inoremap <buffer> \ttt \texttt{
 inoremap <buffer> "" \uv{
