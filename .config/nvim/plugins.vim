@@ -11,6 +11,12 @@ packadd! vim-qml
 packadd! vim-cpp-modern
 packadd! readline.vim
 
+
+" FIXME: Why can't this be in ftplugin/tex.vim?
+let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
+let g:tex_conceal = 'amgs' " default but don't conceal delimiters
+packadd vimtex
+
 packadd! indent-blankline.nvim
 lua << EOF
 require("indent_blankline").setup {
