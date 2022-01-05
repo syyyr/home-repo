@@ -2,6 +2,7 @@
   dbus = False
   focus = mouse
   inactive_color_offset = 1.0
+  case_sensitive = False
 [keybindings]
   go_down = None
   go_left = None
