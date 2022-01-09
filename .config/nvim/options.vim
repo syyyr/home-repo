@@ -87,7 +87,7 @@ set noautoread
 set updatetime=300
 
 " double space before [paste] is needed, but I don't know why
-set statusline=%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'\ \ [paste]':''}%=%=%20f%h%{custom#MyModified()}%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
+set statusline=%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'\ \ [paste]':''}%=%=%20f%h%m%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=
 
 " don't show completion messages
 set shortmess+=c

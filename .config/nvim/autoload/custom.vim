@@ -19,17 +19,6 @@ function! custom#DiffToggle() abort
     endif
 endfun
 
-" custom function for the modified sign (doesn't show anything on startscreen)
-function! custom#MyModified() abort
-    if !&modifiable && expand('%') !=# 'VIM'
-        return '[-]'
-    endif
-    if &modified
-        return '[+]'
-    endif
-    return ''
-endfun
-
 function! custom#CleanScreen() abort
     call coc#float#close_all()
     call clever_f#reset()
