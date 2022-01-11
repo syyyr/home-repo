@@ -248,3 +248,10 @@ do_auracle_update()
         popd
     done
 }
+
+do_coc_update()
+{
+    pushd /home/vk/.local/share/nvim/site/pack/bundle/opt/coc.nvim
+    yarn install --frozen-lockfile
+    popd
+}
