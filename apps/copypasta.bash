@@ -21,6 +21,8 @@ heart_eyes 😍
 sunglasses 😎
 checkmark ✅
 goto 𝓰𝓸𝓽𝓸
+lightning ⚡
+lit/fire 🔥
 diamond 💎
 eyes 👀
 strong/arm 💪
