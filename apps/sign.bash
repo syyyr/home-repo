@@ -1,2 +1,2 @@
 #!/bin/bash
-composite -density 200 -geometry 100x100+300+650  ~/.local/share/signature.png "$@"
+composite -density 200 -geometry 200x200+1000+1800  ~/.local/share/signature.png "$@"
