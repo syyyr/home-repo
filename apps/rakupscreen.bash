@@ -17,7 +17,11 @@ fi
 FILENAME=$(get_image | sha1sum | fold -w 7 | head -n1)
 FILENAME+='.png'
 echo "Saving to $FILENAME"
-get_image | ssh rak@anip.icu "cat > www/anip.icu/rofl/$FILENAME"
+get_image | SSH_ASKPASS_REQUIRE=never ssh rak@anip.icu "cat > www/anip.icu/rofl/$FILENAME"
+if [[ $? = "0" ]]; then
+    echo "https://anip.icu/rofl/$FILENAME to PRIMARY selection"
+    echo "https://anip.icu/rofl/$FILENAME" | xclip -r
+else
+    notify-send -t 2000 "ssh-agent not available, screenshot not uploaded."
+fi
 
-echo "https://anip.icu/rofl/$FILENAME to PRIMARY selection"
-echo "https://anip.icu/rofl/$FILENAME" | xclip -r
