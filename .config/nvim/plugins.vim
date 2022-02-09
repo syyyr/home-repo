@@ -10,6 +10,7 @@ packadd! vim-commentary
 packadd! vim-qml
 packadd! vim-cpp-modern
 packadd! readline.vim
+packadd! vim-icalendar
 
 
 " FIXME: Why can't this be in ftplugin/tex.vim?
