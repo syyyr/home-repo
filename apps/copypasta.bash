@@ -19,7 +19,9 @@ party 🎉
 heart ❤
 heart_eyes 😍
 sunglasses 😎
+smirk/lewd 😏
 checkmark ✅
+night 🌃
 goto 𝓰𝓸𝓽𝓸
 lightning ⚡
 lit/fire 🔥
