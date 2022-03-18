@@ -131,7 +131,7 @@ gso()
         nvim -q <(cat <<< "$RESULTS")
         return 0
     fi
-    FILE="$(fzf -0 --height=50% --border --ansi <<< "$RESULTS")"
+    FILE="$(fzf --tac -0 --height=50% --border --ansi <<< "$RESULTS")"
     case "$?" in
         0)
             local VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
