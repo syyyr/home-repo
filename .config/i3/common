@@ -3,7 +3,6 @@ exec --no-startup-id setxkbmap cz qwerty
 exec --no-startup-id nm-applet --no-agent
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id xbindkeys
-exec --no-startup-id zulip
 #exec --no-startup-id fluxgui
 #exec --no-startup-id ~/bin/gdrive
 
@@ -73,6 +72,8 @@ bindsym $mod+Tab workspace back_and_forth
 #move workspaces
 bindsym $mod+ctrl+h move workspace to output left
 bindsym $mod+ctrl+l move workspace to output right
+bindsym $mod+ctrl+k move workspace to output up
+bindsym $mod+ctrl+j move workspace to output down
 
 ########################################
 set $mod Mod4

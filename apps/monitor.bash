@@ -9,7 +9,7 @@ refresh() {
         xrandr --output DP-2 --off
         xrandr --output eDP-1 --primary
     else
-        xrandr --output "$OUTPUT" --right-of eDP-1 --auto --primary
+        xrandr --output "$OUTPUT" --above eDP-1 --auto --primary
         "$HOME/apps/workspace_ball.bash"
         nitrogen --restore
     fi
@@ -20,8 +20,7 @@ refresh
 
 udevadm monitor -k | while IFS= read -r line;
 do
-
-    if [ -z "$(grep -F '/devices/pci0000:00/0000:00:02.0/drm/card0 (drm)' <<< $line)" ]; then
+    if [ -z "$(grep -F '/devices/pci0000:00/0000:00:08.1/0000:05:00.0/drm/card0 (drm)' <<< $line)" ]; then
         continue
     fi
 

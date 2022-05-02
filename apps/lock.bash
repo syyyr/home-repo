@@ -15,7 +15,7 @@ get_muted()
 if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     ARGS='
     -k
-    -i '$HOME'/.local/share/win10lock-template.png
+    -i '$HOME'/.local/share/win10-lock-4k.png
     --time-font=Segoeui
     --date-font=Segoeui
     --time-size=130
@@ -24,10 +24,10 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     --date-str="%A, %d. %B"
     --date-color=FFFFFF
     --time-color=FFFFFF
-    --time-pos=80:913
+    --time-pos=160:1826
     --date-align=1
     --time-align=1
-    --date-pos="80:ty+80"'
+    --date-pos="160:ty+80"'
 fi
 
 "$HOME/apps/kbacklight.bash" 0
