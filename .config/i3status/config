@@ -1,3 +1,12 @@
+order += "keyboard_locks"
+order += "volume master"
+order += "wireless _first_"
+order += "ethernet enp2s0f0"
+order += "diskdata"
+order += "lm_sensors T14s"
+order += "battery_level 0"
+
+order += "tztime local"
 keyboard_locks {
         cache_timeout = 10
         format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
@@ -48,17 +57,6 @@ battery_level 0 {
         last_full_capacity = true
 }
 
-battery 1 {
-        format = "%status %percentage"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "❓"
-        status_full = "💯"
-        last_full_capacity = true
-        integer_battery_capacity = true
-        threshold_type = precentage
-}
-
 tztime local {
         format = "%A %d.%m.%Y %H:%M"
 }
@@ -69,17 +67,6 @@ load {
 
 disk "/" {
         format = "%avail"
-}
-
-lm_sensors T440s {
-        chips = ['coretemp-isa-0000']
-        sensors = ['package_id_0']
-        format_sensor = '[\?if=input<40 ❄|[\?if=input<70 🌡️|🔥]]  \?color=input {input}'
-        format_chip = '{format_sensor}  ° C'
-        cache_timeout = 3
-        thresholds = {
-            'input': [(70, 'red'), (60, 'orange'), (55, 'yellow'), (40, 'lime'), (0, 'cyan')]
-        }
 }
 
 lm_sensors T14s {

@@ -1,9 +1,0 @@
-# T14s-specific config
-exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
-
-bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
-bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
-
-bindsym --release XF86AudioMicMute exec --no-startup-id "bash -c 'pamixer --source alsa_input.pci-0000_06_00.6.HiFi__hw_acp__source --toggle-mute; ~/apps/mic_led.bash'"

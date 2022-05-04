@@ -6,6 +6,16 @@ exec --no-startup-id xbindkeys
 #exec --no-startup-id fluxgui
 #exec --no-startup-id ~/bin/gdrive
 
+# T14s-specific config
+exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
+
+bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
+bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
+
+bindsym --release XF86AudioMicMute exec --no-startup-id "bash -c 'pamixer --source alsa_input.pci-0000_06_00.6.HiFi__hw_acp__source --toggle-mute; ~/apps/mic_led.bash'"
+
 hide_edge_borders smart
 
 #suspend
@@ -192,7 +202,7 @@ bindsym $mod+Shift+eacute move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec --no-startup-id ~/apps/reload_i3.bash
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e  exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
