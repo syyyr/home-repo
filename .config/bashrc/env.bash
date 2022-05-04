@@ -8,3 +8,4 @@ export VISUAL='nvim'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
 export SCREENDIR="$HOME/.screen"
 export MANPAGER="nvim +Man!"
+export QT_SCALE_FACTOR=1.5
