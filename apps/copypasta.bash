@@ -8,7 +8,7 @@ joy 😂
 ok_hand 👌
 thumbs_up 👍
 :D 😀
-:* 😘
+kiss/:* 😘
 angery 😠
 angery2 😡
 angery3 🤬
