@@ -30,8 +30,8 @@ bindsym --release Print exec --no-startup-id \
 bindsym --release $mod+Shift+s exec --no-startup-id \
     "scrot --silent -s -f - | xclip -se c -target image/png; ~/apps/rakupscreen.bash; notify-send -t 2000 Screenshotted."
 
-# zulip
-bindsym --release $mod+z exec --no-startup-id zulip; workspace 2
+# cro
+bindsym --release $mod+z exec --no-startup-id /home/vk/bin/cro
 
 # lock
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
@@ -66,7 +66,6 @@ bindsym $mod+shift+b exec --no-startup-id "~/apps/workspace_ball.bash"
 
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
-assign [title="Zulip"] → 2
 assign [title="Videostream"] → 3
 assign [class="vlc"] → M
 assign [class="TeamSpeak 3"] → M
