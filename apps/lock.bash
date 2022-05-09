@@ -19,8 +19,8 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     -c 000000
     --time-font=Segoeui
     --date-font=Segoeui
-    --time-size=130
-    --date-size=59
+    --time-size=260
+    --date-size=118
     --time-str="%H:%M"
     --date-str="%A, %d. %B"
     --date-color=FFFFFF
@@ -28,7 +28,7 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     --time-pos=160:1826
     --date-align=1
     --time-align=1
-    --date-pos="160:ty+80"'
+    --date-pos="160:ty+160"'
 fi
 
 "$HOME/apps/kbacklight.bash" 0
