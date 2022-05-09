@@ -16,6 +16,7 @@ if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
     ARGS='
     -k
     -i '$HOME'/.local/share/win10-lock-4k.png
+    -c 000000
     --time-font=Segoeui
     --date-font=Segoeui
     --time-size=130
