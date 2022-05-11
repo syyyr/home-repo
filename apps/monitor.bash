@@ -24,5 +24,9 @@ do
         continue
     fi
 
+    if [ -n "$(xset q | grep -F 'Monitor is Off')" ]; then
+        continue
+    fi
+
     refresh
 done
