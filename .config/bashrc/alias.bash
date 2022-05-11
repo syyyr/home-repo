@@ -12,6 +12,7 @@ alias fvim='vim `fzf`'
 alias get_screen='xclip -se c -o -target image/png'
 alias grep='grep --color=auto'
 alias i3config-status="nvim $HOME/.config/i3status/config"
+alias ivm="nvim"
 alias l='ls -CF'
 alias la='ls -A'
 alias league="startx $HOME/.config/leaguerc"
