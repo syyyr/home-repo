@@ -3,7 +3,7 @@
     "clangd.semanticHighlighting": true,
     "suggest.enablePreview": true,
     "diagnostic.warningSign": ">>",
-    "tsserver.implicitProjectConfig.checkJs": true,
+    "tsserver.implicitProjectConfig.checkJs": false,
     "diagnostic-languageserver.filetypes": {
         "vim": "vint"
     },
