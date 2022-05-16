@@ -1,7 +1,7 @@
 order += "keyboard_locks"
 order += "volume master"
 order += "wireless _first_"
-order += "ethernet enp2s0f0"
+order += "ethernet enp5s0f3u1u5"
 order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
@@ -25,12 +25,7 @@ wireless _first_ {
         format_down = "W: down"
 }
 
-ethernet enp0s25 {
-        format_up = "E: %ip (%speed)"
-        format_down = ""
-}
-
-ethernet enp2s0f0 {
+ethernet enp5s0f3u1u5 {
         format_up = "E: %ip (%speed)"
         format_down = ""
 }
