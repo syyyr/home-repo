@@ -5,9 +5,7 @@ set cursorline "line highlight
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
-set softtabstop=4 " tab is four spaces long
 set shiftwidth=4 " << >> 4 spaces
-set expandtab " spaces instead of tabs
 
 " no esc delay
 set timeout
@@ -109,5 +107,3 @@ set pastetoggle=<F6>
 set makeprg=make\ -C\ build
 
 set commentstring=#\ %s
-
-set exrc

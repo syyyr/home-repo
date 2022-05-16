@@ -23,6 +23,11 @@ augroup statuslineIntegration
     autocmd BufReadPost,TextChanged,InsertLeave * call timer_start(1000, 'custom#CocCheck', {'repeat': 0})
 augroup END
 
+augroup tabsOrSpaces
+    autocmd!
+    autocmd BufEnter * execute "if search('^	', 'n') | set noexpandtab | set tabstop=4 | else | set softtabstop=4 | set shiftwidth=4 | set expandtab | endif"
+augroup END
+
 let g:tex_flavor='tex'
 let g:is_bash=1
 let g:markdown_syntax_conceal = 0
