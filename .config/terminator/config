@@ -13,7 +13,7 @@
     background_darkness = 0.9
     cursor_blink = False
     cursor_color = "#aaaaaa"
-    font = Consolas NF 15
+    font = Consolas NF 14
     foreground_color = "#444444"
     show_titlebar = False
     scrollbar_position = hidden
