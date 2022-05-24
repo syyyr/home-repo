@@ -39,6 +39,7 @@ honk/goose 🦢
 puke 🤮
 devil 😈
 shrug ¯\_(ツ)_/¯
+monocle/detective 🧐
 tm ™
 green_circle 🟢
 sushi 🍣
