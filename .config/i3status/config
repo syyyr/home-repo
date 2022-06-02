@@ -1,7 +1,7 @@
 order += "online_status"
-order += "bluetooth"
 order += "keyboard_locks"
 order += "volume_status"
+order += "bluetooth"
 order += "wifi"
 order += "networkmanager enp5s0f3u1u5"
 order += "diskdata"
