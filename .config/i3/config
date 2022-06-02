@@ -13,7 +13,7 @@ exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput 
 
 exec --no-startup-id xset bell off
 
-bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
+bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
 
 bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic_led.bash
@@ -44,27 +44,27 @@ bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 # fun stuff
 bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e $HOME/apps/i3config.bash"
 bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3status/config\\""
-bindsym XF86Explorer exec --no-startup-id "dunstctl close"
-bindsym Shift+XF86Explorer exec --no-startup-id "dunstctl close-all"
-bindsym XF86LaunchA exec --no-startup-id "~/apps/kbacklight_ctl.bash toggle"
+bindsym XF86Explorer exec --no-startup-id dunstctl close
+bindsym Shift+XF86Explorer exec --no-startup-id dunstctl close-all
+bindsym XF86LaunchA exec --no-startup-id ~/apps/kbacklight_ctl.bash toggle
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash increase"
-bindsym XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash decrease"
-bindsym Ctrl+XF86MonBrightnessUp exec --no-startup-id "~/apps/brightness.bash max"
-bindsym Ctrl+XF86MonBrightnessDown exec --no-startup-id "~/apps/brightness.bash min"
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/apps/brightness.bash increase
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/apps/brightness.bash decrease
+bindsym Ctrl+XF86MonBrightnessUp exec --no-startup-id ~/apps/brightness.bash max
+bindsym Ctrl+XF86MonBrightnessDown exec --no-startup-id ~/apps/brightness.bash min
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash increase 5"
-bindsym XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash decrease 5"
-bindsym XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
-bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id "~/apps/volume.bash increase 10"
-bindsym Shift+XF86AudioLowerVolume exec --no-startup-id "~/apps/volume.bash decrease 10"
-bindsym Shift+XF86AudioMute exec --no-startup-id "~/apps/volume.bash toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/apps/volume.bash increase 5
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/apps/volume.bash decrease 5
+bindsym XF86AudioMute exec --no-startup-id ~/apps/volume.bash toggle
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id ~/apps/volume.bash increase 10
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id ~/apps/volume.bash decrease 10
+bindsym Shift+XF86AudioMute exec --no-startup-id ~/apps/volume.bash toggle
 
-bindsym XF86Display exec --no-startup-id "~/apps/area-gif.bash"
+bindsym XF86Display exec --no-startup-id ~/apps/area-gif.bash
 
-bindsym $mod+shift+b exec --no-startup-id "~/apps/workspace_ball.bash"
+bindsym $mod+shift+b exec --no-startup-id ~/apps/workspace_ball.bash
 
 # assigns
 assign [title="Chrome Remote Desktop"] → 3
@@ -235,11 +235,11 @@ mode "resize" {
     bindsym Shift+Right resize grow width 15 px or 15 ppt
 
     # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Return mode default
+    bindsym Escape mode default
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode resize
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
