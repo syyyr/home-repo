@@ -1,5 +1,0 @@
-#!/bin/bash
-/bin/make "$@"
-RET=$?
-notify-send -t 5000 "Make" "Make is done."
-exit $RET
