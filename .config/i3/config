@@ -16,12 +16,6 @@ bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wra
 
 bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic_led.bash
 
-#suspend
-bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -m ''\
- -b 'Shutdown' 'shutdown now'\
- -b 'Reboot' 'systemctl reboot'\
- -b 'Supress lid suspend' 'killall i3-nagbar; terminator -T suppress-lid-suspend -e ~/apps/suppress-lid-suspend.bash'"
-
 # screenshot
 bindsym --release Print exec --no-startup-id \
     "scrot --silent - | xclip -se c -target image/png && ~/apps/rakupscreen.bash && notify-send -t 2000 Screenshotted."
