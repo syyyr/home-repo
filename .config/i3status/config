@@ -40,6 +40,7 @@ volume_status {
 
 wifi {
     format = "W: {ssid} ({ip})|W: down"
+    color_bad = dimgrey
 }
 
 networkmanager enp5s0f3u1u5 {
