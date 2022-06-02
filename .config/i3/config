@@ -16,7 +16,7 @@ exec --no-startup-id xset bell off
 bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
 
-bindsym --release XF86AudioMicMute exec --no-startup-id "bash -c 'pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; ~/apps/mic_led.bash'"
+bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic_led.bash
 
 hide_edge_borders smart
 
