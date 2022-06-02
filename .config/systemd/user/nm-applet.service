@@ -6,4 +6,4 @@ Type=simple
 ExecStart=/usr/bin/nm-applet
 
 [Install]
-WantedBy=default.target
+WantedBy=xorg.target

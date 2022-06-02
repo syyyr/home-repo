@@ -9,4 +9,4 @@ ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Ta
 ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
 
 [Install]
-WantedBy=default.target
+WantedBy=xorg.target

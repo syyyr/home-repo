@@ -1,5 +1,4 @@
 #!/bin/bash
-export DISPLAY=:'0.0'
 
 refresh() {
     OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
