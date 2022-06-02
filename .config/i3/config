@@ -11,6 +11,8 @@ exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput 
 exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
 
+exec --no-startup-id xset bell off
+
 bindsym --release XF86Favorites exec --no-startup-id "~/apps/copypasta.bash"
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
 
