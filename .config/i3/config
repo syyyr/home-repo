@@ -1,6 +1,3 @@
-# Bell off
-exec --no-startup-id xset bell off
-
 # Copypasta
 bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""

@@ -1,0 +1,10 @@
+[Unit]
+Description=Turn off bell
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/xset bell off
+
+[Install]
+WantedBy=default.target
