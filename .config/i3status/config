@@ -1,5 +1,5 @@
 order += "keyboard_locks"
-order += "volume master"
+order += "volume_status"
 order += "wireless _first_"
 order += "ethernet enp5s0f3u1u5"
 order += "diskdata"
@@ -12,12 +12,14 @@ keyboard_locks {
         format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
 }
 
-volume master {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
-        device = "pulse"
-        mixer = "Master"
-        mixer_idx = 0
+volume_status {
+        format = "♪: {percentage}%"
+        format_muted = "♪: muted ({percentage}%)"
+        color = white
+        color_good = white
+        color_degraded = white
+        color_muted = yellow
+        color_bad = white
 }
 
 wireless _first_ {

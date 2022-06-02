@@ -17,6 +17,7 @@ case "$1" in
     *)
         ;;
 esac
+killall -s USR1 py3status
 
 VOLUME_HIGH="$HOME/.local/share/icons/blue/volume-high.png"
 VOLUME_MEDIUM="$HOME/.local/share/icons/blue/volume-medium.png"
