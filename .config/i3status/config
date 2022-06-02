@@ -16,8 +16,9 @@ online_status {
 }
 
 bluetooth {
-    format = "[BT: {format_device}]"
+    format = "BT: {format_device}|BT: down"
     color_good = deepskyblue
+    color_bad = dimgrey
     on_click 1 = 'exec bluetoothctl disconnect && killall -s USR1 py3status'
 }
 
