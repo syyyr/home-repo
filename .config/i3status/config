@@ -10,8 +10,8 @@ order += "battery_level 0"
 order += "clock"
 
 online_status {
-        icon_on = ''
-        icon_off = 'No internet connection'
+    icon_on = ''
+    icon_off = 'No internet connection'
 }
 
 bluetooth {
@@ -21,23 +21,23 @@ bluetooth {
 }
 
 keyboard_locks {
-        cache_timeout = 10
-        format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
+    cache_timeout = 10
+    format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
 }
 
 volume_status {
-        format = "♪: {percentage}%"
-        format_muted = "♪: muted ({percentage}%)"
-        device = "alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink"
-        color = white
-        color_good = white
-        color_degraded = white
-        color_muted = yellow
-        color_bad = white
+    format = "♪: {percentage}%"
+    format_muted = "♪: muted ({percentage}%)"
+    device = "alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink"
+    color = white
+    color_good = white
+    color_degraded = white
+    color_muted = yellow
+    color_bad = white
 }
 
 wifi {
-        format = "W: {ssid} ({ip})|W: down"
+    format = "W: {ssid} ({ip})|W: down"
 }
 
 networkmanager enp5s0f3u1u5 {
@@ -47,43 +47,43 @@ networkmanager enp5s0f3u1u5 {
 }
 
 diskdata {
-        format = "[\?color=free {free}]"
-        format_space = "{value:.1f} GB"
-        thresholds = {
-            'free': [(0, 'worst'), (0.3, 'worse'), (0.5, 'better'), (1, 'best')]
-        }
-        color_best = '#00FF00'
-        color_better = '#FFFF00'
-        color_worse = '#FF4500'
-        color_worst = '#AA0000'
+    format = "[\?color=free {free}]"
+    format_space = "{value:.1f} GB"
+    thresholds = {
+        'free': [(0, 'worst'), (0.3, 'worse'), (0.5, 'better'), (1, 'best')]
+    }
+    color_best = '#00FF00'
+    color_better = '#FFFF00'
+    color_worse = '#FF4500'
+    color_worst = '#AA0000'
 }
 
 battery_level 0 {
-        format = '{status} [\?color=white {percent}%]'
-        format_status_charging = "⚡"
-        format_status_discharging = "🔋"
-        format_status_degraded = "🔋"
-        format_status_full = "💯"
-        threshold_full = 100
-        last_full_capacity = true
+    format = '{status} [\?color=white {percent}%]'
+    format_status_charging = "⚡"
+    format_status_discharging = "🔋"
+    format_status_degraded = "🔋"
+    format_status_full = "💯"
+    threshold_full = 100
+    last_full_capacity = true
 }
 
 clock {
-        format = ["{Europe/Prague}"]
-        format_time = "%A %d.%m.%Y %H:%M"
+    format = ["{Europe/Prague}"]
+    format_time = "%A %d.%m.%Y %H:%M"
 }
 
 disk "/" {
-        format = "%avail"
+    format = "%avail"
 }
 
 lm_sensors T14s {
-        chips = ['thinkpad-isa-0000']
-        sensors = ['cpu']
-        format_sensor = '[\?if=input<40 ❄|[\?if=input<70 🌡️|🔥]]  \?color=input {input}'
-        format_chip = '{format_sensor}  ° C'
-        cache_timeout = 3
-        thresholds = {
-            'input': [(70, 'red'), (60, 'orange'), (55, 'yellow'), (40, 'lime'), (0, 'cyan')]
-        }
+    chips = ['thinkpad-isa-0000']
+    sensors = ['cpu']
+    format_sensor = '[\?if=input<40 ❄|[\?if=input<70 🌡️|🔥]]  \?color=input {input}'
+    format_chip = '{format_sensor}  ° C'
+    cache_timeout = 3
+    thresholds = {
+        'input': [(70, 'red'), (60, 'orange'), (55, 'yellow'), (40, 'lime'), (0, 'cyan')]
+    }
 }
