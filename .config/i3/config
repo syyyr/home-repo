@@ -28,9 +28,6 @@ bindsym --release Print exec --no-startup-id \
 bindsym --release $mod+Shift+s exec --no-startup-id \
     "scrot --silent -s -f - | xclip -se c -target image/png && ~/apps/rakupscreen.bash && notify-send -t 2000 Screenshotted."
 
-# cro
-bindsym --release $mod+z exec --no-startup-id /home/vk/bin/cro
-
 # lock
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 
