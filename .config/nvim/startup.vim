@@ -31,3 +31,16 @@ augroup END
 let g:tex_flavor='tex'
 let g:is_bash=1
 let g:markdown_syntax_conceal = 0
+
+let g:clipboard = {
+      \   'name': 'myClipboard',
+      \   'copy': {
+      \      '+': ['xclip', '-i', '-selection', 'clipboard'],
+      \      '*': ['xclip', '-i', '-selection', 'primary'],
+      \    },
+      \   'paste': {
+      \      '+': ['xclip', '-o', '-selection', 'clipboard'],
+      \      '*': ['xclip', '-o', '-selection', 'primary'],
+      \   },
+      \   'cache_enabled': 1,
+      \ }
