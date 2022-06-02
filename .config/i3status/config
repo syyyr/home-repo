@@ -73,10 +73,6 @@ clock {
     format_time = "%A %d.%m.%Y %H:%M"
 }
 
-disk "/" {
-    format = "%avail"
-}
-
 lm_sensors T14s {
     chips = ['thinkpad-isa-0000']
     sensors = ['cpu']
