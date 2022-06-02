@@ -1,0 +1,9 @@
+[Unit]
+Description=xbindkeys service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xbindkeys -n
+
+[Install]
+WantedBy=default.target
