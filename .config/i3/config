@@ -9,33 +9,36 @@ exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput 
 exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
 
+# Bell off
 exec --no-startup-id xset bell off
 
+# Copypasta
 bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""
 
+# Microphone mute
 bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic_led.bash
 
-# screenshot
+# Screenshot
 bindsym --release Print exec --no-startup-id \
     "scrot --silent - | xclip -se c -target image/png && ~/apps/rakupscreen.bash && notify-send -t 2000 Screenshotted."
 bindsym --release $mod+Shift+s exec --no-startup-id \
     "scrot --silent -s -f - | xclip -se c -target image/png && ~/apps/rakupscreen.bash && notify-send -t 2000 Screenshotted."
 
-# lock
+# Lock
 bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 
-# browser
+# Browser
 bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
-# fun stuff
+# Fun stuff
 bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e $HOME/apps/i3config.bash"
 bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3status/config\\""
 bindsym XF86Explorer exec --no-startup-id dunstctl close
 bindsym Shift+XF86Explorer exec --no-startup-id dunstctl close-all
 bindsym XF86LaunchA exec --no-startup-id ~/apps/kbacklight_ctl.bash toggle
 
-# brightness
+# Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/apps/brightness.bash increase
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/apps/brightness.bash decrease
 bindsym Ctrl+XF86MonBrightnessUp exec --no-startup-id ~/apps/brightness.bash max
@@ -49,111 +52,61 @@ bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id ~/apps/volume.bash incre
 bindsym Shift+XF86AudioLowerVolume exec --no-startup-id ~/apps/volume.bash decrease 10
 bindsym Shift+XF86AudioMute exec --no-startup-id ~/apps/volume.bash toggle
 
+# Area GIF
 bindsym XF86Display exec --no-startup-id ~/apps/area-gif.bash
 
+# Workspace ball
 bindsym $mod+shift+b exec --no-startup-id ~/apps/workspace_ball.bash
 
-# assigns
+# Dmenu
+bindsym $mod+d exec --no-startup-id dmenu_path | rofi -sort -dmenu -matching fuzzy -p "> " | ${SHELL:-"/bin/sh"}
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper
+bindsym $mod+t exec --no-startup-id xterm
+
 assign [class="vlc"] → M
 
-#movement
+set $mod Mod4
+font pango:Noto Sans 11
+floating_modifier $mod
+hide_edge_borders smart
+
 bindsym $mod+Tab workspace back_and_forth
 
-#move workspaces
 bindsym $mod+ctrl+h move workspace to output left
 bindsym $mod+ctrl+l move workspace to output right
 bindsym $mod+ctrl+k move workspace to output up
 bindsym $mod+ctrl+j move workspace to output down
 
-########################################
-set $mod Mod4
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-#font pango:monospace 8
-font pango:Noto Sans 11
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso5646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-hide_edge_borders smart
-
-# start a terminal
-bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper
-bindsym $mod+t exec --no-startup-id xterm
-
-# kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_path | rofi -sort -dmenu -matching fuzzy -p "> " | ${SHELL:-"/bin/sh"}
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
 bindsym $mod+c split h
-
-# split in vertical orientation
 bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+Shift+a focus child
-
-# switch to workspace
 bindsym $mod+plus workspace 1
 bindsym $mod+ecaron workspace 2
 bindsym $mod+scaron workspace 3
@@ -166,8 +119,6 @@ bindsym $mod+yacute workspace 7
 bindsym $mod+aacute workspace 8
 bindsym $mod+iacute workspace 9
 bindsym $mod+eacute workspace 10
-
-# move focused container to workspace
 bindsym $mod+Shift+plus move container to workspace 1
 bindsym $mod+Shift+ecaron move container to workspace 2
 bindsym $mod+Shift+scaron move container to workspace 3
@@ -180,22 +131,11 @@ bindsym $mod+Shift+yacute move container to workspace 7
 bindsym $mod+Shift+aacute move container to workspace 8
 bindsym $mod+Shift+iacute move container to workspace 9
 bindsym $mod+Shift+eacute move container to workspace 10
-
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e  exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
 mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
     bindsym h resize shrink width 5 px or 5 ppt
     bindsym j resize grow height 5 px or 5 ppt
     bindsym k resize shrink height 5 px or 5 ppt
@@ -204,8 +144,6 @@ mode "resize" {
     bindsym Shift+j resize grow height 15 px or 15 ppt
     bindsym Shift+k resize shrink height 15 px or 15 ppt
     bindsym Shift+l resize grow width 15 px or 15 ppt
-
-    # same bindings, but for the arrow keys
     bindsym Left resize shrink width 5 px or 5 ppt
     bindsym Down resize grow height 5 px or 5 ppt
     bindsym Up resize shrink height 5 px or 5 ppt
@@ -214,16 +152,12 @@ mode "resize" {
     bindsym Shift+Down resize grow height 15 px or 15 ppt
     bindsym Shift+Up resize shrink height 15 px or 15 ppt
     bindsym Shift+Right resize grow width 15 px or 15 ppt
-
-    # back to normal: Enter or Escape
     bindsym Return mode default
     bindsym Escape mode default
 }
 
 bindsym $mod+r mode resize
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
     status_command py3status -s
     tray_output primary
