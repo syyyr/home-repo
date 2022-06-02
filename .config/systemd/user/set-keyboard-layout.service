@@ -1,0 +1,10 @@
+[Unit]
+Description=Set keyboard layout
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/setxkbmap cz qwerty
+
+[Install]
+WantedBy=default.target
