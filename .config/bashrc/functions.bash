@@ -262,5 +262,5 @@ bt_phone()
         bluetoothctl connect "$PHONE_BT_MAC"
     fi
 
-    killall -SIGUSR1 py3status
+    py3-cmd refresh volume_status
 }

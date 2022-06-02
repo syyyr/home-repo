@@ -19,7 +19,7 @@ bluetooth {
     format = "BT: {format_device}|BT: down"
     color_good = deepskyblue
     color_bad = dimgrey
-    on_click 1 = 'exec bluetoothctl disconnect && killall -s USR1 py3status'
+    on_click 1 = 'exec bluetoothctl disconnect && py3-cmd refresh bluetooth'
 }
 
 keyboard_locks {

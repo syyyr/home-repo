@@ -17,7 +17,8 @@ case "$1" in
     *)
         ;;
 esac
-killall -s USR1 py3status
+
+py3-cmd refresh volume_status
 
 VOLUME_HIGH="$HOME/.local/share/icons/blue/volume-high.png"
 VOLUME_MEDIUM="$HOME/.local/share/icons/blue/volume-medium.png"
