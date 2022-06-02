@@ -1,12 +1,12 @@
 order += "keyboard_locks"
 order += "volume_status"
 order += "wifi"
-order += "ethernet enp5s0f3u1u5"
+order += "networkmanager enp5s0f3u1u5"
 order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
-
 order += "tztime local"
+
 keyboard_locks {
         cache_timeout = 10
         format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
@@ -26,9 +26,10 @@ wifi {
         format = "W: {ssid} ({ip})|W: down"
 }
 
-ethernet enp5s0f3u1u5 {
-        format_up = "E: %ip (%speed)"
-        format_down = ""
+networkmanager enp5s0f3u1u5 {
+    format = "[\?color=lime E: {format_device}]"
+    speed = shell(ethtool enp5s0f3u1u5 2> /dev/null | grep -i speed | cut -d' ' -f2)
+    format_device = "[\?if=general_connection [\?soft ][\?color=good {ip4_address1} ({speed})]]"
 }
 
 diskdata {
