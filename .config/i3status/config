@@ -1,3 +1,4 @@
+order += "bluetooth"
 order += "keyboard_locks"
 order += "volume_status"
 order += "wifi"
@@ -6,6 +7,12 @@ order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
 order += "clock"
+
+bluetooth {
+    format = "[BT: {format_device}]"
+    color_good = deepskyblue
+    on_click 1 = 'exec bluetoothctl disconnect && killall -s USR1 py3status'
+}
 
 keyboard_locks {
         cache_timeout = 10
