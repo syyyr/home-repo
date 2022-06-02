@@ -40,9 +40,6 @@
 "killall -USR1 py3status"
    Release + Num_Lock
 
-"/home/vk/apps/mic_led.bash"
-   XF86AudioMicMute
-
 #keystate_numlock = enable
 #keystate_capslock = enable
 #keystate_scrolllock= enable
