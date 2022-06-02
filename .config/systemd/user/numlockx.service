@@ -1,0 +1,10 @@
+[Unit]
+Description=Enable numlock
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/numlockx on
+
+[Install]
+WantedBy=default.target
