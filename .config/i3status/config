@@ -1,3 +1,4 @@
+order += "online_status"
 order += "bluetooth"
 order += "keyboard_locks"
 order += "volume_status"
@@ -7,6 +8,11 @@ order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
 order += "clock"
+
+online_status {
+        icon_on = ''
+        icon_off = 'No internet connection'
+}
 
 bluetooth {
     format = "[BT: {format_device}]"
