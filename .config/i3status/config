@@ -56,10 +56,6 @@ tztime local {
         format = "%A %d.%m.%Y %H:%M"
 }
 
-load {
-        format = "%1min"
-}
-
 disk "/" {
         format = "%avail"
 }
