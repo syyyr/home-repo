@@ -1,0 +1,12 @@
+[Unit]
+Description=Setup touchpad behavior
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Natural Scrolling Enabled" 1
+ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
+ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
+
+[Install]
+WantedBy=default.target
