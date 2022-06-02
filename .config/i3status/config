@@ -1,6 +1,6 @@
 order += "keyboard_locks"
 order += "volume_status"
-order += "wireless _first_"
+order += "wifi"
 order += "ethernet enp5s0f3u1u5"
 order += "diskdata"
 order += "lm_sensors T14s"
@@ -22,9 +22,8 @@ volume_status {
         color_bad = white
 }
 
-wireless _first_ {
-        format_up = "W: %essid (%ip)"
-        format_down = "W: down"
+wifi {
+        format = "W: {ssid} ({ip})|W: down"
 }
 
 ethernet enp5s0f3u1u5 {
