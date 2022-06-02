@@ -35,5 +35,7 @@
     "diagnostic-languageserver.trace.server": "verbose",
     "rust.clippy_preference": "on",
     "coc.source.omni.filetypes": ["sshconfig"],
-    "signature.triggerSignatureWait": 1000
+    "signature.triggerSignatureWait": 1000,
+    "html.autoCreateQuotes": false,
+    "html.autoClosingTags": false
 }
