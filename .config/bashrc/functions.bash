@@ -255,3 +255,18 @@ do_coc_update()
     yarn install --frozen-lockfile
     popd
 }
+
+bt_phone()
+{
+    if bluetoothctl info | grep -o 'Connected: yes'; then
+        bluetoothctl disconnect
+    else
+        if [[ -z "$PHONE_BT_MAC" ]]; then
+            echo '$PHONE_BT_MAC is not set, unable to connect to phone'.  >&2
+            return 1
+        fi
+        bluetoothctl connect "$PHONE_BT_MAC"
+    fi
+
+    killall -SIGUSR1 py3status
+}
