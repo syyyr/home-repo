@@ -16,8 +16,6 @@ bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wra
 
 bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic_led.bash
 
-hide_edge_borders smart
-
 #suspend
 bindsym $mod+Shift+Delete exec --no-startup-id "killall i3-nagbar;i3-nagbar -t blue -m ''\
  -b 'Shutdown' 'shutdown now'\
@@ -97,6 +95,8 @@ font pango:Noto Sans 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+hide_edge_borders smart
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper
