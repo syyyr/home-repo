@@ -18,7 +18,7 @@ wttr()
 
 res()
 {
-    "$HOME/apps/check_available.bash"  cvt || return 1
+    "$HOME/apps/check-available.bash"  cvt || return 1
 
     if [[ "$#" -ne 4 ]]; then
         echo 'usage: res <xrandr output> <x> <y> <hz>'
@@ -152,7 +152,7 @@ gso()
 
 string_diff()
 {
-    "$HOME/apps/check_available.bash" dwdiff || return 1
+    "$HOME/apps/check-available.bash" dwdiff || return 1
 
     if [[ "$*" =~ "==" ]]; then
         local LEFT=$(grep ".* == " -o <<< "$*" | sed 's/ == //')
@@ -165,9 +165,9 @@ string_diff()
 
 twitch()
 {
-    "$HOME/apps/check_available.bash" streamlink google-chrome-stable || return 1
+    "$HOME/apps/check-available.bash" streamlink google-chrome-stable || return 1
     if [[ $# != 1 ]]; then
-        "$HOME/apps/twitch_online.bash"
+        "$HOME/apps/twitch-online.bash"
         return 0
     fi
     google-chrome-stable --new-window "https://www.twitch.tv/popout/$1/chat"

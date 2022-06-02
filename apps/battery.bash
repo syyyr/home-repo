@@ -15,6 +15,6 @@ if [[ "$BATTERY_LEVEL" -le "$THRESHOLD" ]]; then
     ARGS='-u critical -t 5000 -h string:x-canonical-private-synchronous:kbacklight'
     ARGS+=" -i $KEYBOARD_IMG"
     notify-send $ARGS 'Battery low' "$BATTERY_LEVEL%"
-    "$HOME/apps/play_not_sound.bash"
+    "$HOME/apps/play-not-sound.bash"
 fi
 

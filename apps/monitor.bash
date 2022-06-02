@@ -10,7 +10,7 @@ refresh() {
         xrandr --output eDP-1 --primary
     else
         xrandr --output "$OUTPUT" --above eDP-1 --auto --primary
-        "$HOME/apps/workspace_ball.bash"
+        "$HOME/apps/workspace-ball.bash"
         nitrogen --restore
     fi
 }

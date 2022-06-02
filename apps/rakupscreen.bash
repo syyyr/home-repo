@@ -1,6 +1,6 @@
 #!/bin/bash
 
-"$HOME/apps/check_available.bash" pngcheck base64 fold sha1sum xclip
+"$HOME/apps/check-available.bash" pngcheck base64 fold sha1sum xclip
 
 get_image()
 {

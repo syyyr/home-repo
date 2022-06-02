@@ -1,5 +1,5 @@
 #!/bin/bash
-"$HOME/apps/check_available.bash" pamixer || exit 1
+"$HOME/apps/check-available.bash" pamixer || exit 1
 
 case "$1" in
     increase)

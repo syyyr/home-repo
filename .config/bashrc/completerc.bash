@@ -49,7 +49,7 @@ __try_compl() {
 }
 
 __twitch_compl() {
-    COMPREPLY=( $(compgen -W "$("$HOME/apps/twitch_online.bash")" "${COMP_WORDS[${COMP_CWORD}]}") )
+    COMPREPLY=( $(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}") )
 }
 
 complete -W 'increase decrease min max'  brightness

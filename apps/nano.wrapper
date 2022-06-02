@@ -2,7 +2,7 @@
 source "$HOME/.config/bashrc/colors.bash"
 echo -e "${BASH_COLOR_BOLD}lol ze nano 😂${BASH_COLOR_NORMAL}"
 sleep 1.5
-if "$HOME/apps/check_available.bash" lolcat &> /dev/null; then
+if "$HOME/apps/check-available.bash" lolcat &> /dev/null; then
     /usr/bin/nano "$@" | lolcat
 else
     /usr/bin/nano "$@"

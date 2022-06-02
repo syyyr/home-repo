@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-"$HOME/apps/check_available.bash" escrotum ffmpeg notify-send convert || exit 1
+"$HOME/apps/check-available.bash" escrotum ffmpeg notify-send convert || exit 1
 
 ARGS='-h string:x-canonical-private-synchronous:areagif'
 notify-send -t 3000 $ARGS "Select area..."

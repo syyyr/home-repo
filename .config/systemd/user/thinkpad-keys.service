@@ -4,7 +4,7 @@ After=graphical.target
 
 [Service]
 Type=simple
-ExecStart=/home/vk/apps/thinkpad_keys.bash
+ExecStart=/home/vk/apps/thinkpad-keys.bash
 Restart=always
 
 [Install]

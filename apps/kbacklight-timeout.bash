@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eu
-"$HOME/apps/check_available.bash" xinput || exit 1
+"$HOME/apps/check-available.bash" xinput || exit 1
 
 echo 'Turning backlight on.'
 "$HOME/apps/kbacklight.bash" 2

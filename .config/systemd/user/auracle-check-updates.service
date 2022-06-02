@@ -3,4 +3,4 @@ Description=Check AUR updates via auracle
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/bash -c 'if /usr/bin/auracle outdated; then notify-send -i '/home/vk/.local/share/icons/blue/25-Ampoule.png' Auracle "AUR updates available."; /home/vk/apps/play_not_sound.bash; fi; /home/vk/apps/play_not_sound.bash'
+ExecStart=/usr/bin/bash -c 'if /usr/bin/auracle outdated; then notify-send -i '/home/vk/.local/share/icons/blue/25-Ampoule.png' Auracle "AUR updates available."; /home/vk/apps/play-not-sound.bash; fi'
