@@ -5,7 +5,7 @@ order += "networkmanager enp5s0f3u1u5"
 order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
-order += "tztime local"
+order += "clock"
 
 keyboard_locks {
         cache_timeout = 10
@@ -54,8 +54,9 @@ battery_level 0 {
         last_full_capacity = true
 }
 
-tztime local {
-        format = "%A %d.%m.%Y %H:%M"
+clock {
+        format = ["{Europe/Prague}"]
+        format_time = "%A %d.%m.%Y %H:%M"
 }
 
 disk "/" {
