@@ -2,8 +2,7 @@ order += "keyboard_locks"
 order += "volume_status"
 order += "online_status"
 order += "bluetooth"
-order += "networkmanager wlp3s0"
-order += "networkmanager enp5s0f3u1u5"
+order += "networkmanager"
 order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
@@ -38,14 +37,9 @@ volume_status {
     color_bad = white
 }
 
-networkmanager wlp3s0 {
-    format = "[\?color=lime W: {format_device}]"
-    format_device = "[\?if=general_device=wlp3s0 [\?soft ][\?color=good {ap_ssid} ({ip4_address1})]]"
-}
-
-networkmanager enp5s0f3u1u5 {
-    format = "[\?color=lime E: {format_device}]"
-    format_device = "[\?if=general_device=enp5s0f3u1u5 [\?soft ][\?color=good {ip4_address1}]]"
+networkmanager {
+    format = "[\?color=lime {format_device}]"
+    format_device = "[\?if=general_connection [\?if=general_type=ethernet E: ][\?if=general_type=wifi W: {ap_ssid} (]{ip4_address1}[\?if=general_type=wifi )]]"
 }
 
 diskdata {
