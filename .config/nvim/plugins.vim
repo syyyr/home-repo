@@ -78,6 +78,7 @@ command! CocDeclaration call CocActionAsync('jumpDeclaration')
 command! CocReferences call CocActionAsync('jumpReferences')
 command! CocHover call CocActionAsync('doHover')
 command! CocRename call CocActionAsync('rename')
+command! CocFix call CocActionAsync('codeAction', 'line')
 command! CF CocFix
 command! CR CocRename
 command! CS CocList symbols
