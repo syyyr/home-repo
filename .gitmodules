@@ -43,6 +43,7 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-colon-therapy"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-colon-therapy
 	url = https://github.com/syyyr/vim-colon-therapy
+	branch = with-fixes
 [submodule ".local/share/nvim/site/pack/bundle/opt/indent-blankline.nvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/indent-blankline.nvim
 	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
