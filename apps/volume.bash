@@ -28,7 +28,7 @@ VOLUME_MUTE="$HOME/.local/share/icons/blue/volume-mute.png"
 VOL="$(pamixer --get-volume)%"
 
 VOLUME_IMG="$VOLUME_LOW"
-if pamixer --get-mute > /dev/null;then
+if [[ "$(pamixer --get-mute)" != "false" ]]; then
     MUTED="(muted)"
     VOLUME_IMG="$VOLUME_MUTE"
 elif [[ "${VOL//%}" -ge "66" ]];then
