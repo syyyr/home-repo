@@ -1,4 +1,5 @@
 order += "keyboard_locks"
+order += "google_calendar"
 order += "volume_status"
 order += "online_status"
 order += "bluetooth"
@@ -7,6 +8,13 @@ order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
 order += "clock"
+
+google_calendar {
+    time_to_max = 99999
+    events_within_hours = 48
+    format_event = "[\?if=!is_current [\?color=lime {summary}][ {format_timer}]]"
+    format_timer = "\?color=time (in [\?if=days {days}d ][\?if=hours {hours}h ][\?if=minutes {minutes}m])"
+}
 
 online_status {
     icon_on = ''
