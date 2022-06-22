@@ -12,6 +12,7 @@ order += "clock"
 google_calendar {
     time_to_max = 99999
     events_within_hours = 48
+    markup = "pango"
     format_event = "[\?if=!is_current [\?color=lime {summary}][ {format_timer}]]"
     format_timer = "\?color=time (in [\?if=days {days}d ][\?if=hours {hours}h ][\?if=minutes {minutes}m])"
 }
