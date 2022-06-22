@@ -4,11 +4,11 @@
 get_muted()
 {
     if "$HOME/apps/volume.bash" | grep muted; then
-        echo 0
-        return 0
-    else
         echo 1
         return 1
+    else
+        echo 0
+        return 0
     fi
 }
 
@@ -35,7 +35,7 @@ fi
 # TODO: if you take out headphones, the speakers get unumuted
 MUTED_BEFORE=$(get_muted)
 
-if [[ $MUTED_BEFORE != 0 ]]; then
+if [[ $MUTED_BEFORE = 0 ]]; then
     "$HOME/apps/volume.bash" toggle
 fi
 
