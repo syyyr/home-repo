@@ -4,6 +4,7 @@ alias cd..='cd ..'
 alias cdp='cd -P'
 alias ctest='ctest --output-on-failure'
 alias cpu='cat /proc/cpuinfo | grep "MHz"'
+alias d='cd'
 alias dc='cd'
 alias email="vim -S $HOME/.config/writing.vim"
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
