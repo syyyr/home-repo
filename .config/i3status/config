@@ -3,7 +3,8 @@ order += "google_calendar"
 order += "volume_status"
 order += "online_status"
 order += "bluetooth"
-order += "networkmanager"
+order += "networkmanager wifi"
+order += "networkmanager ethernet"
 order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
@@ -45,9 +46,14 @@ volume_status {
     color_bad = white
 }
 
-networkmanager {
+networkmanager wifi {
+    format = "{format_device}"
+    format_device = "\?if=general_type=wifi [[\?color=lime W: {ap_ssid} ({ip4_address1})]|[\?color=dimgrey&show W: down]]"
+}
+
+networkmanager ethernet {
     format = "[\?color=lime {format_device}]"
-    format_device = "[\?if=general_connection [\?if=general_type=ethernet E: ][\?if=general_type=wifi W: {ap_ssid} (]{ip4_address1}[\?if=general_type=wifi )]]"
+    format_device = "\?if=general_type=ethernet [E: {ip4_address1}]"
 }
 
 diskdata {
