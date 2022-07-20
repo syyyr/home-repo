@@ -22,3 +22,5 @@
     smtpServerOption = -sender=sir.venceslas@gmail.com
 [init]
 	defaultBranch = main
+[commit]
+	verbose = 1
