@@ -4,6 +4,7 @@
 PASTAS='thinking 🤔
 tears 😭
 joy 😂
+xd 😆
 :DD/grin 😁
 ok_hand 👌
 thumbs_up 👍
