@@ -11,18 +11,28 @@
 [profiles]
   [[default]]
     background_color = "#eeeeee"
+    cursor_color = "#aaaaaa"
+    foreground_color = "#444444"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0087af:#aa00aa:#5ed6d6:#aaaaaa:#555555:#ff5555:#4e9a06:#c1c100:#5ed6d6:#ff55ff:#5ed6d6:#ffffff"
     background_darkness = 0.9
     cursor_blink = False
-    cursor_color = "#aaaaaa"
     font = Consolas NF 14
-    foreground_color = "#444444"
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_infinite = True
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#0087af:#aa00aa:#5ed6d6:#aaaaaa:#555555:#ff5555:#4e9a06:#c1c100:#5ed6d6:#ff55ff:#5ed6d6:#ffffff"
     use_system_font = False
   [[dark]]
+    background_color = "#1c1c1c"
     cursor_color = "#aaaaaa"
+    foreground_color = "#d0d0d0"
+    palette = "#1c1c1c:#aa0000:#00aa00:#aa5500:#0087af:#aa00aa:#5ed6d6:#aaaaaa:#555555:#ff5555:#4e9a06:#ffff55:#5ed6d6:#ff55ff:#5ed6d6:#ffffff"
+    background_darkness = 0.9
+    cursor_blink = False
+    font = Consolas NF 14
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    use_system_font = False
   [[no_exit]]
     background_color = "#eeeeee"
     background_darkness = 0.9
