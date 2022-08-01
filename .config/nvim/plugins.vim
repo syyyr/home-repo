@@ -83,6 +83,9 @@ command! CF CocFix
 command! CR CocRename
 command! CS CocList symbols
 nnoremap <silent> <c-space> :CocHover<cr>
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+inoremap <expr> <C-n> coc#pum#visible() ? coc#pum#next(v:true) : "\<C-n>"
+inoremap <expr> <C-p> coc#pum#visible() ? coc#pum#prev(v:true) : "\<C-R>0"
 
 packadd! vim-dispatch
 let g:dispatch_no_maps = 1

@@ -77,8 +77,6 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <S-Left> :vertical resize -4<CR>
 nnoremap <S-Right> :vertical resize +4<CR>
 
-inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
-
 " underscore text object
 xnoremap i_ :<C-u>normal! T_vt_<cr>
 onoremap i_ :normal vi_<cr>
@@ -109,7 +107,6 @@ nnoremap # #N
 
 nnoremap <C-P> "0p
 xnoremap <C-P> "0p
-inoremap <C-P> <C-R>0
 
 tnoremap <esc> <C-\><C-N>
 
