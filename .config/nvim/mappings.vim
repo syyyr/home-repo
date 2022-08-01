@@ -77,8 +77,7 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <S-Left> :vertical resize -4<CR>
 nnoremap <S-Right> :vertical resize +4<CR>
 
-" accept the suggestion with <cr> or decline it with <esc>
-inoremap <silent><expr> <CR>  pumvisible() ? "<C-y>" : "<CR>"
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
 " underscore text object
 xnoremap i_ :<C-u>normal! T_vt_<cr>
