@@ -75,6 +75,8 @@ augroup cocDefault
     autocmd ColorScheme PaperColor hi clear CocWarningSign
     autocmd ColorScheme PaperColor hi clear CocInfoSign
     autocmd ColorScheme PaperColor hi clear CocHintSign
+
+    autocmd ColorScheme PaperColor hi default CocMenuSel ctermbg=237 guibg=#e4e4e4
 augroup END
 
 colorscheme PaperColor
