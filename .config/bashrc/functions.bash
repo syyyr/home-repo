@@ -264,3 +264,59 @@ bt_phone()
 
     py3-cmd refresh bluetooth
 }
+
+print_var()
+{
+    local name="$1"
+    echo "  $name='${!name}'"
+}
+
+my_cmake()
+{
+    export CC="clang"
+    export CXX="clang++"
+    export LD="clang"
+    while true; do
+        case "$1" in
+            asan)
+                CFLAGS="-fsanitize=address,undefined"
+                CXXFLAGS="-fsanitize=address,undefined"
+                LDFLAGS="-fsanitize=address,undefined"
+                echo "Enabling ASAN/UBSAN."
+                shift
+                ;;
+            gcc)
+                echo "Enabling GCC."
+                export CC=""
+                export CXX=""
+                export LD=""
+                shift
+                ;;
+            templight)
+                echo "Enabling templight."
+                export CXX="templight++"
+                shift
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [[ "${CXX}" = clang++ ]]; then
+        CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
+    else
+        CXXFLAGS="${CXXFLAGS} -fno-var-tracking-assignments"
+    fi
+
+    print_var CC
+    print_var CXX
+    print_var LD
+    print_var CFLAGS
+    print_var CXXFLAGS
+    print_var LDFLAGS
+
+    echo cmake -DCMAKE_C_COMPILER_LAUNCHER="ccache" -DCMAKE_CXX_COMPILER_LAUNCHER="ccache" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug "$@"
+    # cmake -DCMAKE_C_COMPILER_LAUNCHER="ccache" -DCMAKE_CXX_COMPILER_LAUNCHER="ccache" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug "$@"
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug "$@"
+}
