@@ -279,9 +279,9 @@ my_cmake()
     while true; do
         case "$1" in
             asan)
-                CFLAGS="-fsanitize=address,undefined"
-                CXXFLAGS="-fsanitize=address,undefined"
-                LDFLAGS="-fsanitize=address,undefined"
+                CFLAGS="-fsanitize=address,undefined ${CFLAGS}"
+                CXXFLAGS="-fsanitize=address,undefined ${CXXFLAGS}"
+                LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
                 echo "Enabling ASAN/UBSAN."
                 shift
                 ;;
