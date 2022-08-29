@@ -35,3 +35,4 @@ nnoremap <C-]> :CocDefinition<cr>
 nnoremap <C-W><C-]> <c-w><c-s>:CocDefinition<cr>
 
 iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>
+set cinoptions=j1,(0,ws,Ws,:0,l1
