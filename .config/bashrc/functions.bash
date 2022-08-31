@@ -297,6 +297,12 @@ my_cmake()
                 export CXX="templight++"
                 shift
                 ;;
+            cov)
+                echo "Enabling code coverage."
+                export CFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CFLAGS}"
+                export CXXFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CXXFLAGS}"
+                shift
+                ;;
             *)
                 break
                 ;;
