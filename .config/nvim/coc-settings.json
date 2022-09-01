@@ -1,39 +1,14 @@
 {
     "suggest.noselect": true,
     "clangd.arguments": ["--background-index", "-j=6", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"],
-    "clangd.semanticHighlighting": true,
-    "suggest.enablePreview": true,
     "diagnostic.warningSign": ">>",
     "tsserver.implicitProjectConfig.checkJs": false,
-    "diagnostic-languageserver.filetypes": {
-        "vim": "vint"
-    },
-    "diagnostic-languageserver.linters":{
-        "vint": {
-            "command": "vint",
-            "debounce": 100,
-            "args": ["--enable-neovim", "-s", "-" ],
-            "offsetLine": 0,
-            "offsetColumn": 0,
-            "sourceName": "vint",
-            "formatLines": 1,
-            "formatPattern": [
-                "[^:]+:(\\d+):(\\d+):\\s*(.*$)",
-                {
-                    "line": 1,
-                    "column": 2,
-                    "message": 3
-                }
-            ]
-        }
-    },
     "languageserver": {
         "yang": {
             "command": "/usr/bin/yang-language-server",
             "filetypes": ["yang"]
         }
     },
-    "diagnostic-languageserver.trace.server": "verbose",
     "rust.clippy_preference": "on",
     "coc.source.omni.filetypes": ["sshconfig"],
     "signature.triggerSignatureWait": 1000,
