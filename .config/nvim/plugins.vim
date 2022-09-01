@@ -1,5 +1,10 @@
 scriptencoding utf8
 
+let g:gitblame_enabled = 0
+let g:gitblame_set_extmark_options = {
+            \ 'hl_mode': 'combine',
+            \ }
+packadd! git-blame.nvim
 packadd! i3config.vim
 packadd! vim-colon-therapy
 packadd! vim-pug

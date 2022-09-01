@@ -77,3 +77,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-python-pep8-indent"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-python-pep8-indent
 	url = https://github.com/Vimjas/vim-python-pep8-indent.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/git-blame.nvim"]
+	path = .local/share/nvim/site/pack/bundle/opt/git-blame.nvim
+	url = https://github.com/f-person/git-blame.nvim.git
