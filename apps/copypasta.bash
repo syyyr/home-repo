@@ -27,6 +27,7 @@ goto 𝓰𝓸𝓽𝓸
 lightning ⚡
 lit/fire 🔥
 diamond 💎
+shhhh 🤫
 eyes 👀
 strong/arm 💪
 roll 🙄
