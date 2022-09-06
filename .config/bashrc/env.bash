@@ -1,12 +1,12 @@
-export UBSAN_OPTIONS=print_stacktrace=true
 export DAYSTART='8'
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='find . -type d \( -name ".cargo" -or -name ".local" -or -name ".rustup" -or -name ".npm" -or -name ".git" -or -name ".cache" \) -prune -o -type f -print'
 export LESS='-RFS'
-export NIGHTSTART='22'
-export NVM_DIR="$HOME/.local/nvm"
-export VISUAL='nvim'
-export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
-export SCREENDIR="$HOME/.screen"
 export MANPAGER='nvim +Man! +"setlocal nomodifiable"'
+export NIGHTSTART='22'
+export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
+export NVM_DIR="$HOME/.local/nvm"
 export QT_SCALE_FACTOR=1.5
+export SCREENDIR="$HOME/.screen"
+export UBSAN_OPTIONS=print_stacktrace=true
+export VISUAL='nvim'
