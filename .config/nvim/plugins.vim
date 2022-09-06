@@ -1,6 +1,7 @@
 scriptencoding utf8
 
 let g:gitblame_enabled = 0
+let g:gitblame_highlight_group = "Question"
 let g:gitblame_set_extmark_options = {
             \ 'hl_mode': 'combine',
             \ }
