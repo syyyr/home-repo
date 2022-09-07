@@ -5,6 +5,7 @@
 !.config
 !.config/bashrc
 !.config/bashrc/**
+!.config/chrome-flags.conf
 !.config/dunst
 !.config/dunst/dunstrc
 !.config/etc
