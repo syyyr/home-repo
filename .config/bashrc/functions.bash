@@ -273,34 +273,39 @@ print_var()
 
 my_cmake()
 {
-    export CC="clang"
-    export CXX="clang++"
-    export LD="clang"
+    local CC="clang"
+    local CXX="clang++"
+    local LD="clang"
+    local CFLAGS
+    local CXXFLAGS
+    local LDFLAGS
+    local CMAKE_FLAGS='-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug'
     while true; do
         case "$1" in
             asan)
-                export CFLAGS="-fsanitize=address,undefined ${CFLAGS}"
-                export CXXFLAGS="-fsanitize=address,undefined ${CXXFLAGS}"
-                export LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
+                CFLAGS="-fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
+                CXXFLAGS="-fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
+                LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
+                CMAKE_FLAGS="-DCMAKE_POSITION_INDEPENDENT_CODE=ON ${CMAKE_FLAGS}"
                 echo "Enabling ASAN/UBSAN."
                 shift
                 ;;
             gcc)
                 echo "Enabling GCC."
-                export CC=""
-                export CXX=""
-                export LD=""
+                CC=""
+                CXX=""
+                LD=""
                 shift
                 ;;
             templight)
                 echo "Enabling templight."
-                export CXX="templight++"
+                CXX="templight++"
                 shift
                 ;;
             cov)
                 echo "Enabling code coverage."
-                export CFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CFLAGS}"
-                export CXXFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CXXFLAGS}"
+                CFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CFLAGS}"
+                CXXFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CXXFLAGS}"
                 shift
                 ;;
             *)
@@ -310,9 +315,9 @@ my_cmake()
     done
 
     if [[ "${CXX}" = clang++ ]]; then
-        export CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
+        CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
     else
-        export CXXFLAGS="${CXXFLAGS} -fno-var-tracking-assignments"
+        CXXFLAGS="${CXXFLAGS} -fno-var-tracking-assignments"
     fi
 
     print_var CC
@@ -322,9 +327,22 @@ my_cmake()
     print_var CXXFLAGS
     print_var LDFLAGS
 
-    echo cmake -DCMAKE_C_COMPILER_LAUNCHER="ccache" -DCMAKE_CXX_COMPILER_LAUNCHER="ccache" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug "$@"
-    cmake -DCMAKE_C_COMPILER_LAUNCHER="ccache" -DCMAKE_CXX_COMPILER_LAUNCHER="ccache" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug "$@"
-    # cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug "$@"
+    echo \
+        CC=${CC} \
+        CXX=${CXX} \
+        LD=${LD} \
+        CFLAGS=${CFLAGS} \
+        CXXFLAGS=${CXXFLAGS} \
+        LDFLAGS=${LDFLAGS} \
+        cmake ${CMAKE_FLAGS} "$@"
+
+    CC=${CC} \
+    CXX=${CXX} \
+    LD=${LD} \
+    CFLAGS=${CFLAGS} \
+    CXXFLAGS=${CXXFLAGS} \
+    LDFLAGS=${LDFLAGS} \
+    cmake ${CMAKE_FLAGS} "$@"
 }
 
 pulse_mono()
