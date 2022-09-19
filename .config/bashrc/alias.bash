@@ -16,6 +16,7 @@ alias i3config-status="nvim $HOME/.config/i3status/config"
 alias ivm="nvim"
 alias l='ls -CF'
 alias la='ls -A'
+alias lah='ls -lah'
 alias league="startx $HOME/.config/leaguerc"
 alias ll='ls -alF'
 alias ls='ls --color=auto'
