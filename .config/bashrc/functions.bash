@@ -349,3 +349,9 @@ pulse_mono()
 {
     pacmd load-module module-remap-sink sink_name=mono master=$(pacmd list-sinks | grep -m 1 -oP 'name:\s<\K.*(?=>)') channels=1 channel_map=mono
 }
+
+gen_cov()
+{
+    llvm-profdata merge -sparse default.profraw -o default.profdata
+    llvm-cov show --instr-profile=default.profdata $1 --format=html --ignore-filename-regex='3rdparty|autogen'
+}
