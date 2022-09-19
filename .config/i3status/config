@@ -72,9 +72,10 @@ diskdata {
 
 battery_level 0 {
     format = '{status} [\?color=white {percent}%]'
+    format_status_bad = "‼️"
     format_status_charging = "⚡"
     format_status_discharging = "🔋"
-    format_status_degraded = "🔋"
+    format_status_degraded = "⚠️"
     format_status_full = "💯"
     threshold_full = 100
     last_full_capacity = true
