@@ -238,7 +238,7 @@ do_auracle_update()
     for i in $(auracle -q outdated); do
         pushd $i
         git reset --hard
-        MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm
+        MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --nocheck
         popd
     done
 }
