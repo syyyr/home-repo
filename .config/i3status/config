@@ -46,6 +46,9 @@ volume_status {
     color_degraded = white
     color_muted = yellow
     color_bad = white
+    button_mute = ''
+    button_up = ''
+    button_down = ''
 }
 
 networkmanager wifi {
