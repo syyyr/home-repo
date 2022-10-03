@@ -279,7 +279,8 @@ my_cmake()
     local CFLAGS
     local CXXFLAGS
     local LDFLAGS
-    local CMAKE_FLAGS='-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug'
+    local CMAKE_FLAGS='-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache'
+
     while true; do
         case "$1" in
             asan)
