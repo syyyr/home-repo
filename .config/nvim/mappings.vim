@@ -114,3 +114,5 @@ nnoremap úc :cprev<cr>
 nnoremap )c :cnext<cr>
 
 nnoremap Q <nop>
+
+nnoremap q: <nop>
