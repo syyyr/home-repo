@@ -1,11 +1,3 @@
-wttr()
-{
-    local request="wttr.in/${1-Prague}"
-    [ "$COLUMNS" -lt 125 ] && request+='?n'
-    request+='?q?F'
-    curl -H 'Accept-Language: cs' --compressed "$request"
-}
-
 res()
 {
     "$HOME/apps/check-available.bash"  cvt || return 1
