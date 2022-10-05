@@ -1,13 +1,3 @@
-wishlist()
-{
-    if [ -z "$@" ]; then
-        cat "$HOME/.wishlist"
-    else
-        echo "$@" >> "$HOME/.wishlist"
-        echo "$@" '>> $HOME/.wishlist'
-    fi
-}
-
 wttr()
 {
     local request="wttr.in/${1-Prague}"
