@@ -14,51 +14,6 @@ res()
     xrandr --output "$1" --mode $(tr -d '"' <<< $(cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2))
 }
 
-if [[ -f /usr/share/nvm/init-nvm.sh ]]; then
-    _js_commands='node npm npx nvm'
-    _lazy_nvm()
-    {
-        echo
-        echo -n 'Loading nvm...' >&1
-        unalias $_js_commands
-        source /usr/share/nvm/nvm.sh
-        source /usr/share/nvm/install-nvm-exec
-        source /usr/share/nvm/bash_completion
-        echo ' done.' >&1
-        if [[ $# -ge 1 ]]; then
-            local command=$1
-            shift
-            $command $@
-        fi
-        source /usr/share/bash-completion/completions/npm
-        complete -o default -F _npm_completion npm
-    }
-
-    for cmd in $_js_commands; do
-        alias "$cmd"="_lazy_nvm $cmd"
-    done
-
-    __nvm()
-    {
-        _lazy_nvm
-        echo 'You may press TAB again for completion.'
-    }
-
-    complete -o default -F __nvm nvm
-    complete -o default -F __nvm npm
-fi
-
-obedy()
-{
-    local restaurace
-    for restaurace in "$HOME/bin/blox" "$HOME/bin/country" "$HOME/bin/husa" "$HOME/bin/petnik"; do
-        if [[ -x "$restaurace" ]]; then
-            $restaurace $1
-            echo
-        fi
-    done
-}
-
 gso()
 {
     while true; do
@@ -203,11 +158,6 @@ rm()
     fi
 
     /usr/bin/rm "$@"
-}
-
-compress()
-{
-    ffmpeg -i "$1" "$2"
 }
 
 try()
