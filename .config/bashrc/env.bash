@@ -5,7 +5,6 @@ export LESS='-RFS'
 export MANPAGER='nvim +Man! +"setlocal nomodifiable"'
 export NIGHTSTART='22'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
-export NVM_DIR="$HOME/.local/nvm"
 export QT_SCALE_FACTOR=1.5
 export SCREENDIR="$HOME/.screen"
 export UBSAN_OPTIONS=print_stacktrace=true
