@@ -1,3 +1,4 @@
+source /usr/share/bash-complete-alias/complete_alias
 alias :q='exit'
 alias calc="python -q"
 alias cd..='cd ..'
@@ -56,3 +57,4 @@ alias show='git show'
 alias stash='git stash'
 alias status='git status'
 alias switch='git switch'
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
