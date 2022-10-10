@@ -13,7 +13,7 @@ kiss/:* 😘
 angery 😠
 angery2 😡
 angery3 🤬
-pray 🙏
+pray/dorime 🙏
 hands 🙌
 rofl 🤣
 party 🎉
