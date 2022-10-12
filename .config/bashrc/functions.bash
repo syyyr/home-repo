@@ -230,6 +230,12 @@ my_cmake()
                 LD=""
                 shift
                 ;;
+            time)
+                echo "Enabling time trace."
+                CFLAGS="-ftime-trace ${CXXFLAGS}"
+                CXXFLAGS="-ftime-trace ${CXXFLAGS}"
+                shift
+                ;;
             templight)
                 echo "Enabling templight."
                 CXX="templight++"
