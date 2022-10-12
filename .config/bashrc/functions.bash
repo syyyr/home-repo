@@ -216,8 +216,8 @@ my_cmake()
     while true; do
         case "$1" in
             asan)
-                CFLAGS="-fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
-                CXXFLAGS="-fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
+                CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
+                CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
                 LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
                 CMAKE_FLAGS="-DCMAKE_POSITION_INDEPENDENT_CODE=ON ${CMAKE_FLAGS}"
                 echo "Enabling ASAN/UBSAN."
