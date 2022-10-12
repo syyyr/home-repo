@@ -6,6 +6,9 @@ let g:gitblame_set_extmark_options = {
             \ 'hl_mode': 'combine',
             \ }
 packadd! git-blame.nvim
+command! GT GitBlameToggle
+command! GSHA GitBlameCopySHA
+
 packadd! i3config.vim
 packadd! vim-colon-therapy
 packadd! vim-pug
