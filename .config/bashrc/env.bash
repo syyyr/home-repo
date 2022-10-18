@@ -7,5 +7,5 @@ export NIGHTSTART='22'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
 export QT_SCALE_FACTOR=1.5
 export SCREENDIR="$HOME/.screen"
-export UBSAN_OPTIONS=print_stacktrace=true
+export UBSAN_OPTIONS=print_stacktrace=true,halt_on_error=1
 export VISUAL='nvim'
