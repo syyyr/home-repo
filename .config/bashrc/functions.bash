@@ -247,6 +247,10 @@ my_cmake()
                 CXXFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CXXFLAGS}"
                 shift
                 ;;
+            no-cache)
+                CMAKE_FLAGS="${CMAKE_FLAGS/-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache/}"
+                shift
+                ;;
             *)
                 break
                 ;;
