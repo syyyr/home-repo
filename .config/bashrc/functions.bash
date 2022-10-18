@@ -225,8 +225,8 @@ my_cmake()
                 ;;
             gcc)
                 echo "Enabling GCC."
-                CC=""
-                CXX=""
+                CC="gcc"
+                CXX="g++"
                 LD=""
                 shift
                 ;;
