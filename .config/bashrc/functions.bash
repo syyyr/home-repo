@@ -251,6 +251,11 @@ my_cmake()
                 CMAKE_FLAGS="${CMAKE_FLAGS/-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache/}"
                 shift
                 ;;
+            optimize)
+                CFLAGS="-O2 ${CFLAGS}"
+                CXXFLAGS="-O2 ${CXXFLAGS}"
+                shift
+                ;;
             *)
                 break
                 ;;
