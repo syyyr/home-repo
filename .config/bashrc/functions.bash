@@ -256,6 +256,11 @@ my_cmake()
                 CXXFLAGS="-O2 ${CXXFLAGS}"
                 shift
                 ;;
+            werror)
+                CFLAGS="-Werror ${CFLAGS}"
+                CXXFLAGS="-Werror ${CXXFLAGS}"
+                shift
+                ;;
             *)
                 break
                 ;;
