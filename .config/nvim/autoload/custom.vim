@@ -20,7 +20,6 @@ function! custom#DiffToggle() abort
 endfun
 
 function! custom#CleanScreen() abort
-    call coc#float#close_all()
     call clever_f#reset()
 endfun
 

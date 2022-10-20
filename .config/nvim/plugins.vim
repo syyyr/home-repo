@@ -87,28 +87,6 @@ augroup goyoFix
     autocmd User GoyoLeave nested set eventignore=
 augroup END
 
-" packadd! coc.nvim
-" let g:coc_snippet_next = '<Tab>'
-" let g:coc_snippet_prev = '<S-Tab>'
-" inoremap <silent><expr> <c-space> coc#refresh()
-" augroup cocHighlight
-"     autocmd!
-"     autocmd CursorHold * silent call CocActionAsync('highlight')
-" augroup END
-" command! CocDefinition call CocActionAsync('jumpDefinition')
-" command! CocDeclaration call CocActionAsync('jumpDeclaration')
-" command! CocReferences call CocActionAsync('jumpReferences')
-" command! CocHover call CocActionAsync('doHover')
-" command! CocRename call CocActionAsync('rename')
-" command! CocFix call CocActionAsync('codeAction', 'line')
-" command! CF CocFix
-" command! CR CocRename
-" command! CS CocList symbols
-" nnoremap <silent> <c-space> :CocHover<cr>
-" inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
-" inoremap <expr> <C-n> coc#pum#visible() ? coc#pum#next(v:true) : "\<C-n>"
-" inoremap <expr> <C-p> coc#pum#visible() ? coc#pum#prev(v:true) : "\<C-R>0"
-
 packadd! vim-dispatch
 let g:dispatch_no_maps = 1
 
