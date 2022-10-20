@@ -3,6 +3,7 @@ scriptencoding utf8
 packadd! nvim-lspconfig
 packadd! nvim-cmp
 packadd! cmp-nvim-lsp
+packadd! cmp-buffer
 " set completeopt=menu,menuone,noselect
 
 lua << EOF
