@@ -83,3 +83,9 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/nvim-lspconfig"]
 	path = .local/share/nvim/site/pack/bundle/opt/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/nvim-cmp"]
+	path = .local/share/nvim/site/pack/bundle/opt/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/cmp-nvim-lsp"]
+	path = .local/share/nvim/site/pack/bundle/opt/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
