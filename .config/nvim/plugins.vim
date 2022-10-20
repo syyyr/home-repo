@@ -4,6 +4,7 @@ packadd! nvim-lspconfig
 packadd! nvim-cmp
 packadd! cmp-nvim-lsp
 packadd! cmp-buffer
+packadd! cmp-nvim-lsp-signature-help
 " set completeopt=menu,menuone,noselect
 
 lua << EOF
@@ -19,7 +20,8 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'buffer', }
+        { name = 'buffer', },
+        { name = 'nvim_lsp_signature_help' }
     })
 })
 
