@@ -58,25 +58,6 @@ augroup todoColor
     autocmd ColorScheme PaperColor hi Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default
 augroup END
 
-augroup cocDefault
-    autocmd!
-    autocmd ColorScheme PaperColor hi clear CocFloating
-    autocmd ColorScheme PaperColor hi clear CocErrorFloat
-    autocmd ColorScheme PaperColor hi clear CocWarningFloat
-    autocmd ColorScheme PaperColor hi clear CocInfoFloat
-    autocmd ColorScheme PaperColor hi clear CocHintFloat
 
-    autocmd ColorScheme PaperColor hi clear CocErrorHighlight
-    autocmd ColorScheme PaperColor hi clear CocWarningHighlight
-    autocmd ColorScheme PaperColor hi clear CocInfoHighlight
-    autocmd ColorScheme PaperColor hi clear CocHintHighlight
-
-    autocmd ColorScheme PaperColor hi clear CocErrorSign
-    autocmd ColorScheme PaperColor hi clear CocWarningSign
-    autocmd ColorScheme PaperColor hi clear CocInfoSign
-    autocmd ColorScheme PaperColor hi clear CocHintSign
-
-    autocmd ColorScheme PaperColor hi default CocMenuSel ctermbg=237 guibg=#e4e4e4
-augroup END
 
 colorscheme PaperColor
