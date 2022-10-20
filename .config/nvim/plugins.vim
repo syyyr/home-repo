@@ -1,15 +1,39 @@
 scriptencoding utf8
 
 packadd! nvim-lspconfig
+packadd! nvim-cmp
+packadd! cmp-nvim-lsp
+" set completeopt=menu,menuone,noselect
+
 lua << EOF
+local cmp = require('cmp')
+
+cmp.setup({
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'buffer', }
+    })
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<C-Space>', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
 end
+
 require('lspconfig').clangd.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
+vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
 EOF
 
 
