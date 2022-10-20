@@ -43,6 +43,8 @@ vim.diagnostic.config({
     },
     severity_sort = true
 })
+
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
 EOF
 
 
