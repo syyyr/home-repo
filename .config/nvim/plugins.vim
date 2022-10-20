@@ -39,8 +39,9 @@ vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSign
 vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'DiagnosticSignError' })
 vim.diagnostic.config({
     virtual_text = {
-        severity = 'error'
-    }
+        severity = 'error',
+    },
+    severity_sort = true
 })
 EOF
 
