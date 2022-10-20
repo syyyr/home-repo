@@ -41,7 +41,10 @@ vim.diagnostic.config({
     virtual_text = {
         severity = 'error',
     },
-    severity_sort = true
+    severity_sort = true,
+    float = {
+        header = ''
+    }
 })
 
 vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
