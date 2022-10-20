@@ -58,6 +58,10 @@ augroup todoColor
     autocmd ColorScheme PaperColor hi Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default
 augroup END
 
+augroup lspColors
+    autocmd!
+    autocmd ColorScheme PaperColor execute 'highlight clear LspDiagnosticsDefaultError | highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000'
+augroup END
 
 
 colorscheme PaperColor

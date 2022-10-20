@@ -36,7 +36,7 @@ require('lspconfig').clangd.setup{
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
 
 vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'WarningMsg' })
+vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'DiagnosticSignError' })
 vim.diagnostic.config({
     virtual_text = {
         severity = 'error'
