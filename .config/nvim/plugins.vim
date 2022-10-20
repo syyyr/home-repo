@@ -37,6 +37,11 @@ vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end,
 
 vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'WarningMsg' })
+vim.diagnostic.config({
+    virtual_text = {
+        severity = 'error'
+    }
+})
 EOF
 
 
