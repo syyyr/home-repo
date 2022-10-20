@@ -20,7 +20,6 @@ augroup END
 augroup statuslineIntegration
     autocmd!
     autocmd BufReadPost,TextChanged,InsertLeave * call custom#TrailingWsCheck()
-    autocmd BufReadPost,TextChanged,InsertLeave * call timer_start(1000, 'custom#CocCheck', {'repeat': 0})
 augroup END
 
 augroup tabsOrSpaces

@@ -44,35 +44,7 @@ function! custom#TrailingWsCheck() abort
     call chanclose(s:id, 'stdin')
 endfun
 
-function! custom#CocCheck(id) abort
-    " try
-    "     let l:info = CocAction('diagnosticList')
-    " catch /coc.nvim not ready/
-    "     return
-    " endtry
-
-    " if type(l:info) != v:t_list
-    "     return
-    " endif
-    " let b:CocInfo = ''
-    " if len(l:info)
-    "     let l:first = l:info[0]
-    "     if l:first['file'] ==# expand('%:p')
-    "         if l:first['severity'] ==# 'Error'
-    "             let b:CocInfo = 'E: ln ' . l:first['lnum']
-    "         elseif l:first['severity'] ==# 'Warning'
-    "             let b:CocInfo = 'W: ln ' . l:first['lnum']
-    "         endif
-    "     endif
-    " endif
-endfun
-
 function! custom#StatuslineDiagnostics() abort
-    " coc.nvim integration
-    if get(b:, 'CocInfo', 0) !=# ''
-        return b:CocInfo
-    endif
-
     if get(b:, 'TrailingNr', 0) && mode() !=? 'i'
         return 'WS: ln ' . b:TrailingNr
     endif
