@@ -61,6 +61,7 @@ augroup END
 augroup lspColors
     autocmd!
     autocmd ColorScheme PaperColor execute 'highlight clear LspDiagnosticsDefaultError | highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000'
+    autocmd ColorScheme PaperColor execute 'highlight clear LspDiagnosticsDefaultWarning | highlight LspDiagnosticsDefaultWarning gui=bold guifg=#00af5f'
 augroup END
 
 
