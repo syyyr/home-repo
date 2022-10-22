@@ -53,6 +53,7 @@ if len(sys.argv) != 3:
 
 filename = sys.argv[1]
 input_link = sys.argv[2]
+filemode = 'wb'
 
 if os.path.isfile(filename):
     answer = input(f'A file called {filename} already exists, do you want to continue downloading it? (saying "n" overwrites the file) [y/n] ')
