@@ -5,6 +5,7 @@ packadd! nvim-cmp
 packadd! cmp-nvim-lsp
 packadd! cmp-buffer
 packadd! cmp-nvim-lsp-signature-help
+packadd! clangd_extensions.nvim
 " set completeopt=menu,menuone,noselect
 
 lua << EOF
@@ -31,9 +32,11 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
 end
 
-require('lspconfig').clangd.setup{
-    on_attach = on_attach,
-    capabilities = capabilities
+require("clangd_extensions").setup {
+    server = {
+        on_attach = on_attach,
+        capabilities = capabilities
+    },
 }
 
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
