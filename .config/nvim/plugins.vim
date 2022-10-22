@@ -45,12 +45,22 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
 end
 
-require("clangd_extensions").setup {
+require("clangd_extensions").setup({
     server = {
         on_attach = on_attach,
         capabilities = capabilities
     },
-}
+})
+
+require("lspconfig").vimls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+require("lspconfig").pylsp.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
 EOF
 
 
