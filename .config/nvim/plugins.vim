@@ -9,8 +9,21 @@ packadd! clangd_extensions.nvim
 " set completeopt=menu,menuone,noselect
 
 lua << EOF
-local cmp = require('cmp')
+vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
+vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
+vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'DiagnosticSignError' })
+vim.diagnostic.config({
+    virtual_text = {
+        severity = 'error',
+    },
+    severity_sort = true,
+    float = {
+        header = ''
+    }
+})
 
+local cmp = require('cmp')
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -38,22 +51,6 @@ require("clangd_extensions").setup {
         capabilities = capabilities
     },
 }
-
-vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
-
-vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'DiagnosticSignError' })
-vim.diagnostic.config({
-    virtual_text = {
-        severity = 'error',
-    },
-    severity_sort = true,
-    float = {
-        header = ''
-    }
-})
-
-vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
 EOF
 
 
