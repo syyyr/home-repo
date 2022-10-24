@@ -110,8 +110,8 @@ xnoremap <C-P> "0p
 
 tnoremap <esc> <C-\><C-N>
 
-nnoremap úc :cprev<cr>
-nnoremap )c :cnext<cr>
+nnoremap úc :cprev<cr>zo
+nnoremap )c :cnext<cr>zo
 
 nnoremap Q <nop>
 
