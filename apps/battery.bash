@@ -7,8 +7,6 @@ if ! (acpi -a | grep "off-line" > /dev/null); then
     exit 0
 fi
 BATTERY_LEVEL=$(acpi | grep -oE "[0-9]+%" | sed 's/%//')
-# This makes in line with i3bar
-VISIBLE_BATTERY_LEVEL=$((BATTERY_LEVEL + 1))
 if [[ "$BATTERY_LEVEL" -le "$THRESHOLD" ]]; then
     echo 'Battery is low.'
     KEYBOARD_IMG="$HOME/.local/share/icons/blue/battery-low.png"
