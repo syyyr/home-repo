@@ -13,7 +13,7 @@ res()
     echo "cvt12 $2 $3 $4 -b | tail -1 | cut -d' ' -f2 | xargs xrandr --addmode $1"
     cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2 | xargs xrandr --addmode "$1"
     echo "xrandr --output $1 --mode $(cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2)"
-    xrandr --output "$1" --mode $(tr -d '"' <<< $(cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2))
+    xrandr --output "$1" --mode "$(tr -d '"' <<< "$(cvt12 "$2" "$3" "$4" -b | tail -1 | cut -d' ' -f2)")"
 }
 
 gso()
@@ -44,11 +44,11 @@ gso()
         esac
     done
 
-    if [[ $# -gt 1 ]] && [[ -d "${@: -1}" || -r "${@: -1}" ]]; then
-        local ARGS="${@:1:$#-1}"
-        local DIRECTORY=${@: -1}
+    if [[ $# -gt 1 ]] && [[ -d "${*: -1}" || -r "${*: -1}" ]]; then
+        local ARGS=( "${@:1:$#-1}" )
+        local DIRECTORY=( "${@: -1}" )
     else
-        local ARGS="$@"
+        local ARGS=( "$@" )
     fi
 
     # local is a command by itself, so first define local FILE and then assign,
@@ -60,8 +60,9 @@ gso()
         local COLOR=--color=always
     fi
 
-    echo "grep $CASE --exclude-dir=.git -IHrn $COLOR $ARGS $DIRECTORY"
-    local RESULTS="$(grep $CASE --exclude-dir=.git -IHrn $COLOR "$ARGS" $DIRECTORY)"
+    echo "grep $CASE --exclude-dir=.git -IHrn $COLOR ${ARGS[*]} ${DIRECTORY[*]}"
+    local RESULTS
+    RESULTS="$(grep $CASE --exclude-dir=.git -IHrn $COLOR "${ARGS[@]}" "${DIRECTORY[@]}")"
     if [[ "$RESULTS" = '' ]]; then
         echo 'No match.' >&1
         return 0
@@ -73,8 +74,9 @@ gso()
     FILE="$(fzf --tac -0 --height=50% --border --ansi <<< "$RESULTS")"
     case "$?" in
         0)
-            local VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
-            vim $VIM_ARG
+            local VIM_ARG
+            VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
+            vim "$VIM_ARG"
             ;;
         1)
             echo "fzf: No match. This shouldn't happen." >&1
@@ -94,8 +96,9 @@ string_diff()
     "$HOME/apps/check-available.bash" dwdiff || return 1
 
     if [[ "$*" =~ "==" ]]; then
-        local LEFT=$(grep ".* == " -o <<< "$*" | sed 's/ == //')
-        local RIGHT=$(grep " == .*" -o <<< "$*" | sed 's/ == //')
+        local LEFT RIGHT
+        LEFT=$(grep ".* == " -o <<< "$*" | sed 's/ == //')
+        RIGHT=$(grep " == .*" -o <<< "$*" | sed 's/ == //')
         dwdiff -c <(echo "$LEFT") <(echo "$RIGHT")
     else
         dwdiff -c <(echo "$1") <(echo "$2")
@@ -140,10 +143,10 @@ rm()
             echo "$REQUEST" | head -n10
             NUMBER_OF_FILES="$(echo "$REQUEST" | wc -l)"
             if [[ "$NUMBER_OF_FILES" -gt 10 ]]; then
-                echo "...and $(($NUMBER_OF_FILES - 10)) more."
+                echo "...and $((NUMBER_OF_FILES - 10)) more."
             fi
             echo -n 'Is that okay? [y/n] '
-            if ! read -t 10; then
+            if ! read -r -t 10; then
                 echo
                 echo 'No reply. Aborting just to be safe.'
                 return 1
@@ -170,10 +173,10 @@ try()
 do_auracle_update()
 {
     for i in $(auracle -q outdated); do
-        pushd $i
+        pushd "$i" || return
         git reset --hard
         MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --nocheck
-        popd
+        popd || return
     done
 }
 
@@ -183,6 +186,7 @@ bt_phone()
         bluetoothctl disconnect
     else
         if [[ -z "$PHONE_BT_MAC" ]]; then
+            # shellcheck disable=SC2016
             echo '$PHONE_BT_MAC is not set, unable to connect to phone'.  >&2
             return 1
         fi
@@ -278,10 +282,10 @@ my_cmake()
     echo \
         CC=${CC} \
         CXX=${CXX} \
-        LD=${LD} \
-        CFLAGS=${CFLAGS} \
-        CXXFLAGS=${CXXFLAGS} \
-        LDFLAGS=${LDFLAGS} \
+        LD="${LD}" \
+        CFLAGS="${CFLAGS}" \
+        CXXFLAGS="${CXXFLAGS}" \
+        LDFLAGS="${LDFLAGS}" \
         cmake ${CMAKE_FLAGS} "$@"
 
     CC=${CC} \
@@ -295,18 +299,18 @@ my_cmake()
 
 pulse_mono()
 {
-    pacmd load-module module-remap-sink sink_name=mono master=$(pacmd list-sinks | grep -m 1 -oP 'name:\s<\K.*(?=>)') channels=1 channel_map=mono
+    pacmd load-module module-remap-sink sink_name=mono master="$(pacmd list-sinks | grep -m 1 -oP 'name:\s<\K.*(?=>)')" channels=1 channel_map=mono
 }
 
 gen_cov()
 {
     llvm-profdata merge -sparse default.profraw -o default.profdata
-    llvm-cov show --instr-profile=default.profdata $1 --format=html --ignore-filename-regex='3rdparty|autogen'
+    llvm-cov show --instr-profile=default.profdata "$1" --format=html --ignore-filename-regex='3rdparty|autogen'
 }
 
 which-vim()
 {
-    vim $(which "$1")
+    vim "$(which "$1")"
 }
 
 android_mount()
