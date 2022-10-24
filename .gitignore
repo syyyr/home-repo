@@ -26,6 +26,7 @@
 !.config/nvim/**
 !.config/pacman
 !.config/pacman/makepkg.conf
+!.config/pycodestyle
 !.config/rofi
 !.config/rofi/config.rasi
 !.config/systemd
