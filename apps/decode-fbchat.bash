@@ -1,3 +1,4 @@
+#!/bin/bash
 {
     for i in message_*.json; do
         jq . "$i"  | iconv -f utf-8 -t latin1 |
