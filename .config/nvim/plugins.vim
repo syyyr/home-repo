@@ -59,7 +59,7 @@ require("lspconfig").vimls.setup({
     capabilities = capabilities
 })
 
-require("lspconfig").pyright.setup({
+require("lspconfig").pylsp.setup({
     on_attach = on_attach,
     capabilities = capabilities
 })
