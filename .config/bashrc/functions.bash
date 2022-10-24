@@ -210,7 +210,7 @@ my_cmake()
     local CFLAGS
     local CXXFLAGS
     local LDFLAGS
-    local CMAKE_FLAGS='-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache'
+    local CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache' )
 
     while true; do
         case "$1" in
@@ -218,7 +218,7 @@ my_cmake()
                 CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
                 CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
                 LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
-                CMAKE_FLAGS="-DCMAKE_POSITION_INDEPENDENT_CODE=ON ${CMAKE_FLAGS}"
+                CMAKE_FLAGS=( "-DCMAKE_POSITION_INDEPENDENT_CODE=ON ${CMAKE_FLAGS[@]}" )
                 echo "Enabling ASAN/UBSAN."
                 shift
                 ;;
@@ -247,7 +247,7 @@ my_cmake()
                 shift
                 ;;
             no-cache)
-                CMAKE_FLAGS="${CMAKE_FLAGS/-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache/}"
+                CMAKE_FLAGS=( "${CMAKE_FLAGS[@]/-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache/}" )
                 shift
                 ;;
             optimize)
@@ -286,7 +286,7 @@ my_cmake()
         CFLAGS="${CFLAGS}" \
         CXXFLAGS="${CXXFLAGS}" \
         LDFLAGS="${LDFLAGS}" \
-        cmake ${CMAKE_FLAGS} "$@"
+        cmake "${CMAKE_FLAGS[@]}" "$@"
 
     CC=${CC} \
     CXX=${CXX} \
@@ -294,7 +294,7 @@ my_cmake()
     CFLAGS=${CFLAGS} \
     CXXFLAGS=${CXXFLAGS} \
     LDFLAGS=${LDFLAGS} \
-    cmake ${CMAKE_FLAGS} "$@"
+    cmake "${CMAKE_FLAGS[@]}" "$@"
 }
 
 pulse_mono()
