@@ -31,8 +31,5 @@ endfunction
 command! -bang -nargs=1 Print call s:PrintSomething("<args>", "<bang>")
 command! -bang Printthis call s:PrintThis("<bang>")
 
-nnoremap <C-]> :CocDefinition<cr>
-nnoremap <C-W><C-]> <c-w><c-s>:CocDefinition<cr>
-
 iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>
 set cinoptions=j1,(0,ws,Ws,:0,l1,N-s,E-s

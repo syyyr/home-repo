@@ -6,5 +6,4 @@ function! s:PrintSomething(args, ...)
     endif
 endfunction
 
-nnoremap <C-]> :CocDefinition<cr>
 command! -bang -nargs=1 Print call s:PrintSomething("<args>", "<bang>")
