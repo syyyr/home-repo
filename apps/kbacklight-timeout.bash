@@ -7,7 +7,7 @@ echo 'Turning backlight on.'
 
 xinput test "AT Translated Set 2 keyboard" | while true; do
 {
-    if read -t "${TIMEOUT:-5}"; then
+    if read -r -t "${TIMEOUT:-5}"; then
         "$HOME/apps/kbacklight.bash" 2
     else
         echo 'Turning backlight off.'
