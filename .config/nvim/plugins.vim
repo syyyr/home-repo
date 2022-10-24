@@ -49,7 +49,8 @@ end
 require("clangd_extensions").setup({
     server = {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+        cmd = {"clangd", "--background-index", "-j=6", "--clang-tidy", "--header-insertion=never", "--suggest-missing-includes"}
     },
 })
 
