@@ -26,15 +26,6 @@ function! custom#CleanScreen() abort
     execute "normal \<C-Space>\<C-Space>\<C-Space>q"
 endfun
 
-function! custom#SumNumbers() abort
-    normal! mm
-    let l:old=@a
-    let @a=''
-    g/\d\+$/normal! "AygnA+"Aylx
-    normal! `mi=a+0
-    let @a=l:old
-endfunction
-
 function! s:ParseWsGrep(id, data, event) abort
     " By directly accessing the first line of the output, I can save a call to
     " join(). This shouldn't be a problem, as the job output is buffered.
@@ -74,14 +65,4 @@ function! custom#PutReg() abort
     registers
     let l:register = input(':normal! "')
     execute 'normal! "' . l:register
-endfun
-
-function! custom#FirenvimOneline() abort
-    set laststatus=0
-    set background=dark
-    nnoremap <esc> :wq<cr>
-    inoremap <expr> <esc> getline('.') == '' ? "\<esc>:wq\<cr>" : "\<esc>"
-    inoremap <silent> <cr> <esc>:silent !(sleep 0.3; xdotool key Return)&<cr>:wq<cr>
-    nnoremap <silent> <cr> <esc>:silent !(sleep 0.3; xdotool key Return)&<cr>:wq<cr>
-    startinsert
 endfun
