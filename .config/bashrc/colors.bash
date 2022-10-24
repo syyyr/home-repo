@@ -1,3 +1,5 @@
+#!/bin/bash
+
 BASH_COLOR_BLUE='\033[34m'
 BASH_COLOR_BOLD='\033[1m'
 BASH_COLOR_CYAN='\033[36m'
