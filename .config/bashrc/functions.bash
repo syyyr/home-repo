@@ -75,8 +75,8 @@ gso()
     case "$?" in
         0)
             local VIM_ARG
-            VIM_ARG="$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
-            vim "$VIM_ARG"
+            IFS=" " read -r -a VIM_ARG <<< "$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
+            vim "${VIM_ARG[@]}"
             ;;
         1)
             echo "fzf: No match. This shouldn't happen." >&1
