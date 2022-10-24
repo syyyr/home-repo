@@ -9,14 +9,17 @@ import sys
 import os.path
 import pycurl
 
+
 def waitForElem(browser, locator):
     try:
         return WebDriverWait(browser, 10).until(EC.presence_of_element_located(locator))
     except TimeoutException:
         sys.exit(1)
 
+
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
+
 
 def get_ulozto_video_link(link):
     browser = webdriver.Chrome(options=options)
@@ -35,6 +38,7 @@ def get_ulozto_video_link(link):
     browser.quit()
     return res
 
+
 def get_file_size(link):
     c = pycurl.Curl()
     c.setopt(c.URL, link)
@@ -42,11 +46,14 @@ def get_file_size(link):
     c.perform()
     return c.getinfo(c.CONTENT_LENGTH_DOWNLOAD)
 
+
 def as_megabytes(bytes):
     return bytes / 1024 / 1024
 
+
 def file_size_to_string(bytes):
     return f'{as_megabytes(bytes):.2f} MB ({int(bytes)} bytes)'
+
 
 if len(sys.argv) != 3:
     print(f'Usage: {sys.argv[0]} <ulozto-link>')
