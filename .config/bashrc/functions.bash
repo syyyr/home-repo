@@ -1,3 +1,5 @@
+#!/bin/bash
+
 res()
 {
     "$HOME/apps/check-available.bash"  cvt || return 1
