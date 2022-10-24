@@ -48,6 +48,11 @@ function! custom#TrailingWsCheck() abort
 endfun
 
 function! custom#StatuslineDiagnostics() abort
+    let l:first_lsp_error = luaeval('vim.lsp.diagnostic.get_line_diagnostics()[1]')
+    if type(l:first_lsp_error) == v:t_dict
+        let l:severity = l:first_lsp_error["severity"] == 1 ? "E: ln " : "W: ln "
+        return l:severity . l:first_lsp_error["range"]["start"]["line"]
+    endif
     if get(b:, 'TrailingNr', 0) && mode() !=? 'i'
         return 'WS: ln ' . b:TrailingNr
     endif
