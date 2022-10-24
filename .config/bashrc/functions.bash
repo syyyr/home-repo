@@ -175,13 +175,6 @@ do_auracle_update()
     done
 }
 
-do_coc_update()
-{
-    pushd /home/vk/.local/share/nvim/site/pack/bundle/opt/coc.nvim
-    yarn install --frozen-lockfile
-    popd
-}
-
 bt_phone()
 {
     if bluetoothctl info | grep -o 'Connected: yes'; then
