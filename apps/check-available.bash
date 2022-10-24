@@ -1,10 +1,11 @@
-for program in $*; do
+#!/bin/bash
+for program in "$@"; do
     if ! type "$program" &> /dev/null; then
-        echo "$program"' is not installed in $PATH.' >&2
+        echo "$program"' is not installed in PATH.' >&2
         NOTFOUND=1
     fi
 done
-if (($NOTFOUND)); then
+if ((NOTFOUND)); then
     exit 1
 fi
 
