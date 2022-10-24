@@ -10,6 +10,7 @@ packadd! clangd_extensions.nvim
 
 lua << EOF
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
+vim.api.nvim_create_user_command('CR', function() vim.lsp.buf.rename() end, { nargs = 0 })
 vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
 vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignError', { text = '>>', texthl = 'DiagnosticSignError' })
