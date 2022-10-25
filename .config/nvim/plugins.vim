@@ -8,10 +8,10 @@ packadd! cmp-nvim-lsp-signature-help
 packadd! clangd_extensions.nvim
 packadd! vim-vsnip
 packadd! cmp-vsnip
+packadd! inc-rename.nvim
 
 lua << EOF
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
-vim.api.nvim_create_user_command('CR', function() vim.lsp.buf.rename() end, { nargs = 0 })
 vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
 vim.fn.sign_define('DiagnosticSignHint', { text = '--', texthl = 'DiagnosticSignHint' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '--', texthl = 'DiagnosticSignInfo' })
@@ -127,6 +127,10 @@ require("lspconfig").cmake.setup({
 require("lspconfig").bashls.setup({
     on_attach = on_attach,
     capabilities = capabilities
+})
+
+require("inc_rename").setup({
+    cmd_name = "CR"
 })
 EOF
 

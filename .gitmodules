@@ -101,3 +101,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/cmp-vsnip"]
 	path = .local/share/nvim/site/pack/bundle/opt/cmp-vsnip
 	url = https://github.com/hrsh7th/cmp-vsnip
+[submodule ".local/share/nvim/site/pack/bundle/opt/inc-rename.nvim"]
+	path = .local/share/nvim/site/pack/bundle/opt/inc-rename.nvim
+	url = https://github.com/smjonas/inc-rename.nvim.git
