@@ -24,7 +24,8 @@ vim.diagnostic.config({
     },
     severity_sort = true,
     float = {
-        header = ''
+        header = '',
+        source = true
     }
 })
 
