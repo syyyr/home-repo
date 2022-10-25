@@ -12,6 +12,7 @@ packadd! inc-rename.nvim
 
 lua << EOF
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
+vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, { nargs = 0 })
 vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
 vim.fn.sign_define('DiagnosticSignHint', { text = '--', texthl = 'DiagnosticSignHint' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '--', texthl = 'DiagnosticSignInfo' })
