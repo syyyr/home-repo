@@ -71,10 +71,6 @@ set splitright
 " system clipboard is used along with the unnamed register
 set clipboard=unnamedplus
 
-" longest = only complete longest match
-" menu = show menu, but not when one item would be listed
-set completeopt=longest,menu
-
 " default, but doesn't scan tagfiles
 set complete=.,w,b,u
 

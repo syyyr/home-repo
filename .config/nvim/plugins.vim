@@ -6,7 +6,6 @@ packadd! cmp-nvim-lsp
 packadd! cmp-buffer
 packadd! cmp-nvim-lsp-signature-help
 packadd! clangd_extensions.nvim
-" set completeopt=menu,menuone,noselect
 packadd! vim-vsnip
 packadd! cmp-vsnip
 
