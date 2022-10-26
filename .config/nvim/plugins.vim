@@ -1,16 +1,37 @@
 scriptencoding utf8
 
-packadd! nvim-lspconfig
-packadd! nvim-cmp
-packadd! cmp-nvim-lsp
-packadd! cmp-buffer
-packadd! cmp-nvim-lsp-signature-help
-packadd! clangd_extensions.nvim
-packadd! vim-vsnip
-packadd! cmp-vsnip
-packadd! inc-rename.nvim
-
 lua << EOF
+vim.cmd('packadd! nvim-lspconfig')
+vim.cmd('packadd! nvim-cmp')
+vim.cmd('packadd! cmp-nvim-lsp')
+vim.cmd('packadd! cmp-buffer')
+vim.cmd('packadd! cmp-nvim-lsp-signature-help')
+vim.cmd('packadd! clangd_extensions.nvim')
+vim.cmd('packadd! vim-vsnip')
+vim.cmd('packadd! cmp-vsnip')
+vim.cmd('packadd! inc-rename.nvim')
+vim.cmd('packadd! i3config.vim')
+vim.cmd('packadd! vim-colon-therapy')
+vim.cmd('packadd! vim-pug')
+vim.cmd('packadd! undotree')
+vim.cmd('packadd! vim-better-whitespace')
+vim.cmd('packadd! yang.vim')
+vim.cmd('packadd! vim-commentary')
+vim.cmd('packadd! vim-qml')
+vim.cmd('packadd! vim-cpp-modern')
+vim.cmd('packadd! readline.vim')
+vim.cmd('packadd! vim-icalendar')
+vim.cmd('packadd! nvim-treesitter')
+vim.cmd('packadd! nvim-treesitter-playground')
+vim.cmd('packadd! indent-blankline.nvim')
+vim.cmd('packadd! git-blame.nvim')
+vim.cmd('packadd vimtex')
+vim.cmd('packadd! tabular')
+vim.cmd('packadd! vim-linux-coding-style')
+vim.cmd('packadd! clever-f.vim')
+vim.cmd('packadd! goyo.vim')
+vim.cmd('packadd! vim-dispatch')
+
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
 vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, { nargs = 0 })
 vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
@@ -146,23 +167,8 @@ let g:gitblame_highlight_group = "Question"
 let g:gitblame_set_extmark_options = {
             \ 'hl_mode': 'combine',
             \ }
-packadd! git-blame.nvim
 command! GT GitBlameToggle
 command! GSHA GitBlameCopySHA
-
-packadd! i3config.vim
-packadd! vim-colon-therapy
-packadd! vim-pug
-packadd! undotree
-packadd! vim-better-whitespace
-packadd! yang.vim
-packadd! vim-commentary
-packadd! vim-qml
-packadd! vim-cpp-modern
-packadd! readline.vim
-packadd! vim-icalendar
-packadd! nvim-treesitter
-packadd! nvim-treesitter-playground
 
 lua << EOF
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
@@ -189,9 +195,7 @@ EOF
 " FIXME: Why can't this be in ftplugin/tex.vim?
 let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
 let g:tex_conceal = 'amgs' " default but don't conceal delimiters
-packadd vimtex
 
-packadd! indent-blankline.nvim
 lua << EOF
 require("indent_blankline").setup {
     char = '▏',
@@ -200,22 +204,17 @@ require("indent_blankline").setup {
 EOF
 
 let g:no_default_tabular_maps = 1
-packadd! tabular
 
 let g:linuxsty_patterns = ['/linux/']
-packadd! vim-linux-coding-style
 
-packadd! clever-f.vim
 let g:clever_f_smart_case = 1
 
-packadd! goyo.vim
 augroup goyoFix
     autocmd!
     autocmd User GoyoEnter nested set eventignore=FocusGained
     autocmd User GoyoLeave nested set eventignore=
 augroup END
 
-packadd! vim-dispatch
 let g:dispatch_no_maps = 1
 
 " remove netrw banner
