@@ -32,3 +32,27 @@ function Custom.trailing_ws_check()
     vim.fn.chansend(id, vim.api.nvim_buf_get_lines(0, 0, -1, true))
     vim.fn.chanclose(id, 'stdin')
 end
+
+local diff_open = false
+
+function Custom.diff_toggle()
+    if not diff_open then
+        diff_open = true
+        if vim.o.diffopt == 'horizontal' then
+            vim.cmd('new')
+        else
+            vim.cmd('vert new')
+        end
+        vim.cmd('file scratch')
+        vim.o.buftype = 'nofile'
+        vim.cmd('read #')
+        vim.cmd('0delete_')
+        vim.cmd('diffthis')
+        vim.cmd('wincmd p')
+        vim.cmd('diffthis')
+    else
+        diff_open = false
+        vim.cmd('diffoff')
+        vim.cmd('bdelete scratch')
+    end
+end
