@@ -95,6 +95,10 @@ end
 
 
 local cmp = require('cmp')
+if cmp == nil then
+	error('cmp is missing!')
+end
+
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
