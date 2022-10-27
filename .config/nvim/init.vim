@@ -6,7 +6,7 @@ runtime commands.vim
 runtime plugins.lua
 " simple vim options "set smth="
 if len(nvim_list_uis())
-    runtime options.vim
+    runtime options.lua
     " advanced vim options
     runtime startup.lua
     " simple mappings
