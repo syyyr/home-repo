@@ -79,7 +79,23 @@ vim.o.autoread = false
 -- the time for CursorHold trigger
 vim.o.updatetime=300
 
-vim.o.statusline = [[%#StatusLineNC#%{v:lua.Custom.statusline_diagnostics()}%##%{&paste?'[paste]':''}%=%=%20f%h%m%r %-30.(ln %l col %c%)%=%#StatusLineNC#%{&ft}%=]]
+vim.o.statusline =
+    '%#StatusLineNC#' .. -- Set highlight group.
+    '%{v:lua.Custom.statusline_diagnostics()}' .. -- Show diagnostics.
+    '%##%' .. -- Reset highlight group.
+    [[{&paste?' [paste]':''}]] .. -- Show [paste] mode.
+    '%=%=' .. -- Separators.
+    '%20f' .. -- Show filename.
+    '%h' .. -- Show [Help] in help buffers.
+    '%m' .. -- Show modified ([+]/[-]) sign.
+    '%r' .. -- Show [RO] sign.
+    ' ' .. -- A literal space.
+    '%-30.' .. -- Add left negative padding.
+    '(ln %l col %c%)' .. -- Show line number and column numbers.
+    '%=' .. -- Separator.
+    '%#StatusLineNC#' .. -- Set highlight group
+    '%{&ft}' .. -- Show filetype
+    '%=' -- Separator
 
 -- don't show completion messages
 vim.opt.shortmess:append('c')
