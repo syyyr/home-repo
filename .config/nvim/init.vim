@@ -8,7 +8,7 @@ runtime plugins.lua
 if len(nvim_list_uis())
     runtime options.vim
     " advanced vim options
-    runtime startup.vim
+    runtime startup.lua
     " simple mappings
     runtime mappings.vim
     " syntax highlighting and various color changes
