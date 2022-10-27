@@ -1,6 +1,3 @@
-scriptencoding utf8
-
-lua << EOF
 vim.cmd('packadd! nvim-lspconfig')
 vim.cmd('packadd! nvim-cmp')
 vim.cmd('packadd! cmp-nvim-lsp')
@@ -24,13 +21,46 @@ vim.cmd('packadd! vim-icalendar')
 vim.cmd('packadd! nvim-treesitter')
 vim.cmd('packadd! nvim-treesitter-playground')
 vim.cmd('packadd! indent-blankline.nvim')
+
 vim.cmd('packadd! git-blame.nvim')
+vim.g.gitblame_enabled = 0
+vim.g.gitblame_highlight_group = 'Question'
+vim.g.gitblame_set_extmark_options = { hl_mode = 'combine' }
+
+vim.api.nvim_create_user_command('GT', function() vim.cmd('GitBlameToggle') end, { nargs = 0 })
+vim.api.nvim_create_user_command('GSHA', function() vim.cmd('GitBlameCopySHA') end, { nargs = 0 })
+
 vim.cmd('packadd vimtex')
+vim.g.vimtex_compiler_latexmk = {build_dir = 'build'}
+vim.g.tex_conceal = 'amgs' -- default but don't conceal delimiters
+
 vim.cmd('packadd! tabular')
+vim.g.no_default_tabular_maps = 1
+
+-- FIXME: tabstop gets overriden by the autocommand in startup.vim
 vim.cmd('packadd! vim-linux-coding-style')
+vim.g.linuxsty_patterns = {'/linux/'}
+
 vim.cmd('packadd! clever-f.vim')
-vim.cmd('packadd! goyo.vim')
+vim.g.clever_f_smart_case = 1
+
+vim.cmd('packadd goyo.vim')
+local goyoFixGroup = vim.api.nvim_create_augroup('goyoFix', { clear = true })
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'GoyoEnter',
+    command = 'set eventignore=FocusGained',
+    group = goyoFixGroup,
+    nested = true
+})
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'GoyoLeave',
+    command = 'set eventignore=',
+    group = goyoFixGroup,
+    nested = true
+})
+
 vim.cmd('packadd! vim-dispatch')
+vim.g.dispatch_no_maps = 1
 
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
 vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, { nargs = 0 })
@@ -159,18 +189,9 @@ require("lspconfig").sumneko_lua.setup({
 require("inc_rename").setup({
     cmd_name = "CR"
 })
-EOF
 
+vim.g.netrw_banner = 0
 
-let g:gitblame_enabled = 0
-let g:gitblame_highlight_group = "Question"
-let g:gitblame_set_extmark_options = {
-            \ 'hl_mode': 'combine',
-            \ }
-command! GT GitBlameToggle
-command! GSHA GitBlameCopySHA
-
-lua << EOF
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.cpon = {
   install_info = {
@@ -190,32 +211,8 @@ require'nvim-treesitter.configs'.setup {
     incremental_selection = { enable = true },
     textobjects = { enable = true },
 }
-EOF
 
-" FIXME: Why can't this be in ftplugin/tex.vim?
-let g:vimtex_compiler_latexmk = {'build_dir': 'build'}
-let g:tex_conceal = 'amgs' " default but don't conceal delimiters
-
-lua << EOF
 require("indent_blankline").setup {
     char = '▏',
     buftype_exclude = {'tab', 'help'}
 }
-EOF
-
-let g:no_default_tabular_maps = 1
-
-let g:linuxsty_patterns = ['/linux/']
-
-let g:clever_f_smart_case = 1
-
-augroup goyoFix
-    autocmd!
-    autocmd User GoyoEnter nested set eventignore=FocusGained
-    autocmd User GoyoLeave nested set eventignore=
-augroup END
-
-let g:dispatch_no_maps = 1
-
-" remove netrw banner
-let g:netrw_banner = 0

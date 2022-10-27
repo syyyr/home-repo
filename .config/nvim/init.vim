@@ -3,7 +3,7 @@ runtime skeleton.vim
 " custom commands, and their associated mappings
 runtime commands.vim
 " plugins and their options
-runtime plugins.vim
+runtime plugins.lua
 " simple vim options "set smth="
 if len(nvim_list_uis())
     runtime options.vim
