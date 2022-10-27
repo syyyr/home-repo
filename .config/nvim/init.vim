@@ -1,7 +1,7 @@
 
 runtime skeleton.lua
 " custom commands, and their associated mappings
-runtime commands.vim
+runtime commands.lua
 " plugins and their options
 runtime plugins.lua
 " simple vim options "set smth="
