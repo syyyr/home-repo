@@ -1,34 +1,15 @@
-local nnoremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('n', lhs, rhs, {noremap = true})
+local impl_map = function (mode, remap, lhs, rhs)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, {noremap = remap})
 end
 
-local xnoremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('x', lhs, rhs, {noremap = true})
-end
-
-local onoremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('o', lhs, rhs, {noremap = true})
-end
-
-local omap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('o', lhs, rhs, {noremap = false})
-end
-
-local inoremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('i', lhs, rhs, {noremap = true})
-end
-
-local cnoremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('c', lhs, rhs, {noremap = true})
-end
-
-local tnoremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('t', lhs, rhs, {noremap = true})
-end
-
-local noremap = function (lhs, rhs)
-    vim.api.nvim_set_keymap('', lhs, rhs, {noremap = true})
-end
+local nnoremap = function (lhs, rhs) impl_map('n', false, lhs, rhs) end
+local xnoremap = function (lhs, rhs) impl_map('x', false, lhs, rhs) end
+local onoremap = function (lhs, rhs) impl_map('o', false, lhs, rhs) end
+local omap = function (lhs, rhs) impl_map('o', true, lhs, rhs) end
+local inoremap = function (lhs, rhs) impl_map('i', false, lhs, rhs) end
+local cnoremap = function (lhs, rhs) impl_map('c', false, lhs, rhs) end
+local tnoremap = function (lhs, rhs) impl_map('t', false, lhs, rhs) end
+local noremap = function (lhs, rhs) impl_map('', false, lhs, rhs) end
 
 -- idk why it's NotLikeThis
 nnoremap('Y', 'y$')
