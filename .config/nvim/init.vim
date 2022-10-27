@@ -12,5 +12,5 @@ if len(nvim_list_uis())
     " simple mappings
     runtime mappings.vim
     " syntax highlighting and various color changes
-    runtime colors.vim
+    runtime colors.lua
 endif
