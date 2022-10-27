@@ -25,15 +25,3 @@ function! custom#CleanScreen() abort
     " floating windows if none is present
     execute "normal \<C-Space>\<C-Space>\<C-Space>q"
 endfun
-
-function! s:ParseWsGrep(id, data, event) abort
-    " By directly accessing the first line of the output, I can save a call to
-    " join(). This shouldn't be a problem, as the job output is buffered.
-    let b:TrailingNr = substitute(a:data[0], '\d\+\zs.*$', '', '')
-endfunction
-
-function! custom#TrailingWsCheck() abort
-    let s:id = jobstart(['grep', '-n', '-m', '1', '\s$'], {'on_stdout': function('s:ParseWsGrep'), 'stdout_buffered': 1 })
-    call chansend(s:id, getline(1, '$'))
-    call chanclose(s:id, 'stdin')
-endfun

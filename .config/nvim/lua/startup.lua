@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 local statusline_integration = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function ()
-        vim.cmd([[call custom#TrailingWsCheck()]])
+        Custom.trailing_ws_check()
     end,
     group = statusline_integration
 })
