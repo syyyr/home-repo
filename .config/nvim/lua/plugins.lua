@@ -156,7 +156,9 @@ cmp.setup.filetype('cpp', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local on_attach = function(client, bufnr)
+
+local on_attach = function(_, bufnr)
+	local bufopts = { noremap = true, silent=true, buffer = bufnr }
     vim.keymap.set('n', '<C-Space>', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
 end
