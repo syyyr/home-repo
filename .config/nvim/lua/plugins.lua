@@ -64,7 +64,11 @@ vim.g.dispatch_no_maps = 1
 
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, { nargs = 0 })
 vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, { nargs = 0 })
-vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})]])
+local float_diagnostic = vim.api.nvim_create_augroup('LSPHover', {clear = true})
+vim.api.nvim_create_autocmd('CursorHold', {
+	callback = function () vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'}) end,
+	group = float_diagnostic
+})
 vim.fn.sign_define('DiagnosticSignHint', { text = '--', texthl = 'DiagnosticSignHint' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '--', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '--', texthl = 'DiagnosticSignWarn' })
