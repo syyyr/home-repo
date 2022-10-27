@@ -1,5 +1,5 @@
-vim.api.nvim_create_user_command('Trailing', function() vim.cmd('call custom#CleanExtraSpaces()') end, { nargs = 0 })
-vim.api.nvim_set_keymap('n', '<A-t>', ':Trailing<cr>', {noremap = true})
+vim.api.nvim_create_user_command('Trailing', Custom.clean_extra_spaces, { nargs = 0 })
+vim.api.nvim_set_keymap('n', '<A-t>', ':Trailing<cr>:nohlsearch<cr>', {noremap = true})
 
 --" toggle unsaved changes diff
 vim.api.nvim_create_user_command('DiffToggle', Custom.diff_toggle, { nargs = 0 })

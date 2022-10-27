@@ -61,3 +61,11 @@ function Custom.clean_screen()
     vim.fn['clever_f#reset']()
     vim.cmd([[execute "normal \<C-Space>\<C-Space>\<C-Space>q"]])
 end
+
+function Custom.clean_extra_spaces()
+    local save_cursor = vim.fn.getpos('.')
+    local old_query = vim.fn.getreg('/')
+    vim.cmd('silent! %s/\\s\\+$//e')
+    vim.fn.setpos('.', save_cursor)
+    vim.fn.setreg('/', old_query)
+end
