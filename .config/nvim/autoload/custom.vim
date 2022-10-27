@@ -37,26 +37,3 @@ function! custom#TrailingWsCheck() abort
     call chansend(s:id, getline(1, '$'))
     call chanclose(s:id, 'stdin')
 endfun
-
-function! custom#StatuslineDiagnostics() abort
-    for i in ["ERROR", "WARN", "INFO", "HINT"]
-        let l:first_lsp_error = luaeval('vim.diagnostic.get(0, {severity = vim.diagnostic.severity.'. i .'})[1]')
-        if type(l:first_lsp_error) == v:t_dict
-            break
-        endif
-    endfor
-
-    if type(l:first_lsp_error) == v:t_dict
-        let l:severity =
-                    \ l:first_lsp_error["severity"] == 1 ? "E: ln " :
-                    \ l:first_lsp_error["severity"] == 2 ? "W: ln " :
-                    \ l:first_lsp_error["severity"] == 3 ? "I: ln " :
-                    \ "H: ln "
-        return l:severity . l:first_lsp_error["lnum"]
-    endif
-    if get(b:, 'TrailingNr', 0) && mode() !=? 'i'
-        return 'WS: ln ' . b:TrailingNr
-    endif
-
-    return ''
-endfun
