@@ -2,8 +2,8 @@ vim.o.title = true -- set title to NVIM
 vim.o.showmode = false
 vim.o.cursorline = true
 
---filetype plugin indent on
---syntax enable " enable syntax highlighting
+vim.cmd('filetype plugin indent on')
+vim.cmd('syntax enable') -- enable syntax highlighting
 vim.o.shiftwidth = 4 -- << >> 4 spaces
 
 -- no esc delay
@@ -80,7 +80,7 @@ vim.o.autoread = false
 vim.o.updatetime=300
 
 -- double space before [paste] is needed, but I don't know why
-vim.o.statusline = [[%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'\ \ [paste]':''}%=%=%20f%h%m%r\ %-30.(ln\ %l\ col\ %c%)%=%#StatusLineNC#%{&ft}%=]]
+vim.o.statusline = [[%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'  [paste]':''}%=%=%20f%h%m%r %-30.(ln %l col %c%)%=%#StatusLineNC#%{&ft}%=]]
 
 -- don't show completion messages
 vim.opt.shortmess:append('c')
