@@ -1,5 +1,5 @@
 
-runtime skeleton.vim
+runtime skeleton.lua
 " custom commands, and their associated mappings
 runtime commands.vim
 " plugins and their options
