@@ -11,5 +11,5 @@ function Custom.statusline_diagnostics()
         return 'WS: ln ' .. vim.b.TrailingNr
     end
 
-    return ''
+    return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
