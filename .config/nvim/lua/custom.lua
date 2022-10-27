@@ -70,15 +70,27 @@ function Custom.clean_extra_spaces()
     vim.fn.setreg('/', old_query)
 end
 
-local impl_map = function (mode, remap, lhs, rhs)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, {noremap = remap})
+local impl_map = function (mode, noremap, lhs, rhs, opts)
+    if not opts then
+        opts = {}
+    end
+
+    opts.noremap = noremap
+
+    if opts.buffer then
+        opts.buffer = nil
+        vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+    else
+        vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+    end
 end
 
-function Custom.nnoremap(lhs, rhs) impl_map('n', false, lhs, rhs) end
-function Custom.xnoremap(lhs, rhs) impl_map('x', false, lhs, rhs) end
-function Custom.onoremap(lhs, rhs) impl_map('o', false, lhs, rhs) end
-function Custom.omap(lhs, rhs) impl_map('o', true, lhs, rhs) end
-function Custom.inoremap(lhs, rhs) impl_map('i', false, lhs, rhs) end
-function Custom.cnoremap(lhs, rhs) impl_map('c', false, lhs, rhs) end
-function Custom.tnoremap(lhs, rhs) impl_map('t', false, lhs, rhs) end
-function Custom.noremap(lhs, rhs) impl_map('', false, lhs, rhs) end
+function Custom.nnoremap(lhs, rhs, opts) impl_map('n', true, lhs, rhs, opts) end
+function Custom.xnoremap(lhs, rhs, opts) impl_map('x', true, lhs, rhs, opts) end
+function Custom.onoremap(lhs, rhs, opts) impl_map('o', true, lhs, rhs, opts) end
+function Custom.omap(lhs, rhs, opts) impl_map('o', false, lhs, rhs, opts) end
+function Custom.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
+function Custom.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
+function Custom.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
+function Custom.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
+function Custom.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
