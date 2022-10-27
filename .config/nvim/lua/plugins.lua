@@ -66,8 +66,8 @@ vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end,
 vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, { nargs = 0 })
 local float_diagnostic = vim.api.nvim_create_augroup('LSPHover', {clear = true})
 vim.api.nvim_create_autocmd('CursorHold', {
-	callback = function () vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'}) end,
-	group = float_diagnostic
+    callback = function () vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'}) end,
+    group = float_diagnostic
 })
 vim.fn.sign_define('DiagnosticSignHint', { text = '--', texthl = 'DiagnosticSignHint' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '--', texthl = 'DiagnosticSignInfo' })
@@ -96,7 +96,7 @@ end
 
 local cmp = require('cmp')
 if cmp == nil then
-	error('cmp is missing!')
+    error('cmp is missing!')
 end
 
 cmp.setup({
@@ -158,7 +158,7 @@ cmp.setup.filetype('cpp', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(_, bufnr)
-	local bufopts = { noremap = true, silent=true, buffer = bufnr }
+    local bufopts = { noremap = true, silent=true, buffer = bufnr }
     vim.keymap.set('n', '<C-Space>', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
 end
@@ -195,17 +195,17 @@ require("lspconfig").sumneko_lua.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
-	Lua = {
-        runtime = {
-            version = 'LuaJIT'
-        },
-	    diagnostics = {
-		globals = {'vim'},
-	    },
-	    workspace = {
-		library = vim.api.nvim_get_runtime_file("", true),
-	    },
-	}
+        Lua = {
+            runtime = {
+                version = 'LuaJIT'
+            },
+            diagnostics = {
+                globals = {'vim'},
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+        }
     }
 })
 
@@ -217,13 +217,13 @@ vim.g.netrw_banner = 0
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.cpon = {
-  install_info = {
-    url = "~/git/tree-sitter-cpon", -- local path or git repo
-    files = {"src/parser.c"},
-    -- optional entries:
-    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-  }
+    install_info = {
+        url = "~/git/tree-sitter-cpon", -- local path or git repo
+        files = {"src/parser.c"},
+        -- optional entries:
+        generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+        requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+    }
 }
 require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
