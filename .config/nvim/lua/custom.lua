@@ -56,3 +56,8 @@ function Custom.diff_toggle()
         vim.cmd('bdelete scratch')
     end
 end
+
+function Custom.clean_screen()
+    vim.fn['clever_f#reset']()
+    vim.cmd([[execute "normal \<C-Space>\<C-Space>\<C-Space>q"]])
+end

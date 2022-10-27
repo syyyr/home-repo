@@ -7,10 +7,3 @@ function! custom#CleanExtraSpaces() abort
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
-
-function! custom#CleanScreen() abort
-    call clever_f#reset()
-    " Clears vim lsp floating window. I need to use C-Space thrice here for some reason, otherwise it actually opens a
-    " floating windows if none is present
-    execute "normal \<C-Space>\<C-Space>\<C-Space>q"
-endfun

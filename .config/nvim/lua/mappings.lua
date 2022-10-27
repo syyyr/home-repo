@@ -31,7 +31,7 @@ nnoremap('<space>', '/')
 xnoremap('<space>', '/')
 
 -- disable highlight
-nnoremap('<A-cr>', ':call custom#CleanScreen()<CR>:nohlsearch<CR>:<BS>')
+nnoremap('<A-cr>', ':lua Custom.clean_screen()<CR>:nohlsearch<CR>:<BS>')
 
 -- jump to next merge conflict
 nnoremap('<A-c>', ':silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>')
