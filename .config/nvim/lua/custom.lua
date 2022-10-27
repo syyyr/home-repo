@@ -69,3 +69,16 @@ function Custom.clean_extra_spaces()
     vim.fn.setpos('.', save_cursor)
     vim.fn.setreg('/', old_query)
 end
+
+local impl_map = function (mode, remap, lhs, rhs)
+    vim.api.nvim_set_keymap(mode, lhs, rhs, {noremap = remap})
+end
+
+function Custom.nnoremap(lhs, rhs) impl_map('n', false, lhs, rhs) end
+function Custom.xnoremap(lhs, rhs) impl_map('x', false, lhs, rhs) end
+function Custom.onoremap(lhs, rhs) impl_map('o', false, lhs, rhs) end
+function Custom.omap(lhs, rhs) impl_map('o', true, lhs, rhs) end
+function Custom.inoremap(lhs, rhs) impl_map('i', false, lhs, rhs) end
+function Custom.cnoremap(lhs, rhs) impl_map('c', false, lhs, rhs) end
+function Custom.tnoremap(lhs, rhs) impl_map('t', false, lhs, rhs) end
+function Custom.noremap(lhs, rhs) impl_map('', false, lhs, rhs) end
