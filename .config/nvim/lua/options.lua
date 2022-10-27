@@ -80,7 +80,7 @@ vim.o.autoread = false
 vim.o.updatetime=300
 
 -- double space before [paste] is needed, but I don't know why
-vim.o.statusline = [[%#StatusLineNC#%{custom#StatuslineDiagnostics()}%##%{&paste?'  [paste]':''}%=%=%20f%h%m%r %-30.(ln %l col %c%)%=%#StatusLineNC#%{&ft}%=]]
+vim.o.statusline = [[%#StatusLineNC#%{v:lua.Custom.statusline_diagnostics()}%##%{&paste?'  [paste]':''}%=%=%20f%h%m%r %-30.(ln %l col %c%)%=%#StatusLineNC#%{&ft}%=]]
 
 -- don't show completion messages
 vim.opt.shortmess:append('c')
