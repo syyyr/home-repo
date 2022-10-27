@@ -13,6 +13,4 @@ vim.api.nvim_create_user_command('Qa', function(info) vim.cmd('qa' .. (info.bang
 
 vim.api.nvim_create_user_command('SynStack', function() vim.cmd([[echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')]]) end, { nargs = 0 })
 
---" show registers and prompt for a register name and a command
-vim.api.nvim_create_user_command('PutReg', function() vim.cmd('call custom#PutReg()') end, { nargs = 0 })
 vim.api.nvim_create_user_command('SetMakePath', function(info) vim.o.makeprg = 'make -C ' .. info.args end, { nargs = 1 })

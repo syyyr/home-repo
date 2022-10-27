@@ -60,9 +60,3 @@ function! custom#StatuslineDiagnostics() abort
 
     return ''
 endfun
-
-function! custom#PutReg() abort
-    registers
-    let l:register = input(':normal! "')
-    execute 'normal! "' . l:register
-endfun
