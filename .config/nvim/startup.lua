@@ -11,7 +11,7 @@ end
 local last_postion = vim.api.nvim_create_augroup('LastPostion', {clear = true})
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function ()
-	vim.cmd([[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
+        vim.cmd([[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
     end,
     group = last_postion
 })
@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 local statusline_integration = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function ()
-	vim.cmd([[call custom#TrailingWsCheck()]])
+        vim.cmd([[call custom#TrailingWsCheck()]])
     end,
     group = statusline_integration
 })
@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
 local tabs_or_spaces = vim.api.nvim_create_augroup('TabsOrSpaces', {clear = true})
 vim.api.nvim_create_autocmd('BufEnter', {
     callback = function ()
-	vim.cmd([[execute "if search('^	', 'n') | set noexpandtab | set tabstop=4 | else | set softtabstop=4 | set shiftwidth=4 | set expandtab | endif"]])
+        vim.cmd([[execute "if search('^	', 'n') | set noexpandtab | set tabstop=4 | else | set softtabstop=4 | set shiftwidth=4 | set expandtab | endif"]])
     end,
     group = tabs_or_spaces
 })
@@ -37,14 +37,14 @@ vim.g.is_bash = 1
 vim.g.markdown_syntax_conceal = 0
 
 vim.g.clipboard = {
-	name = 'myClipboard',
-	copy = {
-		['+'] = {'xclip', '-i', '-selection', 'clipboard'},
-		['*'] = {'xclip', '-i', '-selection', 'primary'},
-	},
-	paste = {
-		['+'] = {'xclip', '-o', '-selection', 'clipboard'},
-		['*'] = {'xclip', '-o', '-selection', 'primary'},
-	},
-	cache_enabled = 1,
+    name = 'myClipboard',
+    copy = {
+        ['+'] = {'xclip', '-i', '-selection', 'clipboard'},
+        ['*'] = {'xclip', '-i', '-selection', 'primary'},
+    },
+    paste = {
+        ['+'] = {'xclip', '-o', '-selection', 'clipboard'},
+        ['*'] = {'xclip', '-o', '-selection', 'primary'},
+    },
+    cache_enabled = 1,
 }
