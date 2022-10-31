@@ -1,9 +1,8 @@
 -- automatically try to compile after saving (works with update)
-local compiling_tex = vim.api.nvim_create_augroup('CompilingTex', {clear = true})
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = '*.tex',
     command = 'silent Make!',
-    group = compiling_tex
+    group = vim.api.nvim_create_augroup('CompilingTex', {clear = true})
 })
 
 vim.o.makeprg = 'make'

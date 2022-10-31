@@ -8,28 +8,25 @@ else
     vim.o.background = 'light'
 end
 
-local last_postion = vim.api.nvim_create_augroup('LastPostion', {clear = true})
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function ()
         vim.cmd([[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
     end,
-    group = last_postion
+    group = vim.api.nvim_create_augroup('LastPostion', {clear = true})
 })
 
-local statusline_integration = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function ()
         Custom.trailing_ws_check()
     end,
-    group = statusline_integration
+    group = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 })
 
-local tabs_or_spaces = vim.api.nvim_create_augroup('TabsOrSpaces', {clear = true})
 vim.api.nvim_create_autocmd('BufEnter', {
     callback = function ()
         vim.cmd([[execute "if search('^	', 'n') | set noexpandtab | set tabstop=4 | else | set softtabstop=4 | set shiftwidth=4 | set expandtab | endif"]])
     end,
-    group = tabs_or_spaces
+    group = vim.api.nvim_create_augroup('TabsOrSpaces', {clear = true})
 })
 
 vim.g.tex_flavor = 'tex'

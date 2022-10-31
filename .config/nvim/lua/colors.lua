@@ -46,21 +46,19 @@ local function get_vertsplit_colors()
     end
 end
 
-local vert_split = vim.api.nvim_create_augroup('VertSplit', {clear = true})
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     callback = function() vim.cmd('highlight VertSplit ' .. get_vertsplit_colors() .. ' cterm=underline gui=underline') end,
-    group = vert_split
+    group = vim.api.nvim_create_augroup('VertSplit', {clear = true})
 })
 
-local end_of_buffer = vim.api.nvim_create_augroup('EndOfBuffer', {clear = true})
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     callback = function ()
         vim.cmd('highlight clear EndOfBuffer')
         vim.cmd('highlight link EndOfBuffer NonText')
     end,
-    group = end_of_buffer
+    group = vim.api.nvim_create_augroup('EndOfBuffer', {clear = true})
 })
 
 local merge_conflict = vim.api.nvim_create_augroup('MergeConflict', {clear = true})
@@ -74,14 +72,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     group = merge_conflict
 })
 
-local todo_color = vim.api.nvim_create_augroup('TodoColor', {clear = true})
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     command = 'highlight Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default',
-    group = todo_color
+    group = vim.api.nvim_create_augroup('TodoColor', {clear = true})
 })
 
-local lsp_colors = vim.api.nvim_create_augroup('LspColors', {clear = true})
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     callback = function ()
@@ -94,7 +90,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight clear LspDiagnosticsDefaultHint')
         vim.cmd('highlight LspDiagnosticsDefaultHint gui=bold guifg=#00af5f')
     end,
-    group = lsp_colors
+    group = vim.api.nvim_create_augroup('LspColors', {clear = true})
 })
 
 vim.cmd('colorscheme PaperColor')
