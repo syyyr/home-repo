@@ -218,7 +218,7 @@ my_cmake()
                 CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
                 CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
                 LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
-                CMAKE_FLAGS=( "-DCMAKE_POSITION_INDEPENDENT_CODE=ON ${CMAKE_FLAGS[@]}" )
+                CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
                 echo "Enabling ASAN/UBSAN."
                 shift
                 ;;
