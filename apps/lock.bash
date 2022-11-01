@@ -44,8 +44,9 @@ if [[ "$1" != "no-off" ]]; then
     SCREENOFF_PID="$!"
 fi
 
-
+dunstctl set-paused true
 echo -n "$ARGS" | xargs i3lock -n
+dunstctl set-paused false
 
 if [[ "$1" != "no-off" ]]; then
     kill "$SCREENOFF_PID" 2> /dev/null
