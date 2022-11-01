@@ -210,7 +210,8 @@ my_cmake()
     local CFLAGS
     local CXXFLAGS
     local LDFLAGS
-    local CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_BUILD_TYPE=Debug' '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' )
+    local CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_BUILD_TYPE=Debug' )
+    local CACHE=1
 
     while true; do
         case "$1" in
@@ -247,7 +248,8 @@ my_cmake()
                 shift
                 ;;
             no-cache)
-                CMAKE_FLAGS=( "${CMAKE_FLAGS[@]/-DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache/}" )
+                echo "Disabling ccache."
+                CACHE=0
                 shift
                 ;;
             optimize)
@@ -265,6 +267,11 @@ my_cmake()
                 ;;
         esac
     done
+
+    if [[ $CACHE = 1 ]]; then
+        CMAKE_FLAGS=( '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' "${CMAKE_FLAGS[@]}" )
+    fi
+
 
     if [[ "${CXX}" = clang++ ]]; then
         CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
