@@ -54,6 +54,6 @@ fi
 
 MUTED_NOW=$(get_muted)
 
-if [[ $MUTED_BEFORE != $MUTED_NOW ]]; then
+if [[ "$MUTED_BEFORE" != "$MUTED_NOW" ]]; then
     "$HOME/apps/volume.bash" toggle
 fi
