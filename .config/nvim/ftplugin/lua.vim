@@ -19,3 +19,5 @@ endfunction
 
 command! -bang -nargs=1 Print call s:PrintSomething("<args>", "<bang>")
 command! -bang Printthis call s:PrintThis("<bang>")
+
+setlocal keywordprg=:help
