@@ -17,8 +17,8 @@ fi
 FILENAME=$(get_image | sha1sum | fold -w 7 | head -n1)
 FILENAME+='.png'
 echo "Saving to $FILENAME"
-get_image | SSH_ASKPASS_REQUIRE=never ssh rak@anip.icu "cat > www/anip.icu/rofl/$FILENAME"
-if [[ $? = "0" ]]; then
+
+if get_image | SSH_ASKPASS_REQUIRE=never ssh rak@anip.icu "cat > www/anip.icu/rofl/$FILENAME"; then
     echo "https://anip.icu/rofl/$FILENAME to PRIMARY selection"
     echo "https://anip.icu/rofl/$FILENAME" | xclip -r
 else
