@@ -5,7 +5,7 @@ ARG=$2
 
 case $1 in
     timeout)
-        echo TIMEOUT=${ARG:-30} > "$HOME/.config/kbacklight_timeout/config"
+        echo TIMEOUT="${ARG:-30}" > "$HOME/.config/kbacklight_timeout/config"
         systemctl --quiet --user restart kbacklight_timeout
         STATE='timeout'
         ;;
