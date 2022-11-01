@@ -325,3 +325,8 @@ android_mount()
         echo Android mounted.
     fi
 }
+
+git_generate_commit_graph()
+{
+    git commit-graph write --reachable --changed-paths
+}
