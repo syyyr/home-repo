@@ -9,7 +9,7 @@ get_image()
 
 IMAGE="$(xclip -se c -o -target image/png | base64)"
 
-if  ! $(get_image | pngcheck > /dev/null 2>&1) ; then
+if ! get_image | pngcheck > /dev/null 2>&1; then
     echo 'No picture in clipboard'
     exit 1
 fi
