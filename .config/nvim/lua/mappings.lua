@@ -21,9 +21,9 @@ Custom.xnoremap('<space>', '/')
 Custom.nnoremap('<A-cr>', ':lua Custom.clean_screen()<CR>:nohlsearch<CR>:<BS>')
 
 -- jump to next merge conflict
-Custom.nnoremap('<A-c>', ':silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>')
-Custom.xnoremap('<A-c>', '/<C-U>\v^[<|=>]{7}([^=].+)?$<CR><esc>:nohlsearch<cr>gv')
-Custom.onoremap('<A-c>', '/<C-U>\v^[<|=>]{7}([^=].+)?$<CR>')
+Custom.nnoremap('<A-c>', [[:silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<CR>:nohlsearch<cr>]])
+Custom.xnoremap('<A-c>', [[/<C-U>\v^[<|=>]{7}([^=].+)?$<CR><esc>:nohlsearch<cr>gv]])
+Custom.onoremap('<A-c>', [[/<C-U>\v^[<|=>]{7}([^=].+)?$<CR>]])
 
 -- smart way to move between windows
 Custom.nnoremap('<C-j>', '<C-W>j')
