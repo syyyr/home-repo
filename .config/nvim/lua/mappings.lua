@@ -115,3 +115,4 @@ Custom.nnoremap(')c', ':cnext<cr>zo')
 Custom.nnoremap('Q', '<nop>')
 
 Custom.nnoremap('q:', '<nop>')
+Custom.cnoremap('CR', 'CR ')
