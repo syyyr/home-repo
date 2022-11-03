@@ -79,7 +79,10 @@ vim.diagnostic.config({
     severity_sort = true,
     float = {
         header = '',
-        source = true
+        source = true,
+        format = function(diagnostic)
+            return diagnostic.message .. ' (' .. diagnostic.code .. ')'
+        end
     }
 })
 
