@@ -81,7 +81,9 @@ vim.diagnostic.config({
         header = '',
         source = true,
         format = function(diagnostic)
-            return diagnostic.message .. ' (' .. diagnostic.code .. ')'
+            local res = diagnostic.message
+            local code = diagnostic.code and diagnostic.code or 'unknown-code'
+            return res .. ' (' .. code .. ')'
         end
     }
 })
