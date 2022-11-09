@@ -6,6 +6,7 @@ vim.cmd('packadd! cmp-nvim-lsp-signature-help')
 vim.cmd('packadd! clangd_extensions.nvim')
 vim.cmd('packadd! vim-vsnip')
 vim.cmd('packadd! cmp-vsnip')
+vim.cmd('packadd! cmp-path')
 vim.cmd('packadd! inc-rename.nvim')
 vim.cmd('packadd! i3config.vim')
 vim.cmd('packadd! vim-colon-therapy')
@@ -135,7 +136,8 @@ cmp.setup({
         {name = 'nvim_lsp'},
         {name = 'buffer',},
         {name = 'nvim_lsp_signature_help'},
-        {name = 'vsnip'}
+        {name = 'vsnip'},
+        {name = 'path'}
     }),
     snippet = {
         expand = function(args)
