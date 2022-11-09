@@ -65,6 +65,9 @@ vim.g.dispatch_no_maps = 1
 
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
 vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, {nargs = 0})
+vim.api.nvim_create_user_command('CQ', function () vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
+vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
+
 vim.api.nvim_create_autocmd('CursorHold', {
     callback = function () vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'}) end,
     group = vim.api.nvim_create_augroup('LSPHover', {clear = true})
