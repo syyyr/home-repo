@@ -2,7 +2,6 @@ vim.o.title = true -- set title to NVIM
 vim.o.showmode = false
 vim.o.cursorline = true
 
-vim.cmd('filetype plugin indent on')
 vim.cmd('syntax enable') -- enable syntax highlighting
 vim.o.shiftwidth = 4 -- << >> 4 spaces
 
