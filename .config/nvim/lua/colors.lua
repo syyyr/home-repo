@@ -48,7 +48,7 @@ end
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight VertSplit ' .. get_vertsplit_colors()) end,
+    callback = function() vim.cmd('highlight WinSeparator ' .. get_vertsplit_colors()) end,
     group = vim.api.nvim_create_augroup('VertSplit', {clear = true})
 })
 
