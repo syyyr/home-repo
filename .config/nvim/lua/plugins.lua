@@ -243,7 +243,7 @@ parser_config.cpon = {
         requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
     }
 }
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
     -- Modules and its options go here
     highlight = {
         enable = true,
@@ -251,16 +251,16 @@ require('nvim-treesitter.configs').setup {
     },
     incremental_selection = {enable = true},
     textobjects = {enable = true},
-}
+})
 
-require('indent_blankline').setup {
+require('indent_blankline').setup({
     char = '▏',
     buftype_exclude = {'tab', 'help'}
-}
+})
 
-require('lsp_signature').setup {
+require('lsp_signature').setup({
     bind = true,
     handler_opts = {
       border = "rounded"
     }
-}
+})
