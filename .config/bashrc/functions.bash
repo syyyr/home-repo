@@ -223,6 +223,14 @@ my_cmake()
                 echo "Enabling ASAN/UBSAN."
                 shift
                 ;;
+            msan)
+                CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory ${CFLAGS}"
+                CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory ${CXXFLAGS}"
+                LDFLAGS="-fsanitize=memory ${LDFLAGS}"
+                CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
+                echo "Enabling MSAN."
+                shift
+                ;;
             gcc)
                 echo "Enabling GCC."
                 CC="gcc"
