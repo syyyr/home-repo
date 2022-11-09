@@ -2,7 +2,7 @@ vim.cmd('packadd! nvim-lspconfig')
 vim.cmd('packadd! nvim-cmp')
 vim.cmd('packadd! cmp-nvim-lsp')
 vim.cmd('packadd! cmp-buffer')
-vim.cmd('packadd! cmp-nvim-lsp-signature-help')
+vim.cmd('packadd! lsp_signature.nvim')
 vim.cmd('packadd! clangd_extensions.nvim')
 vim.cmd('packadd! vim-vsnip')
 vim.cmd('packadd! cmp-vsnip')
@@ -138,7 +138,6 @@ cmp.setup({
     sources = cmp.config.sources({
         {name = 'nvim_lsp'},
         {name = 'buffer',},
-        {name = 'nvim_lsp_signature_help'},
         {name = 'vsnip'},
         {name = 'path'}
     }),
@@ -257,4 +256,11 @@ require('nvim-treesitter.configs').setup {
 require('indent_blankline').setup {
     char = '▏',
     buftype_exclude = {'tab', 'help'}
+}
+
+require('lsp_signature').setup {
+    bind = true,
+    handler_opts = {
+      border = "rounded"
+    }
 }
