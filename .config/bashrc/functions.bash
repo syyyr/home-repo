@@ -283,8 +283,6 @@ my_cmake()
 
     if [[ "${CXX}" = clang++ ]]; then
         CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
-    elif [[ "${CXX}" = g++ ]]; then
-        CXXFLAGS="${CXXFLAGS} -fno-var-tracking-assignments"
     fi
 
     print_var CC
