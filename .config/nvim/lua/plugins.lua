@@ -67,7 +67,7 @@ vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
 vim.api.nvim_create_autocmd('CursorHold', {
     callback = function () vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'}) end,
-    group = vim.api.nvim_create_augroup('LSPHover', {clear = true})
+    group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
 })
 vim.fn.sign_define('DiagnosticSignHint', {text = '--', texthl = 'DiagnosticSignHint'})
 vim.fn.sign_define('DiagnosticSignInfo', {text = '--', texthl = 'DiagnosticSignInfo'})
