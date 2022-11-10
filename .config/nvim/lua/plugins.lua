@@ -66,7 +66,13 @@ vim.api.nvim_create_user_command('CQ', function () vim.diagnostic.setloclist({se
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
 vim.api.nvim_create_autocmd('CursorHold', {
-    callback = function () vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'}) end,
+    callback = function()
+        if vim.g.skip_diagnostic_float then
+            vim.g.skip_diagnostic_float = false
+            return
+        end
+        vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
+    end,
     group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
 })
 vim.fn.sign_define('DiagnosticSignHint', {text = '--', texthl = 'DiagnosticSignHint'})
@@ -164,7 +170,10 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(_, bufnr)
     local bufopts = {noremap = true, silent = true, buffer = bufnr}
-    vim.keymap.set('n', '<C-Space>', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<C-Space>', function()
+        vim.g.skip_diagnostic_float = true
+        vim.lsp.buf.hover()
+    end, bufopts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
 end
 
