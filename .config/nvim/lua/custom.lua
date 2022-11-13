@@ -87,9 +87,9 @@ end
 function Custom.register_printing(opts)
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
-            print_text(info.args, opts.prefix, opts.suffix, opts.callback, opts.quote)
+            print_text(info.args, opts.prefix, opts.text_suffix or opts.suffix, opts.callback, opts.quote)
         else
-            print_variable(info.args, opts.prefix, opts.infix, opts.suffix, opts.callback, opts.quote)
+            print_variable(info.args, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.callback, opts.quote)
         end
     end, {nargs = 1, bang = true})
 
