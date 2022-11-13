@@ -1,6 +1,5 @@
 set commentstring=//%s
 
-packadd typescript-vim
 function! s:PrintSomething(args, ...)
     if a:1 == '!'
         execute 'normal! oconsole.log("' . a:args . '");'

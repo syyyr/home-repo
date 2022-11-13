@@ -31,9 +31,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-dispatch"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch
-[submodule ".local/share/nvim/site/pack/bundle/opt/typescript-vim"]
-	path = .local/share/nvim/site/pack/bundle/opt/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-pug"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
