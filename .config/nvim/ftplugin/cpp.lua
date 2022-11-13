@@ -6,8 +6,9 @@ end
 
 Custom.register_printing({
     callback = add_iostream,
-    prefix = 'std::cerr << "',
-    infix = '" << " = " << ',
+    quote = '"',
+    prefix = 'std::cerr << ',
+    infix = ' << " = " << ',
     suffix = ' << "\\n";'
 })
 

@@ -70,26 +70,26 @@ function Custom.clean_extra_spaces()
     vim.fn.setreg('/', old_query)
 end
 
-local function print_variable(var_name, prefix, infix, suffix, callback)
+local function print_variable(var_name, prefix, infix, suffix, callback, quote)
     if callback then
         callback()
     end
-    vim.cmd('normal! o' .. prefix .. var_name .. infix .. var_name .. suffix)
+    vim.cmd('normal! o' .. prefix .. quote .. var_name .. quote .. infix .. var_name .. suffix)
 end
 
-local function print_text(text, prefix, suffix, callback)
+local function print_text(text, prefix, suffix, callback, quote)
     if callback then
         callback()
     end
-    vim.cmd('normal! o' .. prefix .. text .. suffix)
+    vim.cmd('normal! o' .. prefix .. quote .. text .. quote .. suffix)
 end
 
 function Custom.register_printing(opts)
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
-            print_text(info.args, opts.prefix, opts.suffix, opts.callback)
+            print_text(info.args, opts.prefix, opts.suffix, opts.callback, opts.quote)
         else
-            print_variable(info.args, opts.prefix, opts.infix, opts.suffix, opts.callback)
+            print_variable(info.args, opts.prefix, opts.infix, opts.suffix, opts.callback, opts.quote)
         end
     end, {nargs = 1, bang = true})
 
@@ -100,7 +100,7 @@ function Custom.register_printing(opts)
             line = line:sub(1, -2)
         end
 
-        print_variable(line, opts.prefix, opts.infix, opts.suffix, opts.callback)
+        print_variable(line, opts.prefix, opts.infix, opts.suffix, opts.callback, opts.quote)
         if info.bang then
             vim.cmd('normal! k"_dd')
         end
