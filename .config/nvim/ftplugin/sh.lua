@@ -3,5 +3,6 @@ Custom.register_printing({
     infix = ' = "$',
     var_suffix = '"',
     text_suffix = '',
-    quote = "'"
+    quote = "'",
+    no_printthis = true
 })

@@ -93,6 +93,10 @@ function Custom.register_printing(opts)
         end
     end, {nargs = 1, bang = true})
 
+    if opts.no_printthis then
+        return
+    end
+
     vim.api.nvim_create_user_command('Printthis', function(info)
         local line = vim.api.nvim_get_current_line()
         line = line:gsub('^%s*', '')
