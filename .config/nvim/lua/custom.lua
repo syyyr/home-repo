@@ -70,6 +70,44 @@ function Custom.clean_extra_spaces()
     vim.fn.setreg('/', old_query)
 end
 
+local function print_variable(var_name, prefix, infix, suffix, callback)
+    if callback then
+        callback()
+    end
+    vim.cmd('normal! o' .. prefix .. var_name .. infix .. var_name .. suffix)
+end
+
+local function print_text(text, prefix, suffix, callback)
+    if callback then
+        callback()
+    end
+    vim.cmd('normal! o' .. prefix .. text .. suffix)
+end
+
+function Custom.register_printing(opts)
+    vim.api.nvim_create_user_command('Print', function(info)
+        if info.bang then
+            print_text(info.args, opts.prefix, opts.suffix, opts.callback)
+        else
+            print_variable(info.args, opts.prefix, opts.infix, opts.suffix, opts.callback)
+        end
+    end, {nargs = 1, bang = true})
+
+    vim.api.nvim_create_user_command('Printthis', function(info)
+        local line = vim.api.nvim_get_current_line()
+        line = line:gsub('^%s*', '')
+        if line:sub(-1, -1) == ';' then
+            line = line:sub(1, -2)
+        end
+
+        print_variable(line, opts.prefix, opts.infix, opts.suffix, opts.callback)
+        if info.bang then
+            vim.cmd('normal! k"_dd')
+        end
+    end, {bang = true})
+
+end
+
 local impl_map = function (mode, noremap, lhs, rhs, opts)
     if not opts then
         opts = {}
