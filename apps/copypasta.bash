@@ -55,6 +55,6 @@ RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 if [[ -n "$RES" ]]; then
     nohup xclip -rmlastnl -se c <<< "$RES" &> /dev/null
     # Leave some time to allow focus switch back to whatever app I'm using
-    sleep 0.3
+    sleep 0.2
     xvkbd -text '\CV'
 fi
