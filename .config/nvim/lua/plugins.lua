@@ -60,8 +60,8 @@ vim.api.nvim_create_autocmd('User', {
 vim.cmd('packadd! vim-dispatch')
 vim.g.dispatch_no_maps = 1
 
-vim.api.nvim_create_user_command('CRef', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
+vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
