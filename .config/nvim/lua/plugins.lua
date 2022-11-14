@@ -28,8 +28,8 @@ vim.g.gitblame_enabled = 0
 vim.g.gitblame_highlight_group = 'Question'
 vim.g.gitblame_set_extmark_options = {hl_mode = 'combine'}
 
-vim.api.nvim_create_user_command('GT', function() vim.cmd('GitBlameToggle') end, {nargs = 0})
-vim.api.nvim_create_user_command('GSHA', function() vim.cmd('GitBlameCopySHA') end, {nargs = 0})
+vim.api.nvim_create_user_command('GT', 'GitBlameToggle', {nargs = 0})
+vim.api.nvim_create_user_command('GSHA', 'GitBlameCopySHA', {nargs = 0})
 
 vim.cmd('packadd vimtex')
 vim.g.vimtex_compiler_latexmk = {build_dir = 'build'}
@@ -60,8 +60,8 @@ vim.api.nvim_create_autocmd('User', {
 vim.cmd('packadd! vim-dispatch')
 vim.g.dispatch_no_maps = 1
 
-vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
-vim.api.nvim_create_user_command('CRef', function() vim.lsp.buf.references() end, {nargs = 0})
+vim.api.nvim_create_user_command('CF', vim.lsp.buf.code_action, {nargs = 0})
+vim.api.nvim_create_user_command('CRef', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function () vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
