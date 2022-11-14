@@ -224,8 +224,8 @@ my_cmake()
                 shift
                 ;;
             msan)
-                CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory ${CFLAGS}"
-                CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory ${CXXFLAGS}"
+                CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-memory-track-origins=2 ${CFLAGS}"
+                CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-memory-track-origins=2 ${CXXFLAGS}"
                 LDFLAGS="-fsanitize=memory ${LDFLAGS}"
                 CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
                 echo "Enabling MSAN."
