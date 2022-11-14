@@ -10,8 +10,8 @@ refresh() {
     else
         xrandr --output "$OUTPUT" --above eDP-1 --auto --primary
         "$HOME/apps/workspace-ball.bash"
-        nitrogen --restore
     fi
+    nitrogen --restore
 }
 
 sleep 3 # Wait a bit. If we just booted, this script wouldn't work right away.
