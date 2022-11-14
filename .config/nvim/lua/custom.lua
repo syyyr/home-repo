@@ -113,7 +113,7 @@ function Custom.register_printing(opts)
 
 end
 
-local impl_map = function (mode, noremap, lhs, rhs, opts)
+local impl_map = function(mode, noremap, lhs, rhs, opts)
     if not opts then
         opts = {}
     end

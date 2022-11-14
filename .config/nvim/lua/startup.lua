@@ -9,7 +9,7 @@ else
 end
 
 vim.api.nvim_create_autocmd('BufReadPost', {
-    callback = function ()
+    callback = function()
         vim.cmd([[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
     end,
     group = vim.api.nvim_create_augroup('LastPostion', {clear = true})
@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
 })
 
 vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function ()
+    callback = function()
         vim.cmd([[execute "if search('^	', 'n') | set noexpandtab | set tabstop=4 | else | set softtabstop=4 | set expandtab | endif"]])
     end,
     group = vim.api.nvim_create_augroup('TabsOrSpaces', {clear = true})

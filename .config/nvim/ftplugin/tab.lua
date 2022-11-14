@@ -1,9 +1,9 @@
-local get_char_under_cursor = function ()
+local get_char_under_cursor = function()
     local column = vim.fn.col('.')
     return vim.fn.getline('.'):sub(column, column)
 end
 local callback =  function(i)
-    return function ()
+    return function()
         if get_char_under_cursor() == '-' then
             return 'r' .. i .. ''
         else

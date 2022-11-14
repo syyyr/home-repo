@@ -62,7 +62,7 @@ vim.g.dispatch_no_maps = 1
 
 vim.api.nvim_create_user_command('CF', vim.lsp.buf.code_action, {nargs = 0})
 vim.api.nvim_create_user_command('CRef', vim.lsp.buf.references, {nargs = 0})
-vim.api.nvim_create_user_command('CQ', function () vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
+vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
 vim.api.nvim_create_autocmd('CursorHold', {

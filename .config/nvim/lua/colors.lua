@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
-    callback = function ()
+    callback = function()
         vim.cmd('highlight clear EndOfBuffer')
         vim.cmd('highlight link EndOfBuffer NonText')
     end,
@@ -80,7 +80,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
-    callback = function ()
+    callback = function()
         vim.cmd('highlight clear LspDiagnosticsDefaultError')
         vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
         vim.cmd('highlight clear LspDiagnosticsDefaultWarning')
