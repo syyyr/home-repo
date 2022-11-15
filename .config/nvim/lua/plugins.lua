@@ -30,6 +30,7 @@ vim.g.gitblame_set_extmark_options = {hl_mode = 'combine'}
 
 vim.api.nvim_create_user_command('GT', 'GitBlameToggle', {nargs = 0})
 vim.api.nvim_create_user_command('GSHA', 'GitBlameCopySHA', {nargs = 0})
+vim.api.nvim_create_user_command('GURL', 'GitBlameOpenCommitURL', {nargs = 0})
 
 vim.cmd('packadd vimtex')
 vim.g.vimtex_compiler_latexmk = {build_dir = 'build'}
