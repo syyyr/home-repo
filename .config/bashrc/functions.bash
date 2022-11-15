@@ -270,6 +270,15 @@ my_cmake()
                 CXXFLAGS="-Werror ${CXXFLAGS}"
                 shift
                 ;;
+            gcc-analyzer)
+                echo "Enabling GCC static analyzer."
+                CC="gcc"
+                CXX="g++"
+                LD=""
+                CFLAGS="-fanalyzer ${CFLAGS}"
+                CXXFLAGS="-fanalyzer ${CXXFLAGS}"
+                shift
+                ;;
             *)
                 break
                 ;;
