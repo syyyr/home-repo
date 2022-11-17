@@ -33,7 +33,7 @@ check_online_id() {
 }
 
 update_online_cache() {
-    > "$ONLINE_CACHE"
+    true > "$ONLINE_CACHE"
     for user in $(get_users); do
         if check_online_id "$(get_id "$user")"; then
             echo "$user" >> "$ONLINE_CACHE"
