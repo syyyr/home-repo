@@ -6,7 +6,7 @@ export BROWSER="wslbrowser"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+export DISPLAY=$(grep nameserver < /etc/resolv.conf | awk '{print $2; exit;}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
 # win cmd autocomplete BS
