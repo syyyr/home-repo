@@ -114,7 +114,6 @@ eval "$(dircolors)"
 
 source /usr/share/fzf/completion.bash
 source "$HOME/.config/bashrc/alias.bash"
-source "$HOME/.config/bashrc/colors.bash"
 source "$HOME/.config/bashrc/completerc.bash"
 source "$HOME/.config/bashrc/env.bash"
 source "$HOME/.config/bashrc/functions.bash"
