@@ -19,11 +19,11 @@ refresh
 
 udevadm monitor -k | while IFS= read -r line;
 do
-    if [ -z "$(grep -F '/devices/pci0000:00/0000:00:08.1/0000:05:00.0/drm/card0 (drm)' <<< $line)" ]; then
+    if ! grep -qF '/devices/pci0000:00/0000:00:08.1/0000:05:00.0/drm/card0 (drm)' <<< "$line"; then
         continue
     fi
 
-    if [ -n "$(xset q | grep -F 'Monitor is Off')" ]; then
+    if xset q | grep -F 'Monitor is Off'; then
         continue
     fi
 
