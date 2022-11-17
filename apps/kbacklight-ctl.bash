@@ -34,6 +34,6 @@ else
 fi
 
 KEYBOARD_IMG="$HOME/.local/share/icons/blue/keyboard.png"
-ARGS='-t 2000 -h string:x-canonical-private-synchronous:kbacklight'
-ARGS+=" -i $KEYBOARD_IMG"
-notify-send $ARGS 'Keyboard' "$STATE"
+ARGS=( -t 2000 -h string:x-canonical-private-synchronous:kbacklight )
+ARGS+=( -i "$KEYBOARD_IMG" )
+notify-send "${ARGS[@]}" 'Keyboard' "$STATE"

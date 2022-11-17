@@ -27,5 +27,5 @@ BRIGHT="$(light | python -c "print(round(float(input())))")" # Python rounds the
 echo "Brightness: $BRIGHT"%
 
 BRIGHTNESS_IMG="$HOME/.local/share/icons/blue/brightness.png"
-ARGS="-t 2000 -h string:x-canonical-private-synchronous:brightness -i $BRIGHTNESS_IMG"
-notify-send $ARGS 'Brightness' "$BRIGHT"%
+ARGS=( -t 2000 -h string:x-canonical-private-synchronous:brightness -i "$BRIGHTNESS_IMG" )
+notify-send "${ARGS[@]}" 'Brightness' "$BRIGHT"%

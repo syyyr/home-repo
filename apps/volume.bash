@@ -38,5 +38,5 @@ elif [[ "${VOL//%}" -ge "33" ]];then
 fi
 
 echo "Volume: $VOL $MUTED"
-ARGS="-t 2000 -h string:x-canonical-private-synchronous:volume -i $VOLUME_IMG"
-notify-send $ARGS "Volume" "$VOL"
+ARGS=( -t 2000 -h string:x-canonical-private-synchronous:volume -i "$VOLUME_IMG" )
+notify-send "${ARGS[@]}" "Volume" "$VOL"

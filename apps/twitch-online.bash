@@ -15,19 +15,19 @@ CACHE_DIR="$HOME/.local/share/twitch_online"
 ID_CACHE="$CACHE_DIR/ids"
 ONLINE_CACHE="$CACHE_DIR/online"
 ONLINE_CACHE_TTL='60'
-CURL_HEADERS="-H Client-ID:$TWITCH_CLIENT_ID -H Accept:application/vnd.twitchtv.v5+json"
+CURL_HEADERS=( -H "Client-ID:$TWITCH_CLIENT_ID" -H "Accept:application/vnd.twitchtv.v5+json" )
 
 update_id_cache() {
     if [[ ! -d "$CACHE_DIR" ]]; then
         mkdir "$CACHE_DIR"
     fi
-    curl --silent $CURL_HEADERS \
+    curl --silent "${CURL_HEADERS[@]}" \
         "https://api.twitch.tv/kraken/users?login=$TWITCH_STREAMERS" | \
         jq 'reduce .users[] as $user({}; . + {(($user).display_name): ($user)._id})' > "$ID_CACHE"
 }
 
 check_online_id() {
-    [[ $(curl --silent $CURL_HEADERS "https://api.twitch.tv/kraken/streams/$1" | \
+    [[ $(curl --silent "${CURL_HEADERS[@]}" "https://api.twitch.tv/kraken/streams/$1" | \
         jq '.stream') != "null" ]]
     return $?
 }
