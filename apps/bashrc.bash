@@ -2,5 +2,6 @@
 if [[ $# -eq 0 ]]; then
     nvim -p "$HOME/.config/bashrc/"*
 else
-    nvim -p $(printf "$HOME/.config/bashrc/%s " "$@")
+    read -ra ARGS < <(printf "$HOME/.config/bashrc/%s " "$@")
+    nvim -p "${ARGS[@]}"
 fi
