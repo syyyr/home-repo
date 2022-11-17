@@ -36,12 +36,12 @@ __try_compl() {
     local completion
 
     COMP_LINE=("${COMP_LINE:4}")
-    COMP_POINT=$(($COMP_POINT - 4))
+    COMP_POINT=$((COMP_POINT - 4))
     COMP_WORDS=("${COMP_WORDS[@]:1}")
-    COMP_CWORD=$(($COMP_CWORD - 1))
+    COMP_CWORD=$((COMP_CWORD - 1))
 
     if [[ "${#COMP_WORDS[@]}" -eq 1 ]]; then
-        COMPREPLY=( $(compgen -c "${COMP_WORDS}" | sort -u) )
+        readarray COMPREPLY < <(compgen -c "" | sort -u)
         return
     fi
 
@@ -49,7 +49,7 @@ __try_compl() {
 }
 
 __twitch_compl() {
-    COMPREPLY=( $(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}") )
+    readarray COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
 
 complete -W 'increase decrease min max'  brightness
