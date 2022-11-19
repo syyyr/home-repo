@@ -116,4 +116,14 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end,
     group = vim.api.nvim_create_augroup('LspSemanticColors', {clear = true})
 })
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = 'PaperColor',
+    callback = function()
+        vim.cmd('highlight! link @variable NONE')
+        vim.cmd('highlight! link @preproc NONE')
+        vim.cmd('highlight! link @parameter NONE')
+    end,
+    group = vim.api.nvim_create_augroup('TreeSitterColors', {clear = true})
+})
 vim.cmd('colorscheme PaperColor')
