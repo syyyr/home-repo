@@ -101,3 +101,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/lsp_signature.nvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/lsp_signature.nvim
 	url = https://github.com/ray-x/lsp_signature.nvim.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/nvim-semantic-tokens"]
+	path = .local/share/nvim/site/pack/bundle/opt/nvim-semantic-tokens
+	url = https://github.com/theHamsta/nvim-semantic-tokens.git

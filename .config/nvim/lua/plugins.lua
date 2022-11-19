@@ -167,16 +167,28 @@ cmp.setup.filetype('cpp', {
     },
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     local bufopts = {noremap = true, silent = true, buffer = bufnr}
     vim.keymap.set('n', '<C-Space>', function()
         vim.g.skip_diagnostic_float = true
         vim.lsp.buf.hover()
     end, bufopts)
     vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
+
+    local capabilities = client.server_capabilities
+    if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
+        local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
+        vim.api.nvim_create_autocmd("TextChanged", {
+            group = augroup,
+            buffer = bufnr,
+            callback = vim.lsp.buf.semantic_tokens_full
+        })
+        -- fire it first time on load as well
+        vim.lsp.buf.semantic_tokens_full()
+    end
 end
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('clangd_extensions').setup({
     server = {
@@ -272,3 +284,27 @@ require('lsp_signature').setup({
     },
     hint_enable = false
 })
+
+vim.cmd('packadd! nvim-semantic-tokens')
+require("nvim-semantic-tokens").setup {
+    preset = "default",
+    highlighters = { require('nvim-semantic-tokens.table-highlighter') }
+}
+
+local on_full = require('nvim-semantic-tokens.semantic_tokens').on_full
+vim.api.nvim_create_user_command('LspInspectTokenCursor', function ()
+    vim.cmd('normal! viwo')
+    local params = vim.lsp.util.make_given_range_params()
+    vim.lsp.buf_request(
+        0,
+        "textDocument/semanticTokens/full",
+        params,
+        vim.lsp.with(on_full, {
+            on_token = function(_, token)
+                if token.line == params.range.start.line and token.start_char == params.range.start.character then
+                    vim.notify(token.type)
+                end
+            end,
+        })
+    )
+end, {nargs = 0})

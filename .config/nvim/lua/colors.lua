@@ -93,4 +93,27 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     group = vim.api.nvim_create_augroup('LspColors', {clear = true})
 })
 
+vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = 'PaperColor',
+    callback = function()
+        vim.cmd('highlight! link LspTypeParameter Constant')
+        vim.cmd('highlight! link LspEnumMember Constant')
+        vim.cmd('highlight! link LspMacro Macro')
+        vim.cmd('highlight! link LspComment Comment')
+
+        -- TODO: These didn't come up yet, so I don't know which color group to assign.
+        vim.cmd('highlight! link LspKeyword Error')
+        vim.cmd('highlight! link LspModifier Error')
+        vim.cmd('highlight! link LspString Error')
+        vim.cmd('highlight! link LspNumber Error')
+        vim.cmd('highlight! link LspRegexp Error')
+        vim.cmd('highlight! link LspDeprecated Error')
+        vim.cmd('highlight! link LspAbstract Error')
+        vim.cmd('highlight! link LspAsync Error')
+        vim.cmd('highlight! link LspModification Error')
+        vim.cmd('highlight! link LspDocumentation Error')
+        vim.cmd('highlight! link LspEvent Error')
+    end,
+    group = vim.api.nvim_create_augroup('LspSemanticColors', {clear = true})
+})
 vim.cmd('colorscheme PaperColor')
