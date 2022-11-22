@@ -137,3 +137,4 @@ function Custom.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
 function Custom.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
 function Custom.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
 function Custom.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
+function Custom.nmap(lhs, rhs, opts) impl_map('', false, lhs, rhs, opts) end

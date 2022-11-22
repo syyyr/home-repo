@@ -109,10 +109,13 @@ Custom.xnoremap('<C-P>', '"0p')
 
 Custom.tnoremap('<esc>', '<C-><C-N>')
 
-Custom.nnoremap('úc', ':cprev<cr>zo')
-Custom.nnoremap(')c', ':cnext<cr>zo')
+Custom.nmap('úc', ':cprev<cr>zo')
+Custom.nmap(')c', ':cnext<cr>zo')
 
 Custom.nnoremap('Q', '<nop>')
 
 Custom.nnoremap('q:', '<nop>')
 Custom.cnoremap('CR', 'CR ')
+
+Custom.nnoremap('zr', 'zr<cmd>IndentBlanklineRefresh<cr>')
+Custom.nnoremap('zo', 'zo<cmd>IndentBlanklineRefresh<cr>')
