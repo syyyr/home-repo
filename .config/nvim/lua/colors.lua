@@ -108,7 +108,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link LspNumber Error')
         vim.cmd('highlight! link LspRegexp Error')
         vim.cmd('highlight! link LspDeprecated Error')
-        vim.cmd('highlight! link LspAbstract Error')
         vim.cmd('highlight! link LspAsync Error')
         vim.cmd('highlight! link LspModification Error')
         vim.cmd('highlight! link LspDocumentation Error')
