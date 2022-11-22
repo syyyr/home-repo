@@ -6,6 +6,8 @@ Custom.nnoremap('j', 'gj')
 Custom.nnoremap('k', 'gk')
 Custom.nnoremap('H', '^')
 Custom.nnoremap('L', '$')
+Custom.onoremap('H', '^')
+Custom.onoremap('L', '$')
 Custom.xnoremap('H', '^')
 Custom.xnoremap('L', 'g_')
 
