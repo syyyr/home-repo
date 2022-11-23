@@ -220,8 +220,9 @@ my_cmake()
     local CFLAGS
     local CXXFLAGS
     local LDFLAGS
-    local CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_BUILD_TYPE=Debug' )
+    local CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' )
     local CACHE=1
+    local BUILD_TYPE="Debug"
 
     while true; do
         case "$1" in
@@ -275,6 +276,10 @@ my_cmake()
                 CXXFLAGS="-O2 ${CXXFLAGS}"
                 shift
                 ;;
+            release)
+                BUILD_TYPE="Release"
+                shift
+                ;;
             werror)
                 CFLAGS="-Werror ${CFLAGS}"
                 CXXFLAGS="-Werror ${CXXFLAGS}"
@@ -299,6 +304,7 @@ my_cmake()
         CMAKE_FLAGS=( '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' "${CMAKE_FLAGS[@]}" )
     fi
 
+    CMAKE_FLAGS=( "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "${CMAKE_FLAGS[@]}" )
 
     if [[ "${CXX}" = clang++ ]]; then
         CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
