@@ -194,13 +194,43 @@ require('clangd_extensions').setup({
     server = {
         on_attach = on_attach,
         capabilities = capabilities,
-        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--suggest-missing-includes'}
+        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never'}
     },
 })
 
 require('lspconfig').vimls.setup({
     on_attach = on_attach,
     capabilities = capabilities
+})
+
+require('lspconfig').diagnosticls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {'vim'},
+    init_options = {
+        linters = {
+            vint = {
+                sourceName = 'vint',
+                command = 'vint',
+                args = { '--enable-neovim', '--json', '%tempfile' },
+                debounce = 100,
+                parseJson = {
+                    line = 'line_number',
+                    column = 'column_number',
+                    security = 'severity',
+                    message = '[vint] ${description} [${policy_name}]',
+                },
+                securities = {
+                    error = 'error',
+                    warning = 'warning',
+                    style_problem = 'info',
+                },
+            },
+        },
+        filetypes = {
+            vim = 'vint',
+        },
+    }
 })
 
 require('lspconfig').pylsp.setup({
