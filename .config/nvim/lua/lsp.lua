@@ -79,35 +79,12 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.cmd('packadd! nvim-lspconfig')
 
-require('lspconfig').vimls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').pylsp.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').cmake.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').bashls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').tsserver.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').yamlls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
+for _, lsp_name in ipairs({'bashls', 'cmake', 'pylsp', 'tsserver', 'vimls', 'yamlls'}) do
+    require('lspconfig')[lsp_name].setup({
+        on_attach = on_attach,
+        capabilities = capabilities
+    })
+end
 
 require('lspconfig').diagnosticls.setup({
     on_attach = on_attach,
