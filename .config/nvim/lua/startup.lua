@@ -16,7 +16,22 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 })
 
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
-    callback = Custom.trailing_ws_check,
+    callback = function()
+        local id = vim.fn.jobstart({'grep', '-n', '-m', '1', '\\s$'}, {
+            on_stdout = function(_, data)
+                local first_line = data[1]
+                local startIndex, endIndex = first_line:find('%d+')
+                if not startIndex then
+                    vim.b.TrailingNr = ''
+                else
+                    vim.b.TrailingNr = first_line:sub(startIndex, endIndex)
+                end
+            end,
+            stdout_buffered = 1
+        })
+        vim.fn.chansend(id, vim.api.nvim_buf_get_lines(0, 0, -1, true))
+        vim.fn.chanclose(id, 'stdin')
+    end,
     group = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 })
 
