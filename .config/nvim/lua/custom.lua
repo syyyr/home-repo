@@ -77,12 +77,7 @@ local impl_map = function(mode, noremap, lhs, rhs, opts)
 
     opts.noremap = noremap
 
-    if opts.buffer then
-        opts.buffer = nil
-        vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
-    else
-        vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-    end
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 function Custom.nnoremap(lhs, rhs, opts) impl_map('n', true, lhs, rhs, opts) end
