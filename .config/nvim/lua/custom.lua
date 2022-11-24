@@ -1,5 +1,13 @@
 Custom = {}
 
+function Custom.map(table, f)
+    local new_table = {}
+    for i, v in pairs(table) do
+        new_table[i] = f(v)
+    end
+    return new_table
+end
+
 function Custom.statusline_diagnostics()
     for _, severity in pairs({"ERROR", "WARN", "INFO", "HINT"}) do
         local diagnostic = vim.diagnostic.get(0, {severity = vim.diagnostic.severity[severity]})[1]
