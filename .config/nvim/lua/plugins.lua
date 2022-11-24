@@ -113,16 +113,16 @@ end
 
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<c-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<c-f>'] = cmp.mapping.scroll_docs(4),
+        ['<c-space>'] = cmp.mapping.complete(),
+        ['<c-e>'] = cmp.mapping.abort(),
         ['<cr>'] = cmp.mapping.confirm({select = false}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif vim.fn['vsnip#available'](1) == 1 then
-                feedkey('<Plug>(vsnip-expand-or-jump)', '')
+                feedkey('<plug>(vsnip-expand-or-jump)', '')
             elseif has_words_before() then
                 cmp.complete()
             else
@@ -130,11 +130,11 @@ cmp.setup({
             end
         end, {'i', 's'}),
 
-        ['<S-Tab>'] = cmp.mapping(function()
+        ['<s-tab>'] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-                feedkey('<Plug>(vsnip-jump-prev)', '')
+                feedkey('<plug>(vsnip-jump-prev)', '')
             end
         end, {'i', 's'}),
 
@@ -169,11 +169,11 @@ cmp.setup.filetype('cpp', {
 
 local on_attach = function(client, bufnr)
     local bufopts = {noremap = true, silent = true, buffer = bufnr}
-    vim.keymap.set('n', '<C-Space>', function()
+    vim.keymap.set('n', '<c-space>', function()
         vim.g.skip_diagnostic_float = true
         vim.lsp.buf.hover()
     end, bufopts)
-    vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', '<c-]>', vim.lsp.buf.definition, bufopts)
 
     local capabilities = client.server_capabilities
     if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
