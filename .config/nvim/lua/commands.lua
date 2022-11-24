@@ -4,7 +4,7 @@ vim.api.nvim_create_user_command('Trailing', function()
     vim.cmd([[silent! %s/\s\+$//e]])
     vim.fn.setpos('.', save_cursor)
     vim.fn.setreg('/', old_query)
-end, {})
+end, { nargs = 0 })
 Custom.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 --" toggle unsaved changes diff

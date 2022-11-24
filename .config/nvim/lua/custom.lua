@@ -66,7 +66,7 @@ function Custom.register_printing(opts)
         if info.bang then
             vim.cmd('normal! k"_dd')
         end
-    end, {bang = true})
+    end, {nargs = 0, bang = true})
 
 end
 
