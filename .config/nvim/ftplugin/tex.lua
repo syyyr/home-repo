@@ -7,12 +7,12 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.o.makeprg = 'make'
 
-Custom.inoremap('\\tit', '\\textit{', {buffer = true})
-Custom.inoremap('\\ttt', '\\texttt{', {buffer = true})
-Custom.inoremap('""', '\\uv{', {buffer = true})
-Custom.inoremap('C++', '\\Cpp{}', {buffer = true})
-Custom.inoremap('\\fn', '\\footnote{', {buffer = true})
-Custom.inoremap('\\v', '\\verb¨', {buffer = true})
+Custom.inoremap([[\tit]], [[\textit{]], {buffer = true})
+Custom.inoremap([[\ttt]], [[\texttt{]], {buffer = true})
+Custom.inoremap('""', [[\uv{]], {buffer = true})
+Custom.inoremap('C++', [[\Cpp{}]], {buffer = true})
+Custom.inoremap([[\fn]], [[\footnote{]], {buffer = true})
+Custom.inoremap([[\v]], [[\verb¨]], {buffer = true})
 
 vim.opt.diffopt:append('horizontal')
 

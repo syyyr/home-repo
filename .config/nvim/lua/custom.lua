@@ -16,7 +16,7 @@ end
 
 function Custom.clean_screen()
     vim.fn['clever_f#reset']()
-    vim.cmd([[execute "normal \<C-Space>\<C-Space>\<C-Space>q"]])
+    vim.cmd([[execute "normal \<c-space>\<c-space>\<c-space>q"]])
     vim.g.skip_diagnostic_float = true
 end
 

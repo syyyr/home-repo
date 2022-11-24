@@ -9,7 +9,7 @@ Custom.register_printing({
     quote = '"',
     prefix = 'std::cerr << ',
     infix = ' << " = " << ',
-    suffix = ' << "\\n";'
+    suffix = [[ << "\n";]]
 })
 
 vim.cmd([[iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>]])

@@ -1,7 +1,7 @@
 vim.api.nvim_create_user_command('Trailing', function()
     local save_cursor = vim.fn.getpos('.')
     local old_query = vim.fn.getreg('/')
-    vim.cmd('silent! %s/\\s\\+$//e')
+    vim.cmd([[silent! %s/\s\+$//e]])
     vim.fn.setpos('.', save_cursor)
     vim.fn.setreg('/', old_query)
 end, {})
