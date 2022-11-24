@@ -23,11 +23,7 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
             on_stdout = function(_, data)
                 local first_line = data[1]
                 local startIndex, endIndex = first_line:find('%d+')
-                if not startIndex then
-                    vim.b.TrailingNr = ''
-                else
-                    vim.b.TrailingNr = first_line:sub(startIndex, endIndex)
-                end
+                vim.b.TrailingNr = startIndex and first_line:sub(startIndex, endIndex) or ''
             end,
             stdout_buffered = 1
         })
