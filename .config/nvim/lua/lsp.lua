@@ -57,12 +57,6 @@ cmp.setup({
 })
 
 local on_attach = function(client, bufnr)
-    Custom.nnoremap('<c-space>', function()
-        vim.g.skip_diagnostic_float = true
-        vim.lsp.buf.hover()
-    end)
-    Custom.nnoremap('<c-]>', vim.lsp.buf.definition)
-
     local capabilities = client.server_capabilities
     if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
         vim.api.nvim_create_autocmd("TextChanged", {
@@ -78,7 +72,6 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.cmd('packadd! nvim-lspconfig')
-
 for _, lsp_name in ipairs({'bashls', 'cmake', 'pylsp', 'tsserver', 'vimls', 'yamlls'}) do
     require('lspconfig')[lsp_name].setup({
         on_attach = on_attach,
@@ -196,6 +189,12 @@ vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end,
 vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
+
+Custom.nnoremap('<c-space>', function()
+    vim.g.skip_diagnostic_float = true
+    vim.lsp.buf.hover()
+end)
+Custom.nnoremap('<c-]>', vim.lsp.buf.definition)
 
 vim.api.nvim_create_autocmd('CursorHold', {
     callback = function()
