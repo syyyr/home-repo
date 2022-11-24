@@ -13,90 +13,90 @@ Custom.xnoremap('L', 'g_')
 
 -- Fast saving. :update only saves if there are changes (it can't be used to
 -- just update modified time)
-Custom.nnoremap('<A-w>', '<cmd>update!<cr>')
+Custom.nnoremap('<a-w>', '<cmd>update!<cr>')
 
 -- searching with space
 Custom.nnoremap('<space>', '/')
 Custom.xnoremap('<space>', '/')
 
 -- disable highlight
-Custom.nnoremap('<A-cr>', '<cmd>lua Custom.clean_screen()<cr><cmd>nohlsearch<cr>:<bs>')
+Custom.nnoremap('<a-cr>', '<cmd>lua Custom.clean_screen()<cr><cmd>nohlsearch<cr>:<bs>')
 
 -- jump to next merge conflict
-Custom.nnoremap('<A-c>', [[<cmd>silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<cr><cmd>nohlsearch<cr>]])
-Custom.xnoremap('<A-c>', [[/<C-U>\v^[<|=>]{7}([^=].+)?$<cr><esc><cmd>nohlsearch<cr>gv]])
-Custom.onoremap('<A-c>', [[/<C-U>\v^[<|=>]{7}([^=].+)?$<CR>]])
+Custom.nnoremap('<a-c>', [[<cmd>silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<cr><cmd>nohlsearch<cr>]])
+Custom.xnoremap('<a-c>', [[/<c-U>\v^[<|=>]{7}([^=].+)?$<cr><esc><cmd>nohlsearch<cr>gv]])
+Custom.onoremap('<a-c>', [[/<c-U>\v^[<|=>]{7}([^=].+)?$<cr>]])
 
 -- smart way to move between windows
-Custom.nnoremap('<C-j>', '<C-W>j')
-Custom.nnoremap('<C-k>', '<C-W>k')
-Custom.nnoremap('<C-h>', '<C-W>h')
-Custom.nnoremap('<C-l>', '<C-W>l')
+Custom.nnoremap('<c-j>', '<c-W>j')
+Custom.nnoremap('<c-k>', '<c-W>k')
+Custom.nnoremap('<c-h>', '<c-W>h')
+Custom.nnoremap('<c-l>', '<c-W>l')
 
 -- close everything with C-q
-Custom.nnoremap('<C-q>', '<cmd>qa<cr>')
+Custom.nnoremap('<c-q>', '<cmd>qa<cr>')
 
 -- ability to move with hjkl in insert mode
-Custom.inoremap('<C-j>', '<down>')
-Custom.inoremap('<C-k>', '<up>')
-Custom.inoremap('<C-h>', '<left>')
-Custom.inoremap('<C-l>', '<right>')
+Custom.inoremap('<c-j>', '<down>')
+Custom.inoremap('<c-k>', '<up>')
+Custom.inoremap('<c-h>', '<left>')
+Custom.inoremap('<c-l>', '<right>')
 
 -- toggle linenumbers
-Custom.nnoremap('<A-n>', '<cmd>setlocal number!<cr>')
+Custom.nnoremap('<a-n>', '<cmd>setlocal number!<cr>')
 
 -- toggle dark/light bg
-Custom.nnoremap('<A-b>', '<cmd>let &background = ( &background == "dark"? "light" : "dark" )<CR>')
+Custom.nnoremap('<a-b>', '<cmd>let &background = ( &background == "dark"? "light" : "dark" )<cr>')
 
 -- buffer management
-Custom.nnoremap('<A-d>', '<cmd>bdelete<cr>')
-Custom.nnoremap('<A-h>', '<cmd>bprevious<cr>')
-Custom.nnoremap('<A-l>', '<cmd>bnext<cr>')
+Custom.nnoremap('<a-d>', '<cmd>bdelete<cr>')
+Custom.nnoremap('<a-h>', '<cmd>bprevious<cr>')
+Custom.nnoremap('<a-l>', '<cmd>bnext<cr>')
 
 -- move lines with alt+j,k
-Custom.nnoremap('<A-j>', 'mz<cmd>m+<cr>`z')
-Custom.nnoremap('<A-k>', 'mz<cmd>m-2<cr>`z')
-Custom.xnoremap('<A-j>', [[:m'>+<cr>`<my`>mzgv`yo`z]])
-Custom.xnoremap('<A-k>', [[:m'<-2<cr>`>my`<mzgv`yo`z]])
+Custom.nnoremap('<a-j>', 'mz<cmd>m+<cr>`z')
+Custom.nnoremap('<a-k>', 'mz<cmd>m-2<cr>`z')
+Custom.xnoremap('<a-j>', [[:m'>+<cr>`<my`>mzgv`yo`z]])
+Custom.xnoremap('<a-k>', [[:m'<-2<cr>`>my`<mzgv`yo`z]])
 
 -- tabs
-Custom.nnoremap('<A-;>', 'gt')
-Custom.nnoremap('<A-+>', '1gt')
-Custom.nnoremap('<A-ě>', '2gt')
-Custom.nnoremap('<A-š>', '3gt')
-Custom.nnoremap('<A-č>', '4gt')
-Custom.nnoremap('<A-ř>', '5gt')
-Custom.nnoremap('<A-ž>', '6gt')
-Custom.nnoremap('<A-ý>', '7gt')
-Custom.nnoremap('<A-á>', '8gt')
-Custom.nnoremap('<A-í>', '9gt')
-Custom.nnoremap('<A-é>', '<cmd>tablast<CR>')
+Custom.nnoremap('<a-;>', 'gt')
+Custom.nnoremap('<a-+>', '1gt')
+Custom.nnoremap('<a-ě>', '2gt')
+Custom.nnoremap('<a-š>', '3gt')
+Custom.nnoremap('<a-č>', '4gt')
+Custom.nnoremap('<a-ř>', '5gt')
+Custom.nnoremap('<a-ž>', '6gt')
+Custom.nnoremap('<a-ý>', '7gt')
+Custom.nnoremap('<a-á>', '8gt')
+Custom.nnoremap('<a-í>', '9gt')
+Custom.nnoremap('<a-é>', '<cmd>tablast<cr>')
 
 -- map LR arrows to resize, but keep UD arrows for scrolling
-Custom.nnoremap('<Left>', ':vertical resize -2<CR>')
-Custom.nnoremap('<Right>', ':vertical resize +2<CR>')
-Custom.nnoremap('<S-Left>', ':vertical resize -4<CR>')
-Custom.nnoremap('<S-Right>', ':vertical resize +4<CR>')
+Custom.nnoremap('<left>', ':vertical resize -2<cr>')
+Custom.nnoremap('<right>', ':vertical resize +2<cr>')
+Custom.nnoremap('<s-left>', ':vertical resize -4<cr>')
+Custom.nnoremap('<s-right>', ':vertical resize +4<cr>')
 
 -- underscore text object
-Custom.xnoremap('i_', ':<C-u>normal! T_vt_<cr>')
+Custom.xnoremap('i_', ':<c-u>normal! T_vt_<cr>')
 Custom.onoremap('i_', '<cmd>normal vi_<cr>')
 
 -- buffer text-object
 Custom.xnoremap('i%', 'GoggV')
-Custom.omap('i%', '<cmd><C-u>normal vi%<CR>')
+Custom.omap('i%', '<cmd><c-u>normal vi%<cr>')
 
 -- auto complete brace
-Custom.inoremap('{<CR>', '{<CR>}<Esc>O')
+Custom.inoremap('{<cr>', '{<cr>}<Esc>O')
 
 -- insert current line in cmd mode
-Custom.cnoremap('<C-r><C-l>', [[<C-r>=getline('.')<CR>]])
+Custom.cnoremap('<c-r><c-l>', [[<c-r>=getline('.')<cr>]])
 
-Custom.noremap('<F7>', '<nop>')
-Custom.inoremap('<F7>', '<nop>')
-Custom.cnoremap('<F7>', '<nop>')
+Custom.noremap('<f7>', '<nop>')
+Custom.inoremap('<f7>', '<nop>')
+Custom.cnoremap('<f7>', '<nop>')
 
-Custom.nnoremap('<C-n>', '<cmd>20Lexplore<CR>')
+Custom.nnoremap('<c-n>', '<cmd>20Lexplore<cr>')
 
 -- remain in visual after shift
 Custom.xnoremap('>', '>gv')
@@ -106,10 +106,10 @@ Custom.xnoremap('<', '<gv')
 Custom.nnoremap('*', '*N')
 Custom.nnoremap('#', '#N')
 
-Custom.nnoremap('<C-P>', '"0p')
-Custom.xnoremap('<C-P>', '"0p')
+Custom.nnoremap('<c-p>', '"0p')
+Custom.xnoremap('<c-p>', '"0p')
 
-Custom.tnoremap('<esc>', '<C-><C-N>')
+Custom.tnoremap('<esc>', '<c-><c-N>')
 
 Custom.nnoremap('Q', '<nop>')
 

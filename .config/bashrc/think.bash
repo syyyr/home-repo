@@ -8,4 +8,4 @@ export PATH="/opt/cesnet-au/bin:$PATH"
 export PATH="/opt/cesnet-t/bin:$PATH"
 
 source "$HOME/.config/bashrc/common.bash"
-eval "$(luarocks path)"
+# eval "$(luarocks path)"

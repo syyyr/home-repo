@@ -5,7 +5,7 @@ vim.api.nvim_create_user_command('Trailing', function()
     vim.fn.setpos('.', save_cursor)
     vim.fn.setreg('/', old_query)
 end, {})
-Custom.nnoremap('<A-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
+Custom.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 --" toggle unsaved changes diff
 local diff_open = false
@@ -31,7 +31,7 @@ vim.api.nvim_create_user_command('DiffToggle', function()
     end
 end, { nargs = 0 })
 
-Custom.nnoremap('<A-,>', '<cmd>DiffToggle<cr>')
+Custom.nnoremap('<a-,>', '<cmd>DiffToggle<cr>')
 
 --" end with :Q XD
 vim.api.nvim_create_user_command('Q', function(info) vim.cmd('q' .. (info.bang and '!' or '')) end, { nargs = 0, bang = 1 })
