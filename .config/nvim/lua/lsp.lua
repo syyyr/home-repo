@@ -56,41 +56,6 @@ cmp.setup({
     },
 })
 
-vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
-vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
-vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
-vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
-
-vim.api.nvim_create_autocmd('CursorHold', {
-    callback = function()
-        if vim.g.skip_diagnostic_float then
-            vim.g.skip_diagnostic_float = false
-            return
-        end
-        vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
-    end,
-    group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
-})
-vim.fn.sign_define('DiagnosticSignHint', {text = '--', texthl = 'DiagnosticSignHint'})
-vim.fn.sign_define('DiagnosticSignInfo', {text = '--', texthl = 'DiagnosticSignInfo'})
-vim.fn.sign_define('DiagnosticSignWarn', {text = '--', texthl = 'DiagnosticSignWarn'})
-vim.fn.sign_define('DiagnosticSignError', {text = '>>', texthl = 'DiagnosticSignError'})
-vim.diagnostic.config({
-    virtual_text = {
-        severity = 'error',
-    },
-    severity_sort = true,
-    float = {
-        header = '',
-        source = true,
-        format = function(diagnostic)
-            local res = diagnostic.message
-            local code = diagnostic.code and diagnostic.code or 'unknown-code'
-            return res .. ' (' .. code .. ')'
-        end
-    }
-})
-
 local on_attach = function(client, bufnr)
     local bufopts = {noremap = true, silent = true, buffer = bufnr}
     vim.keymap.set('n', '<c-space>', function()
@@ -115,31 +80,33 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.cmd('packadd! nvim-lspconfig')
-vim.cmd('packadd! clangd_extensions.nvim')
-require('clangd_extensions').setup({
-    server = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never'}
-    },
-})
-
-cmp.setup.filetype('cpp', {
-    sorting = {
-        comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.recently_used,
-            require('clangd_extensions.cmp_scores'),
-            cmp.config.compare.exact,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-        },
-    },
-})
 
 require('lspconfig').vimls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+require('lspconfig').pylsp.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+require('lspconfig').cmake.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+require('lspconfig').bashls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+require('lspconfig').tsserver.setup({
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+require('lspconfig').yamlls.setup({
     on_attach = on_attach,
     capabilities = capabilities
 })
@@ -174,31 +141,6 @@ require('lspconfig').diagnosticls.setup({
     }
 })
 
-require('lspconfig').pylsp.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').cmake.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').bashls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').tsserver.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
-require('lspconfig').yamlls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
-})
-
 require('lspconfig').sumneko_lua.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -216,6 +158,30 @@ require('lspconfig').sumneko_lua.setup({
             },
         }
     }
+})
+
+vim.cmd('packadd! clangd_extensions.nvim')
+require('clangd_extensions').setup({
+    server = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never'}
+    },
+})
+
+cmp.setup.filetype('cpp', {
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.recently_used,
+            require('clangd_extensions.cmp_scores'),
+            cmp.config.compare.exact,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
 })
 
 vim.cmd('packadd! lsp_signature.nvim')
@@ -250,3 +216,38 @@ vim.api.nvim_create_user_command('LspInspectTokenCursor', function ()
         })
     )
 end, {nargs = 0})
+
+vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
+vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
+vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
+vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
+
+vim.api.nvim_create_autocmd('CursorHold', {
+    callback = function()
+        if vim.g.skip_diagnostic_float then
+            vim.g.skip_diagnostic_float = false
+            return
+        end
+        vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
+    end,
+    group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
+})
+vim.fn.sign_define('DiagnosticSignHint', {text = '--', texthl = 'DiagnosticSignHint'})
+vim.fn.sign_define('DiagnosticSignInfo', {text = '--', texthl = 'DiagnosticSignInfo'})
+vim.fn.sign_define('DiagnosticSignWarn', {text = '--', texthl = 'DiagnosticSignWarn'})
+vim.fn.sign_define('DiagnosticSignError', {text = '>>', texthl = 'DiagnosticSignError'})
+vim.diagnostic.config({
+    virtual_text = {
+        severity = 'error',
+    },
+    severity_sort = true,
+    float = {
+        header = '',
+        source = true,
+        format = function(diagnostic)
+            local res = diagnostic.message
+            local code = diagnostic.code and diagnostic.code or 'unknown-code'
+            return res .. ' (' .. code .. ')'
+        end
+    }
+})
