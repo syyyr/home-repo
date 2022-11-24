@@ -1,5 +1,11 @@
-vim.api.nvim_create_user_command('Trailing', Custom.clean_extra_spaces, { nargs = 0 })
-vim.api.nvim_set_keymap('n', '<A-t>', ':Trailing<cr>:nohlsearch<cr>', {noremap = true})
+vim.api.nvim_create_user_command('Trailing', function()
+    local save_cursor = vim.fn.getpos('.')
+    local old_query = vim.fn.getreg('/')
+    vim.cmd('silent! %s/\\s\\+$//e')
+    vim.fn.setpos('.', save_cursor)
+    vim.fn.setreg('/', old_query)
+end, {})
+Custom.nnoremap('<A-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 --" toggle unsaved changes diff
 local diff_open = false

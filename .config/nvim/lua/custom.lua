@@ -39,14 +39,6 @@ function Custom.clean_screen()
     vim.g.skip_diagnostic_float = true
 end
 
-function Custom.clean_extra_spaces()
-    local save_cursor = vim.fn.getpos('.')
-    local old_query = vim.fn.getreg('/')
-    vim.cmd('silent! %s/\\s\\+$//e')
-    vim.fn.setpos('.', save_cursor)
-    vim.fn.setreg('/', old_query)
-end
-
 local function print_variable(var_name, prefix, infix, suffix, callback, quote)
     if callback then
         callback()
