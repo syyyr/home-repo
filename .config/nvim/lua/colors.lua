@@ -16,63 +16,35 @@ vim.g.PaperColor_Theme_Options = {
     },
 }
 
-local function get_separator_colors()
-    if vim.o.background == 'dark' then
-        return 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234'
-    else
-        return 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
-    end
-end
-
--- PaperColor overrides
-local status_underline = vim.api.nvim_create_augroup('StatusUnderline', {clear = true})
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight StatusLineNC ' .. get_separator_colors() .. ' cterm=underline gui=underline') end,
-    group = status_underline
-})
-
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight StatusLine ' .. get_separator_colors() .. ' cterm=underline,bold gui=underline,bold') end,
-    group = status_underline
-})
-
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight WinSeparator ' .. get_separator_colors()) end,
-    group = vim.api.nvim_create_augroup('VertSplit', {clear = true})
-})
-
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     callback = function()
+        local function get_separator_colors()
+            if vim.o.background == 'dark' then
+                return 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234'
+            else
+                return 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
+            end
+        end
+
+        -- Status underline.
+        vim.cmd('highlight StatusLineNC ' .. get_separator_colors() .. ' cterm=underline gui=underline')
+        vim.cmd('highlight StatusLine ' .. get_separator_colors() .. ' cterm=underline,bold gui=underline,bold')
+
+        -- WinSeparator
+        vim.cmd('highlight WinSeparator ' .. get_separator_colors())
+
+        -- End of buffer
         vim.cmd('highlight clear EndOfBuffer')
         vim.cmd('highlight link EndOfBuffer NonText')
-    end,
-    group = vim.api.nvim_create_augroup('EndOfBuffer', {clear = true})
-})
 
-local merge_conflict = vim.api.nvim_create_augroup('MergeConflict', {clear = true})
-vim.api.nvim_create_autocmd('Syntax', {
-    command = [[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']],
-    group = merge_conflict
-})
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    command = 'highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red',
-    group = merge_conflict
-})
+        -- Merge conflicts
+        vim.cmd('highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red')
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    command = 'highlight Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default',
-    group = vim.api.nvim_create_augroup('TodoColor', {clear = true})
-})
+        -- Make TODO have a default background
+        vim.cmd('highlight Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default')
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    callback = function()
+        -- LSP colors
         vim.cmd('highlight clear LspDiagnosticsDefaultError')
         vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
         vim.cmd('highlight clear LspDiagnosticsDefaultWarning')
@@ -81,13 +53,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight LspDiagnosticsDefaultInformation gui=bold guifg=#00af5f')
         vim.cmd('highlight clear LspDiagnosticsDefaultHint')
         vim.cmd('highlight LspDiagnosticsDefaultHint gui=bold guifg=#00af5f')
-    end,
-    group = vim.api.nvim_create_augroup('LspColors', {clear = true})
-})
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    callback = function()
+        -- LSP semantic colors
         vim.cmd('highlight! link LspTypeParameter Constant')
         vim.cmd('highlight! link LspEnumMember Constant')
         vim.cmd('highlight! link LspMacro Macro')
@@ -104,17 +71,18 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link LspModification Error')
         vim.cmd('highlight! link LspDocumentation Error')
         vim.cmd('highlight! link LspEvent Error')
-    end,
-    group = vim.api.nvim_create_augroup('LspSemanticColors', {clear = true})
-})
 
-vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'PaperColor',
-    callback = function()
+        -- Treesitter colors
         vim.cmd('highlight! link @variable NONE')
         vim.cmd('highlight! link @preproc NONE')
         vim.cmd('highlight! link @parameter NONE')
     end,
-    group = vim.api.nvim_create_augroup('TreeSitterColors', {clear = true})
+    group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
+
+vim.api.nvim_create_autocmd('Syntax', {
+    command = [[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']],
+    group = vim.api.nvim_create_augroup('MergeConflict', {clear = true})
+})
+
 vim.cmd('colorscheme PaperColor')
