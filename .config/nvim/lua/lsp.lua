@@ -217,11 +217,12 @@ vim.diagnostic.config({
     severity_sort = true,
     float = {
         header = '',
+        suffix = '',
         source = true,
         format = function(diagnostic)
             local res = diagnostic.message
             local code = diagnostic.code and diagnostic.code or 'unknown-code'
             return res .. ' (' .. code .. ')'
-        end
+        end,
     }
 })
