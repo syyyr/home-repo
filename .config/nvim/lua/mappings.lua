@@ -115,3 +115,6 @@ Custom.nnoremap('Q', '<nop>')
 
 Custom.nnoremap('q:', '<nop>')
 Custom.cnoremap('CR', 'CR ')
+
+Custom.nmap('úc', '<cmd>cprev<cr>')
+Custom.nmap(')c', '<cmd>cnext<cr>')
