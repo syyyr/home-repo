@@ -57,12 +57,11 @@ cmp.setup({
 })
 
 local on_attach = function(client, bufnr)
-    local bufopts = {noremap = true, silent = true, buffer = bufnr}
-    vim.keymap.set('n', '<c-space>', function()
+    Custom.nnoremap('<c-space>', function()
         vim.g.skip_diagnostic_float = true
         vim.lsp.buf.hover()
-    end, bufopts)
-    vim.keymap.set('n', '<c-]>', vim.lsp.buf.definition, bufopts)
+    end)
+    Custom.nnoremap('<c-]>', vim.lsp.buf.definition)
 
     local capabilities = client.server_capabilities
     if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
