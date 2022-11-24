@@ -12,3 +12,5 @@ vim.api.nvim_create_user_command('Qa', function(info) vim.cmd('qa' .. (info.bang
 vim.api.nvim_create_user_command('SynStack', function() vim.cmd([[echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')]]) end, { nargs = 0 })
 
 vim.api.nvim_create_user_command('SetMakePath', function(info) vim.o.makeprg = 'make -C ' .. info.args end, { nargs = 1 })
+
+vim.api.nvim_create_user_command('CS', function(info) vim.lsp.buf.workspace_symbol(info.args ~= '' and info.args or vim.fn.expand('<cword>')) end, { nargs = '?' })
