@@ -65,8 +65,8 @@ vim.o.splitright = true
 -- system clipboard is used along with the unnamed register
 vim.o.clipboard = 'unnamedplus'
 
--- default, but doesn't scan tagfiles
-vim.o.complete = '.,w,b,u'
+-- don't scan tagfiles
+vim.opt.complete:remove('t')
 
 -- don't autoload file if it's changed outside of vim
 vim.o.autoread = false
