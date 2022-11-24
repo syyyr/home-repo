@@ -19,20 +19,14 @@ vim.g.PaperColor_Theme_Options = {
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     callback = function()
-        local function get_separator_colors()
-            if vim.o.background == 'dark' then
-                return 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234'
-            else
-                return 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
-            end
-        end
+        local separator_colors = vim.o.background == 'dark' and 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234' or 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
 
         -- Status underline.
-        vim.cmd('highlight StatusLineNC ' .. get_separator_colors() .. ' cterm=underline gui=underline')
-        vim.cmd('highlight StatusLine ' .. get_separator_colors() .. ' cterm=underline,bold gui=underline,bold')
+        vim.cmd('highlight StatusLineNC ' .. separator_colors .. ' cterm=underline gui=underline')
+        vim.cmd('highlight StatusLine ' .. separator_colors .. ' cterm=underline,bold gui=underline,bold')
 
         -- WinSeparator
-        vim.cmd('highlight WinSeparator ' .. get_separator_colors())
+        vim.cmd('highlight WinSeparator ' .. separator_colors)
 
         -- End of buffer
         vim.cmd('highlight clear EndOfBuffer')
