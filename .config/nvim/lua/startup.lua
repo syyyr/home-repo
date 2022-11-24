@@ -10,7 +10,9 @@ end
 
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
-        vim.cmd([[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]])
+        if vim.fn.line([['"]]) > 1 and vim.fn.line([['"]]) <= vim.fn.line('$') then
+            vim.cmd([[normal! g'"]])
+        end
     end,
     group = vim.api.nvim_create_augroup('LastPostion', {clear = true})
 })
