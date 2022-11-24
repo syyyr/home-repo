@@ -103,8 +103,6 @@ vim.opt.diffopt:append('algorithm:patience')
 
 vim.o.signcolumn = 'yes'
 
-vim.o.ruler = false
-
 vim.o.textwidth = 120
 
 vim.opt.formatoptions:remove('t')
