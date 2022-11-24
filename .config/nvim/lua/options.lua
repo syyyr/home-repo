@@ -87,7 +87,7 @@ vim.o.statusline =
     '%r' .. -- Show [RO] sign.
     ' ' .. -- A literal space.
     '%-30.' .. -- Add minimal width, so that we don't flicker when diagnostics change.
-    '(ln %l col %c%)' .. -- Show line number and column numbers.
+    '(ln %l col %c%)' .. -- Show line number and column number.
     '%=' .. -- Separator.
     '%#StatusLineNC#' .. -- Set highlight group
     '%{&ft}' .. -- Show filetype
