@@ -57,7 +57,7 @@ vim.opt.path:append('public/**')
 vim.opt.path:append('include/**')
 
 -- pretty windows split :>
-vim.o.fillchars = 'fold: ,vert:⏐'
+vim.o.fillchars = 'fold: ,vert:▏'
 
 -- windows are vertically split the other way
 vim.o.splitright = true
