@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function()
-        local id = vim.fn.jobstart({'grep', '-n', '-m', '1', '\\s$'}, {
+        local id = vim.fn.jobstart({'grep', '-n', '-m', '1', [[\s$]]}, {
             on_stdout = function(_, data)
                 local first_line = data[1]
                 local startIndex, endIndex = first_line:find('%d+')
