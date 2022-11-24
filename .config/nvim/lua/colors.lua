@@ -81,8 +81,10 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 })
 
 vim.api.nvim_create_autocmd('Syntax', {
-    command = [[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']],
-    group = vim.api.nvim_create_augroup('MergeConflict', {clear = true})
+    callback = function ()
+        vim.cmd([[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']])
+    end,
+    group = vim.api.nvim_create_augroup('CustomSyntax', {clear = true})
 })
 
 vim.cmd('colorscheme PaperColor')
