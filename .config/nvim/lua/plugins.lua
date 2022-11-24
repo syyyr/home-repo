@@ -268,6 +268,7 @@ require('lspconfig').sumneko_lua.setup({
             },
             diagnostics = {
                 globals = {'vim'},
+                disable = {'empty-block'}
             },
             workspace = {
                 library = vim.api.nvim_get_runtime_file('', true),
