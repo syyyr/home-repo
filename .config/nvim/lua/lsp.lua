@@ -65,9 +65,8 @@ local on_attach = function(client, bufnr)
 
     local capabilities = client.server_capabilities
     if capabilities.semanticTokensProvider and capabilities.semanticTokensProvider.full then
-        local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
         vim.api.nvim_create_autocmd("TextChanged", {
-            group = augroup,
+            group = vim.api.nvim_create_augroup("SemanticTokens", {}),
             buffer = bufnr,
             callback = vim.lsp.buf.semantic_tokens_full
         })
