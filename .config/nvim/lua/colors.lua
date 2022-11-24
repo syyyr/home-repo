@@ -16,7 +16,7 @@ vim.g.PaperColor_Theme_Options = {
     },
 }
 
-local function get_statusline_colors()
+local function get_separator_colors()
     if vim.o.background == 'dark' then
         return 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234'
     else
@@ -28,27 +28,19 @@ end
 local status_underline = vim.api.nvim_create_augroup('StatusUnderline', {clear = true})
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight StatusLineNC ' .. get_statusline_colors() .. ' cterm=underline gui=underline') end,
+    callback = function() vim.cmd('highlight StatusLineNC ' .. get_separator_colors() .. ' cterm=underline gui=underline') end,
     group = status_underline
 })
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight StatusLine ' .. get_statusline_colors() .. ' cterm=underline,bold gui=underline,bold') end,
+    callback = function() vim.cmd('highlight StatusLine ' .. get_separator_colors() .. ' cterm=underline,bold gui=underline,bold') end,
     group = status_underline
 })
 
-local function get_vertsplit_colors()
-    if vim.o.background == 'dark' then
-        return 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234'
-    else
-        return 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermfg=238'
-    end
-end
-
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
-    callback = function() vim.cmd('highlight WinSeparator ' .. get_vertsplit_colors()) end,
+    callback = function() vim.cmd('highlight WinSeparator ' .. get_separator_colors()) end,
     group = vim.api.nvim_create_augroup('VertSplit', {clear = true})
 })
 
