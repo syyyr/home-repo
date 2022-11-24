@@ -103,7 +103,6 @@ vim.opt.diffopt:append('algorithm:patience')
 
 vim.o.signcolumn = 'yes'
 
-
 -- Don't wrap text when it's longer than 'textwidth'
 vim.opt.formatoptions:remove('t')
 vim.o.textwidth = 120
