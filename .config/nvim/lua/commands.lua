@@ -34,8 +34,13 @@ end, { nargs = 0 })
 Custom.nnoremap('<a-,>', '<cmd>DiffToggle<cr>')
 
 --" end with :Q XD
-vim.api.nvim_create_user_command('Q', function(info) vim.cmd('q' .. (info.bang and '!' or '')) end, { nargs = 0, bang = 1 })
-vim.api.nvim_create_user_command('Qa', function(info) vim.cmd('qa' .. (info.bang and '!' or '')) end, { nargs = 0, bang = 1 })
+vim.api.nvim_create_user_command('Q', function(info)
+    vim.cmd('q' .. (info.bang and '!' or ''))
+end, { nargs = 0, bang = 1 })
+
+vim.api.nvim_create_user_command('Qa', function(info)
+    vim.cmd('qa' .. (info.bang and '!' or ''))
+end, { nargs = 0, bang = 1 })
 
 vim.api.nvim_create_user_command('SynStack', function()
     print(vim.inspect(Custom.map(vim.fn.synstack(vim.fn.line('.'), vim.fn.col('.')), function(id)
@@ -43,7 +48,9 @@ vim.api.nvim_create_user_command('SynStack', function()
     end)))
 end, { nargs = 0 })
 
-vim.api.nvim_create_user_command('SetMakePath', function(info) vim.o.makeprg = 'make -C ' .. info.args end, { nargs = 1 })
+vim.api.nvim_create_user_command('SetMakePath', function(info)
+    vim.o.makeprg = 'make -C ' .. info.args
+end, { nargs = 1 })
 
 vim.api.nvim_create_user_command('CS', function(info)
     vim.lsp.buf.workspace_symbol(info.args ~= '' and info.args or vim.fn.expand('<cword>'))
