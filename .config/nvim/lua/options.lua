@@ -47,10 +47,6 @@ vim.o.wildmode = 'list:longest'
 vim.o.undofile = true
 vim.o.undolevels = 5000
 
--- folding
-vim.o.foldmethod= 'indent'
-vim.o.foldnestmax= 1
-
 -- set path for :find
 vim.o.path='.'
 vim.opt.path:append('$PWD')
