@@ -13,9 +13,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/yang.vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/yang.vim
 	url = https://github.com/nathanalderson/yang.vim
-[submodule ".local/share/nvim/site/pack/bundle/opt/goyo.vim"]
-	path = .local/share/nvim/site/pack/bundle/opt/goyo.vim
-	url = https://github.com/junegunn/goyo.vim
 [submodule ".local/share/nvim/site/pack/bundle/opt/php.vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/php.vim
 	url = https://github.com/StanAngeloff/php.vim

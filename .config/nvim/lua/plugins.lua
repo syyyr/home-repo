@@ -43,21 +43,6 @@ vim.g.linuxsty_patterns = {'/linux/'}
 vim.cmd('packadd! clever-f.vim')
 vim.g.clever_f_smart_case = 1
 
-vim.cmd('packadd goyo.vim')
-local goyoFixGroup = vim.api.nvim_create_augroup('goyoFix', {clear = true})
-vim.api.nvim_create_autocmd('User', {
-    pattern = 'GoyoEnter',
-    command = 'set eventignore = FocusGained',
-    group = goyoFixGroup,
-    nested = true
-})
-vim.api.nvim_create_autocmd('User', {
-    pattern = 'GoyoLeave',
-    command = 'set eventignore =',
-    group = goyoFixGroup,
-    nested = true
-})
-
 vim.cmd('packadd! vim-dispatch')
 vim.g.dispatch_no_maps = 1
 
