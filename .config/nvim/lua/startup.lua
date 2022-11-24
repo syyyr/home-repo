@@ -39,7 +39,13 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
 
 vim.api.nvim_create_autocmd('BufEnter', {
     callback = function()
-        vim.cmd([[execute "if search('^	', 'n') | set noexpandtab | set tabstop=4 | else | set softtabstop=4 | set expandtab | endif"]])
+        if vim.fn.search('^\t', 'n') ~= 0 then
+            vim.o.expandtab = false
+            vim.o.tabstop = 4
+        else
+            vim.o.expandtab = true
+            vim.o.softtabstop = 4
+        end
     end,
     group = vim.api.nvim_create_augroup('TabsOrSpaces', {clear = true})
 })
