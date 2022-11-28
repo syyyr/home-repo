@@ -100,7 +100,7 @@ null_ls.setup({
         null_ls.builtins.diagnostics.gitlint.with({
             extra_args = {
                 '--ignore',
-                'body-is-missing'
+                'body-is-missing,body-min-length,title-min-length',
             }
         }),
     },
