@@ -79,34 +79,13 @@ for _, lsp_name in ipairs({'bashls', 'cmake', 'pylsp', 'tsserver', 'vimls', 'yam
     })
 end
 
-require('lspconfig').diagnosticls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = {'vim'},
-    init_options = {
-        linters = {
-            vint = {
-                sourceName = 'vint',
-                command = 'vint',
-                args = { '--enable-neovim', '--json', '%tempfile' },
-                debounce = 100,
-                parseJson = {
-                    line = 'line_number',
-                    column = 'column_number',
-                    security = 'severity',
-                    message = '[vint] ${description} [${policy_name}]',
-                },
-                securities = {
-                    error = 'error',
-                    warning = 'warning',
-                    style_problem = 'info',
-                },
-            },
-        },
-        filetypes = {
-            vim = 'vint',
-        },
-    }
+vim.cmd('packadd! plenary.nvim')
+vim.cmd('packadd! null-ls.nvim')
+local null_ls = require('null-ls')
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.vint,
+    },
 })
 
 require('lspconfig').sumneko_lua.setup({
