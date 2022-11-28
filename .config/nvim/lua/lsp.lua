@@ -84,6 +84,7 @@ vim.cmd('packadd! null-ls.nvim')
 local null_ls = require('null-ls')
 null_ls.setup({
     sources = {
+        null_ls.builtins.diagnostics.actionlint,
         null_ls.builtins.diagnostics.cmake_lint.with({
             extra_args = {
                 '--disabled-codes',
