@@ -85,6 +85,9 @@ local null_ls = require('null-ls')
 null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.actionlint,
+        null_ls.builtins.diagnostics.checkmake,
+        null_ls.builtins.diagnostics.vint,
+
         null_ls.builtins.diagnostics.cmake_lint.with({
             extra_args = {
                 '--disabled-codes',
@@ -100,7 +103,6 @@ null_ls.setup({
                 'body-is-missing'
             }
         }),
-        null_ls.builtins.diagnostics.vint,
     },
 })
 
