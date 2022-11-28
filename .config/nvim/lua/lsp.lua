@@ -84,6 +84,15 @@ vim.cmd('packadd! null-ls.nvim')
 local null_ls = require('null-ls')
 null_ls.setup({
     sources = {
+        null_ls.builtins.diagnostics.cmake_lint.with({
+            extra_args = {
+                '--disabled-codes',
+                'C0103', -- invalid variable name
+                'C0111', -- missing docstring
+                'C0306', -- indentation
+                'C0307', -- indentation
+            }
+        }),
         null_ls.builtins.diagnostics.vint,
     },
 })
