@@ -93,6 +93,12 @@ null_ls.setup({
                 'C0307', -- indentation
             }
         }),
+        null_ls.builtins.diagnostics.gitlint.with({
+            extra_args = {
+                '--ignore',
+                'body-is-missing'
+            }
+        }),
         null_ls.builtins.diagnostics.vint,
     },
 })
