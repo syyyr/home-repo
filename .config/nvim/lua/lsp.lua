@@ -210,19 +210,26 @@ vim.fn.sign_define('DiagnosticSignHint', {text = '--', texthl = 'DiagnosticSignH
 vim.fn.sign_define('DiagnosticSignInfo', {text = '--', texthl = 'DiagnosticSignInfo'})
 vim.fn.sign_define('DiagnosticSignWarn', {text = '--', texthl = 'DiagnosticSignWarn'})
 vim.fn.sign_define('DiagnosticSignError', {text = '>>', texthl = 'DiagnosticSignError'})
+
+local function format_diagnostic(diagnostic)
+    local res = diagnostic.message
+    local code = diagnostic.code and diagnostic.code or 'unknown-code'
+    return res .. ' (' .. code .. ')'
+end
+
 vim.diagnostic.config({
     virtual_text = {
-        severity = 'error',
+        format = function(diagnostic)
+            if diagnostic.severity == vim.diagnostic.severity.ERROR or diagnostic.message:find('fix available') then
+                return format_diagnostic(diagnostic)
+            end
+        end
     },
     severity_sort = true,
     float = {
         header = '',
         suffix = '',
         source = true,
-        format = function(diagnostic)
-            local res = diagnostic.message
-            local code = diagnostic.code and diagnostic.code or 'unknown-code'
-            return res .. ' (' .. code .. ')'
-        end,
+        format = format_diagnostic
     }
 })
