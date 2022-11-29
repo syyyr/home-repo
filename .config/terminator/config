@@ -7,6 +7,7 @@
   go_down = None
   go_left = None
   hide_window = None
+  group_all = None
   layout_launcher = None
 [profiles]
   [[default]]
