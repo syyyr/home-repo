@@ -22,18 +22,20 @@ function Custom.statusline_diagnostics()
     return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
 
-local function print_variable(var_name, prefix, infix, suffix, callback, quote)
+local function impl_print(what, callback)
     if callback then
         callback()
     end
-    vim.cmd('normal! o' .. prefix .. quote .. var_name .. quote .. infix .. var_name .. suffix)
+
+    vim.cmd('normal! o' .. what)
+end
+
+local function print_variable(var_name, prefix, infix, suffix, callback, quote)
+    impl_print(prefix .. quote .. var_name .. quote .. infix .. var_name .. suffix, callback)
 end
 
 local function print_text(text, prefix, suffix, callback, quote)
-    if callback then
-        callback()
-    end
-    vim.cmd('normal! o' .. prefix .. quote .. text .. quote .. suffix)
+    impl_print(prefix .. quote .. text .. quote .. suffix, callback)
 end
 
 function Custom.register_printing(opts)
