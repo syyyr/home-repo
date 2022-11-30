@@ -85,7 +85,6 @@ function Custom.xnoremap(lhs, rhs, opts) impl_map('x', true, lhs, rhs, opts) end
 function Custom.onoremap(lhs, rhs, opts) impl_map('o', true, lhs, rhs, opts) end
 function Custom.omap(lhs, rhs, opts) impl_map('o', false, lhs, rhs, opts) end
 function Custom.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
-function Custom.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
 function Custom.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
 function Custom.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
 function Custom.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
