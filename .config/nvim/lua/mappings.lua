@@ -20,7 +20,15 @@ Custom.nnoremap('<space>', '/')
 Custom.xnoremap('<space>', '/')
 
 -- disable highlight
-Custom.nnoremap('<a-cr>', '<cmd>lua Custom.clean_screen()<cr><cmd>nohlsearch<cr>:<bs>')
+Custom.nnoremap('<a-cr>',function ()
+    vim.fn['clever_f#reset']()
+    vim.g.skip_diagnostic_float = true
+    if vim.g.float_win_id then
+        pcall(vim.api.nvim_win_close, vim.g.float_win_id, false) -- discard errors: the window might be already closed
+        vim.g.float_win_id = nil
+    end
+    vim.cmd([[nohlsearch]])
+end)
 
 -- jump to next merge conflict
 Custom.nnoremap('<a-c>', [[<cmd>silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<cr><cmd>nohlsearch<cr>]])

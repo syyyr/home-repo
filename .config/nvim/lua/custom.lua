@@ -22,12 +22,6 @@ function Custom.statusline_diagnostics()
     return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
 
-function Custom.clean_screen()
-    vim.fn['clever_f#reset']()
-    vim.cmd([[execute "normal \<c-space>\<c-space>\<c-space>q"]])
-    vim.g.skip_diagnostic_float = true
-end
-
 local function print_variable(var_name, prefix, infix, suffix, callback, quote)
     if callback then
         callback()

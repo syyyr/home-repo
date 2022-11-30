@@ -190,6 +190,10 @@ vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
+vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
+    _, vim.g.float_win_id = vim.lsp.handlers.hover(err, result, ctx, config)
+end
+
 Custom.nnoremap('<c-space>', function()
     vim.g.skip_diagnostic_float = true
     vim.lsp.buf.hover()
@@ -202,7 +206,8 @@ vim.api.nvim_create_autocmd('CursorHold', {
             vim.g.skip_diagnostic_float = false
             return
         end
-        vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
+        local _, new_float_win = vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
+        _, vim.g.float_win_id = nil, new_float_win and new_float_win or vim.g.float_win_id
     end,
     group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
 })
