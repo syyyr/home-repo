@@ -56,10 +56,10 @@ function Custom.register_printing(opts)
             line = line:sub(1, -2)
         end
 
-        print_variable(line, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.callback, opts.quote)
         if info.bang then
-            vim.cmd('normal! k"_dd')
+            vim.cmd('normal! "_ddk')
         end
+        print_variable(line, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.callback, opts.quote)
     end, {nargs = 0, bang = true})
 
 end
