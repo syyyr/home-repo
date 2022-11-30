@@ -133,7 +133,7 @@ require('clangd_extensions').setup({
     server = {
         on_attach = on_attach,
         capabilities = capabilities,
-        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never'}
+        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}
     },
 })
 
