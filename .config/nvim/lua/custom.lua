@@ -22,9 +22,9 @@ function Custom.statusline_diagnostics()
     return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
 
-local function impl_print(what, callback, opts)
-    if callback then
-        callback()
+local function impl_print(what, opts)
+    if opts.callback then
+        opts.callback()
     end
 
     local line = vim.api.nvim_get_current_line()
@@ -42,20 +42,20 @@ local function impl_print(what, callback, opts)
     end
 end
 
-local function print_variable(var_name, prefix, infix, suffix, callback, quote, opts)
-    impl_print(prefix .. quote .. var_name .. quote .. infix .. var_name .. suffix, callback, opts)
+local function print_variable(var_name, prefix, infix, suffix, quote, opts)
+    impl_print(prefix .. quote .. var_name .. quote .. infix .. var_name .. suffix, opts)
 end
 
-local function print_text(text, prefix, suffix, callback, quote, opts)
-    impl_print(prefix .. quote .. text .. quote .. suffix, callback, opts)
+local function print_text(text, prefix, suffix, quote, opts)
+    impl_print(prefix .. quote .. text .. quote .. suffix, opts)
 end
 
 function Custom.register_printing(opts)
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
-            print_text(info.args, opts.prefix, opts.text_suffix or opts.suffix, opts.callback, opts.quote, {copy_indent = false})
+            print_text(info.args, opts.prefix, opts.text_suffix or opts.suffix, opts.quote, {copy_indent = false, callback = opts.callback})
         else
-            print_variable(info.args, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.callback, opts.quote, {copy_indent = false})
+            print_variable(info.args, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.quote, {copy_indent = false, callback = opts.callback})
         end
     end, {nargs = 1, bang = true})
 
@@ -70,7 +70,7 @@ function Custom.register_printing(opts)
             line = line:sub(1, -2)
         end
 
-        print_variable(line, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.callback, opts.quote, {copy_indent = true})
+        print_variable(line, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.quote, {copy_indent = true, callback = opts.callback})
         if info.bang then
             vim.cmd('normal! k"_dd')
         end
