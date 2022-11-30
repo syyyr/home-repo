@@ -22,41 +22,37 @@ function Custom.statusline_diagnostics()
     return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
 
-local function impl_print(what, opts)
-    if opts.callback then
-        opts.callback()
-    end
+local function print_something(opts)
+    local to_print =
+        opts.infix
+        and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.suffix
+        or opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.suffix
 
-    local line = vim.api.nvim_get_current_line()
-    local indent = line:sub(line:find('^%s*'))
+    local current_line = vim.api.nvim_get_current_line()
+    local indent = current_line:sub(current_line:find('^%s*'))
 
     if opts.copy_indent then
         vim.api.nvim_put(
-            {indent .. what},
+            {indent .. to_print},
             'l', -- linewise
             true, --insert after
             false -- don't place cursor after paste
         )
     else
-        vim.cmd('normal! o' .. what)
+        vim.cmd('normal! o' .. to_print)
     end
-end
-
-local function print_variable(var_name, prefix, infix, suffix, quote, opts)
-    impl_print(prefix .. quote .. var_name .. quote .. infix .. var_name .. suffix, opts)
-end
-
-local function print_text(text, prefix, suffix, quote, opts)
-    impl_print(prefix .. quote .. text .. quote .. suffix, opts)
 end
 
 function Custom.register_printing(opts)
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
-            print_text(info.args, opts.prefix, opts.text_suffix or opts.suffix, opts.quote, {copy_indent = false, callback = opts.callback})
+            opts.copy_indent = true
         else
-            print_variable(info.args, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.quote, {copy_indent = false, callback = opts.callback})
+            opts.copy_indent = false
         end
+
+        opts.text = info.args
+        print_something(opts)
     end, {nargs = 1, bang = true})
 
     if opts.no_printthis then
@@ -64,13 +60,14 @@ function Custom.register_printing(opts)
     end
 
     vim.api.nvim_create_user_command('Printthis', function(info)
-        local line = vim.api.nvim_get_current_line()
-        line = line:gsub('^%s*', '')
-        if line:sub(-1, -1) == ';' then
-            line = line:sub(1, -2)
+        opts.text = vim.api.nvim_get_current_line()
+        opts.text = opts.text:gsub('^%s*', '')
+        if opts.text:sub(-1, -1) == ';' then
+            opts.text = opts.text:sub(1, -2)
         end
 
-        print_variable(line, opts.prefix, opts.infix, opts.var_suffix or opts.suffix, opts.quote, {copy_indent = true, callback = opts.callback})
+        opts.copy_indent = true
+        print_something(opts)
         if info.bang then
             vim.cmd('normal! k"_dd')
         end
