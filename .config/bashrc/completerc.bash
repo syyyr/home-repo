@@ -52,10 +52,14 @@ __twitch_compl() {
     readarray COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
 
+__taskkill_compl() {
+    mapfile -t COMPREPLY < <(IFS=$'\n' compgen -W "$("$HOME/bin/tasklist")" "${COMP_WORDS[${COMP_CWORD}]}")
+}
+
 complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
-complete -C "$HOME/bin/tasklist" taskkill
+complete -F __taskkill_compl taskkill
 _setup_path_compl "vimrc" "$HOME/.config/nvim"
 _setup_path_compl "bashrc" "$HOME/.config/bashrc"
 complete -F __twitch_compl twitch
