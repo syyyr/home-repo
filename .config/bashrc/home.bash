@@ -9,9 +9,6 @@ export LANG="en_US.UTF-8"
 export DISPLAY=$(grep nameserver < /etc/resolv.conf | awk '{print $2; exit;}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
-# win cmd autocomplete BS
-source "$HOME/.rustup-comp"
-
 # x server BS
 if [ -z "$SSH_CLIENT" ]; then
     export RUNLEVEL="3"
