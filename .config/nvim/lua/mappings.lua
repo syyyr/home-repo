@@ -58,9 +58,9 @@ Custom.nnoremap('<a-n>', '<cmd>setlocal number!<cr>')
 Custom.nnoremap('<a-b>', '<cmd>let &background = ( &background == "dark"? "light" : "dark" )<cr>')
 
 -- buffer management
-Custom.nnoremap('<a-d>', '<cmd>bdelete<cr>')
-Custom.nnoremap('<a-h>', '<cmd>bprevious<cr>')
-Custom.nnoremap('<a-l>', '<cmd>bnext<cr>')
+Custom.nnoremap('<a-d>', ':bdelete<cr>')
+Custom.nnoremap('<a-h>', ':bprevious<cr>')
+Custom.nnoremap('<a-l>', ':bnext<cr>')
 
 -- move lines with alt+j,k
 Custom.nnoremap('<a-j>', 'mz<cmd>m+<cr>`z')
