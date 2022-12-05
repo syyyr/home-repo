@@ -17,6 +17,13 @@ require('nvim-treesitter.configs').setup({
         enable = true,
         disable = {'cpp'},
     },
+    ensure_installed = {
+        'cpon',
+        'cpp',
+        'lua',
+        'python',
+        'typescript',
+    },
     incremental_selection = {enable = true},
     textobjects = {enable = true},
 })
