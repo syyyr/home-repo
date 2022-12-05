@@ -1,5 +1,23 @@
 Custom = {}
 
+function Custom.filter(table, f)
+    local new_table = {}
+    local index = 1
+    for i, v in pairs(table) do
+        if f(v) then
+            local new_index
+            if type(i) == "number" then
+                new_index = index
+                index = index + 1
+            else
+                new_index = i
+            end
+            new_table[new_index] = v
+        end
+    end
+    return new_table
+end
+
 function Custom.map(table, f)
     local new_table = {}
     for i, v in pairs(table) do
