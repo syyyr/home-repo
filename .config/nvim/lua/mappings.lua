@@ -27,7 +27,7 @@ Custom.nnoremap('<a-cr>',function ()
         pcall(vim.api.nvim_win_close, vim.g.float_win_id, false) -- discard errors: the window might be already closed
         vim.g.float_win_id = nil
     end
-    vim.cmd([[nohlsearch]])
+    vim.cmd('nohlsearch')
     vim.notify('')
 end)
 
