@@ -197,6 +197,23 @@ vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
     _, vim.g.float_win_id = vim.lsp.handlers.hover(err, result, ctx, config)
 end
 
+local function filter_unused_diagnostics(diagnostics)
+    return Custom.filter(diagnostics, function(diagnostic)
+        return not string.match(string.lower(diagnostic.message), "unused")
+    end)
+end
+
+local original_underline_show = vim.diagnostic.handlers.underline.show
+local original_signs_show = vim.diagnostic.handlers.signs.show
+
+vim.diagnostic.handlers.underline.show = function (a, b, diagnostics, d, e)
+    original_underline_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
+end
+
+vim.diagnostic.handlers.signs.show = function (a, b, diagnostics, d, e)
+    original_signs_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
+end
+
 Custom.nnoremap('<c-space>', function()
     vim.g.skip_diagnostic_float = true
     vim.lsp.buf.hover()
