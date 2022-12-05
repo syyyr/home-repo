@@ -28,6 +28,7 @@ Custom.nnoremap('<a-cr>',function ()
         vim.g.float_win_id = nil
     end
     vim.cmd([[nohlsearch]])
+    vim.notify('')
 end)
 
 -- jump to next merge conflict
