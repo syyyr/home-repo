@@ -1,5 +1,3 @@
--- custom helper functions
-require('custom')
 -- skeletons for new files
 require('skeleton')
 -- custom commands, and their associated mappings

@@ -1,3 +1,4 @@
+local Custom = require("custom")
 -- idk why it's NotLikeThis
 Custom.nnoremap('Y', 'y$')
 

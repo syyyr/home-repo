@@ -1,4 +1,4 @@
-Custom.register_printing({
+require('custom').register_printing({
     prefix = 'console.log(',
     infix = ', "=", ',
     suffix = ')',

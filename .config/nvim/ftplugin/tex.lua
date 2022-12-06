@@ -1,3 +1,4 @@
+local Custom = require('custom')
 -- automatically try to compile after saving (works with update)
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = '*.tex',

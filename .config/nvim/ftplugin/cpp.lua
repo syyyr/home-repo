@@ -4,7 +4,7 @@ local function add_iostream()
     end
 end
 
-Custom.register_printing({
+require('custom').register_printing({
     callback = add_iostream,
     quote = '"',
     prefix = 'std::cerr << ',

@@ -1,3 +1,4 @@
+local Custom = require('custom')
 vim.api.nvim_create_user_command('Trailing', function()
     local save_cursor = vim.fn.getpos('.')
     local old_query = vim.fn.getreg('/')

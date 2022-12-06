@@ -77,7 +77,7 @@ vim.o.updatetime=300
 vim.o.statusline =
     '%#StatusLineNC#' .. -- Set highlight group.
     '%-20.' ..  -- Add padding to the diagnostic to prevent flickering when the diagnostic appears and disappears.
-    '{v:lua.Custom.statusline_diagnostics()}' .. -- Show diagnostics.
+    [[{v:lua.require('custom').statusline_diagnostics()}]] .. -- Show diagnostics.
     '%##%' .. -- Reset highlight group.
     [[{&paste? ' [paste]' :''}]] .. -- Show [paste] mode.
     '%=%=' .. -- Separators.
