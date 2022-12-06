@@ -22,15 +22,19 @@ function Custom.map(table, f)
     return new_table
 end
 
+local function format_statusline_diagnostics(type, lnum)
+    return string.format('%s: ln %s', type, lnum)
+end
+
 function Custom.statusline_diagnostics()
     for _, severity in pairs({"ERROR", "WARN", "INFO", "HINT"}) do
         local diagnostic = vim.diagnostic.get(0, {severity = vim.diagnostic.severity[severity]})[1]
         if diagnostic then
-            return severity:sub(1, 1) .. ': ln ' .. diagnostic.lnum + 1
+            return format_statusline_diagnostics(severity:sub(1, 1), diagnostic.lnum + 1)
         end
     end
     if vim.b.TrailingNr and vim.b.TrailingNr ~= '' and vim.api.nvim_get_mode() ~= 'i' then
-        return 'WS: ln ' .. vim.b.TrailingNr
+        return format_statusline_diagnostics('WS', vim.b.TrailingNr)
     end
 
     return ' ' -- Have to return something here, otherwise padding won't be applied.
