@@ -94,7 +94,7 @@ Custom.onoremap('i_', '<cmd>normal vi_<cr>')
 
 -- buffer text-object
 Custom.xnoremap('i%', 'GoggV')
-Custom.omap('i%', '<cmd><c-u>normal vi%<cr>')
+Custom.omap('i%', '<cmd>normal vi%<cr>')
 
 -- auto complete brace
 Custom.inoremap('{<cr>', '{<cr>}<Esc>O')
