@@ -1,18 +1,14 @@
 local Custom = {}
 
-function Custom.filter(table, f)
+function Custom.filter(input, f)
     local new_table = {}
-    local index = 1
-    for i, v in pairs(table) do
+    for i, v in pairs(input) do
         if f(v) then
-            local new_index
             if type(i) == "number" then
-                new_index = index
-                index = index + 1
+                table.insert(new_table, v)
             else
-                new_index = i
+                new_table[i] = v
             end
-            new_table[new_index] = v
         end
     end
     return new_table
