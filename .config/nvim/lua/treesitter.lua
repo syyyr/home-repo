@@ -3,16 +3,14 @@ vim.cmd('packadd! nvim-treesitter-playground')
 
 require('nvim-treesitter.parsers').get_parser_configs().cpon = {
     install_info = {
-        url = '~/git/tree-sitter-cpon', -- local path or git repo
+        url = 'https://github.com/fvacek/tree-sitter-cpon.git', -- local path or git repo
         files = {'src/parser.c'},
-        -- optional entries:
-        generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-        requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
     }
 }
 
 require('nvim-treesitter.configs').setup({
-    -- Modules and its options go here
     highlight = {
         enable = true,
         disable = {'cpp'},
