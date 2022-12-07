@@ -189,7 +189,7 @@ end, {nargs = 0})
 vim.cmd('packadd! nvim-custom-diagnostic-highlight')
 require('nvim-custom-diagnostic-highlight').setup({})
 
-vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
+vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action({apply = true}) end, {nargs = 0})
 vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
