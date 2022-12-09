@@ -48,13 +48,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight clear LspDiagnosticsDefaultHint')
         vim.cmd('highlight LspDiagnosticsDefaultHint gui=bold guifg=#00af5f')
 
-        -- LSP semantic colors
-        vim.cmd('highlight! link LspTypeParameter Constant')
-        vim.cmd('highlight! link LspEnumMember Constant')
-        vim.cmd('highlight! link LspMacro Macro')
-        vim.cmd('highlight! link LspComment Comment')
-
         -- TODO: These didn't come up yet, so I don't know which color group to assign.
+        -- FIXME: these can be removed probably
         vim.cmd('highlight! link LspKeyword Error')
         vim.cmd('highlight! link LspModifier Error')
         vim.cmd('highlight! link LspString Error')
@@ -66,10 +61,19 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link LspDocumentation Error')
         vim.cmd('highlight! link LspEvent Error')
 
-        -- Treesitter colors
+        -- Treesitter and LSP semantic colors
+        vim.cmd('highlight! link @typeParameter Constant')
+        vim.cmd('highlight! link @enum Constant')
+        vim.cmd('highlight! link @macro Macro')
+        vim.cmd('highlight! link @comment Comment')
         vim.cmd('highlight! link @variable NONE')
         vim.cmd('highlight! link @preproc NONE')
         vim.cmd('highlight! link @parameter NONE')
+        vim.cmd('highlight! link @type NONE')
+        vim.cmd('highlight! link @class NONE')
+        vim.cmd('highlight! link @variable NONE')
+        vim.cmd('highlight! link @namespace NONE')
+        vim.cmd('highlight! link @property NONE')
     end,
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
