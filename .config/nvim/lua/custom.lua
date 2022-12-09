@@ -41,6 +41,10 @@ function Custom.statusline_diagnostics()
 end
 
 local function print_something(opts)
+    if opts.callback then
+        opts.callback()
+    end
+
     local to_print =
         opts.infix
         and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.suffix
