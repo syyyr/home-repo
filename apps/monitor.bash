@@ -11,6 +11,7 @@ refresh() {
         xrandr --output "$OUTPUT" --above eDP-1 --auto --primary
         "$HOME/apps/workspace-ball.bash"
     fi
+    sleep 2
     nitrogen --restore
 }
 
