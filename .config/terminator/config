@@ -9,6 +9,9 @@
   hide_window = None
   group_all = None
   layout_launcher = None
+  new_window = None
+  new_terminator = None
+
 [profiles]
   [[default]]
     background_color = "#eeeeee"
