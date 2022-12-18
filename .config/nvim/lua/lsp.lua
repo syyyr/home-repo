@@ -57,15 +57,11 @@ cmp.setup({
     },
 })
 
-local on_attach = function(client, bufnr)
-end
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.cmd('packadd! nvim-lspconfig')
 for _, lsp_name in ipairs({'bashls', 'cmake', 'pylsp', 'tsserver', 'vimls', 'yamlls'}) do
     require('lspconfig')[lsp_name].setup({
-        on_attach = on_attach,
         capabilities = capabilities
     })
 end
@@ -98,7 +94,6 @@ null_ls.setup({
 })
 
 require('lspconfig').sumneko_lua.setup({
-    on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         Lua = {
@@ -122,7 +117,6 @@ require('lspconfig').sumneko_lua.setup({
 vim.cmd('packadd! clangd_extensions.nvim')
 require('clangd_extensions').setup({
     server = {
-        on_attach = on_attach,
         capabilities = capabilities,
         cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}
     },
