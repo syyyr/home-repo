@@ -53,6 +53,7 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/readline.vim"]
 	path = .local/share/nvim/site/pack/bundle/opt/readline.vim
 	url = https://github.com/ryvnf/readline.vim.git
+	branch = main
 [submodule ".local/share/nvim/site/pack/bundle/opt/vim-icalendar"]
 	path = .local/share/nvim/site/pack/bundle/opt/vim-icalendar
 	url = https://github.com/syyyr/vim-icalendar.git
