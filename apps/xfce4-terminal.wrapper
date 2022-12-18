@@ -1,5 +1,4 @@
 #!/bin/bash
-export DISPLAY=$(grep nameserver < /etc/resolv.conf | awk '{print $2; exit;}'):0.0
 HOURS=$(date +%H)
 if [ "$HOURS" -lt "${DAYSTART:-8}" ] || [ "$HOURS" -ge "${NIGHTSTART:-22}" ]; then
     echo je noc

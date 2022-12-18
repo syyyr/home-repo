@@ -1,6 +1,7 @@
 #!/bin/bash
 THRESHOLD=10
-export DISPLAY=":0"
+# FIXME: check is this is needed
+# export DISPLAY=":0"
 
 if ! (acpi -a | grep "off-line" > /dev/null); then
     echo 'Battery is being charged.'

@@ -1,3 +1,4 @@
+# FIXME: consider removing this file
 [Unit]
 Description=User suspend actions
 Before=sleep.target
@@ -5,7 +6,7 @@ Before=sleep.target
 [Service]
 User=vk
 Type=simple
-Environment=DISPLAY=:0
+# Environment=DISPLAY=:0
 ExecStartPre= -touch /tmp/suspend_time
 ExecStart=/home/vk/apps/lock.bash no-off
 ExecStartPost= -/usr/bin/sleep 1
