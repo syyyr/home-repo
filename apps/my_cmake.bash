@@ -72,6 +72,10 @@ while true; do
             BUILD_TYPE="Release"
             shift
             ;;
+        release-di)
+            BUILD_TYPE="RelWithDebInfo"
+            shift
+            ;;
         werror)
             CFLAGS="-Werror ${CFLAGS}"
             CXXFLAGS="-Werror ${CXXFLAGS}"
