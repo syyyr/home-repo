@@ -152,22 +152,6 @@ require('lsp_signature').setup({
     hint_enable = false
 })
 
-vim.api.nvim_create_user_command('LspInspectTokenCursor', function ()
-    -- https://github.com/nullchilly/nvim/blob/61d83bde2fd7875f47c3a1cf5522e2599af4aa5b/init.lua#L23-L37
-    -- TODO: improve this
-    local namespaces = vim.api.nvim_get_namespaces()
-    local i = vim.fn.line('.')
-    local j = vim.fn.col('.')
-    local hl_groups = {}
-    for _, ns_id in pairs(namespaces) do
-        local extmarks = vim.api.nvim_buf_get_extmarks(0, ns_id, { i - 1, j - 1 }, { i, j }, { details = 1 })
-        for _, extmark in pairs(extmarks) do
-            hl_groups[#hl_groups + 1] = extmark[4].hl_group
-        end
-    end
-    vim.notify(vim.inspect(hl_groups))
-end, {nargs = 0})
-
 vim.cmd('packadd! nvim-custom-diagnostic-highlight')
 require('nvim-custom-diagnostic-highlight').setup({})
 
