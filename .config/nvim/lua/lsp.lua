@@ -84,6 +84,13 @@ null_ls.setup({
                 'C0307', -- indentation
             }
         }),
+        null_ls.builtins.diagnostics.luacheck.with({
+            extra_args = {
+                '--globals',
+                'vim',
+                '--no-max-line-length'
+            }
+        }),
         null_ls.builtins.diagnostics.gitlint.with({
             extra_args = {
                 '--ignore',
