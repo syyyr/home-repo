@@ -1,6 +1,7 @@
 [global_config]
   dbus = False
   focus = mouse
+  scroll_tabbar = True
   inactive_color_offset = 1.0
   case_sensitive = False
 [keybindings]
