@@ -162,6 +162,7 @@ vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({sev
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setloclist, {nargs = 0})
 
 vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
+    local _
     _, vim.g.float_win_id = vim.lsp.handlers.hover(err, result, ctx, config)
 end
 
