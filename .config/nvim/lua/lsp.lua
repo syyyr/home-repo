@@ -100,6 +100,9 @@ null_ls.setup({
     },
 })
 
+vim.cmd('packadd! neodev.nvim')
+require('neodev').setup({})
+
 require('lspconfig').sumneko_lua.setup({
     capabilities = capabilities,
     settings = {
@@ -113,10 +116,7 @@ require('lspconfig').sumneko_lua.setup({
                     'empty-block',
                     'trailing-space'
                 }
-            },
-            workspace = {
-                library = vim.api.nvim_get_runtime_file('', true),
-            },
+            }
         }
     }
 })
