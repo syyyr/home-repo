@@ -113,4 +113,5 @@
 	url = https://github.com/Kasama/nvim-custom-diagnostic-highlight.git
 [submodule ".local/share/nvim/site/pack/bundle/opt/neodev.nvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/neodev.nvim
-	url = https://github.com/folke/neodev.nvim.git
+	url = https://github.com/syyyr/neodev.nvim.git
+	branch = detect-lnum-string
