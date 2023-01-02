@@ -10,8 +10,10 @@ end
 
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
-        if vim.fn.line([['"]]) > 1 and vim.fn.line([['"]]) <= vim.fn.line('$') then
-            vim.cmd([[normal! g'"]])
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
         end
     end,
     group = vim.api.nvim_create_augroup('LastPostion', {clear = true})
