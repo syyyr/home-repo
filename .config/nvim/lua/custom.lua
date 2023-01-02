@@ -46,7 +46,7 @@ local function print_something(opts)
     end
 
     local to_print =
-        opts.infix
+        opts.print_infix
         and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.suffix
         or opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.suffix
 
@@ -69,8 +69,10 @@ function Custom.register_printing(opts)
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
             opts.copy_indent = true
+            opts.print_infix = false
         else
             opts.copy_indent = false
+            opts.print_infix = true
         end
 
         opts.text = info.args
@@ -89,6 +91,7 @@ function Custom.register_printing(opts)
         end
 
         opts.copy_indent = true
+        opts.print_infix = true
         print_something(opts)
         if info.bang then
             vim.cmd('normal! k"_dd')
