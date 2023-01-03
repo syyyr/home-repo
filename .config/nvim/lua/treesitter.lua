@@ -21,6 +21,7 @@ require('nvim-treesitter.configs').setup({
         'lua',
         'python',
         'typescript',
+        'vim',
     },
     incremental_selection = {enable = true},
     textobjects = {enable = true},
