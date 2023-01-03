@@ -1,3 +1,4 @@
+vim.cmd('packadd! cfilter')
 vim.cmd('packadd! i3config.vim')
 vim.cmd('packadd! inc-rename.nvim')
 vim.cmd('packadd! readline.vim')
