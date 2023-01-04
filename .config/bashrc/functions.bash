@@ -239,3 +239,10 @@ git_generate_commit_graph()
 {
     git commit-graph write --reachable --changed-paths
 }
+
+update_neovim()
+{
+    pushd "$HOME/.local/aur/neovim-git" || exit 1
+    makepkg -si
+    popd || exit 1
+}
