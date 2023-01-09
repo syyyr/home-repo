@@ -16,6 +16,7 @@ angery3 🤬
 pray/dorime 🙏
 hands 🙌
 rofl 🤣
+happy/tear 🥲
 holy/halo 😇
 party 🎉
 heart ❤
