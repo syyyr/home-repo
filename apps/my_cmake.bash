@@ -103,7 +103,7 @@ fi
 CMAKE_FLAGS=( "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "${CMAKE_FLAGS[@]}" )
 
 if [[ "${CXX}" = clang++ ]]; then
-    CXXFLAGS="${CXXFLAGS} -ferror-limit=0"
+    CXXFLAGS="-ferror-limit=0 ${CXXFLAGS}"
 fi
 
 print_var CC
