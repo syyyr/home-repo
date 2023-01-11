@@ -90,6 +90,12 @@ while true; do
             CXXFLAGS="-fanalyzer ${CXXFLAGS}"
             shift
             ;;
+        graph)
+            echo "Enabling graphviz."
+            CMAKE_FLAGS=( "--graphviz=deps.dot" "${CMAKE_FLAGS[@]}" )
+            GRAPHVIZ=1
+            shift
+            ;;
         *)
             break
             ;;
@@ -129,3 +135,8 @@ CFLAGS=${CFLAGS} \
 CXXFLAGS=${CXXFLAGS} \
 LDFLAGS=${LDFLAGS} \
 cmake "${CMAKE_FLAGS[@]}" "$@"
+
+if [[ $GRAPHVIZ = 1 ]]; then
+    dot -Tpng deps.dot -o deps.png
+    echo Dependency graph saved as deps.png.
+fi
