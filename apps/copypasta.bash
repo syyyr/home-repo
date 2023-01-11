@@ -20,6 +20,7 @@ happy/tear 🥲
 holy/halo 😇
 party 🎉
 heart ❤
+broken_heart 💔
 heart_eyes 😍
 sunglasses 😎
 smirk/lewd 😏
