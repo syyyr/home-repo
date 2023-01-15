@@ -1,6 +1,10 @@
 #!/bin/bash
 {
-    for i in message_*.json; do
+    readarray -t FILES < <(find . -name "message_?.json")
+    if [[ "$(find message_*.json | wc -l)" -gt 9 ]]; then
+        readarray -t -O "${#FILES[@]}" FILES < <(find . -name "message_??.json")
+    fi
+    for i in "${FILES[@]}"; do
         jq . "$i"  | iconv -f utf-8 -t latin1 |
             jq -r '.messages |
             map(
