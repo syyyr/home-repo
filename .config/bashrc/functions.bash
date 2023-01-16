@@ -243,6 +243,6 @@ git_generate_commit_graph()
 update_neovim()
 {
     pushd "$HOME/.local/aur/neovim-git" || return 1
-    makepkg -si
+    makepkg -si --noconfirm --needed
     popd || return 1
 }
