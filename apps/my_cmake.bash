@@ -19,19 +19,19 @@ BUILD_TYPE="Debug"
 while true; do
     case "$1" in
         asan)
+            echo "Enabling ASAN/UBSAN."
             CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
             CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
             LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
-            echo "Enabling ASAN/UBSAN."
             shift
             ;;
         msan)
+            echo "Enabling MSAN."
             CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-memory-track-origins=2 ${CFLAGS}"
             CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-memory-track-origins=2 ${CXXFLAGS}"
             LDFLAGS="-fsanitize=memory ${LDFLAGS}"
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
-            echo "Enabling MSAN."
             shift
             ;;
         gcc)
@@ -64,19 +64,23 @@ while true; do
             shift
             ;;
         optimize)
+            echo "Enabling optimizations."
             CFLAGS="-O2 ${CFLAGS}"
             CXXFLAGS="-O2 ${CXXFLAGS}"
             shift
             ;;
         release)
+            echo "Enabling Release mode."
             BUILD_TYPE="Release"
             shift
             ;;
         release-di)
+            echo "Enabling RelWithDebInfo mode."
             BUILD_TYPE="RelWithDebInfo"
             shift
             ;;
         werror)
+            echo "Enabling Werror."
             CFLAGS="-Werror ${CFLAGS}"
             CXXFLAGS="-Werror ${CXXFLAGS}"
             shift
