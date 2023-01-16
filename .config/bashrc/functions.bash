@@ -246,3 +246,15 @@ update_neovim()
     makepkg -si --noconfirm --needed
     popd || return 1
 }
+
+system_update()
+{
+    sudo pacman -Syu
+    cd "$HOME/.local/aur" || return 1
+    auracle outdated || echo "No outdated AUR packages."
+    auracle update
+    do_auracle_update
+    update_neovim
+    cd "$HOME" || return 1
+    git submodule update --remote
+}
