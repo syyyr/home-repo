@@ -257,4 +257,5 @@ system_update()
     update_neovim
     cd "$HOME" || return 1
     git submodule update --remote
+    git submodule summary
 }
