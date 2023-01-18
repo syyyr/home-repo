@@ -179,7 +179,7 @@ end
 
 local function filter_unused_diagnostics(diagnostics)
     return Custom.filter(diagnostics, function(diagnostic)
-        return not string.match(string.lower(diagnostic.message), "unused")
+        return Custom.all({"unused", "never read"}, function(x) return not string.match(string.lower(diagnostic.message), x) end)
     end)
 end
 
