@@ -22,6 +22,26 @@ function Custom.map(table, f)
     return new_table
 end
 
+function Custom.all(table, f)
+    for _, v in pairs(table) do
+        if not f(v) then
+            return false
+        end
+    end
+
+    return true
+end
+
+function Custom.none(table, f)
+    for _, v in pairs(table) do
+        if f(v) then
+            return false
+        end
+    end
+
+    return true
+end
+
 local function format_statusline_diagnostics(type, lnum)
     return string.format('%s: ln %s', type, lnum)
 end
