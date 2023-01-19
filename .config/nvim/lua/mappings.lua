@@ -106,8 +106,6 @@ Custom.noremap('<f7>', '<nop>')
 Custom.inoremap('<f7>', '<nop>')
 Custom.cnoremap('<f7>', '<nop>')
 
-Custom.nnoremap('<c-n>', '<cmd>20Lexplore<cr>')
-
 -- remain in visual after shift
 Custom.xnoremap('>', '>gv')
 Custom.xnoremap('<', '<gv')
