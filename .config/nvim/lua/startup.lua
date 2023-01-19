@@ -38,19 +38,6 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     group = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 })
 
-vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function()
-        if vim.fn.search('^\t', 'n') ~= 0 then
-            vim.o.expandtab = false
-            vim.o.tabstop = 4
-        else
-            vim.o.expandtab = true
-            vim.o.softtabstop = 4
-        end
-    end,
-    group = vim.api.nvim_create_augroup('TabsOrSpaces', {clear = true})
-})
-
 vim.g.tex_flavor = 'tex'
 vim.g.is_bash = 1
 vim.g.markdown_syntax_conceal = 0

@@ -115,3 +115,6 @@
 	path = .local/share/nvim/site/pack/bundle/opt/neodev.nvim
 	url = https://github.com/syyyr/neodev.nvim.git
 	branch = detect-lnum-string
+[submodule ".local/share/nvim/site/pack/bundle/opt/guess-indent.nvim"]
+	path = .local/share/nvim/site/pack/bundle/opt/guess-indent.nvim
+	url = https://github.com/NMAC427/guess-indent.nvim.git

@@ -44,3 +44,6 @@ vim.g.clever_f_smart_case = 1
 
 vim.cmd('packadd! vim-dispatch')
 vim.g.dispatch_no_maps = 1
+
+vim.cmd('packadd! guess-indent.nvim')
+require('guess-indent').setup({})
