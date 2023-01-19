@@ -24,6 +24,7 @@ broken_heart 💔
 heart_eyes 😍
 sunglasses 😎
 smirk/lewd 😏
+oops/blush/embarrassed 😳
 checkmark ✅
 night 🌃
 goto 𝓰𝓸𝓽𝓸
