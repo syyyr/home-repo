@@ -7,3 +7,4 @@ disable=
     redefined-outer-name,
     subprocess-run-check,
     unspecified-encoding,
+    use-dict-literal
