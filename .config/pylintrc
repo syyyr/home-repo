@@ -5,3 +5,4 @@ disable=
     missing-function-docstring,
     missing-module-docstring,
     redefined-outer-name,
+    subprocess-run-check,
