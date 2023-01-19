@@ -2,6 +2,6 @@
 disable=
     invalid-name,
     line-too-long,
-    missing-function-docstring
+    missing-function-docstring,
     missing-module-docstring,
     redefined-outer-name,
