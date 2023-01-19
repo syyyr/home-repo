@@ -9,9 +9,9 @@ print_var()
 CC="clang"
 CXX="clang++"
 LD="clang"
-CFLAGS=""
-CXXFLAGS=""
-LDFLAGS=""
+CFLAGS="${CFLAGS:-}"
+CXXFLAGS="${CXXFLAGS:-}"
+LDFLAGS="${LDFLAGS:-}"
 CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' )
 CACHE=1
 BUILD_TYPE="Debug"
