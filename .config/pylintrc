@@ -6,3 +6,4 @@ disable=
     missing-module-docstring,
     redefined-outer-name,
     subprocess-run-check,
+    unspecified-encoding,
