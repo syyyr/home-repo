@@ -198,7 +198,6 @@ Custom.nnoremap('<c-space>', function()
     vim.g.skip_diagnostic_float = true
     vim.lsp.buf.hover()
 end)
-Custom.nnoremap('<c-]>', vim.lsp.buf.definition)
 
 vim.api.nvim_create_autocmd('CursorHold', {
     callback = function()
