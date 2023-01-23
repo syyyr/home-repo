@@ -114,3 +114,5 @@ vim.o.makeprg = 'make -C build'
 vim.o.commentstring = '# %s'
 
 vim.o.mouse = ''
+
+vim.o.tabstop = 4
