@@ -3,6 +3,7 @@
 source /usr/share/bash-complete-alias/complete_alias
 alias calc="python -q"
 alias cd..='cd ..'
+alias dc..='cd ..'
 alias cdp='cd -P'
 alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias ctest='ctest --output-on-failure'
