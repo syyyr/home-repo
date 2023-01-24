@@ -49,11 +49,11 @@ __try_compl() {
 }
 
 __twitch_compl() {
-    readarray COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
+    readarray -t COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
 
 __taskkill_compl() {
-    mapfile -t COMPREPLY < <(IFS=$'\n' compgen -W "$("$HOME/bin/tasklist")" "${COMP_WORDS[${COMP_CWORD}]}")
+    readarray -t COMPREPLY < <(IFS=$'\n' compgen -W "$("$HOME/bin/tasklist")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
 
 complete -W 'increase decrease min max'  brightness
