@@ -12,6 +12,7 @@
   layout_launcher = None
   new_window = None
   new_terminator = None
+  close_window = None
 
 [profiles]
   [[default]]
