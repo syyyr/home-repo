@@ -45,6 +45,8 @@
 !.gitignore
 !.inputrc
 !.local
+!.local/bin
+!.local/bin/**
 !.local/share
 !.local/share/Elevator Music.wav
 !.local/share/fonts
