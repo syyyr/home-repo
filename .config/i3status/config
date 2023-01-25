@@ -33,7 +33,7 @@ bluetooth {
 }
 
 keyboard_locks {
-    format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
+    format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock |\?color=bad  NUM]'
 }
 
 volume_status {
