@@ -33,7 +33,6 @@ bluetooth {
 }
 
 keyboard_locks {
-    cache_timeout = 10
     format = '[\?if=caps_lock&color=good CAPS][\?if=num_lock&color=good |\?color=bad  NUM]'
 }
 
