@@ -13,6 +13,7 @@ refresh() {
     fi
     sleep 2
     nitrogen --restore
+    i3-msg restart
 }
 
 sleep 3 # Wait a bit. If we just booted, this script wouldn't work right away.
