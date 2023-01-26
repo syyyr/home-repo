@@ -40,6 +40,7 @@ roll 🙄
 smoke/exhale 😤
 sweat 😅
 sweat 🥵
+freezing/cold 🥶
 hundred/100 💯
 fear/scared 😱
 rock 🤘
