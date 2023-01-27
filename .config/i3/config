@@ -18,11 +18,11 @@ bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash
 bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
 # Fun stuff
-bindsym XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3/config\\""
-bindsym Control+XF86Tools exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3status/config\\""
-bindsym XF86Explorer exec --no-startup-id dunstctl close
-bindsym Shift+XF86Explorer exec --no-startup-id dunstctl close-all
-bindsym XF86LaunchA exec --no-startup-id ~/apps/kbacklight-ctl.bash toggle
+bindsym XF86Messenger exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3/config\\""
+bindsym Control+XF86Messenger exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/.config/i3status/config\\""
+bindsym XF86Go exec --no-startup-id dunstctl close
+bindsym Shift+XF86Go exec --no-startup-id dunstctl close-all
+bindsym Cancel exec --no-startup-id ~/apps/kbacklight-ctl.bash toggle
 
 # Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/apps/brightness.bash increase
