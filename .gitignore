@@ -45,8 +45,6 @@
 !.gitignore
 !.inputrc
 !.local
-!.local/bin
-!.local/bin/git-qfdiff
 !.local/share
 !.local/share/Elevator Music.wav
 !.local/share/fonts
