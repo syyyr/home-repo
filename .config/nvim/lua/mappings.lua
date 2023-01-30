@@ -128,3 +128,6 @@ Custom.nmap('úc', '<cmd>cprev<cr>')
 Custom.nmap(')c', '<cmd>cnext<cr>')
 
 Custom.nmap('<a-f>', '<cmd>CF<cr>')
+
+Custom.xnoremap('p', '"_dP')
+Custom.xnoremap('P', '"_dP')
