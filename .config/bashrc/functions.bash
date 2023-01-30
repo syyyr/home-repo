@@ -249,7 +249,7 @@ update_neovim()
 
 system_update()
 {
-    sudo pacman -Syu
+    sudo pacman -Syu --noconfirm
     cd "$HOME/.local/aur" || return 1
     auracle outdated || echo "No outdated AUR packages."
     auracle update
