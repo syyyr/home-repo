@@ -1,5 +1,5 @@
 #!/bin/bash
-"$HOME/apps/check-available.bash" i3lock || exit 1
+"$HOME/apps/check-available.bash" i3lock dunstctl || exit 1
 
 get_muted()
 {
