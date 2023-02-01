@@ -12,25 +12,6 @@ get_muted()
     fi
 }
 
-if [[ "$(i3lock -v 2>&1)" =~ [0-9]+\.[0-9]+\.c\.[0-9]+ ]]; then
-    ARGS='
-    -k
-    -i '$HOME'/.local/share/win10-lock-4k.png
-    -c 000000
-    --time-font=Segoeui
-    --date-font=Segoeui
-    --time-size=260
-    --date-size=118
-    --time-str="%H:%M"
-    --date-str="%A, %d. %B"
-    --date-color=FFFFFF
-    --time-color=FFFFFF
-    --time-pos=160:1826
-    --date-align=1
-    --time-align=1
-    --date-pos="160:ty+160"'
-fi
-
 "$HOME/apps/kbacklight.bash" 0
 # TODO: if you take out headphones, the speakers get unumuted
 MUTED_BEFORE=$(get_muted)
@@ -45,7 +26,24 @@ if [[ "$1" != "no-off" ]]; then
 fi
 
 dunstctl set-paused true
-echo -n "$ARGS" | xargs i3lock -n
+i3lock \
+    -n \
+    -k \
+    -i "$HOME"/.local/share/win10-lock-4k.png \
+    -c 000000 \
+    --time-font=Segoeui \
+    --date-font=Segoeui \
+    --time-size=260 \
+    --date-size=118 \
+    --time-str="%H:%M" \
+    --date-str="%A, %d. %B" \
+    --date-color=FFFFFF \
+    --time-color=FFFFFF \
+    --time-pos=160:1826 \
+    --date-align=1 \
+    --time-align=1 \
+    --date-pos="160:ty+160"
+
 dunstctl set-paused false
 
 if [[ "$1" != "no-off" ]]; then
