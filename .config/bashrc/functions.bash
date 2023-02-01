@@ -257,5 +257,8 @@ system_update()
     update_neovim
     cd "$HOME" || return 1
     git submodule update --remote
+    echo Updating tree-sitter parsers...
+    nvim --headless -c TSUpdateSync -c q
+    echo # The output from nvim doesn't have a trailing newline
     git submodule summary
 }
