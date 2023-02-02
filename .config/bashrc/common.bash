@@ -76,7 +76,7 @@ _GEN_PROMPT()
     WORKDIR="$(expand_prompt '\w')"
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
     if [[ -n "$GIT_ROOT_DIR" &&  "$GIT_ROOT_DIR" != "$HOME" ]]; then
-        BRANCH="$(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
+        BRANCH=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
     fi
     BRANCH="${BRANCH:-}"
     TIME="$(date "+%H:%M:%S" | tr -d '\n')"
@@ -94,7 +94,7 @@ _GEN_PROMPT()
     # Set the title.
     echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"
 
-    PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR} ${GRAY}${BRANCH}${ERROR}${SPACES}${CURSIVE_GRAY}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
+    PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${GRAY}${BRANCH}${ERROR}${SPACES}${CURSIVE_GRAY}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
 }
 
 PROMPT_COMMAND=_GEN_PROMPT
