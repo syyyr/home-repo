@@ -71,17 +71,20 @@ _GEN_PROMPT()
 
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
 
-    local USER_HOST WORKDIR GIT_ROOT_DIR BRANCH TIME
+    local USER_HOST WORKDIR GIT_ROOT_DIR GIT_INFO TIME
     USER_HOST="$(expand_prompt '\u@\h')"
     WORKDIR="$(expand_prompt '\w')"
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
     if [[ -n "$GIT_ROOT_DIR" &&  "$GIT_ROOT_DIR" != "$HOME" ]]; then
-        BRANCH=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
+        GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
+        if ! git diff --quiet; then
+            GIT_INFO="${GIT_INFO} [+]"
+        fi
     fi
-    BRANCH="${BRANCH:-}"
+    GIT_INFO="${GIT_INFO:-}"
     TIME="$(date "+%H:%M:%S" | tr -d '\n')"
 
-    local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR} ${BRANCH}${ERROR}"
+    local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR} ${GIT_INFO}${ERROR}"
     # Eight characters for the date.
     local NUM_SPACES="$((COLUMNS - ${#PROMPT_COLORLESS} - ${#LAST_COMMAND_DURATION} - 8))"
     if [[ "$ERROR" ]]; then
@@ -94,7 +97,7 @@ _GEN_PROMPT()
     # Set the title.
     echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"
 
-    PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${GRAY}${BRANCH}${ERROR}${SPACES}${CURSIVE_GRAY}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
+    PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${GRAY}${GIT_INFO}${ERROR}${SPACES}${CURSIVE_GRAY}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
 }
 
 PROMPT_COMMAND=_GEN_PROMPT
