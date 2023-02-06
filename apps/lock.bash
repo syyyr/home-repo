@@ -26,6 +26,7 @@ if [[ "$1" != "no-off" ]]; then
 fi
 
 dunstctl set-paused true
+i3-msg bar mode invisible
 i3lock \
     -n \
     -k \
@@ -45,6 +46,7 @@ i3lock \
     --date-pos="160:ty+160"
 
 dunstctl set-paused false
+i3-msg bar mode dock
 
 if [[ "$1" != "no-off" ]]; then
     kill "$SCREENOFF_PID" 2> /dev/null
