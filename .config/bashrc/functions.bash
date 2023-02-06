@@ -86,7 +86,7 @@ gso()
 
     GREP_ARGS=( "$CASE" --exclude-dir=.git "$COLOR" -IHrn -e "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
-    echo "grep" "${GREP_ARGS[@]}"
+    echo "grep" "${GREP_ARGS[@]@Q}"
     local RESULTS
     if ! RESULTS="$(grep "${GREP_ARGS[@]}")"; then
         echo 'No match.' >&1
