@@ -87,7 +87,7 @@ gso()
 
     echo "grep" "${GREP_ARGS[@]}"
     local RESULTS
-    if RESULTS="$(grep "${GREP_ARGS[@]}")"; then
+    if ! RESULTS="$(grep "${GREP_ARGS[@]}")"; then
         echo 'No match.' >&1
         return 0
     fi
