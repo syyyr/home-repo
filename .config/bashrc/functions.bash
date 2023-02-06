@@ -28,24 +28,25 @@ res()
 
 gso()
 {
+    local CASE="--no-ignore-case" OPEN_ALL='0'
     while true; do
         case $1 in
             -a)
-                local OPEN_ALL='1'
+                OPEN_ALL='1'
                 shift
                 ;;
             -i)
-                local CASE='-i'
+                CASE='--ignore-case'
                 shift
                 ;;
             -ai)
-                local CASE='-i'
-                local OPEN_ALL='1'
+                CASE='--ignore-case'
+                OPEN_ALL='1'
                 shift
                 ;;
             -ia)
-                local CASE='-i'
-                local OPEN_ALL='1'
+                CASE='--ignore-case'
+                OPEN_ALL='1'
                 shift
                 ;;
             *)
@@ -54,33 +55,47 @@ gso()
         esac
     done
 
-    if [[ $# -gt 1 ]] && [[ -d "${*: -1}" || -r "${*: -1}" ]]; then
-        local ARGS=( "${@:1:$#-1}" )
-        local DIRECTORY=( "${@: -1}" )
-    else
-        local ARGS=( "$@" )
+    local SEARCH_PATTERN=""
+
+    for arg in "$@"; do
+        if [[ -d "$arg" || -r "$arg" ]]; then
+            break
+        fi
+        SEARCH_PATTERN="${SEARCH_PATTERN} $arg"
+        shift
+    done
+
+    local SEARCH_LOCATIONS=()
+
+    for arg in "$@"; do
+        SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]}" "$arg" )
+    done
+
+    if [[ "$SEARCH_PATTERN" = "" ]]; then
+        SEARCH_PATTERN="${SEARCH_LOCATIONS[1]}"
     fi
 
     # local is a command by itself, so first define local FILE and then assign,
     # so that the return code belongs to fzf
-    local FILE
-    if (("$OPEN_ALL")); then
-        local COLOR=
+    if [[ "$OPEN_ALL" = "1" ]]; then
+        local COLOR=--color=never
     else
         local COLOR=--color=always
     fi
 
-    echo "grep $CASE --exclude-dir=.git -IHrn $COLOR ${ARGS[*]} ${DIRECTORY[*]}"
+    GREP_ARGS=( "$CASE" --exclude-dir=.git "$COLOR" -IHrn -e "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+
+    echo "grep" "${GREP_ARGS[@]}"
     local RESULTS
-    RESULTS="$(grep $CASE --exclude-dir=.git -IHrn $COLOR "${ARGS[@]}" "${DIRECTORY[@]}")"
-    if [[ "$RESULTS" = '' ]]; then
+    if RESULTS="$(grep "${GREP_ARGS[@]}")"; then
         echo 'No match.' >&1
         return 0
     fi
-    if (("$OPEN_ALL")); then
+    if [[ "$OPEN_ALL" = "1" ]]; then
         nvim -q <(cat <<< "$RESULTS")
         return 0
     fi
+    local FILE
     FILE="$(fzf --tac -0 --height=50% --border --ansi <<< "$RESULTS")"
     case "$?" in
         0)
