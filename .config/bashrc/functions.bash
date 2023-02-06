@@ -55,13 +55,14 @@ gso()
         esac
     done
 
-    local SEARCH_PATTERN=""
+    local SEARCH_PATTERN
 
     for arg in "$@"; do
         if [[ -d "$arg" || -r "$arg" ]]; then
             break
         fi
-        SEARCH_PATTERN="${SEARCH_PATTERN} $arg"
+
+        SEARCH_PATTERN="${SEARCH_PATTERN:-}${SEARCH_PATTERN+ }$arg"
         shift
     done
 
