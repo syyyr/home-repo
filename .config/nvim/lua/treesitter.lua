@@ -16,6 +16,7 @@ require('nvim-treesitter.configs').setup({
         disable = {'cpp'},
     },
     ensure_installed = {
+        'bash',
         'cpon',
         'cpp',
         'lua',
