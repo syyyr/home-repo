@@ -212,7 +212,6 @@ bt_phone()
         bluetoothctl disconnect
     else
         if [[ -z "$PHONE_BT_MAC" ]]; then
-            # shellcheck disable=SC2016
             echo '$PHONE_BT_MAC is not set, unable to connect to phone'.  >&2
             return 1
         fi

@@ -30,6 +30,7 @@
 !.config/pylintrc
 !.config/rofi
 !.config/rofi/config.rasi
+!.config/shellcheckrc
 !.config/systemd
 !.config/systemd/user
 !.config/systemd/user
