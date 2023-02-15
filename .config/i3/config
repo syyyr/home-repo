@@ -121,7 +121,9 @@ bindsym $mod+Shift+iacute move container to workspace 9
 bindsym $mod+Shift+eacute move container to workspace 10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e  exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+Shift+e exec --no-startup-id \
+    "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'systemctl stop --user i3-session.service && i3-msg exit'"
 
 mode "resize" {
     bindsym h resize shrink width 5 px or 5 ppt
