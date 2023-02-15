@@ -103,7 +103,7 @@ null_ls.setup({
 vim.cmd('packadd! neodev.nvim')
 require('neodev').setup({})
 
-require('lspconfig').sumneko_lua.setup({
+require('lspconfig').lua_ls.setup({
     capabilities = capabilities,
     settings = {
         Lua = {
