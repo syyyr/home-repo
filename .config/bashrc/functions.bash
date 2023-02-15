@@ -96,8 +96,8 @@ gso()
         nvim -q <(echo "$RESULTS")
         return 0
     fi
-    local FILE
-    FILE="$(fzf --tac -0 --height=50% --border --ansi <<< "$RESULTS")"
+    local FILE;
+    FILE="$(fzf --tac -0 --height=50% --border --ansi --multi <<< "$RESULTS")"
     case "$?" in
         0)
             nvim -q <(echo "$FILE")
