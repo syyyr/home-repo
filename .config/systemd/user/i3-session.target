@@ -1,9 +1,3 @@
 [Unit]
-Description=i3 Session
-Requires=basic.target
+Description=i3 session
 BindsTo=graphical-session.target
-Before=graphical-session.target
-
-DefaultDependencies=no
-Requires=basic.target
-StopWhenUnneeded=yes
