@@ -1,5 +1,6 @@
 [Unit]
 Description=Setup touchpad behavior
+PartOf=graphical-session.target
 
 [Service]
 Type=oneshot
@@ -9,4 +10,4 @@ ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Ta
 ExecStart=/usr/bin/xinput set-prop "ELAN0678:00 04F3:3195 Touchpad" "libinput Click Method Enabled" 0 1
 
 [Install]
-WantedBy=xorg.target
+WantedBy=graphical-session.target

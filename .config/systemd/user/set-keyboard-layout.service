@@ -1,5 +1,6 @@
 [Unit]
 Description=Set keyboard layout
+PartOf=graphical-session.target
 
 [Service]
 Type=oneshot
@@ -7,4 +8,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/setxkbmap cz qwerty
 
 [Install]
-WantedBy=xorg.target
+WantedBy=graphical-session.target

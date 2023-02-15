@@ -1,5 +1,6 @@
 [Unit]
 Description=Turn off bell
+PartOf=graphical-session.target
 
 [Service]
 Type=oneshot
@@ -7,4 +8,4 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/xset bell off
 
 [Install]
-WantedBy=xorg.target
+WantedBy=graphical-session.target

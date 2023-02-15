@@ -1,9 +1,10 @@
 [Unit]
 Description=Monitor service
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
 ExecStart=/home/vk/apps/monitor.bash
 
 [Install]
-WantedBy=xorg.target
+WantedBy=graphical-session.target

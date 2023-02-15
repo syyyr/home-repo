@@ -1,9 +1,10 @@
 [Unit]
 Description=Network Manager applet
+PartOf=graphical-session.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/nm-applet
 
 [Install]
-WantedBy=xorg.target
+WantedBy=graphical-session.target
