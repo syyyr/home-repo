@@ -1,4 +1,5 @@
-exec --no-startup-id systemctl start --user i3-session.service
+# https://github.com/i3/i3/issues/5186#issuecomment-1405779520
+exec --no-startup-id systemctl start --user i3-session.target
 
 # Copypasta
 bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
@@ -123,7 +124,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 bindsym $mod+Shift+e exec --no-startup-id \
-    "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'systemctl stop --user i3-session.service && i3-msg exit'"
+    "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'systemctl stop --user i3-session.target && i3-msg exit'"
 
 mode "resize" {
     bindsym h resize shrink width 5 px or 5 ppt

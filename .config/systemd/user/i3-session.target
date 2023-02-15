@@ -5,7 +5,5 @@ BindsTo=graphical-session.target
 Before=graphical-session.target
 
 DefaultDependencies=no
-RefuseManualStart=yes
-RefuseManualStop=yes
 Requires=basic.target
 StopWhenUnneeded=yes
