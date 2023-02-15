@@ -1,3 +1,5 @@
+exec --no-startup-id systemctl start --user i3-session.service
+
 # Copypasta
 bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id "~/apps/terminator.wrapper -e \\"nvim -p ~/apps/copypasta.bash\\""

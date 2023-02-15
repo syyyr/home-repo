@@ -1,0 +1,10 @@
+[Unit]
+Description=i3 window manager session
+PartOf=i3-session.target
+Wants=i3-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+Restart=on-failure
