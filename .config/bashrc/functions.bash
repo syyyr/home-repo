@@ -100,9 +100,7 @@ gso()
     FILE="$(fzf --tac -0 --height=50% --border --ansi <<< "$RESULTS")"
     case "$?" in
         0)
-            local VIM_ARG
-            IFS=" " read -r -a VIM_ARG <<< "$(sed -E 's/([^:]+):([^:]+):.*/\1 +\2/' <<< "$FILE")"
-            vim "${VIM_ARG[@]}"
+            nvim -q <(echo "$FILE")
             ;;
         1)
             echo "fzf: No match. This shouldn't happen." >&1
