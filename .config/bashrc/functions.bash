@@ -230,7 +230,7 @@ gen_cov()
     llvm-cov show --instr-profile=default.profdata "$1" --format=html --ignore-filename-regex='3rdparty|autogen'
 }
 
-which-vim()
+wv()
 {
     vim "$(which "$1")"
 }
