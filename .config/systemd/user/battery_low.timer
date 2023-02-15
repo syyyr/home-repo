@@ -3,7 +3,7 @@ Description=Check battery life every so often
 
 [Timer]
 OnBootSec=1min
-OnUnitActiveSec=10min
+OnUnitActiveSec=5min
 
 [Install]
 WantedBy=default.target
