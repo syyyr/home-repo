@@ -93,7 +93,7 @@ gso()
         return 0
     fi
     if [[ "$OPEN_ALL" = "1" ]]; then
-        nvim -q <(cat <<< "$RESULTS")
+        nvim -q <(echo "$RESULTS")
         return 0
     fi
     local FILE
