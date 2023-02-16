@@ -275,3 +275,8 @@ system_update()
     echo # The output from nvim doesn't have a trailing newline
     git submodule summary
 }
+
+backtrace()
+{
+    vim -c 'lua vim.o.errorformat =[[%\s%##%\d%# 0x%[0-9a-f]%# in %m%# %f:%l:%c,%f:%l:%c: %m]]' -c "cfile $1"
+}
