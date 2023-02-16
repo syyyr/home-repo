@@ -28,9 +28,9 @@ while true; do
             ;;
         msan)
             echo "Enabling MSAN."
-            CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-memory-track-origins=2 ${CFLAGS}"
-            CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-memory-track-origins=2 ${CXXFLAGS}"
-            LDFLAGS="-fsanitize=memory ${LDFLAGS}"
+            CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-recover=memory -fsanitize-memory-track-origins=2 ${CFLAGS}"
+            CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-recover=memory -fsanitize-memory-track-origins=2 -stdlib=libc++ ${CXXFLAGS}"
+            LDFLAGS="-fsanitize=memory -fsanitize-recover=memory -stdlib=libc++ ${LDFLAGS}"
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
             shift
             ;;
