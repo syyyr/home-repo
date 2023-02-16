@@ -100,9 +100,6 @@ null_ls.setup({
     },
 })
 
-vim.cmd('packadd! neodev.nvim')
-require('neodev').setup({})
-
 require('lspconfig').lua_ls.setup({
     capabilities = capabilities,
     settings = {
@@ -116,7 +113,11 @@ require('lspconfig').lua_ls.setup({
                     'empty-block',
                     'trailing-space'
                 }
-            }
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
         }
     }
 })
