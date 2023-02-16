@@ -34,6 +34,14 @@ while true; do
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
             shift
             ;;
+        tsan)
+            echo "Enabling TSAN."
+            CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=thread ${CFLAGS}"
+            CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=thread ${CXXFLAGS}"
+            LDFLAGS="-fsanitize=thread ${LDFLAGS}"
+            CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
+            shift
+            ;;
         gcc)
             echo "Enabling GCC."
             CC="gcc"
