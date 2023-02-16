@@ -132,13 +132,13 @@ print_var CXXFLAGS
 print_var LDFLAGS
 
 echo \
-    CC=${CC} \
-    CXX=${CXX} \
-    LD="${LD}" \
-    CFLAGS="${CFLAGS}" \
-    CXXFLAGS="${CXXFLAGS}" \
-    LDFLAGS="${LDFLAGS}" \
-    cmake "${CMAKE_FLAGS[@]}" "$@"
+    \'CC="${CC}"\' \
+    \'CXX="${CXX}"\' \
+    \'LD="${LD}"\' \
+    \'CFLAGS="${CFLAGS}"\' \
+    \'CXXFLAGS="${CXXFLAGS}"\' \
+    \'LDFLAGS="${LDFLAGS}"\' \
+    \'cmake\' "${CMAKE_FLAGS[@]@Q}" "$@"
 
 CC=${CC} \
 CXX=${CXX} \
