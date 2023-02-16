@@ -278,5 +278,5 @@ system_update()
 
 backtrace()
 {
-    vim -c 'lua vim.o.errorformat =[[%\s%##%\d%# 0x%[0-9a-f]%# in %m%# %f:%l:%c,%f:%l:%c: %m]]' -c "cfile $1"
+    vim -c 'lua vim.o.errorformat =[[%\s%#%m%# %f:%l:%c,%f:%l:%c: %m]]' -c "cfile $1"
 }
