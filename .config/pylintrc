@@ -6,6 +6,7 @@ disable=
     missing-module-docstring,
     redefined-outer-name,
     subprocess-run-check,
+    too-many-locals,
     unspecified-encoding,
     unused-variable,
     use-dict-literal
