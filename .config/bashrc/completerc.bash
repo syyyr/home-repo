@@ -64,3 +64,4 @@ _setup_path_compl "vimrc" "$HOME/.config/nvim"
 _setup_path_compl "bashrc" "$HOME/.config/bashrc"
 complete -F __twitch_compl twitch
 complete -F __try_compl try
+complete -c wv
