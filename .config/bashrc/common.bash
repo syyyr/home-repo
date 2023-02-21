@@ -121,7 +121,7 @@ stty -ixon
 # This cannot be done in .inputrc
 bind -x '"\C-z":"fg &> /dev/null"'
 
-eval "$(dircolors)"
+eval "$(dircolors | sed 's/ow=34;42:/ow=30;42:/')"
 
 source /usr/share/fzf/completion.bash
 source "$HOME/.config/bashrc/alias.bash"
