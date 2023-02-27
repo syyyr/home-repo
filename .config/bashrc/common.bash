@@ -77,7 +77,7 @@ _GEN_PROMPT()
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
     if [[ -n "$GIT_ROOT_DIR" &&  "$GIT_ROOT_DIR" != "$HOME" ]]; then
         GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
-        if timeout 0.1 git diff --quiet "${GIT_INFO# }" "$(git rev-parse HEAD)"; then
+        if ! [[ "${GIT_INFO# }" =~ rebasing ]] && timeout 0.1 git diff --quiet "${GIT_INFO# }" "$(git rev-parse HEAD)"; then
             GIT_INFO="${GIT_INFO}="
         fi
         if ! timeout 0.1 git diff --quiet; then
