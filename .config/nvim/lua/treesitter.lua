@@ -15,6 +15,9 @@ require('nvim-treesitter.configs').setup({
         enable = true,
         disable = {'cpp'},
     },
+    indent = {
+        enable = 'python'
+    },
     ensure_installed = {
         'bash',
         'comment',
