@@ -73,7 +73,8 @@ gso()
     done
 
     if [[ "$SEARCH_PATTERN" = "" ]]; then
-        SEARCH_PATTERN="${SEARCH_LOCATIONS[1]}"
+        SEARCH_PATTERN="${SEARCH_LOCATIONS[0]}"
+        SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
     fi
 
     # local is a command by itself, so first define local FILE and then assign,
