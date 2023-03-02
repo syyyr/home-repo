@@ -29,7 +29,7 @@ require('nvim-treesitter.configs').setup({
         'typescript',
         'vim',
     },
-    incremental_selection = {enable = true},
+    incremental_selection = {enable = false},
     textobjects = {enable = true},
 })
 
