@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link LspDocumentation Error')
         vim.cmd('highlight! link LspEvent Error')
 
-        -- Treesitter and LSP semantic colors
+        -- Treesitter
         vim.cmd('highlight! link @typeParameter Constant')
         vim.cmd('highlight! link @enum Constant')
         vim.cmd('highlight! link @macro Macro')
@@ -74,6 +74,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @variable NONE')
         vim.cmd('highlight! link @namespace NONE')
         vim.cmd('highlight! link @property NONE')
+
+        -- LSP semantic colors
+        vim.cmd('highlight! link @lsp.type.class NONE')
+        vim.cmd('highlight! link @lsp.type.enum Constant')
+        vim.cmd('highlight! link @lsp.type.function NONE')
+        vim.cmd('highlight! link @lsp.type.namespace NONE')
+        vim.cmd('highlight! link @lsp.type.parameter NONE')
+        vim.cmd('highlight! link @lsp.type.property NONE')
+        vim.cmd('highlight! link @lsp.type.variable NONE')
     end,
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
