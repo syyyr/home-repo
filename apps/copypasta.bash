@@ -22,6 +22,8 @@ party 🎉
 heart ❤
 broken_heart 💔
 heart_eyes 😍
+star_eyes 🤩
+hidden/hands 🫣
 sunglasses 😎
 smirk/lewd 😏
 oops/blush/embarrassed 😳
