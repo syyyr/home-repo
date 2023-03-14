@@ -60,7 +60,13 @@ cmp.setup({
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.cmd('packadd! nvim-lspconfig')
-for _, lsp_name in ipairs({'bashls', 'cmake', 'tsserver', 'vimls', 'yamlls'}) do
+for _, lsp_name in ipairs({
+    'bashls',
+    'cmake',
+    'jsonls',
+    'tsserver',
+    'vimls',
+    'yamlls'}) do
     require('lspconfig')[lsp_name].setup({
         capabilities = capabilities
     })
