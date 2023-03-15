@@ -1,7 +1,7 @@
 #!/bin/bash
 THRESHOLD=10
 
-if ! (acpi -a | grep "off-line" > /dev/null); then
+if systemd-ac-power; then
     echo 'Battery is being charged.'
     exit 0
 fi
