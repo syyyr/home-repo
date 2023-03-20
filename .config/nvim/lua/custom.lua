@@ -33,13 +33,9 @@ function Custom.all(table, f)
 end
 
 function Custom.none(table, f)
-    for _, v in pairs(table) do
-        if f(v) then
-            return false
-        end
-    end
-
-    return true
+    return Custom.all(table, function (elem)
+        return not f(elem)
+    end)
 end
 
 local function format_statusline_diagnostics(type, lnum)
