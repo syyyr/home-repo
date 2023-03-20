@@ -1,6 +1,10 @@
 #!/bin/bash
 
 refresh() {
+    if pgrep i3lock; then
+        echo "Skipping refresh, because i3lock is running"
+        return
+    fi
     OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
     echo "$OUTPUT"
     if [ -z "$OUTPUT" ]; then
