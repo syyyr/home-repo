@@ -5,11 +5,14 @@ local function add_iostream()
 end
 
 require('custom').register_printing({
-    callback = add_iostream,
-    quote = '"',
-    prefix = 'std::cerr << ',
-    infix = ' << " = " << ',
-    suffix = [[ << "\n";]]
+    print_var = function(var_name)
+        add_iostream()
+        return [[std::cout << "]] .. var_name .. [[" << "=" << ]] .. var_name .. [[ << "\n"]]
+    end,
+    print_text = function(text)
+        add_iostream()
+        return [[std::cout << "]] .. text .. [[\n";]]
+    end,
 })
 
 vim.cmd([[iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>]])

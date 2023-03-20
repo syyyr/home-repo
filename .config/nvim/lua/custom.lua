@@ -60,31 +60,14 @@ function Custom.statusline_diagnostics()
     return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
 
-local function print_something(opts)
-    if opts.callback then
-        opts.callback()
-    end
-
-    local to_print =
-        opts.print_infix
-        and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.var_suffix .. opts.suffix
-        or opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.suffix
-
-    vim.cmd('normal! o' .. to_print)
+local function print_something(what)
+    vim.cmd('normal! o' .. what)
     vim.cmd('normal! ^')
 end
 
 function Custom.register_printing(opts)
-    opts.var_suffix = opts.var_suffix or ''
     vim.api.nvim_create_user_command('Print', function(info)
-        if info.bang then
-            opts.print_infix = false
-        else
-            opts.print_infix = true
-        end
-
-        opts.text = info.args
-        print_something(opts)
+        print_something(info.bang and opts.print_text(info.args) or opts.print_var(info.args))
     end, {nargs = 1, bang = true})
 
     if opts.no_printthis then
