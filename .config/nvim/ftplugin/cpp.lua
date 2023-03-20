@@ -11,11 +11,11 @@ end
 require('custom').register_printing({
     print_var = function(var_name)
         add_iostream()
-        return [[std::cout << "]] .. escape_double_quotes(var_name) .. [[" << "=" << ]] .. var_name .. [[ << "\n";]]
+        return [[std::cerr << "]] .. escape_double_quotes(var_name) .. [[" << "=" << ]] .. var_name .. [[ << "\n";]]
     end,
     print_text = function(text)
         add_iostream()
-        return [[std::cout << "]] .. escape_double_quotes(text) .. [[\n";]]
+        return [[std::cerr << "]] .. escape_double_quotes(text) .. [[\n";]]
     end,
 })
 
