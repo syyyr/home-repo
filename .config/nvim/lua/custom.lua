@@ -67,7 +67,7 @@ local function print_something(opts)
 
     local to_print =
         opts.print_infix
-        and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.suffix
+        and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.var_suffix .. opts.suffix
         or opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.suffix
 
     vim.cmd('normal! o' .. to_print)
@@ -75,6 +75,7 @@ local function print_something(opts)
 end
 
 function Custom.register_printing(opts)
+    opts.var_suffix = opts.var_suffix or ''
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
             opts.print_infix = false
