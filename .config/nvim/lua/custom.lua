@@ -71,14 +71,13 @@ function Custom.register_printing(opts)
     end
 
     vim.api.nvim_create_user_command('Printthis', function(info)
-        opts.text = vim.api.nvim_get_current_line()
-        opts.text = opts.text:gsub('^%s*', '')
-        if opts.text:sub(-1, -1) == ';' then
-            opts.text = opts.text:sub(1, -2)
+        local to_print = vim.api.nvim_get_current_line()
+        to_print = to_print:gsub('^%s*', '')
+        if to_print:sub(-1, -1) == ';' then
+            to_print = to_print:sub(1, -2)
         end
 
-        opts.print_infix = true
-        print_something(opts)
+        print_something(opts.print_var(to_print))
         if info.bang then
             vim.cmd('normal! k"_dd')
         end
