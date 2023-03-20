@@ -70,28 +70,15 @@ local function print_something(opts)
         and opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.infix .. opts.text .. opts.suffix
         or opts.prefix .. opts.quote .. opts.text .. opts.quote .. opts.suffix
 
-    local current_line = vim.api.nvim_get_current_line()
-    local indent = current_line:sub(current_line:find('^%s*'))
-
-    if opts.copy_indent then
-        vim.api.nvim_put(
-            {indent .. to_print},
-            'l', -- linewise
-            true, --insert after
-            false -- don't place cursor after paste
-        )
-    else
-        vim.cmd('normal! o' .. to_print)
-    end
+    vim.cmd('normal! o' .. to_print)
+    vim.cmd('normal! ^')
 end
 
 function Custom.register_printing(opts)
     vim.api.nvim_create_user_command('Print', function(info)
         if info.bang then
-            opts.copy_indent = true
             opts.print_infix = false
         else
-            opts.copy_indent = false
             opts.print_infix = true
         end
 
@@ -110,7 +97,6 @@ function Custom.register_printing(opts)
             opts.text = opts.text:sub(1, -2)
         end
 
-        opts.copy_indent = true
         opts.print_infix = true
         print_something(opts)
         if info.bang then
