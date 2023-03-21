@@ -131,18 +131,18 @@ mode "resize" {
     bindsym j resize grow height 5 px or 5 ppt
     bindsym k resize shrink height 5 px or 5 ppt
     bindsym l resize grow width 5 px or 5 ppt
-    bindsym Shift+h resize shrink width 15 px or 15 ppt
-    bindsym Shift+j resize grow height 15 px or 15 ppt
-    bindsym Shift+k resize shrink height 15 px or 15 ppt
-    bindsym Shift+l resize grow width 15 px or 15 ppt
+    bindsym Shift+h resize shrink width 45 px or 45 ppt
+    bindsym Shift+j resize grow height 45 px or 45 ppt
+    bindsym Shift+k resize shrink height 45 px or 45 ppt
+    bindsym Shift+l resize grow width 45 px or 45 ppt
     bindsym Left resize shrink width 5 px or 5 ppt
     bindsym Down resize grow height 5 px or 5 ppt
     bindsym Up resize shrink height 5 px or 5 ppt
     bindsym Right resize grow width 5 px or 5 ppt
-    bindsym Shift+Left resize shrink width 15 px or 15 ppt
-    bindsym Shift+Down resize grow height 15 px or 15 ppt
-    bindsym Shift+Up resize shrink height 15 px or 15 ppt
-    bindsym Shift+Right resize grow width 15 px or 15 ppt
+    bindsym Shift+Left resize shrink width 45 px or 45 ppt
+    bindsym Shift+Down resize grow height 45 px or 45 ppt
+    bindsym Shift+Up resize shrink height 45 px or 45 ppt
+    bindsym Shift+Right resize grow width 45 px or 45 ppt
     bindsym Return mode default
     bindsym Escape mode default
 }
