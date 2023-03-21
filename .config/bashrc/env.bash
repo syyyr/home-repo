@@ -7,7 +7,11 @@ export LESS='-RFS'
 export MANPAGER='nvim +Man!'
 export NIGHTSTART='22'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
-export QT_SCALE_FACTOR=1.5
+OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
+if [ -n "$OUTPUT" ]; then
+	export QT_SCALE_FACTOR=1.5
+fi
+unset OUTPUT
 export SCREENDIR="$HOME/.screen"
 export UBSAN_OPTIONS=print_stacktrace=true,halt_on_error=1
 export VISUAL='nvim'
