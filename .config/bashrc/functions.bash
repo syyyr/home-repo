@@ -197,7 +197,7 @@ try()
 
 do_auracle_update()
 {
-    for i in $(auracle -q outdated | grep -v mingw-w64); do
+    for i in $(auracle -q outdated); do
         pushd "$i" || return
         git reset --hard
         MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --nocheck
