@@ -53,7 +53,7 @@ _GEN_PROMPT()
         local ERROR=" ${BAD[$RANDOM%${#BAD[@]}]} $CODE"
     fi
 
-    if [[ "$_COMMAND_START_TIME" ]]; then
+    if [[ -n "$_COMMAND_START_TIME" ]]; then
         local CURRENT_TIME
         CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
         # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
@@ -85,7 +85,7 @@ _GEN_PROMPT()
     local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR} ${GIT_INFO}${ERROR}"
     # Eight characters for the date.
     local NUM_SPACES="$((COLUMNS - ${#PROMPT_COLORLESS} - ${#LAST_COMMAND_DURATION} - 8))"
-    if [[ "$ERROR" ]]; then
+    if [[ -n "$ERROR" ]]; then
         # Emojis actually take up two columns, but bash counts them as 1 character.
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
