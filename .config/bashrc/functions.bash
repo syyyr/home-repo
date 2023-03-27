@@ -233,7 +233,7 @@ gen_cov()
 
 wv()
 {
-    vim "$(which "$1")"
+    vim "$(command -v "$1")"
 }
 
 android_mount()
