@@ -7,7 +7,7 @@ refresh() {
     fi
     OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
     echo "$OUTPUT"
-    if [ -z "$OUTPUT" ]; then
+    if [[ -z "$OUTPUT" ]]; then
         xrandr --output DP-1 --off
         xrandr --output DP-2 --off
         xrandr --output eDP-1 --primary
