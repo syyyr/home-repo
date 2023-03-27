@@ -16,11 +16,6 @@ shopt -s histappend
 HISTSIZE='50000'
 HISTFILESIZE='50000'
 
-expand_prompt()
-{
-    echo -n "${1@P}"
-}
-
 format_exec_time()
 {
     MILLI="$1"
@@ -72,8 +67,8 @@ _GEN_PROMPT()
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
 
     local USER_HOST WORKDIR GIT_ROOT_DIR GIT_INFO TIME
-    USER_HOST="$(expand_prompt '\u@\h')"
-    WORKDIR="$(expand_prompt '\w')"
+    USER_HOST="$(whoami)@$(hostname)"
+    WORKDIR="$(dirs +0)"
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
     if [[ -n "$GIT_ROOT_DIR" &&  "$GIT_ROOT_DIR" != "$HOME" ]]; then
         GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
