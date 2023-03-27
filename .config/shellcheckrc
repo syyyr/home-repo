@@ -1,1 +1,2 @@
-disable=SC2016,SC2029
+enable=all
+disable=SC2016,SC2029,SC2250,SC2312
