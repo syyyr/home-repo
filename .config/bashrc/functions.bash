@@ -238,14 +238,13 @@ wv()
 
 android_mount()
 {
-    if mountpoint ~/mnt > /dev/null; then
+    if mountpoint ~/mnt &> /dev/null; then
         echo Unmounting Android...
         umount ~/mnt
         echo Android unmounted.
     else
         echo Mounting Android...
-        aft-mtp-mount ~/mnt
-        echo Android mounted.
+        aft-mtp-mount ~/mnt && echo Android mounted.
     fi
 }
 
