@@ -280,3 +280,8 @@ backtrace()
 {
     vim -c 'lua vim.o.errorformat =[[%\s%#%m%# %f:%l:%c,%f:%l:%c: %m]]' -c "cfile $1"
 }
+
+ldapbase64decode()
+{
+    perl -MMIME::Base64 -n -00 -e 's/\n +//g;s/(?<=:: )(\S+)/decode_base64($1)/eg;print'
+}
