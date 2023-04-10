@@ -23,5 +23,6 @@ export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/
 
 alias msvc='cmd cmd /k "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat"'
 alias wsl_clearcache="echo 1 | sudo tee /proc/sys/vm/drop_caches"
+alias win_path="wslpath -w"
 
 source "$HOME/.config/bashrc/common.bash"
