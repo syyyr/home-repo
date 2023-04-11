@@ -1,3 +1,4 @@
+vim.loader.enable()
 -- skeletons for new files
 require('skeleton')
 -- custom commands, and their associated mappings
