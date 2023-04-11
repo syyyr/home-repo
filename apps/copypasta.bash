@@ -21,6 +21,7 @@ holy/halo 😇
 party 🎉
 heart ❤
 broken_heart 💔
+cash 💸
 heart_eyes 😍
 star_eyes 🤩
 hidden/hands 🫣
