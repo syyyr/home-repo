@@ -146,6 +146,12 @@ require('lspconfig').pylsp.setup({
     }
 })
 
+require('lspconfig').qmlls.setup({
+    cmd = {'qmlls6'},
+    filetypes = {'qml', '-b', 'build'}
+})
+
+
 vim.cmd('packadd! clangd_extensions.nvim')
 require('clangd_extensions').setup({
     server = {
