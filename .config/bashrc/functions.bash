@@ -274,6 +274,10 @@ system_update()
     nvim --headless -c TSUpdateSync -c q
     echo # The output from nvim doesn't have a trailing newline
     git submodule summary
+    if [[ "$(ps --no-headers -o comm 1)" = "systemd" ]]; then
+        systemctl restart --user setup-touchpad.service
+        systemctl restart --user set-keyboard-layout.service
+    fi
 }
 
 backtrace()
