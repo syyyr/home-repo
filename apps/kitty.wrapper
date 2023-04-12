@@ -9,6 +9,10 @@ else
 	kitty +kitten themes --reload-in=all Light
 fi
 
-CURRENT_WINDOW_PID="$(xdotool getwindowfocus getwindowpid)"
-CURRENT_WINDOW_CWD=$(pstree -p "$CURRENT_WINDOW_PID" | grep -m1 -o 'bash([0-9]*)' | tail -1 | grep -o '[0-9]*' | xargs pwdx | sed -E "s/^[0-9]+: //")
-kitty --working-directory "$CURRENT_WINDOW_CWD" "$@"
+PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null)"
+
+if [[ "$(ps -p "$PID" -o comm --no-headers)" = kitty ]]; then
+    kitty @ --to unix:@mykitty-"$PID" launch --type os-window --cwd current
+else
+    kitty "$@"
+fi
