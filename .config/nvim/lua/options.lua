@@ -107,8 +107,6 @@ vim.o.signcolumn = 'yes'
 vim.opt.formatoptions:remove('t')
 vim.o.textwidth = 120
 
-vim.o.pastetoggle = '<F6>'
-
 vim.o.makeprg = 'make -C build'
 
 vim.o.commentstring = '# %s'
