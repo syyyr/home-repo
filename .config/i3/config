@@ -51,7 +51,9 @@ bindsym $mod+shift+b exec --no-startup-id ~/apps/workspace-ball.bash
 bindsym $mod+d exec --no-startup-id dmenu_path | rofi -sort -dmenu -matching fuzzy -p "> " | ${SHELL:-"/bin/sh"}
 
 # Terminal
-bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper
+# bindsym $mod+Return exec --no-startup-id /home/vk/apps/terminator.wrapper
+# TODO: fix the working-directory
+bindsym $mod+Return exec --no-startup-id kitty --working-directory `xcwd`
 bindsym $mod+t exec --no-startup-id xterm
 
 assign [class="vlc"] → M
