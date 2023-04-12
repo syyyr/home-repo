@@ -21,7 +21,9 @@
 !.config/kbacklight_timeout/config
 !.config/kbdpulse.conf
 !.config/kitty
-!.config/kitty/**
+!.config/kitty/custom.conf
+!.config/kitty/themes
+!.config/kitty/themes/**
 !.config/npm
 !.config/npm/npmrc
 !.config/nvim
