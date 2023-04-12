@@ -3,7 +3,7 @@ exec --no-startup-id systemctl start --user i3-session.target
 
 # Copypasta
 bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
-bindsym --release Ctrl+XF86Favorites exec --no-startup-id kitty nvim -p ~/apps/copypasta.bash
+bindsym --release Ctrl+XF86Favorites exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/apps/copypasta.bash
 
 # Microphone mute
 bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic-led.bash
@@ -21,8 +21,8 @@ bindsym $mod+F8 exec --no-startup-id ~/apps/lock.bash no-off
 bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
 # Fun stuff
-bindsym XF86Messenger exec --no-startup-id kitty nvim -p ~/.config/i3/config
-bindsym Control+XF86Messenger exec --no-startup-id kitty nvim -p ~/.config/i3status/config
+bindsym XF86Messenger exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/.config/i3/config
+bindsym Control+XF86Messenger exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/.config/i3status/config
 bindsym XF86Go exec --no-startup-id dunstctl close
 bindsym Shift+XF86Go exec --no-startup-id dunstctl close-all
 bindsym Cancel exec --no-startup-id ~/apps/kbacklight-ctl.bash toggle
