@@ -23,6 +23,7 @@ alias la='ls -A'
 alias lah='ls -lah'
 alias ll='ls -alF'
 alias ls='ls --color=auto'
+alias krc="nvim \$HOME/.config/kitty/custom.conf"
 alias makec='make clean'
 alias pacman='pacman --color=auto'
 alias se='sudoedit'
