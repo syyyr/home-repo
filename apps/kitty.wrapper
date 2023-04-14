@@ -10,10 +10,19 @@ else
 	kitty +kitten themes --reload-in=all Light
 fi
 
-PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null)"
+if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
+    KITTY_SOCKET="$(ss --listening --unix --no-header src '@mykitty-*' | tr --squeeze-repeats ' ' | cut --delimiter=' ' --fields=5)"
+else
+    PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null)"
+    if [[ "$(ps -p "$PID" -o comm --no-headers)" = kitty ]]; then
+        KITTY_SOCKET="@mykitty-$PID"
+    else
+        KITTY_SOCKET=""
+    fi
+fi
 
-if [[ "$(ps -p "$PID" -o comm --no-headers)" = kitty ]]; then
-    kitty @ --to unix:@mykitty-"$PID" launch --type os-window --cwd current "$@"
+if [[ -n "$KITTY_SOCKET" ]]; then
+    kitty @ --to unix:"$KITTY_SOCKET" launch --type os-window --cwd current "$@"
 else
     kitty "$@"
 fi
