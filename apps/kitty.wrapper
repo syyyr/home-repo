@@ -12,7 +12,7 @@ fi
 PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null)"
 
 if [[ "$(ps -p "$PID" -o comm --no-headers)" = kitty ]]; then
-    kitty @ --to unix:@mykitty-"$PID" launch --type os-window --cwd current
+    kitty @ --to unix:@mykitty-"$PID" launch --type os-window --cwd current "$@"
 else
     kitty "$@"
 fi
