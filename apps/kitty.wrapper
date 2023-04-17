@@ -13,7 +13,7 @@ fi
 if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
     KITTY_SOCKET="$(ss --listening --unix --no-header src '@mykitty-*' | tr --squeeze-repeats ' ' | cut --delimiter=' ' --fields=5)"
 else
-    PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null)"
+    PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null || true)"
     if [[ "$(ps -p "$PID" -o comm --no-headers)" = kitty ]]; then
         KITTY_SOCKET="@mykitty-$PID"
     else
