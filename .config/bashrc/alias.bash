@@ -23,7 +23,7 @@ alias l='ls -CF'
 alias la='ls -A'
 alias lah='ls -lah'
 alias ll='ls -alF'
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --hyperlink=auto'
 alias krc="nvim \$HOME/.config/kitty/custom.conf"
 alias makec='make clean'
 alias pacman='pacman --color=auto'
