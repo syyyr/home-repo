@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export CLAZY_CHECKS=level1,no-fully-qualified-moc-types,no-non-pod-global-static
 export DAYSTART='8'
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='find . -type d \( -name ".cargo" -or -name ".local" -or -name ".rustup" -or -name ".npm" -or -name ".git" -or -name ".cache" \) -prune -o -type f -print'
