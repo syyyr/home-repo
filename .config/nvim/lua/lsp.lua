@@ -65,6 +65,7 @@ cmp.setup({
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.offsetEncoding = {'utf-16'}
 
 vim.cmd('packadd! nvim-lspconfig')
 for _, lsp_name in ipairs({
