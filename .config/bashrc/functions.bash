@@ -148,7 +148,7 @@ rm()
         DIRNAME="$(dirname "$(realpath "$1")")"
         REQUEST="$(OFS=$'\n' realpath "$*" | sort)"
         COMPARE_TO="$(realpath "$(OFS=$'\n' echo "$DIRNAME"/*)" | sort)"
-        if [[ "$REQUEST" =~ ^$HOME$ ]]; then
+        if [[ "$DIRNAME" =~ ^$HOME$ ]]; then
             echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove your home directory.${BASH_COLOR_NORMAL}"
             echo 'Aborting.'
             return 1
