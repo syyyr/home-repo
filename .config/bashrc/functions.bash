@@ -181,7 +181,7 @@ rm()
                 echo 'Aborting.'
                 return 1
             fi
-            echo /usr/bin/rm -rf "$@"
+            echo /usr/bin/rm -rf "${@@Q}"
         fi
         /usr/bin/rm -rf "$@"
         return "$?"
