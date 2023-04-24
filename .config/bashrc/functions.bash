@@ -145,9 +145,9 @@ rm()
 {
     if [[ "$1" = "-rf" ]] && [[ "$#" -gt "1" ]]; then
         shift
-        DIRNAME="$(realpath "$1" | xargs dirname)"
-        REQUEST="$(echo "$*" | xargs realpath | sort)"
-        COMPARE_TO="$(echo "$DIRNAME"/* | xargs realpath | sort)"
+        DIRNAME="$(dirname "$(realpath "$1")")"
+        REQUEST="$(OFS=$'\n' realpath "$*" | sort)"
+        COMPARE_TO="$(realpath "$(OFS=$'\n' echo "$DIRNAME"/*)" | sort)"
         if [[ "$REQUEST" =~ ^$HOME$ ]]; then
             echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove your home directory.${BASH_COLOR_NORMAL}"
             echo 'Aborting.'
