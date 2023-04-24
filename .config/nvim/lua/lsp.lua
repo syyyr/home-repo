@@ -73,12 +73,24 @@ for _, lsp_name in ipairs({
     'cmake',
     'jsonls',
     'tsserver',
-    'vimls',
-    'yamlls'}) do
+    'vimls'}) do
     require('lspconfig')[lsp_name].setup({
         capabilities = capabilities
     })
 end
+
+require('lspconfig').yamlls.setup({
+    settings = {
+        redhat = {
+            telemetry = {
+                enabled = false
+            }
+        },
+        yaml = {
+            keyOrdering = false
+        }
+    }
+})
 
 vim.cmd('packadd! plenary.nvim')
 vim.cmd('packadd! null-ls.nvim')
