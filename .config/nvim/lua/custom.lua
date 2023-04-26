@@ -33,7 +33,7 @@ function Custom.all(table, f)
 end
 
 function Custom.none(table, f)
-    return Custom.all(table, function (elem)
+    return Custom.all(table, function(elem)
         return not f(elem)
     end)
 end

@@ -17,7 +17,7 @@ require('nvim-treesitter.configs').setup({
     },
     indent = {
         enable = true,
-        disable = function (lang)
+        disable = function(lang)
             if lang ~= 'python' then
                 return true
             end

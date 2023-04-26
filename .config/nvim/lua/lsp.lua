@@ -219,11 +219,11 @@ end
 local original_underline_show = vim.diagnostic.handlers.underline.show
 local original_signs_show = vim.diagnostic.handlers.signs.show
 
-vim.diagnostic.handlers.underline.show = function (a, b, diagnostics, d, e)
+vim.diagnostic.handlers.underline.show = function(a, b, diagnostics, d, e)
     original_underline_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
 end
 
-vim.diagnostic.handlers.signs.show = function (a, b, diagnostics, d, e)
+vim.diagnostic.handlers.signs.show = function(a, b, diagnostics, d, e)
     original_signs_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
 end
 

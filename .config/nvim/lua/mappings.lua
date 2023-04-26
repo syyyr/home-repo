@@ -21,7 +21,7 @@ Custom.nnoremap('<space>', '/')
 Custom.xnoremap('<space>', '/')
 
 -- disable highlight
-Custom.nnoremap('<a-cr>',function ()
+Custom.nnoremap('<a-cr>', function()
     vim.fn['clever_f#reset']()
     vim.g.skip_diagnostic_float = true
     if vim.g.float_win_id then
