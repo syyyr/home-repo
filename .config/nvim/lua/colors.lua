@@ -71,6 +71,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @lsp.type.typeParameter Constant')
         vim.cmd('highlight! link @lsp.type.property NONE')
         vim.cmd('highlight! link @lsp.type.variable NONE')
+        vim.cmd('highlight! link @lsp.type.comment.lua NONE')
     end,
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
