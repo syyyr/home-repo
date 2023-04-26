@@ -68,6 +68,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @lsp.type.function NONE')
         vim.cmd('highlight! link @lsp.type.namespace NONE')
         vim.cmd('highlight! link @lsp.type.parameter NONE')
+        vim.cmd('highlight! link @lsp.type.typeParameter Constant')
         vim.cmd('highlight! link @lsp.type.property NONE')
         vim.cmd('highlight! link @lsp.type.variable NONE')
     end,
