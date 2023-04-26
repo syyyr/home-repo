@@ -48,19 +48,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight clear LspDiagnosticsDefaultHint')
         vim.cmd('highlight LspDiagnosticsDefaultHint gui=bold guifg=#00af5f')
 
-        -- TODO: These didn't come up yet, so I don't know which color group to assign.
-        -- FIXME: these can be removed probably
-        vim.cmd('highlight! link LspKeyword Error')
-        vim.cmd('highlight! link LspModifier Error')
-        vim.cmd('highlight! link LspString Error')
-        vim.cmd('highlight! link LspNumber Error')
-        vim.cmd('highlight! link LspRegexp Error')
-        vim.cmd('highlight! link LspDeprecated Error')
-        vim.cmd('highlight! link LspAsync Error')
-        vim.cmd('highlight! link LspModification Error')
-        vim.cmd('highlight! link LspDocumentation Error')
-        vim.cmd('highlight! link LspEvent Error')
-
         -- Treesitter
         vim.cmd('highlight! link @typeParameter Constant')
         vim.cmd('highlight! link @enum Constant')
