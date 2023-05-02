@@ -6,6 +6,7 @@ tears 😭
 joy 😂
 xd 😆
 :DD/grin 😁
+oof/popofka 😬
 ok_hand 👌
 thumbs_up 👍
 :D 😀
