@@ -4,11 +4,13 @@ set -eux
 HOURS=$(date +%-H)
 if [[ "$HOURS" -lt "${DAYSTART:-8}" ]] || [[ "$HOURS" -ge "${NIGHTSTART:-22}" ]]; then
     echo je noc
-	kitty +kitten themes --reload-in=all Dark
+    THEME=Dark
 else
     echo je den
-	kitty +kitten themes --reload-in=all Light
+    THEME=Light
 fi
+
+kitty +kitten themes --reload-in=all --cache-age=-1 "$THEME"
 
 if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
     KITTY_SOCKET="$(ss --listening --unix --no-header src '@mykitty-*' | tr --squeeze-repeats ' ' | cut --delimiter=' ' --fields=5)"
