@@ -99,7 +99,7 @@ _GEN_PROMPT()
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
     local SPACES
-    SPACES="$(printf ' %.0s' $(seq 1 "${NUM_SPACES}"))"
+    SPACES="$(printf "%${NUM_SPACES}s")"
 
     # Set the title.
     echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"
