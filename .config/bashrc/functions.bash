@@ -285,3 +285,8 @@ ldapbase64decode()
 {
     perl -MMIME::Base64 -n -00 -e 's/\n +//g;s/(?<=:: )(\S+)/decode_base64($1)/eg;print'
 }
+
+pacman_autoremove()
+{
+    pacman -Qdtq | sudo pacman -Rs -
+}
