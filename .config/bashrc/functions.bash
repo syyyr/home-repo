@@ -57,6 +57,7 @@ gso()
 
     local SEARCH_PATTERN
 
+    local arg
     for arg in "$@"; do
         if [[ -d "$arg" || -r "$arg" ]]; then
             break
@@ -197,6 +198,7 @@ try()
 
 do_auracle_update()
 {
+    local i
     for i in $(auracle -q outdated); do
         pushd "$i" || return
         git reset --hard
