@@ -19,17 +19,17 @@ HISTFILESIZE='50000'
 format_exec_time()
 {
     MILLI="$1"
-    echo "$MILLI" | bc <(echo '
+    bc <(cat <<EOF
         input = read();
         min = input/60/1000;
-        if (min >= 180) { /* after three hours, well also show hours */
+        if (min >= 180) { /* after three hours, we'll also show hours */
             hours = min/60;
             print hours
             print "h ";
             input-=hours*60*60*1000;
         }
         min = input/60/1000;
-        if (min >= 3) { /* from three minutes onward, we will show to output in the XXm XX.XXs format. */
+        if (min >= 3) { /* from three minutes onward, we'll show to output in the XXm XX.XXs format. */
             print min;
             print "m ";
             input-=min*60*1000;
@@ -41,7 +41,8 @@ format_exec_time()
         }
         print sec;
         print "s";
-    ')
+EOF
+    ) <<< "$MILLI"
 }
 
 _GEN_PROMPT()
