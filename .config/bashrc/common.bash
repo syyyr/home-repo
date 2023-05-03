@@ -66,7 +66,7 @@ _GEN_PROMPT()
 
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
 
-    local USER_HOST WORKDIR GIT_ROOT_DIR GIT_INFO TIME
+    local USER_HOST WORKDIR GIT_ROOT_DIR GIT_INFO GIT_SYMBOLS TIME
     USER_HOST="$(whoami)@$(hostname)"
     WORKDIR="$(dirs +0)"
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
@@ -77,15 +77,15 @@ _GEN_PROMPT()
         if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
             GIT_INFO="${GIT_INFO}="
         fi
-        SYMBOLS=""
+        GIT_SYMBOLS=""
         if ! timeout 0.1 git diff --quiet; then
-            SYMBOLS+="+"
+            GIT_SYMBOLS+="+"
         fi
         if ! timeout 0.1 git diff --cached --quiet; then
-            SYMBOLS+="*"
+            GIT_SYMBOLS+="*"
         fi
         if [[ -n "$SYMBOLS" ]]; then
-            GIT_INFO="${GIT_INFO} [${SYMBOLS}]"
+            GIT_INFO="${GIT_INFO} [${GIT_SYMBOLS}]"
         fi
     fi
     GIT_INFO="${GIT_INFO:-}"
