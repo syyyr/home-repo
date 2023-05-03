@@ -111,9 +111,9 @@ PROMPT_COMMAND=_GEN_PROMPT
 
 _SAVE_STARTUP_TIME()
 {
-      if [[ "$BASH_COMMAND" = "$PROMPT_COMMAND" ]]; then
-          return
-      fi
+    if [[ "$BASH_COMMAND" = "$PROMPT_COMMAND" ]]; then
+        return
+    fi
     _COMMAND_START_TIME="$(date '+%s%3N' | tr -d '\n')"
 }
 
