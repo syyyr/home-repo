@@ -77,8 +77,15 @@ _GEN_PROMPT()
         if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
             GIT_INFO="${GIT_INFO}="
         fi
+        SYMBOLS=""
         if ! timeout 0.1 git diff --quiet; then
-            GIT_INFO="${GIT_INFO} [+]"
+            SYMBOLS+="+"
+        fi
+        if ! timeout 0.1 git diff --cached --quiet; then
+            SYMBOLS+="*"
+        fi
+        if [[ -n "$SYMBOLS" ]]; then
+            GIT_INFO="${GIT_INFO} [${SYMBOLS}]"
         fi
     fi
     GIT_INFO="${GIT_INFO:-}"
