@@ -71,12 +71,14 @@ _GEN_PROMPT()
     USER_HOST="$(whoami)@$(hostname)"
     WORKDIR="$(dirs +0)"
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
-    if [[ -n "$GIT_ROOT_DIR" && "$GIT_ROOT_DIR" != "$HOME" ]]; then
-        GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
-        REMOTE_BRANCH="${GIT_INFO# }"
-        REMOTE_BRANCH="origin/${REMOTE_BRANCH#origin/}"
-        if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
-            GIT_INFO="${GIT_INFO}="
+    if [[ -n "$GIT_ROOT_DIR" ]]; then
+        if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
+            GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
+            REMOTE_BRANCH="${GIT_INFO# }"
+            REMOTE_BRANCH="origin/${REMOTE_BRANCH#origin/}"
+            if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
+                GIT_INFO="${GIT_INFO}="
+            fi
         fi
         GIT_SYMBOLS=""
         if ! timeout 0.1 git diff --quiet; then
@@ -85,11 +87,11 @@ _GEN_PROMPT()
         if ! timeout 0.1 git diff --cached --quiet; then
             GIT_SYMBOLS+="*"
         fi
-        if [[ -n "$SYMBOLS" ]]; then
+        if [[ -n "$GIT_SYMBOLS" ]]; then
             GIT_INFO="${GIT_INFO} [${GIT_SYMBOLS}]"
         fi
+        GIT_INFO="${GIT_INFO:-}"
     fi
-    GIT_INFO="${GIT_INFO:-}"
     TIME="$(printf "%(%H:%M:%S)T")"
 
     local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR} ${GIT_INFO}${ERROR}"
