@@ -70,7 +70,7 @@ _GEN_PROMPT()
     USER_HOST="$(whoami)@$(hostname)"
     WORKDIR="$(dirs +0)"
     GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
-    if [[ -n "$GIT_ROOT_DIR" &&  "$GIT_ROOT_DIR" != "$HOME" ]]; then
+    if [[ -n "$GIT_ROOT_DIR" && "$GIT_ROOT_DIR" != "$HOME" ]]; then
         GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
         REMOTE_BRANCH="${GIT_INFO# }"
         REMOTE_BRANCH="origin/${REMOTE_BRANCH#origin/}"
@@ -89,7 +89,7 @@ _GEN_PROMPT()
         fi
     fi
     GIT_INFO="${GIT_INFO:-}"
-    TIME="$(date "+%H:%M:%S" | tr -d '\n')"
+    TIME="$(printf "%(%H:%M:%S)T")"
 
     local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR} ${GIT_INFO}${ERROR}"
     # Eight characters for the date.
