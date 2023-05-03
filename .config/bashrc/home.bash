@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 export BROWSER="wslbrowser"
 
 # locale
