@@ -24,7 +24,7 @@ else
 fi
 
 if [[ -n "$KITTY_SOCKET" ]]; then
-    kitty @ --to unix:"$KITTY_SOCKET" launch --type os-window --cwd current "$@"
+    kitty @ --to unix:"$KITTY_SOCKET" launch --type os-window --cwd oldest "$@"
 else
     kitty "$@"
 fi
