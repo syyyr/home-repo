@@ -24,6 +24,8 @@
 !.config/kitty/custom.conf
 !.config/kitty/themes
 !.config/kitty/themes/**
+!.config/luacheck
+!.config/luacheck/**
 !.config/npm
 !.config/npm/npmrc
 !.config/nvim

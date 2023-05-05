@@ -99,6 +99,7 @@ null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.actionlint,
         null_ls.builtins.diagnostics.checkmake,
+        null_ls.builtins.diagnostics.luacheck,
         null_ls.builtins.diagnostics.vint,
 
         null_ls.builtins.diagnostics.cmake_lint.with({
@@ -108,13 +109,6 @@ null_ls.setup({
                 'C0111', -- missing docstring
                 'C0306', -- indentation
                 'C0307', -- indentation
-            }
-        }),
-        null_ls.builtins.diagnostics.luacheck.with({
-            extra_args = {
-                '--globals',
-                'vim',
-                '--no-max-line-length'
             }
         }),
         null_ls.builtins.diagnostics.gitlint.with({
