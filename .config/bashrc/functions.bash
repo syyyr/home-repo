@@ -292,3 +292,9 @@ pacman_autoremove()
 {
     pacman -Qdtq | sudo pacman -Rs -
 }
+
+check_config()
+{
+    luacheck -q "$HOME/.config/nvim"
+    shellcheck -a .config/bashrc/*
+}
