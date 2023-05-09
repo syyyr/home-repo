@@ -32,7 +32,9 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
             end,
             stdout_buffered = 1
         })
-        vim.fn.chansend(id, vim.api.nvim_buf_get_lines(0, 0, -1, true))
+        -- I have to join the lines manually, in case there are null bytes somewhere in the text.
+        local lines = vim.fn.join(vim.api.nvim_buf_get_lines(0, 0, -1, true), "\n")
+        vim.fn.chansend(id, lines)
         vim.fn.chanclose(id, 'stdin')
     end,
     group = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
