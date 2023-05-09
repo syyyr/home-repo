@@ -74,7 +74,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @lsp.type.comment.lua NONE')
 
         vim.cmd('highlight DiagnosticOk gui=bold guifg=#629120')
-        vim.cmd('highlight! link DiagnosticWarn WarningMsg')
     end,
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
