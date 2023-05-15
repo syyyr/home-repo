@@ -295,6 +295,6 @@ pacman_autoremove()
 
 check_config()
 {
-    luacheck -q "$HOME/.config/nvim"
+    luacheck -q "$HOME/.config/nvim" | grep -v 'Total:'
     shellcheck -a .config/bashrc/*
 }
