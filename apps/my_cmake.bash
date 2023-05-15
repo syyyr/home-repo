@@ -8,6 +8,8 @@ print_var()
     echo "  $name='${!name}'"
 }
 
+CACHE=1
+GRAPHVIZ=0
 CC="clang"
 CXX="clang++"
 LD="clang"
@@ -15,7 +17,6 @@ CFLAGS="${CFLAGS:-}"
 CXXFLAGS="${CXXFLAGS:-}"
 LDFLAGS="${LDFLAGS:-}"
 CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON' )
-CACHE=1
 BUILD_TYPE="Debug"
 CMAKE="cmake"
 
@@ -132,14 +133,30 @@ if [[ "${CXX}" = clang++ ]]; then
     CXXFLAGS="-ferror-limit=0 ${CXXFLAGS}"
 fi
 
+print_var CACHE
+print_var GRAPHVIZ
 print_var CC
 print_var CXX
 print_var LD
 print_var CFLAGS
 print_var CXXFLAGS
 print_var LDFLAGS
+print_var CMAKE_FLAGS
+print_var BUILD_TYPE
+print_var CMAKE
 
-COMMAND=( env CC="${CC}" CXX="${CXX}" LD="${LD}" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}" "$CMAKE" "${CMAKE_FLAGS[@]}" "${@}" )
+COMMAND=(
+    env
+    CC="${CC}"
+    CXX="${CXX}"
+    LD="${LD}"
+    CFLAGS="${CFLAGS}"
+    CXXFLAGS="${CXXFLAGS}"
+    LDFLAGS="${LDFLAGS}"
+    "$CMAKE"
+    "${CMAKE_FLAGS[@]}"
+    "${@}"
+)
 echo "${COMMAND[@]@Q}"
 "${COMMAND[@]}"
 
