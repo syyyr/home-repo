@@ -123,7 +123,7 @@ while true; do
     esac
 done
 
-if [[ $CACHE = 1 ]]; then
+if [[ "$CACHE" = 1 ]]; then
     CMAKE_FLAGS=( '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' "${CMAKE_FLAGS[@]}" )
 fi
 
@@ -160,7 +160,7 @@ COMMAND=(
 echo "${COMMAND[@]@Q}"
 "${COMMAND[@]}"
 
-if [[ $GRAPHVIZ = 1 ]]; then
+if [[ "$GRAPHVIZ" = 1 ]]; then
     dot -Tpng deps.dot -o deps.png
     echo Dependency graph saved as deps.png.
 fi
