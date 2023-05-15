@@ -5,7 +5,7 @@ set -eu
 print_var()
 {
     local name="$1"
-    echo "  $name='${!name}'"
+    echo "  $name=${!name@Q}"
 }
 
 CACHE=1
@@ -123,6 +123,8 @@ while true; do
     esac
 done
 
+EXTRA_ARGS=( "$@" )
+
 if [[ "$CACHE" = 1 ]]; then
     CMAKE_FLAGS=( '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' "${CMAKE_FLAGS[@]}" )
 fi
@@ -144,6 +146,7 @@ print_var LDFLAGS
 print_var CMAKE_FLAGS
 print_var BUILD_TYPE
 print_var CMAKE
+print_var EXTRA_ARGS[@]
 
 COMMAND=(
     env
@@ -155,7 +158,7 @@ COMMAND=(
     LDFLAGS="${LDFLAGS}"
     "$CMAKE"
     "${CMAKE_FLAGS[@]}"
-    "${@}"
+    "${EXTRA_ARGS[@]}"
 )
 echo "${COMMAND[@]@Q}"
 "${COMMAND[@]}"
