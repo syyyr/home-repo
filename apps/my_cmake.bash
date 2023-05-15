@@ -5,7 +5,12 @@ set -eu
 print_var()
 {
     local name="$1"
-    echo "  $name=${!name@Q}"
+    declare -n contents="$name"
+    if [[ "$(declare -p "$name")" =~ "declare -a" ]]; then
+        echo "  $name=(" "${contents[@]@Q}" ")"
+    else
+        echo "  $name=${contents@Q}"
+    fi
 }
 
 CACHE=1
@@ -146,7 +151,7 @@ print_var LDFLAGS
 print_var CMAKE_FLAGS
 print_var BUILD_TYPE
 print_var CMAKE
-print_var EXTRA_ARGS[@]
+print_var EXTRA_ARGS
 
 COMMAND=(
     env
