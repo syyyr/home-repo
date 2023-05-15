@@ -196,17 +196,6 @@ try()
     while ! "$@"; do sleep 0.1; done
 }
 
-do_auracle_update()
-{
-    local i
-    for i in $(auracle -q outdated); do
-        pushd "$i" || return
-        git reset --hard
-        MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --nocheck
-        popd || return
-    done
-}
-
 bt_phone()
 {
     if bluetoothctl info | grep -o 'Connected: yes'; then
@@ -255,11 +244,25 @@ git_generate_commit_graph()
     git commit-graph write --reachable --changed-paths
 }
 
+__update_aur_dep()
+{
+    pushd "$HOME/.local/aur/$1" || return 1
+    git reset --hard
+    MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed
+    popd || return 1
+}
+
+do_auracle_update()
+{
+    local i
+    for i in $(auracle -q outdated) $(pacman -Qqs .-git); do
+        __update_aur_dep "$i" || return 1
+    done
+}
+
 update_neovim()
 {
-    pushd "$HOME/.local/aur/neovim-git" || return 1
-    makepkg -si --noconfirm --needed
-    popd || return 1
+    __update_aur_dep "neovim-git" || return 1
 }
 
 system_update()
@@ -269,7 +272,6 @@ system_update()
     auracle outdated || echo "No outdated AUR packages."
     auracle update
     do_auracle_update
-    update_neovim
     cd "$HOME" || return 1
     git submodule update --remote
     echo Updating tree-sitter parsers...
