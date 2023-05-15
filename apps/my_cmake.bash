@@ -137,22 +137,9 @@ print_var CFLAGS
 print_var CXXFLAGS
 print_var LDFLAGS
 
-echo \
-    \'CC="${CC}"\' \
-    \'CXX="${CXX}"\' \
-    \'LD="${LD}"\' \
-    \'CFLAGS="${CFLAGS}"\' \
-    \'CXXFLAGS="${CXXFLAGS}"\' \
-    \'LDFLAGS="${LDFLAGS}"\' \
-    \'"$CMAKE"\' "${CMAKE_FLAGS[@]@Q}" "${@@Q}"
-
-CC=${CC} \
-CXX=${CXX} \
-LD=${LD} \
-CFLAGS=${CFLAGS} \
-CXXFLAGS=${CXXFLAGS} \
-LDFLAGS=${LDFLAGS} \
-"$CMAKE" "${CMAKE_FLAGS[@]}" "$@"
+COMMAND=( env CC="${CC}" CXX="${CXX}" LD="${LD}" CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LDFLAGS="${LDFLAGS}" "$CMAKE" "${CMAKE_FLAGS[@]}" "${@}" )
+echo "${COMMAND[@]@Q}"
+"${COMMAND[@]}"
 
 if [[ $GRAPHVIZ = 1 ]]; then
     dot -Tpng deps.dot -o deps.png
