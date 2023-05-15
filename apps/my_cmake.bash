@@ -2,6 +2,10 @@
 
 set -eu
 
+BASH_COLOR_BOLD='\033[1m'
+BASH_COLOR_NORMAL='\033[0m'
+BASH_COLOR_RED='\033[31m'
+
 print_var()
 {
     local name="$1"
@@ -25,8 +29,8 @@ CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_INTERPROCEDURAL_OPTI
 BUILD_TYPE="Debug"
 CMAKE="cmake"
 
-while true; do
-    case "$1" in
+for arg in "$@"; do
+    case "$arg" in
         asan)
             echo "Enabling ASAN/UBSAN."
             CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
@@ -129,6 +133,11 @@ while true; do
 done
 
 EXTRA_ARGS=( "$@" )
+
+if [[ "${#EXTRA_ARGS[@]}" = 0 ]]; then
+    echo -e "${BASH_COLOR_RED}${BASH_COLOR_BOLD}Warning: no arguments supplied. CMake needs at least the source directory.${BASH_COLOR_NORMAL}"
+    echo -e "${BASH_COLOR_RED}${BASH_COLOR_BOLD}CMake will probably error out.${BASH_COLOR_NORMAL}"
+fi
 
 if [[ "$CACHE" = 1 ]]; then
     CMAKE_FLAGS=( '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' "${CMAKE_FLAGS[@]}" )
