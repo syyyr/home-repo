@@ -15,6 +15,7 @@ LDFLAGS="${LDFLAGS:-}"
 CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON' )
 CACHE=1
 BUILD_TYPE="Debug"
+CMAKE="cmake"
 
 while true; do
     case "$1" in
@@ -108,6 +109,11 @@ while true; do
             GRAPHVIZ=1
             shift
             ;;
+        android)
+            CMAKE="$HOME/qt/6.5.0/android_arm64_v8a/bin/qt-cmake"
+            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.5.0/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
+            shift
+            ;;
         *)
             break
             ;;
@@ -138,7 +144,7 @@ echo \
     \'CFLAGS="${CFLAGS}"\' \
     \'CXXFLAGS="${CXXFLAGS}"\' \
     \'LDFLAGS="${LDFLAGS}"\' \
-    \'cmake\' "${CMAKE_FLAGS[@]@Q}" "$@"
+    \'"$CMAKE"\' "${CMAKE_FLAGS[@]@Q}" "${@@Q}"
 
 CC=${CC} \
 CXX=${CXX} \
@@ -146,7 +152,7 @@ LD=${LD} \
 CFLAGS=${CFLAGS} \
 CXXFLAGS=${CXXFLAGS} \
 LDFLAGS=${LDFLAGS} \
-cmake "${CMAKE_FLAGS[@]}" "$@"
+"$CMAKE" "${CMAKE_FLAGS[@]}" "$@"
 
 if [[ $GRAPHVIZ = 1 ]]; then
     dot -Tpng deps.dot -o deps.png
