@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 print_var()
 {
     local name="$1"
