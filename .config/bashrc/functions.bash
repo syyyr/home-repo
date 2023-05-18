@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# BASH_COLOR_BLUE='\033[34m'
-BASH_COLOR_BOLD='\033[1m'
-# BASH_COLOR_CYAN='\033[36m'
-# BASH_COLOR_GREEN='\033[32m'
-# BASH_COLOR_LIGHTGRAY='\033[37m'
-BASH_COLOR_NORMAL='\033[0m'
-# BASH_COLOR_ORANGE='\033[33m'
-# BASH_COLOR_PURPLE='\033[35m'
-BASH_COLOR_RED='\033[31m'
+# BASH_COLOR_BLUE='$'\033''[34m'
+BASH_COLOR_BOLD=$'\033''[1m'
+# BASH_COLOR_CYAN=$'\033''[36m'
+# BASH_COLOR_GREEN=$'\033''[32m'
+# BASH_COLOR_LIGHTGRAY='$'\033''[37m'
+BASH_COLOR_NORMAL=$'\033''[0m'
+# BASH_COLOR_ORANGE=$'\033''[33m'
+# BASH_COLOR_PURPLE=$'\033''[35m'
+BASH_COLOR_RED=$'\033''[31m'
 
 res()
 {
@@ -150,13 +150,13 @@ rm()
         REQUEST="$({ for i in "$@"; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
         COMPARE_TO="$({ for i in "$DIRNAME"/*; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
         if [[ "$DIRNAME" =~ ^$HOME$ ]]; then
-            echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove your home directory.${BASH_COLOR_NORMAL}"
+            echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove your home directory.${BASH_COLOR_NORMAL}"
             echo 'Aborting.'
             return 1
         fi
         if [[ "$REQUEST" = "$COMPARE_TO" ]]; then
             if [[ "$DIRNAME" = "$HOME" ]]; then
-                echo -e "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
+                echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
                 echo 'Aborting.'
                 return 1
             fi
@@ -165,7 +165,7 @@ rm()
             else
                 COUNT="$#"
             fi
-            echo -e "You are about to remove $COUNT thing$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$DIRNAME${BASH_COLOR_NORMAL}:"
+            echo "You are about to remove $COUNT thing$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$DIRNAME${BASH_COLOR_NORMAL}:"
             echo "$REQUEST" | head -n10
             NUMBER_OF_FILES="$(echo "$REQUEST" | wc -l)"
             if [[ "$NUMBER_OF_FILES" -gt 10 ]]; then
