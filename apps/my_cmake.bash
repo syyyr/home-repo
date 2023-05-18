@@ -19,6 +19,7 @@ print_var()
 
 CACHE=1
 GRAPHVIZ=0
+MOLD=1
 CC="clang"
 CXX="clang++"
 LD="clang"
@@ -126,6 +127,10 @@ for arg in "$@"; do
             CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.5.0/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
             shift
             ;;
+        no-mold)
+            MOLD=0
+            shift
+            ;;
         *)
             break
             ;;
@@ -143,6 +148,10 @@ if [[ "$CACHE" = 1 ]]; then
     CMAKE_FLAGS=( '-DCMAKE_C_COMPILER_LAUNCHER=ccache' '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache' "${CMAKE_FLAGS[@]}" )
 fi
 
+if [[ "$MOLD" = 1 ]]; then
+    LDFLAGS="-fuse-ld=mold ${LDFLAGS:-}"
+fi
+
 CMAKE_FLAGS=( "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "${CMAKE_FLAGS[@]}" )
 
 if [[ "${CXX}" = clang++ ]]; then
@@ -151,6 +160,7 @@ fi
 
 print_var CACHE
 print_var GRAPHVIZ
+print_var MOLD
 print_var CC
 print_var CXX
 print_var LD
