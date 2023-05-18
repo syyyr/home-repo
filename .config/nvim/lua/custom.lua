@@ -62,7 +62,7 @@ local function print_something(what)
 end
 
 function Custom.register_printing(opts)
-    vim.api.nvim_create_user_command('Print', function(info)
+    vim.api.nvim_buf_create_user_command(0, 'Print', function(info)
         print_something(info.bang and opts.print_text(info.args) or opts.print_var(info.args))
     end, {nargs = 1, bang = true})
 
@@ -70,7 +70,7 @@ function Custom.register_printing(opts)
         return
     end
 
-    vim.api.nvim_create_user_command('Printthis', function(info)
+    vim.api.nvim_buf_create_user_command(0, 'Printthis', function(info)
         local to_print = vim.api.nvim_get_current_line()
         to_print = to_print:gsub('^%s*', '')
         if to_print:sub(-1, -1) == ';' then
