@@ -2,9 +2,9 @@
 
 set -eu
 
-BASH_COLOR_BOLD='\033[1m'
-BASH_COLOR_NORMAL='\033[0m'
-BASH_COLOR_RED='\033[31m'
+BASH_COLOR_BOLD=$'\033''[1m'
+BASH_COLOR_NORMAL=$'\033''[0m'
+BASH_COLOR_RED=$'\033''[31m'
 
 print_var()
 {
@@ -142,8 +142,8 @@ done
 EXTRA_ARGS=( "$@" )
 
 if [[ "${#EXTRA_ARGS[@]}" = 0 ]]; then
-    echo -e "${BASH_COLOR_RED}${BASH_COLOR_BOLD}Warning: no arguments supplied. CMake needs at least the source directory.${BASH_COLOR_NORMAL}"
-    echo -e "${BASH_COLOR_RED}${BASH_COLOR_BOLD}CMake will probably error out.${BASH_COLOR_NORMAL}"
+    echo "${BASH_COLOR_RED}${BASH_COLOR_BOLD}Warning: no arguments supplied. CMake needs at least the source directory.${BASH_COLOR_NORMAL}"
+    echo "${BASH_COLOR_RED}${BASH_COLOR_BOLD}CMake will probably error out.${BASH_COLOR_NORMAL}"
 fi
 
 if [[ "$CACHE" = 1 ]]; then
