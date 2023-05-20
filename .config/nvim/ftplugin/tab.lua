@@ -20,7 +20,5 @@ Custom.nnoremap('-', '', { buffer = true, expr = true, callback = callback('-')}
 Custom.nnoremap('<C-A>', '<C-X>', {buffer = true})
 Custom.nnoremap('<C-X>', '<C-A>', {buffer = true})
 Custom.nnoremap('t', 'rt', {buffer = true})
-Custom.nnoremap('b', [[?\d\+<cr><cmd>nohl<cr>]], {buffer = true})
-Custom.nnoremap('w', [[/\d\+<cr><cmd>nohl<cr>]], {buffer = true})
 Custom.nnoremap('H', [[0/\d\+<cr><cmd>nohl<cr>]], {buffer = true})
 Custom.nnoremap('L', [[$?\d\+<cr><cmd>nohl<cr>]], {buffer = true})
