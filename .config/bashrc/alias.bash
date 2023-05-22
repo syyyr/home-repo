@@ -38,7 +38,7 @@ done; unset i;
 alias makej="make -j\$(nproc)"
 
 alias adog='git adog'
-alias c='git clone'
+alias c='git clone --recurse-submodules'
 alias pull='git pull'
 alias push='git push'
 alias reflog='git reflog'
