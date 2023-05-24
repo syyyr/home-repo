@@ -59,7 +59,7 @@ __taskkill_compl() {
 complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
-complete -W 'android asan gcc no-cache release release-di time tsan werror' my_cmake
+complete -W 'android asan gcc no-cache release release-di time tsan werror' -o default my_cmake
 complete -F __taskkill_compl taskkill
 _setup_path_compl "vimrc" "$HOME/.config/nvim"
 _setup_path_compl "bashrc" "$HOME/.config/bashrc"
