@@ -177,13 +177,13 @@ rm()
                 echo 'Aborting.'
                 return 1
             fi
-            echo /usr/bin/rm -rf "${@@Q}"
+            echo rm -rf "${@@Q}"
         fi
-        /usr/bin/rm -rf "$@"
+        env rm -rf "$@"
         return "$?"
     fi
 
-    /usr/bin/rm "$@"
+    env rm "$@"
 }
 
 try()
