@@ -149,11 +149,6 @@ rm()
         DIRNAME="$(dirname "$(realpath "$1")")"
         REQUEST="$({ for i in "$@"; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
         COMPARE_TO="$({ for i in "$DIRNAME"/*; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
-        if [[ "$DIRNAME" =~ ^$HOME$ ]]; then
-            echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove your home directory.${BASH_COLOR_NORMAL}"
-            echo 'Aborting.'
-            return 1
-        fi
         if [[ "$REQUEST" = "$COMPARE_TO" ]]; then
             if [[ "$DIRNAME" = "$HOME" ]]; then
                 echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
