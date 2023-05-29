@@ -81,6 +81,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 vim.api.nvim_create_autocmd('Syntax', {
     callback = function()
         vim.cmd([[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']])
+
+        vim.cmd([[syn clear gitcommitSummary]])
+        vim.cmd([[syn match gitcommitSummary "^.*\%<81v." contained containedin=gitcommitFirstLine nextgroup=gitcommitOverflow contains=@Spell]])
     end,
     group = vim.api.nvim_create_augroup('CustomSyntax', {clear = true})
 })
