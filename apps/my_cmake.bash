@@ -148,6 +148,12 @@ for arg in "$@"; do
             CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.5.1/gcc_64 -DBUILD_SHARED_LIBS=OFF "${CMAKE_FLAGS[@]}" )
             shift
             ;;
+        cmake=*)
+            echo -n "Setting CMAKE to "
+            CMAKE="${arg#cmake=}"
+            echo "${CMAKE@Q}"
+            shift
+            ;;
         *)
             break
             ;;
