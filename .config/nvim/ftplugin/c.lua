@@ -12,13 +12,15 @@ end
 require('custom').nnoremap('é', '<cmd>ClangdSwitchSourceHeader<cr>', {buffer = true})
 vim.o.commentstring='//%s'
 
-require('custom').register_printing({
-    print_var = function(var_name)
-        add_stdio()
-        return [[fprintf(stderr, "%s = %d\n", "]] .. escape_double_quotes(var_name) .. [[", ]] .. var_name .. [[);]]
-    end,
-    print_text = function(text)
-        add_stdio()
-        return [[fprintf(stderr, "%s\n", ]] .. escape_double_quotes(text) .. [[);]]
-    end,
-})
+if (vim.o.filetype == 'c') then -- Make sure this is not called with cpp. Sigh.
+    require('custom').register_printing({
+        print_var = function(var_name)
+            add_stdio()
+            return [[fprintf(stderr, "%s = %d\n", "]] .. escape_double_quotes(var_name) .. [[", ]] .. var_name .. [[);]]
+        end,
+        print_text = function(text)
+            add_stdio()
+            return [[fprintf(stderr, "%s\n", ]] .. escape_double_quotes(text) .. [[);]]
+        end,
+    })
+end
