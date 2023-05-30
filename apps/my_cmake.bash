@@ -20,13 +20,14 @@ print_var()
 CACHE=1
 GRAPHVIZ=0
 MOLD=1
+LTO=1
 CC="clang"
 CXX="clang++"
 LD="clang"
 CFLAGS="${CFLAGS:-}"
 CXXFLAGS="${CXXFLAGS:-}"
 LDFLAGS="${LDFLAGS:-}"
-CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' '-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON' )
+CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' )
 BUILD_TYPE="Debug"
 CMAKE="cmake"
 
@@ -137,6 +138,7 @@ for arg in "$@"; do
             echo "Enabling MingW."
             CMAKE=x86_64-w64-mingw32-cmake
             MOLD=0
+            LTO=0
             CC=""
             CXX=""
             LD=""
@@ -175,6 +177,10 @@ if [[ "$MOLD" = 1 ]]; then
     LDFLAGS="-fuse-ld=mold ${LDFLAGS:-}"
 fi
 
+if [[ "$LTO" = 1 ]]; then
+    CMAKE_FLAGS=('-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON' "${CMAKE_FLAGS[@]}")
+fi
+
 CMAKE_FLAGS=( "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "${CMAKE_FLAGS[@]}" )
 
 if [[ "${CXX}" = clang++ ]]; then
@@ -184,6 +190,7 @@ fi
 print_var CACHE
 print_var GRAPHVIZ
 print_var MOLD
+print_var LTO
 print_var CC
 print_var CXX
 print_var LD
