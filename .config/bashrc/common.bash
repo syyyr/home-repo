@@ -9,12 +9,17 @@ case $- in
       *) return;;
 esac
 
-HISTCONTROL='ignoredups'
-
+stty susp undef
+stty -ixon
 shopt -s histappend
-
+HISTCONTROL='ignoredups'
 HISTSIZE='50000'
 HISTFILESIZE='50000'
+
+# This cannot be done in .inputrc
+bind -x '"\C-z":"fg &> /dev/null"'
+
+eval "$(dircolors | sed 's/ow=34;42:/ow=30;42:/')"
 
 format_exec_time()
 {
@@ -110,8 +115,6 @@ _GEN_PROMPT()
     PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${GRAY}${GIT_INFO}${ERROR}${SPACES}${CURSIVE_GRAY}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
 }
 
-PROMPT_COMMAND=_GEN_PROMPT
-
 _SAVE_STARTUP_TIME()
 {
     if [[ "$BASH_COMMAND" = "$PROMPT_COMMAND" ]]; then
@@ -120,15 +123,8 @@ _SAVE_STARTUP_TIME()
     _COMMAND_START_TIME="$(date '+%s%3N' | tr -d '\n')"
 }
 
+PROMPT_COMMAND=_GEN_PROMPT
 trap _SAVE_STARTUP_TIME DEBUG
-
-stty susp undef
-stty -ixon
-
-# This cannot be done in .inputrc
-bind -x '"\C-z":"fg &> /dev/null"'
-
-eval "$(dircolors | sed 's/ow=34;42:/ow=30;42:/')"
 
 source /usr/share/fzf/completion.bash
 source "$HOME/.config/bashrc/alias.bash"
