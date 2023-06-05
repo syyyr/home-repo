@@ -263,12 +263,15 @@ update_neovim()
 system_update()
 {
     sudo pacman -Syu --noconfirm
+    exec 3< <(git submodule update --remote |& cat)
+    UPDATE_PID="$!"
     cd "$HOME/.local/aur" || return 1
     auracle outdated || echo "No outdated AUR packages."
     auracle update
     do_auracle_update
+    wait "$UPDATE_PID"
+    cat <&3
     cd "$HOME" || return 1
-    git submodule update --remote
     echo Updating tree-sitter parsers...
     nvim --headless -c TSUpdateSync -c q
     echo # The output from nvim doesn't have a trailing newline
