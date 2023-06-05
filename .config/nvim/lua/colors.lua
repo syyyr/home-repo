@@ -72,6 +72,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @lsp.type.property NONE')
         vim.cmd('highlight! link @lsp.type.variable NONE')
         vim.cmd('highlight! link @lsp.type.comment.lua NONE')
+        vim.cmd('highlight! link @text.uri.comment NONE')
 
         vim.cmd('highlight DiagnosticOk gui=bold guifg=#629120')
     end,
