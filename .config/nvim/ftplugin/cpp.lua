@@ -4,18 +4,16 @@ local function add_iostream()
     end
 end
 
-local function escape_double_quotes(text)
-    return text:gsub([["]], [[\"]])
-end
+local Custom = require('custom')
 
-require('custom').register_printing({
+Custom.register_printing({
     print_var = function(var_name)
         add_iostream()
-        return [[std::cerr << "]] .. escape_double_quotes(var_name) .. [[" << " = " << ]] .. var_name .. [[ << "\n";]]
+        return [[std::cerr << "]] .. Custom.escape_double_quotes(var_name) .. [[" << " = " << ]] .. var_name .. [[ << "\n";]]
     end,
     print_text = function(text)
         add_iostream()
-        return [[std::cerr << "]] .. escape_double_quotes(text) .. [[\n";]]
+        return [[std::cerr << "]] .. Custom.escape_double_quotes(text) .. [[\n";]]
     end,
 })
 

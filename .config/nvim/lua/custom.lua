@@ -32,6 +32,10 @@ function Custom.all(table, f)
     return true
 end
 
+function Custom.escape_double_quotes(text)
+    return text:gsub([["]], [[\"]])
+end
+
 function Custom.none(table, f)
     return Custom.all(table, function(elem)
         return not f(elem)
