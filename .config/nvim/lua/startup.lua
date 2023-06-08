@@ -24,18 +24,18 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function()
-        local id = vim.fn.jobstart({'grep', '-n', '-m', '1', [[\s$]]}, {
-            on_stdout = function(_, data)
-                local first_line = data[1]
-                local startIndex, endIndex = first_line:find('%d+')
-                vim.b.TrailingNr = startIndex and first_line:sub(startIndex, endIndex) or ''
-            end,
-            stdout_buffered = 1
-        })
-        -- I have to join the lines manually, in case there are null bytes somewhere in the text.
-        local lines = vim.fn.join(vim.api.nvim_buf_get_lines(0, 0, -1, true), "\n")
-        vim.fn.chansend(id, lines)
-        vim.fn.chanclose(id, 'stdin')
+        vim.system({'grep', '-n', '-m', '1', [[\s$]]}, {
+            stdin = vim.fn.join(vim.api.nvim_buf_get_lines(0, 0, -1, true), "\n"),
+        }, function(res)
+                if res.code ~= 0 then
+                    vim.b.TrailingNr = ''
+                    return
+                end
+
+                local startIndex, endIndex = res.stdout:find('%d+')
+                vim.b.TrailingNr = startIndex and res.stdout:sub(startIndex, endIndex) or ''
+            end
+        )
     end,
     group = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 })
