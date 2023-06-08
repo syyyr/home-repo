@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function()
-        vim.system({'grep', '-n', '-m', '1', [[\s$]]}, {
+        vim.system({'grep', '--line-number', '--max-count', '1', [[\s$]]}, {
             stdin = vim.fn.join(vim.api.nvim_buf_get_lines(0, 0, -1, true), "\n"),
         }, function(res)
                 if res.code ~= 0 then
