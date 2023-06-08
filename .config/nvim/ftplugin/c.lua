@@ -9,11 +9,11 @@ local function escape_double_quotes(text)
     return text:gsub([["]], [[\"]])
 end
 
-require('custom').nnoremap('é', '<cmd>ClangdSwitchSourceHeader<cr>', {buffer = true})
+require('syyyr').nnoremap('é', '<cmd>ClangdSwitchSourceHeader<cr>', {buffer = true})
 vim.o.commentstring='//%s'
 
 if (vim.o.filetype == 'c') then -- Make sure this is not called with cpp. Sigh.
-    require('custom').register_printing({
+    require('syyyr').register_printing({
         print_var = function(var_name)
             add_stdio()
             return [[fprintf(stderr, "%s = %d\n", "]] .. escape_double_quotes(var_name) .. [[", ]] .. var_name .. [[);]]

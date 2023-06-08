@@ -4,7 +4,7 @@ local function escape_double_quotes(text)
     return text:gsub([["]], [[\"]])
 end
 
-require('custom').register_printing({
+require('syyyr').register_printing({
     print_var = function(var_name)
         return 'print("' .. escape_double_quotes(var_name) .. '", "=", ' .. var_name .. ')'
     end,

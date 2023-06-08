@@ -1,4 +1,4 @@
-local Custom = require('custom')
+local syyyr = require('syyyr')
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
@@ -205,8 +205,8 @@ vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
 end
 
 local function filter_unused_diagnostics(diagnostics)
-    return Custom.filter(diagnostics, function(diagnostic)
-        return Custom.all({"unused", "never read"}, function(x) return not string.match(string.lower(diagnostic.message), x) end)
+    return syyyr.filter(diagnostics, function(diagnostic)
+        return syyyr.all({"unused", "never read"}, function(x) return not string.match(string.lower(diagnostic.message), x) end)
     end)
 end
 
@@ -221,7 +221,7 @@ vim.diagnostic.handlers.signs.show = function(a, b, diagnostics, d, e)
     original_signs_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
 end
 
-Custom.nnoremap('<c-space>', function()
+syyyr.nnoremap('<c-space>', function()
     vim.g.skip_diagnostic_float = true
     vim.lsp.buf.hover()
 end)

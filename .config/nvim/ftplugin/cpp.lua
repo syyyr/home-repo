@@ -4,16 +4,16 @@ local function add_iostream()
     end
 end
 
-local Custom = require('custom')
+local syyyr = require('syyyr')
 
-Custom.register_printing({
+syyyr.register_printing({
     print_var = function(var_name)
         add_iostream()
-        return [[std::cerr << "]] .. Custom.escape_double_quotes(var_name) .. [[" << " = " << ]] .. var_name .. [[ << "\n";]]
+        return [[std::cerr << "]] .. syyyr.escape_double_quotes(var_name) .. [[" << " = " << ]] .. var_name .. [[ << "\n";]]
     end,
     print_text = function(text)
         add_iostream()
-        return [[std::cerr << "]] .. Custom.escape_double_quotes(text) .. [[\n";]]
+        return [[std::cerr << "]] .. syyyr.escape_double_quotes(text) .. [[\n";]]
     end,
 })
 

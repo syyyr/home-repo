@@ -1,4 +1,4 @@
-local Custom = require('custom')
+local syyyr = require('syyyr')
 vim.api.nvim_create_user_command('Trailing', function()
     local save_cursor = vim.fn.getpos('.')
     local old_query = vim.fn.getreg('/')
@@ -6,7 +6,7 @@ vim.api.nvim_create_user_command('Trailing', function()
     vim.fn.setpos('.', save_cursor)
     vim.fn.setreg('/', old_query)
 end, { nargs = 0 })
-Custom.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
+syyyr.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 --" toggle unsaved changes diff
 local diff_open = false
@@ -32,7 +32,7 @@ vim.api.nvim_create_user_command('DiffToggle', function()
     end
 end, { nargs = 0 })
 
-Custom.nnoremap('<a-,>', '<cmd>DiffToggle<cr>')
+syyyr.nnoremap('<a-,>', '<cmd>DiffToggle<cr>')
 
 --" end with :Q XD
 vim.api.nvim_create_user_command('Q', function(info)
@@ -44,7 +44,7 @@ vim.api.nvim_create_user_command('Qa', function(info)
 end, { nargs = 0, bang = 1 })
 
 vim.api.nvim_create_user_command('SynStack', function()
-    print(vim.inspect(Custom.map(vim.fn.synstack(vim.fn.line('.'), vim.fn.col('.')), function(id)
+    print(vim.inspect(syyyr.map(vim.fn.synstack(vim.fn.line('.'), vim.fn.col('.')), function(id)
         return vim.fn.synIDattr(id, 'name')
     end)))
 end, { nargs = 0 })
