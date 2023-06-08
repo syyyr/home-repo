@@ -1,6 +1,6 @@
-local Custom = {}
+local M = {}
 
-function Custom.filter(input, f)
+function M.filter(input, f)
     local new_table = {}
     for i, v in pairs(input) do
         if f(v) then
@@ -14,7 +14,7 @@ function Custom.filter(input, f)
     return new_table
 end
 
-function Custom.map(table, f)
+function M.map(table, f)
     local new_table = {}
     for i, v in pairs(table) do
         new_table[i] = f(v)
@@ -22,7 +22,7 @@ function Custom.map(table, f)
     return new_table
 end
 
-function Custom.all(table, f)
+function M.all(table, f)
     for _, v in pairs(table) do
         if not f(v) then
             return false
@@ -32,12 +32,12 @@ function Custom.all(table, f)
     return true
 end
 
-function Custom.escape_double_quotes(text)
+function M.escape_double_quotes(text)
     return text:gsub([["]], [[\"]])
 end
 
-function Custom.none(table, f)
-    return Custom.all(table, function(elem)
+function M.none(table, f)
+    return M.all(table, function(elem)
         return not f(elem)
     end)
 end
@@ -46,7 +46,7 @@ local function format_statusline_diagnostics(type, lnum)
     return string.format('%s: ln %s', type, lnum)
 end
 
-function Custom.statusline_diagnostics()
+function M.statusline_diagnostics()
     for _, severity in pairs({"ERROR", "WARN", "INFO", "HINT"}) do
         local diagnostic = vim.diagnostic.get(0, {severity = vim.diagnostic.severity[severity]})[1]
         if diagnostic then
@@ -65,7 +65,7 @@ local function print_something(what)
     vim.cmd('normal! ^')
 end
 
-function Custom.register_printing(opts)
+function M.register_printing(opts)
     vim.api.nvim_buf_create_user_command(0, 'Print', function(info)
         print_something(info.bang and opts.print_text(info.args) or opts.print_var(info.args))
     end, {nargs = 1, bang = true})
@@ -99,14 +99,14 @@ local function impl_map(mode, noremap, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-function Custom.nnoremap(lhs, rhs, opts) impl_map('n', true, lhs, rhs, opts) end
-function Custom.xnoremap(lhs, rhs, opts) impl_map('x', true, lhs, rhs, opts) end
-function Custom.onoremap(lhs, rhs, opts) impl_map('o', true, lhs, rhs, opts) end
-function Custom.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
-function Custom.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
-function Custom.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
-function Custom.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
-function Custom.omap(lhs, rhs, opts) impl_map('o', false, lhs, rhs, opts) end
-function Custom.nmap(lhs, rhs, opts) impl_map('', false, lhs, rhs, opts) end
+function M.nnoremap(lhs, rhs, opts) impl_map('n', true, lhs, rhs, opts) end
+function M.xnoremap(lhs, rhs, opts) impl_map('x', true, lhs, rhs, opts) end
+function M.onoremap(lhs, rhs, opts) impl_map('o', true, lhs, rhs, opts) end
+function M.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
+function M.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
+function M.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
+function M.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
+function M.omap(lhs, rhs, opts) impl_map('o', false, lhs, rhs, opts) end
+function M.nmap(lhs, rhs, opts) impl_map('', false, lhs, rhs, opts) end
 
-return Custom
+return M
