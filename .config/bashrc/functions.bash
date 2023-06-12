@@ -277,6 +277,7 @@ system_update()
     UPDATE_PID="$!"
     auracle outdated || echo "No outdated AUR packages."
     do_auracle_update
+    echo "Waiting for submodules to finish updating..."
     wait "$UPDATE_PID"
     cat <&3
     pushd "$HOME" || return 1
