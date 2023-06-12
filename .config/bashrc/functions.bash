@@ -68,11 +68,7 @@ gso()
         shift
     done
 
-    local SEARCH_LOCATIONS=()
-
-    for arg in "$@"; do
-        SEARCH_LOCATIONS+=( "$arg" )
-    done
+    local SEARCH_LOCATIONS=( "$@" )
 
     if [[ "$SEARCH_PATTERN" = "" ]]; then
         SEARCH_PATTERN="${SEARCH_LOCATIONS[0]}"
