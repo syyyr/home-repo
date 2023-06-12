@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+set -euo pipefail
 
 BASH_COLOR_BOLD=$'\033''[1m'
 BASH_COLOR_NORMAL=$'\033''[0m'
