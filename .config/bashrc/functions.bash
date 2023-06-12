@@ -250,9 +250,12 @@ __update_aur_dep()
 do_auracle_update()
 {
     local i
+    pushd "$HOME/.local/aur" || return 1
+    auracle update
     for i in $(auracle -q outdated) $(pacman -Qqs .-git); do
         __update_aur_dep "$i" || return 1
     done
+    popd || return 1
 }
 
 update_neovim()
@@ -265,9 +268,7 @@ system_update()
     sudo pacman -Syu --noconfirm
     exec 3< <(git submodule update --remote |& cat)
     UPDATE_PID="$!"
-    cd "$HOME/.local/aur" || return 1
     auracle outdated || echo "No outdated AUR packages."
-    auracle update
     do_auracle_update
     wait "$UPDATE_PID"
     cat <&3
