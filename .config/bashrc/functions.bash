@@ -279,11 +279,12 @@ system_update()
     do_auracle_update
     wait "$UPDATE_PID"
     cat <&3
-    cd "$HOME" || return 1
+    pushd "$HOME" || return 1
     echo Updating tree-sitter parsers...
     nvim --headless -c TSUpdateSync -c q
     echo # The output from nvim doesn't have a trailing newline
     git submodule summary
+    popd || return 1
 }
 
 backtrace()
