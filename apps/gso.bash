@@ -1,3 +1,4 @@
+#!/bin/bash
 set -euo pipefail
 
 "$HOME/apps/check-available.bash" rg || exit 1
