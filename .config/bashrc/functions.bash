@@ -28,7 +28,8 @@ res()
 
 gso()
 {
-    local CASE="--no-ignore-case" OPEN_ALL='0'
+    "$HOME/apps/check-available.bash" rg || return 1
+    local CASE="--case-sensitive" OPEN_ALL='0'
     while true; do
         case $1 in
             -a)
@@ -86,11 +87,11 @@ gso()
         local COLOR=--color=always
     fi
 
-    GREP_ARGS=( "$CASE" --exclude-dir=.git "$COLOR" -IHrn -e "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+    RG_ARGS=( "$CASE" "$COLOR" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
-    echo "grep" "${GREP_ARGS[@]@Q}"
+    echo "rg" "${RG_ARGS[@]@Q}"
     local RESULTS
-    if ! RESULTS="$(grep "${GREP_ARGS[@]}")"; then
+    if ! RESULTS="$(rg "${RG_ARGS[@]}")"; then
         echo 'No match.' >&1
         return 0
     fi
