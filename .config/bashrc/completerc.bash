@@ -39,7 +39,7 @@ __try_compl() {
     COMP_CWORD=$((COMP_CWORD - 1))
 
     if [[ "${#COMP_WORDS[@]}" -eq 1 ]]; then
-        readarray COMPREPLY < <(compgen -c "" | sort -u)
+        readarray -t COMPREPLY < <(compgen -c "" | sort -u)
         return
     fi
 
