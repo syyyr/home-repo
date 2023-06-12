@@ -40,12 +40,6 @@ vim.api.nvim_create_user_command('Qa', function(info)
     vim.cmd('qa' .. (info.bang and '!' or ''))
 end, { nargs = 0, bang = 1 })
 
-vim.api.nvim_create_user_command('SynStack', function()
-    print(vim.inspect(syyyr.map(vim.fn.synstack(vim.fn.line('.'), vim.fn.col('.')), function(id)
-        return vim.fn.synIDattr(id, 'name')
-    end)))
-end, { nargs = 0 })
-
 vim.api.nvim_create_user_command('SetMakePath', function(info)
     vim.o.makeprg = 'make -C ' .. info.args
 end, { nargs = 1 })
