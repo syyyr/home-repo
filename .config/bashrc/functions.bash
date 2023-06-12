@@ -87,11 +87,11 @@ gso()
         local COLOR=--color=always
     fi
 
-    RG_ARGS=( "$CASE" "$COLOR" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+    RG_CMD=( rg "$CASE" "$COLOR" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
-    echo "rg" "${RG_ARGS[@]@Q}"
+    echo "${RG_CMD[@]@Q}"
     local RESULTS
-    if ! RESULTS="$(rg "${RG_ARGS[@]}")"; then
+    if ! RESULTS="$("${RG_CMD[@]}")"; then
         echo 'No match.' >&1
         return 0
     fi
