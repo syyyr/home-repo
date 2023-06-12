@@ -56,7 +56,7 @@ gso()
         esac
     done
 
-    local SEARCH_PATTERN
+    local SEARCH_PATTERN=""
 
     local arg
     for arg in "$@"; do
@@ -70,7 +70,7 @@ gso()
 
     local SEARCH_LOCATIONS=( "$@" )
 
-    if [[ "$SEARCH_PATTERN" = "" ]]; then
+    if [[ -z "$SEARCH_PATTERN" ]]; then
         SEARCH_PATTERN="${SEARCH_LOCATIONS[0]}"
         SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
     fi
