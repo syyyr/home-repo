@@ -29,8 +29,6 @@ while true; do
     esac
 done
 
-SEARCH_PATTERN=""
-
 for arg in "$@"; do
     if [[ -d "$arg" || -r "$arg" ]]; then
         break
@@ -42,7 +40,7 @@ done
 
 SEARCH_LOCATIONS=( "$@" )
 
-if [[ -z "$SEARCH_PATTERN" ]]; then
+if [[ -z "${SEARCH_PATTERN+x}" ]]; then
     SEARCH_PATTERN="${SEARCH_LOCATIONS[0]}"
     SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
 fi
