@@ -8,9 +8,11 @@ export LESS='-RFS'
 export MANPAGER='nvim +Man!'
 export NIGHTSTART='22'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
-OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
-if [[ -n "$OUTPUT" ]]; then
-	export QT_SCALE_FACTOR=1.5
+if [[ -n "$DISPLAY" ]]; then
+	OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
+	if [[ -n "$OUTPUT" ]]; then
+		export QT_SCALE_FACTOR=1.5
+	fi
 fi
 unset OUTPUT
 export SCREENDIR="$HOME/.screen"
