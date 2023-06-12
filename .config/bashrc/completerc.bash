@@ -14,21 +14,21 @@ _setup_path_compl() {
 }
 
 __do_completion_for() {
-    completion=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
+    completion_func=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
 
     # Some completions are loaded dynamically on demand
-    if [[ -z "$completion" ]]; then
+    if [[ -z "$completion_func" ]]; then
         _completion_loader "$1"
-        completion=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
+        completion_func=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
     fi
 
-    if [[ -n "$completion" ]]; then
-        # Completion functions take these arguments:
+    if [[ -n "$completion_func" ]]; then
+        # completion_func functions take these arguments:
         # $1 the command name begin completed
         # $2 the word being completed
         # $3 the word preceding the being completed
         # So far, I have found out only fzf completions need the first argument, so I am going to supply it.
-        "$completion" "$1"
+        "$completion_func" "$1"
     fi
 }
 
