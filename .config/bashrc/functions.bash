@@ -71,7 +71,7 @@ gso()
     local SEARCH_LOCATIONS=()
 
     for arg in "$@"; do
-        SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]}" "$arg" )
+        SEARCH_LOCATIONS+=( "$arg" )
     done
 
     if [[ "$SEARCH_PATTERN" = "" ]]; then
