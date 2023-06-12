@@ -9,16 +9,13 @@ end, { nargs = 0 })
 syyyr.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 --" toggle unsaved changes diff
-local diff_open = false
 vim.api.nvim_create_user_command('DiffToggle', function()
-    if not diff_open then
-        diff_open = true
-        if vim.o.diffopt == 'horizontal' then
-            vim.cmd('new')
-        else
-            vim.cmd('vert new')
-        end
-        vim.cmd('file scratch')
+    if not vim.b.scratch_bufname  then
+        local scratch_bufname = 'disk: ' .. vim.fn.expand('%')
+        vim.b.scratch_bufname = scratch_bufname
+        vim.cmd('vert new')
+        vim.b.scratch_bufname = scratch_bufname
+        vim.cmd('file ' .. vim.b.scratch_bufname)
         vim.o.buftype = 'nofile'
         vim.cmd('read #')
         vim.cmd('0delete_')
@@ -26,9 +23,9 @@ vim.api.nvim_create_user_command('DiffToggle', function()
         vim.cmd('wincmd p')
         vim.cmd('diffthis')
     else
-        diff_open = false
         vim.cmd('diffoff')
-        vim.cmd('bdelete scratch')
+        vim.cmd('bdelete ' .. vim.b.scratch_bufname)
+        vim.b.scratch_bufname = nil
     end
 end, { nargs = 0 })
 
