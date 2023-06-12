@@ -21,7 +21,7 @@ bind -x '"\C-z":"fg &> /dev/null"'
 
 eval "$(dircolors | sed 's/ow=34;42:/ow=30;42:/')"
 
-format_exec_time()
+_FORMAT_EXEC_TIME()
 {
     MILLI="$1"
     bc <(cat <<EOF
@@ -65,7 +65,7 @@ _GEN_PROMPT()
         # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
         if [[ $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) -ge 1000 ]]; then
             local LAST_COMMAND_DURATION
-            LAST_COMMAND_DURATION=" ($(format_exec_time $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
+            LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
         fi
         unset _COMMAND_START_TIME
     fi
