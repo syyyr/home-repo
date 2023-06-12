@@ -33,8 +33,6 @@ __do_completion_for() {
 }
 
 __try_compl() {
-    local completion
-
     COMP_LINE=("${COMP_LINE:4}")
     COMP_POINT=$((COMP_POINT - 4))
     COMP_WORDS=("${COMP_WORDS[@]:1}")
