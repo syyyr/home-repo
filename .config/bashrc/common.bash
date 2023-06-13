@@ -12,9 +12,6 @@ esac
 stty susp undef
 stty -ixon
 shopt -s histappend
-HISTCONTROL='ignoredups'
-HISTSIZE='50000'
-HISTFILESIZE='50000'
 
 # This cannot be done in .inputrc
 bind -x '"\C-z":"fg &> /dev/null"'
