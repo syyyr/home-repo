@@ -14,9 +14,9 @@ rm()
 {
     if [[ "$1" = "-rf" ]] && [[ "$#" -gt "1" ]]; then
         shift
-        DIRNAME="$(dirname "$(realpath "$1")")"
-        REQUEST="$({ for i in "$@"; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
-        COMPARE_TO="$({ for i in "$DIRNAME"/*; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
+        local DIRNAME="$(dirname "$(realpath "$1")")"
+        local REQUEST="$({ for i in "$@"; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
+        local COMPARE_TO="$({ for i in "$DIRNAME"/*; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
         if [[ "$REQUEST" = "$COMPARE_TO" ]]; then
             if [[ "$DIRNAME" = "$HOME" ]]; then
                 echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
@@ -24,17 +24,18 @@ rm()
                 return 1
             fi
             if [[ "${*: -1}" = "*" ]]; then
-                COUNT=0
+                local COUNT=0
             else
-                COUNT="$#"
+                local COUNT="$#"
             fi
             echo "You are about to remove $COUNT thing$([[ $COUNT -ne 1 ]] && echo "s") from ${BASH_COLOR_BOLD}${BASH_COLOR_RED}$DIRNAME${BASH_COLOR_NORMAL}:"
             echo "$REQUEST" | head -n10
-            NUMBER_OF_FILES="$(echo "$REQUEST" | wc -l)"
+            local NUMBER_OF_FILES="$(echo "$REQUEST" | wc -l)"
             if [[ "$NUMBER_OF_FILES" -gt 10 ]]; then
                 echo "...and $((NUMBER_OF_FILES - 10)) more."
             fi
             echo -n 'Is that okay? [y/n] '
+            local REPLY
             if ! read -r -t 10; then
                 echo
                 echo 'No reply. Aborting just to be safe.'
