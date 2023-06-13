@@ -8,7 +8,9 @@ export LANG="en_US.UTF-8"
 
 export LIBGL_ALWAYS_INDIRECT=1
 
-xmodmap -e 'keycode 126='
+if [[ -n "$DISPLAY" ]]; then
+	xmodmap -e 'keycode 126='
+fi
 export SDL_RENDER_DRIVER=software # We don't have hardware rendering on WSL, so let's just use software by default
 export QMLSCENE_DEVICE=softwarecontext
 
