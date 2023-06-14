@@ -14,4 +14,5 @@ echo Updating tree-sitter parsers...
 nvim --headless -c TSUpdateSync -c q
 echo # The output from nvim doesn't have a trailing newline
 git submodule summary
+"$HOME/apps/check-config.bash"
 popd
