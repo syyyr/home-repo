@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 set -euo pipefail
 
 "$HOME/apps/check-available.bash" streamlink google-chrome-stable || return 1
