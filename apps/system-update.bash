@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -euxo pipefail
 
 sudo pacman -Syu --noconfirm
 exec 3< <(git submodule update --remote |& cat)
