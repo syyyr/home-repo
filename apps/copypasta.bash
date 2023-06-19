@@ -40,6 +40,7 @@ lit/fire 🔥
 diamond 💎
 shhhh 🤫
 clown 🤡
+duck/kachna 🦆
 eyes 👀
 strong/arm 💪
 roll 🙄
