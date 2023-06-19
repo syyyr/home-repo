@@ -39,6 +39,7 @@ com/rice cơm
 lit/fire 🔥
 diamond 💎
 shhhh 🤫
+clown 🤡
 eyes 👀
 strong/arm 💪
 roll 🙄
