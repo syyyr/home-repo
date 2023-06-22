@@ -4,8 +4,8 @@ set -euo pipefail
 "$HOME/apps/check-available.bash" rg || exit 1
 CASE="--case-sensitive"
 OPEN_ALL='0'
-while true; do
-    case $1 in
+for arg in "$@"; do
+    case "$arg" in
         -a)
             OPEN_ALL='1'
             shift
@@ -42,7 +42,7 @@ done
 SEARCH_LOCATIONS=( "$@" )
 
 if [[ -z "${SEARCH_PATTERN+x}" ]]; then
-    SEARCH_PATTERN="${SEARCH_LOCATIONS[0]}"
+    SEARCH_PATTERN="${SEARCH_LOCATIONS[0]:-}"
     SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
 fi
 
