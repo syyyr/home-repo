@@ -57,32 +57,28 @@ _GEN_PROMPT()
     fi
 
     if [[ -n "$_COMMAND_START_TIME" ]]; then
-        local CURRENT_TIME
-        CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
+        local CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
         # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
         if [[ $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) -ge 1000 ]]; then
-            local LAST_COMMAND_DURATION
-            LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
+            local LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
         fi
         unset _COMMAND_START_TIME
     fi
 
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
 
-    local USER_HOST WORKDIR GIT_ROOT_DIR GIT_INFO GIT_SYMBOLS TIME
-    USER_HOST="$(whoami)@$(hostname)"
-    WORKDIR="$(dirs +0)"
-    GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)"
+    local USER_HOST="$(whoami)@$(hostname)" WORKDIR="$(dirs +0)" GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)" TIME="$(printf "%(%H:%M:%S)T")"
     if [[ -n "$GIT_ROOT_DIR" ]]; then
+        local GIT_INFO=""
         if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
             GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
-            REMOTE_BRANCH="${GIT_INFO# }"
+            local REMOTE_BRANCH="${GIT_INFO# }"
             REMOTE_BRANCH="origin/${REMOTE_BRANCH#origin/}"
             if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
                 GIT_INFO="${GIT_INFO}="
             fi
         fi
-        GIT_SYMBOLS=""
+        local GIT_SYMBOLS=""
         if ! timeout 0.1 git diff --quiet; then
             GIT_SYMBOLS+="+"
         fi
@@ -90,11 +86,9 @@ _GEN_PROMPT()
             GIT_SYMBOLS+="*"
         fi
         if [[ -n "$GIT_SYMBOLS" ]]; then
-            GIT_INFO="${GIT_INFO} [${GIT_SYMBOLS}]"
+            GIT_INFO+=" [${GIT_SYMBOLS}]"
         fi
-        GIT_INFO="${GIT_INFO:-}"
     fi
-    TIME="$(printf "%(%H:%M:%S)T")"
 
     local PROMPT_COLORLESS="${USER_HOST}:${WORKDIR} ${GIT_INFO}${ERROR}"
     # Eight characters for the date.
@@ -103,8 +97,7 @@ _GEN_PROMPT()
         # Emojis actually take up two columns, but bash counts them as 1 character.
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
-    local SPACES
-    SPACES="$(printf "%${NUM_SPACES}s")"
+    local SPACES="$(printf "%${NUM_SPACES}s")"
 
     # Set the title.
     echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"

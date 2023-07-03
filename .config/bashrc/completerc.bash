@@ -14,7 +14,7 @@ _setup_path_compl() {
 }
 
 __do_completion_for() {
-    completion_func=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
+    local completion_func=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
 
     # Some completions are loaded dynamically on demand
     if [[ -z "$completion_func" ]]; then
