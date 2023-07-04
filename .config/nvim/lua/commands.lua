@@ -20,7 +20,7 @@ vim.api.nvim_create_user_command('DiffToggle', function()
             vim.notify("DiffToggle: File doesn't exist (or can't be opened).")
             return
         end
-        local scratch_bufname = 'disk: ' .. vim.fn.expand('%')
+        local scratch_bufname = 'disk:' .. vim.fn.expand('%')
         vim.b.scratch_bufname = scratch_bufname
         vim.cmd('vert new')
         vim.b.scratch_bufname = scratch_bufname
