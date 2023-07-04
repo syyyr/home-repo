@@ -10,7 +10,7 @@ syyyr.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 --" toggle unsaved changes diff
 vim.api.nvim_create_user_command('DiffToggle', function()
-    if not vim.b.scratch_bufname  then
+    if not vim.b.scratch_bufname then
         local scratch_bufname = 'disk: ' .. vim.fn.expand('%')
         vim.b.scratch_bufname = scratch_bufname
         vim.cmd('vert new')
