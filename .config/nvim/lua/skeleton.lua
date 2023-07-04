@@ -1,18 +1,25 @@
 local skeletons = vim.api.nvim_create_augroup('Skeletons', {clear = true})
-vim.api.nvim_create_autocmd('BufNewFile', {
-	pattern = 'main.c,main.cpp',
-    callback = function()
-		vim.cmd([[execute "normal! iint main(int argc, char* argv[])\n{\nreturn 0;\n}k==k"]])
-		vim.fn.feedkeys('o')
-    end,
-    group = skeletons
-})
+local function add_skeleton(filenames, lines, start_line)
+    vim.api.nvim_create_autocmd('BufNewFile', {
+        pattern = filenames,
+        callback = function()
+            vim.api.nvim_buf_set_text(0, 0, 0, 0, 0, lines)
+            vim.fn.cursor({start_line, 1})
+            vim.fn.feedkeys('o')
+        end,
+        group = skeletons
+    })
+end
 
-vim.api.nvim_create_autocmd('BufNewFile', {
-	pattern = 'main.rs',
-    callback = function()
-		vim.cmd([[execute "normal! ifn main()\n{\n}k"]])
-		vim.fn.feedkeys('o')
-    end,
-    group = skeletons
-})
+add_skeleton('main.c,main.cpp', {
+    'int main(int argc, char* argv[])',
+    '{',
+    '    return 0;',
+    '}'
+}, 2)
+
+add_skeleton('main.rs', {
+    'fn main()',
+    '{',
+    '}'
+}, 2)
