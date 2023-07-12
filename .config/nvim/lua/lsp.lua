@@ -154,8 +154,8 @@ require('lspconfig').pylsp.setup({
 })
 
 require('lspconfig').qmlls.setup({
-    cmd = {'qmlls6'},
-    filetypes = {'qml', '-b', 'build'}
+    filetypes = {'qml'},
+    cmd = {'qmlls6', '-b', 'build'}
 })
 
 
