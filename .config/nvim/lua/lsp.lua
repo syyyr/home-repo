@@ -72,6 +72,7 @@ for _, lsp_name in ipairs({
     'bashls',
     'cmake',
     'jsonls',
+    'pkgbuild_language_server',
     'tsserver',
     'vimls'}) do
     require('lspconfig')[lsp_name].setup({
