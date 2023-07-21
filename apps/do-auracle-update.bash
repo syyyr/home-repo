@@ -3,7 +3,13 @@ set -euo pipefail
 
 pushd "$HOME/.local/aur"
 auracle update || true
-for i in $(auracle -q outdated) $(pacman -Qqs '.-git$'); do
+
+# These are part of another package.
+filter_disabled_packages() {
+    grep -v "mingw-w64-harfbuzz-icu"
+}
+
+for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$'); do
     "$HOME/apps/update-aur-dep.bash" "$i"
 done
 popd
