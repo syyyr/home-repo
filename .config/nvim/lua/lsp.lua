@@ -74,11 +74,40 @@ for _, lsp_name in ipairs({
     'jsonls',
     'pkgbuild_language_server',
     'tsserver',
+    'yang_lsp',
     'vimls'}) do
     require('lspconfig')[lsp_name].setup({
         capabilities = capabilities
     })
 end
+
+require('lspconfig').diagnosticls.setup({
+    filetypes = {'cpp'},
+    init_options = {
+        linters = {
+            gitlab = {
+                command = "/home/vk/apps/gitlab-review-diagnostic.bash",
+                rootPatterns = {".git"},
+                args = { "%filepath" },
+                sourceName = "gitlab",
+                parseJson = {
+                    sourceName = "file",
+                    sourceNameFilter = true,
+                    line = "line",
+                    endline = "endline",
+                    message = "${message}",
+                    security = "severity",
+                },
+                securities = {
+                    warning = "warning"
+                }
+            }
+        },
+        filetypes = {
+            cpp = "gitlab"
+        }
+    }
+})
 
 require('lspconfig').yamlls.setup({
     settings = {
