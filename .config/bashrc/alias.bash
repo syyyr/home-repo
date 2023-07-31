@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /usr/share/bash-complete-alias/complete_alias
+alias agit="git"
 alias calc="python -q"
 alias cd..='cd ..'
 alias dc..='cd ..'
