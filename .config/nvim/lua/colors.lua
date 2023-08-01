@@ -28,6 +28,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         -- WinSeparator
         vim.cmd('highlight WinSeparator ' .. separator_colors)
 
+        -- Search
+        vim.cmd('highlight search ctermbg=11 guifg=#444444 guibg=#ffffaa')
+
         -- End of buffer
         vim.cmd('highlight clear EndOfBuffer')
         vim.cmd('highlight link EndOfBuffer NonText')
