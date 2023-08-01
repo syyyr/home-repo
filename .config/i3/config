@@ -6,7 +6,7 @@ bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/apps/copypasta.bash
 
 # Microphone mute
-bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --source alsa_input.pci-0000_05_00.6.HiFi__hw_acp__source --toggle-mute; exec ~/apps/mic-led.bash
+bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --default-source --toggle-mute; exec ~/apps/mic-led.bash
 
 # Screenshot
 bindsym --release Print exec --no-startup-id \
