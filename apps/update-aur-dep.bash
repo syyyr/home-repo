@@ -14,6 +14,16 @@ if ! "${UPDATE_COMMAND[@]}"; then
 	echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}Building $1 failed.${BASH_COLOR_NORMAL}"
 	echo "Removing $HOME/.local/aur/$1/src and trying again..."
 	rm -rf "$HOME/.local/aur/$1/src"
-	"${UPDATE_COMMAND[@]}"
+	if ! "${UPDATE_COMMAND[@]}"; then
+		echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}Building $1 failed.${BASH_COLOR_NORMAL}"
+		echo -n 'Try with --skippgpcheck? [Y/n] '
+		read -r
+		if [[ -n "$REPLY" ]] && ! [[ "$REPLY" =~ [Yy] ]]; then
+			echo 'Aborting.'
+			exit 1
+		fi
+		echo "Trying again with --skippgpcheck..."
+		"${UPDATE_COMMAND[@]}" --skippgpcheck
+	fi
 fi
 popd
