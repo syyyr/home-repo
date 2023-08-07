@@ -29,6 +29,7 @@ hidden/hands 🫣
 sunglasses 😎
 smirk/lewd 😏
 oops/blush/embarrassed 😳
+skull 💀
 peace ✌️
 smiling/crying 🥲
 checkmark ✅
