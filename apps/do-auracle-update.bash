@@ -10,6 +10,8 @@ filter_disabled_packages() {
 }
 
 for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$'); do
-    "$HOME/apps/update-aur-dep.bash" "$i"
+    "$HOME/apps/update-aur-dep.bash" "$i" || true
 done
 popd
+
+auracle update || true
