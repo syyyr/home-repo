@@ -128,3 +128,9 @@ syyyr.nmap('úc', '<cmd>cprev<cr>')
 syyyr.nmap(')c', '<cmd>cnext<cr>')
 
 syyyr.nmap('<a-f>', '<cmd>CF<cr>')
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
+    end,
+})
