@@ -1,0 +1,10 @@
+[Unit]
+Description=Headphone jack service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/vk/apps/headphone-jack.bash
+
+[Install]
+WantedBy=graphical-session.target
