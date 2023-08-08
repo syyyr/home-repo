@@ -188,13 +188,15 @@ require('lspconfig').qmlls.setup({
     cmd = {'qmlls6', '-b', 'build'}
 })
 
-
 vim.cmd('packadd! clangd_extensions.nvim')
-require('clangd_extensions').setup({
-    server = {
-        capabilities = capabilities,
-        cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}
-    },
+
+require('lspconfig').clangd.setup({
+    capabilities = capabilities,
+    cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'},
+    on_attach = function ()
+        require("clangd_extensions.inlay_hints").setup_autocmd()
+        require("clangd_extensions.inlay_hints").set_inlay_hints()
+    end
 })
 
 cmp.setup.filetype('cpp', {
