@@ -4,16 +4,23 @@ local function add_iostream()
     end
 end
 
+local function get_stream()
+    if vim.fn.search('#include <Q', 'nw') ~= 0 then
+        return 'qDebug()'
+    else
+        add_iostream()
+        return 'std::cerr'
+    end
+end
+
 local syyyr = require('syyyr')
 
 syyyr.register_printing({
     print_var = function(var_name)
-        add_iostream()
-        return [[std::cerr << "]] .. syyyr.escape_double_quotes(var_name) .. [[" << " = " << ]] .. var_name .. [[ << "\n";]]
+        return get_stream() .. [[ << "]] .. syyyr.escape_double_quotes(var_name) .. [[" << " = " << ]] .. var_name .. [[ << "\n";]]
     end,
     print_text = function(text)
-        add_iostream()
-        return [[std::cerr << "]] .. syyyr.escape_double_quotes(text) .. [[\n";]]
+        return get_stream() .. [[ << "]] .. syyyr.escape_double_quotes(text) .. [[\n";]]
     end,
 })
 
