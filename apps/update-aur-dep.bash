@@ -5,7 +5,7 @@ readonly BASH_COLOR_BOLD=$'\033''[1m'
 readonly BASH_COLOR_RED=$'\033''[31m'
 readonly BASH_COLOR_NORMAL=$'\033''[0m'
 
-readonly UPDATE_COMMAND=(env MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
+readonly UPDATE_COMMAND=(env CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
 readonly AUR_DEP="$1"
 
 try_again_message() {
