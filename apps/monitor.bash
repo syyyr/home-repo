@@ -24,7 +24,7 @@ sleep 3 # Wait a bit. If we just booted, this script wouldn't work right away.
 refresh
 
 udevadm monitor -k | while IFS= read -r line; do
-    if ! grep -qF '/devices/pci0000:00/0000:00:08.1/0000:05:00.0/drm/card0 (drm)' <<< "$line"; then
+    if ! grep -qF '/devices/pci0000:00/0000:00:08.1/0000:05:00.0/drm/card1 (drm)' <<< "$line"; then
         continue
     fi
 
