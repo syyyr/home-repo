@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -u
 
 readonly BASH_COLOR_BOLD=$'\033''[1m'
 readonly BASH_COLOR_RED=$'\033''[31m'
@@ -14,25 +14,25 @@ try_again_message() {
 	read -r
 	if [[ -n "$REPLY" ]] && ! [[ "$REPLY" =~ [Yy] ]]; then
 		echo 'Aborting.'
-		exit 1
+		return 1
 	fi
 	echo "Trying again with ${1}..."
 }
 
-pushd "$HOME/.local/aur/$AUR_DEP"
+pushd "$HOME/.local/aur/$AUR_DEP" || exit 1
 git reset --hard
 
 if "${UPDATE_COMMAND[@]}"; then
 	exit 0
 fi
 
-try_again_message '--skippgpcheck'
-if "${UPDATE_COMMAND[@]}" --skippgpcheck; then
-	exit 0
+
+if try_again_message '--skippgpcheck'; then
+	"${UPDATE_COMMAND[@]}" --skippgpcheck && exit 0
 fi
 
-try_again_message 'removing the build directory'
-echo "Removing $HOME/.local/aur/$AUR_DEP/src and trying again..."
-rm -rf "$HOME/.local/aur/$AUR_DEP/src"
-"${UPDATE_COMMAND[@]}"
-popd
+if try_again_message 'removing the build directory'; then
+	echo "Removing $HOME/.local/aur/$AUR_DEP/src and trying again..."
+	rm -rf "$HOME/.local/aur/$AUR_DEP/src"
+	"${UPDATE_COMMAND[@]}" && exit 0
+fi
