@@ -23,12 +23,14 @@ require('indent_blankline').setup({
     buftype_exclude = {'tab', 'help'}
 })
 
+vim.cmd('packadd! blame.nvim')
+vim.api.nvim_create_user_command('GT', 'ToggleBlame virtual', {nargs = 0})
+
 vim.cmd('packadd! git-blame.nvim')
 vim.g.gitblame_enabled = 0
 vim.g.gitblame_highlight_group = 'Question'
 vim.g.gitblame_set_extmark_options = {hl_mode = 'combine'}
 
-vim.api.nvim_create_user_command('GT', 'GitBlameToggle', {nargs = 0})
 vim.api.nvim_create_user_command('GSHA', 'GitBlameCopySHA', {nargs = 0})
 vim.api.nvim_create_user_command('GURL', 'GitBlameOpenCommitURL', {nargs = 0})
 
