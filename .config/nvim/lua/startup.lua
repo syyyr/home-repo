@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
             stdin = vim.fn.join(vim.api.nvim_buf_get_lines(0, 0, -1, true), "\n"),
         }, function(res)
                 if res.code ~= 0 then
-                    vim.b.TrailingNr = ''
+                    vim.b.TrailingNr = nil
                     return
                 end
 

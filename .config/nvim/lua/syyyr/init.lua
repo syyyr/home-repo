@@ -59,7 +59,7 @@ function M.escape_double_quotes(text)
 end
 
 ---@param type string
----@param lnum integer
+---@param lnum string
 ---@return string
 local function format_statusline_diagnostics(type, lnum)
     return string.format('%s: ln %s', type, lnum)
@@ -70,7 +70,7 @@ function M.statusline_diagnostics()
     for _, severity in pairs({"ERROR", "WARN", "INFO", "HINT"}) do
         local diagnostic = vim.diagnostic.get(0, {severity = vim.diagnostic.severity[severity]})[1]
         if diagnostic then
-            return format_statusline_diagnostics(severity:sub(1, 1), diagnostic.lnum + 1)
+            return format_statusline_diagnostics(severity:sub(1, 1), tostring(diagnostic.lnum + 1))
         end
     end
     if vim.b.TrailingNr and vim.b.TrailingNr ~= '' and vim.api.nvim_get_mode() ~= 'i' then
@@ -88,7 +88,7 @@ local function print_something(what)
 end
 
 ---@class PrintingConfig
----@field no_printthis boolean
+---@field no_printthis? boolean
 ---@field print_text fun(text: string): string
 ---@field print_var fun(var_name: string): string
 
