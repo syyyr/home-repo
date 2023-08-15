@@ -24,6 +24,11 @@ require('indent_blankline').setup({
 })
 
 vim.cmd('packadd! blame.nvim')
+require('blame').setup({
+    date_format = "%Y/%m/%d %H:%M",
+    virtual_style = "float"
+})
+
 vim.api.nvim_create_user_command('GT', 'ToggleBlame virtual', {nargs = 0})
 
 vim.cmd('packadd! git-blame.nvim')
