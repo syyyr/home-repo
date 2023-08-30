@@ -36,3 +36,5 @@ if try_again_message 'removing the build directory'; then
 	rm -rf "$HOME/.local/aur/$AUR_DEP/src"
 	"${UPDATE_COMMAND[@]}" && exit 0
 fi
+
+echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}Building $AUR_DEP failed. Giving up.${BASH_COLOR_NORMAL}"
