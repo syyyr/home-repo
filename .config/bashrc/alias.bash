@@ -44,5 +44,6 @@ alias pull='git pull'
 alias push='git push'
 alias reflog='git reflog'
 alias show='git show'
+alias x86_64-w64-mingw32-wine='LC_ALL=C x86_64-w64-mingw32-wine'
 alias watch='watch -n1'
 complete -F _complete_alias "${!BASH_ALIASES[@]}"
