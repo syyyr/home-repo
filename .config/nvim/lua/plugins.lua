@@ -10,7 +10,6 @@ vim.cmd('packadd! vim-cpp-modern')
 vim.cmd('packadd! vim-icalendar')
 vim.cmd('packadd vim-kitty')
 vim.cmd('packadd! vim-pug')
-vim.cmd('packadd! vim-qml')
 vim.cmd('packadd! yang.vim')
 
 require('inc_rename').setup({
