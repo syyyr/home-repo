@@ -56,6 +56,7 @@ honk/goose 🦢
 puke 🤮
 devil 😈
 shrug ¯\_(ツ)_/¯
+lenny ( ͡° ͜ʖ ͡°)
 monocle/detective 🧐
 tm ™
 green_circle 🟢
