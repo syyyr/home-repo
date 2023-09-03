@@ -4,9 +4,12 @@ set -euo pipefail
 pushd "$HOME/.local/aur"
 auracle update || true
 
-# These are part of another package.
 filter_disabled_packages() {
-    grep -v "mingw-w64-harfbuzz-icu"
+    local DISABLED_PKGS=(
+        # These are part of another package.
+        -e "mingw-w64-harfbuzz-icu"
+    )
+    grep -v "${DISABLED_PKGS[@]}"
 }
 
 for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$'); do
