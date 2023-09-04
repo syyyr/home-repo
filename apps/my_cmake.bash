@@ -125,8 +125,8 @@ for arg in "$@"; do
             ;;
         android)
             echo "Enabling android."
-            CMAKE="$HOME/qt/6.5.1/android_arm64_v8a/bin/qt-cmake"
-            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.5.1/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
+            CMAKE="$HOME/qt/6.5.2/android_arm64_v8a/bin/qt-cmake"
+            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.5.2/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
             shift
             ;;
         no-mold)
