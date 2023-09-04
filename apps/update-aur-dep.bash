@@ -26,6 +26,9 @@ if "${UPDATE_COMMAND[@]}"; then
 	exit 0
 fi
 
+if try_again_message '--nocheck'; then
+	"${UPDATE_COMMAND[@]}" --nocheck && exit 0
+fi
 
 if try_again_message '--skippgpcheck'; then
 	"${UPDATE_COMMAND[@]}" --skippgpcheck && exit 0
