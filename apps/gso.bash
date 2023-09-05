@@ -2,26 +2,18 @@
 set -euo pipefail
 
 "$HOME/apps/check-available.bash" rg || exit 1
-CASE="--case-sensitive"
 OPEN_ALL='0'
+RG_CMD_ARGS=()
 for arg in "$@"; do
     case "$arg" in
-        -a)
-            OPEN_ALL='1'
-            shift
-            ;;
-        -i)
-            CASE='--ignore-case'
-            shift
-            ;;
-        -ai)
-            CASE='--ignore-case'
-            OPEN_ALL='1'
-            shift
-            ;;
-        -ia)
-            CASE='--ignore-case'
-            OPEN_ALL='1'
+        -*)
+            [[ "$arg" =~ a ]] && OPEN_ALL='1' || OPEN_ALL='0'
+            [[ "$arg" =~ i ]] && RG_CMD_ARGS+=('--ignore-case') || RG_CMD_ARGS+=('--case-sensitive')
+            [[ "$arg" =~ n ]] && RG_CMD_ARGS+=('--no-ignore') || RG_CMD_ARGS+=('--ignore')
+            while [[ "$arg" =~ ([^-ain]) ]]; do
+                echo "Unknown option:" -"${BASH_REMATCH[1]}"
+                arg="$(tr -d "${BASH_REMATCH[1]}" <<< "$arg")"
+            done
             shift
             ;;
         *)
@@ -47,12 +39,12 @@ if [[ -z "${SEARCH_PATTERN+x}" ]]; then
 fi
 
 if [[ "$OPEN_ALL" = "1" ]]; then
-    COLOR=--color=never
+    RG_CMD_ARGS+=("--color=never")
 else
-    COLOR=--color=always
+    RG_CMD_ARGS+=("--color=always")
 fi
 
-RG_CMD=( rg "$CASE" "$COLOR" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
 echo "${RG_CMD[@]@Q}"
 if ! RESULTS="$("${RG_CMD[@]}")"; then
