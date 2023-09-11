@@ -47,7 +47,7 @@ while true; do
 	fi
 
 	if [[ "$REPLY" =~ "r" ]]; then
-		echo "Removing $HOME/.local/aur/$AUR_DEP/src and trying again..."
+		echo "Removing $HOME/.local/aur/$AUR_DEP/src..."
 		rm -rf "$HOME/.local/aur/$AUR_DEP/src"
 	fi
 done
