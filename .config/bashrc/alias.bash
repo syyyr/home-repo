@@ -2,6 +2,7 @@
 
 source /usr/share/bash-complete-alias/complete_alias
 alias agit="git"
+alias aur-srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias calc="python -q"
 alias cd..='cd ..'
 alias dc..='cd ..'
