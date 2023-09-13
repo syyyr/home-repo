@@ -52,4 +52,4 @@ while true; do
 	fi
 done
 
-echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}Building $AUR_DEP failed. Giving up.${BASH_COLOR_NORMAL}"
+echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}Giving up.${BASH_COLOR_NORMAL}"
