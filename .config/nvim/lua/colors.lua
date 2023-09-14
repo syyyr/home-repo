@@ -30,7 +30,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         -- Search
         vim.cmd('highlight search ctermbg=11 guifg=#444444 guibg=#ffffaa')
-        vim.cmd('highlight CurSearch ctermbg=11 guifg=#444444 guibg=#ffff00')
 
         -- End of buffer
         vim.cmd('highlight clear EndOfBuffer')
