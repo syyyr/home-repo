@@ -44,6 +44,8 @@ clown 🤡
 duck/kachna 🦆
 eyes 👀
 strong/arm 💪
+knife 🔪
+hammer 🔨
 roll 🙄
 smoke/exhale 😤
 sweat 😅
