@@ -25,6 +25,7 @@ require('indent_blankline').setup({
 vim.cmd('packadd! blame.nvim')
 require('blame').setup({
     date_format = "%Y/%m/%d %H:%M",
+    merge_consecutive = false,
     virtual_style = "float"
 })
 
