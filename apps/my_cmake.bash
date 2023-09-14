@@ -134,6 +134,11 @@ for arg in "$@"; do
             MOLD=0
             shift
             ;;
+        no-lto)
+            echo "Disabling lto."
+            LTO=0
+            shift
+            ;;
         mingw)
             echo "Enabling MingW."
             CMAKE=x86_64-w64-mingw32-cmake
