@@ -62,7 +62,7 @@ diskdata {
     format = "[\?color=free {free}]"
     format_space = "{value:.1f} GB"
     thresholds = {
-        'free': [(0, 'worst'), (0.3, 'worse'), (0.5, 'better'), (1, 'best')]
+        'free': [(0, 'worst'), (30, 'worse'), (70, 'better'), (100, 'best')]
     }
     color_best = '#00FF00'
     color_better = '#FFFF00'
@@ -93,6 +93,6 @@ lm_sensors T14s {
     format_chip = '{format_sensor}  ° C'
     cache_timeout = 3
     thresholds = {
-        'input': [(70, 'red'), (60, 'orange'), (55, 'yellow'), (40, 'lime'), (0, 'cyan')]
+        'input': [(80, 'red'), (70, 'orange'), (60, 'yellow'), (40, 'lime'), (0, 'cyan')]
     }
 }
