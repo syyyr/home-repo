@@ -8,7 +8,6 @@ for arg in "$@"; do
     case "$arg" in
         -*)
             [[ "$arg" =~ a ]] && OPEN_ALL='1' || OPEN_ALL='0'
-            [[ "$arg" =~ i ]] && RG_CMD_ARGS+=('--ignore-case') || RG_CMD_ARGS+=('--case-sensitive')
             [[ "$arg" =~ n ]] && RG_CMD_ARGS+=('--no-ignore') || RG_CMD_ARGS+=('--ignore')
             while [[ "$arg" =~ ([^-ain]) ]]; do
                 echo "Unknown option:" -"${BASH_REMATCH[1]}"
@@ -37,6 +36,15 @@ if [[ -z "${SEARCH_PATTERN+x}" ]]; then
     SEARCH_PATTERN="${SEARCH_LOCATIONS[0]:-}"
     SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
 fi
+
+# Smart case
+if [[ "${SEARCH_PATTERN}" != "${SEARCH_PATTERN,,}" ]]; then
+    IGNORE_CASE='--case-sensitive'
+else
+    IGNORE_CASE='--ignore-case'
+fi
+
+RG_CMD_ARGS+=("$IGNORE_CASE")
 
 if [[ "$OPEN_ALL" = "1" ]]; then
     RG_CMD_ARGS+=("--color=never")
