@@ -19,6 +19,7 @@ hands 🙌
 rofl 🤣
 happy/tear 🥲
 holy/halo 😇
+wow 😲
 party 🎉
 heart ❤
 broken_heart 💔
