@@ -20,6 +20,7 @@ rofl 🤣
 happy/tear 🥲
 holy/halo 😇
 wow 😲
+gun/pistol 🔫
 party 🎉
 heart ❤
 broken_heart 💔
