@@ -123,30 +123,39 @@ require('lspconfig').yamlls.setup({
 })
 
 vim.cmd('packadd! plenary.nvim')
-vim.cmd('packadd! null-ls.nvim')
-local null_ls = require('null-ls')
-null_ls.setup({
-    sources = {
-        null_ls.builtins.diagnostics.actionlint,
-        null_ls.builtins.diagnostics.checkmake,
-        null_ls.builtins.diagnostics.luacheck,
-        null_ls.builtins.diagnostics.vint,
 
-        null_ls.builtins.diagnostics.cmake_lint.with({
-            extra_args = {
-                '--disabled-codes',
-                'C0103', -- invalid variable name
-                'C0111', -- missing docstring
-                'C0306', -- indentation
-                'C0307', -- indentation
-            }
-        }),
-        null_ls.builtins.diagnostics.gitlint.with({
-            extra_args = {
-                '--ignore',
-                'body-is-missing,body-min-length,title-min-length',
-            }
-        }),
+vim.cmd('packadd! efmls-configs-nvim')
+local efm_languages = {
+    yaml = { vim.tbl_extend('force', require('efmls-configs.linters.actionlint'), {requireMarker = true}) },
+    cpp = { require('efmls-configs.linters.clazy') },
+    make = { require('efmls-configs.linters.checkmake') },
+    lua = { require('efmls-configs.linters.luacheck') },
+    vim = { require('efmls-configs.linters.vint') },
+
+    cmake = { vim.tbl_extend('force', require('efmls-configs.linters.cmake_lint'), {
+        lintCommand = table.concat({
+            'cmake-lint',
+            '--disabled-codes',
+            'C0103', -- invalid variable name
+            'C0111', -- missing docstring
+            'C0306', -- indentation
+            'C0307' -- indentation
+        }, ' ')
+    })
+    },
+    gitcommit = { vim.tbl_extend('force', require('efmls-configs.linters.gitlint'), {
+        lintCommand = table.concat({
+            'gitlint',
+            '--ignore',
+            'body-is-missing,body-min-length,title-min-length'
+        }, ' ')
+    })}
+}
+
+require('lspconfig').efm.setup({
+    filetypes = vim.tbl_keys(efm_languages),
+    settings = {
+        languages = efm_languages,
     },
 })
 
