@@ -51,6 +51,13 @@ function M.none(input, f)
     end)
 end
 
+---@param input table
+---@param f function
+---@return boolean
+function M.any(input, f)
+    return not M.none(input, f)
+end
+
 ---@param text string
 ---@return string
 function M.escape_double_quotes(text)
