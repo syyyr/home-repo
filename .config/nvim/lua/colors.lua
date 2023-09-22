@@ -41,6 +41,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         -- Make TODO have a default background
         vim.cmd('highlight Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default')
 
+        -- Lowercase Note
+        vim.cmd('highlight link LowerCaseNote Todo')
+
         -- LSP colors
         vim.cmd('highlight clear LspDiagnosticsDefaultError')
         vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
@@ -85,6 +88,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 vim.api.nvim_create_autocmd('Syntax', {
     callback = function()
         vim.cmd([[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']])
+        vim.cmd([[syn keyword LowerCaseNote Note contained containedin=cCommentL]])
     end,
     group = vim.api.nvim_create_augroup('CustomSyntax', {clear = true})
 })
