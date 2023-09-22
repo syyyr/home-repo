@@ -4,7 +4,7 @@ vim.cmd('packadd! nvim-treesitter-playground')
 require('nvim-treesitter.configs').setup({
     highlight = {
         enable = true,
-        disable = {'cpp'},
+        disable = {'cpp', 'markdown'},
     },
     indent = {
         enable = true,
@@ -20,6 +20,7 @@ require('nvim-treesitter.configs').setup({
         'cpon',
         'cpp',
         'lua',
+        'markdown',
         'python',
         'qmljs',
         'typescript',
