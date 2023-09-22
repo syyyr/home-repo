@@ -10,8 +10,12 @@ local function add_thread()
     end
 end
 
+local syyyr = require('syyyr')
+
 local function have_qt()
-    return vim.fn.search('#include <Q', 'nw') ~= 0
+    return syyyr.any({'#include <Q', 'QString', 'QDateTime'}, function(needle)
+        vim.fn.search(needle, 'nw')
+    end)
 end
 
 local function get_stream()
@@ -22,8 +26,6 @@ local function get_stream()
         return 'std::cerr'
     end
 end
-
-local syyyr = require('syyyr')
 
 syyyr.register_printing({
     print_var = function(var_name)
