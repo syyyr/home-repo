@@ -132,5 +132,6 @@ syyyr.nmap('<a-f>', '<cmd>CF<cr>')
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
+        vim.bo[ev.buf].formatexpr = nil
     end,
 })
