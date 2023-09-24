@@ -21,6 +21,7 @@ happy/tear 🥲
 holy/halo 😇
 wow 😲
 gun/pistol 🔫
+handshake/shaking_hands 🤝
 party 🎉
 heart ❤
 broken_heart 💔
