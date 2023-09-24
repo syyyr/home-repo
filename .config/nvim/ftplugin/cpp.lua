@@ -14,7 +14,7 @@ local syyyr = require('syyyr')
 
 local function have_qt()
     return syyyr.any({'#include <Q', 'QString', 'QDateTime'}, function(needle)
-        vim.fn.search(needle, 'nw')
+        return vim.fn.search(needle, 'nw')
     end)
 end
 
