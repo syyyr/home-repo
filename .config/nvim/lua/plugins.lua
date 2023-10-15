@@ -17,9 +17,13 @@ require('inc_rename').setup({
 })
 
 vim.cmd('packadd! indent-blankline.nvim')
-require('indent_blankline').setup({
-    char = '▏',
-    buftype_exclude = {'tab', 'help'}
+require('ibl').setup({
+	indent = {
+		char = '▏',
+	},
+	exclude = {
+		buftypes = {'tab', 'help'}
+	}
 })
 
 vim.cmd('packadd! blame.nvim')
