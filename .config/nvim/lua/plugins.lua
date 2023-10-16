@@ -18,6 +18,9 @@ require('inc_rename').setup({
 
 vim.cmd('packadd! indent-blankline.nvim')
 require('ibl').setup({
+	scope = {
+		enabled = false
+	},
 	indent = {
 		char = '▏',
 	},
