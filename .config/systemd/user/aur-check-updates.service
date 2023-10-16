@@ -1,0 +1,6 @@
+[Unit]
+Description=Check AUR updates via auracle
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash /home/vk/apps/aur-check-updates.bash
