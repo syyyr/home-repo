@@ -26,8 +26,8 @@ online_status {
 }
 
 bluetooth {
-    format = "\?color=connected BT: {format_adapter}|\?color=connected BT: down"
-    thresholds = [(False, "dimgrey"), (True, "deepskyblue")]
+    format = "\?color=deepskyblue BT: {format_adapter}|\?color=dimgrey BT: down"
+    format_device = "\?if=connected {alias}"
     on_click 1 = 'exec bluetoothctl disconnect && py3-cmd refresh bluetooth'
 }
 
