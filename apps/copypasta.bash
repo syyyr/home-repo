@@ -26,6 +26,7 @@ party 🎉
 heart ❤
 broken_heart 💔
 cash 💸
+facepalm 🤦
 heart_eyes 😍
 star_eyes 🤩
 hidden/hands 🫣
