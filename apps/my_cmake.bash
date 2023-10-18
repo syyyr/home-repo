@@ -70,11 +70,6 @@ for arg in "$@"; do
             CXXFLAGS="-ftime-trace ${CXXFLAGS}"
             shift
             ;;
-        templight)
-            echo "Enabling templight."
-            CXX="templight++"
-            shift
-            ;;
         cov)
             echo "Enabling code coverage."
             CFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CFLAGS}"
