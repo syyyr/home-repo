@@ -19,6 +19,11 @@ info() {
 	echo "${ARGS[@]}"
 }
 
+remove_build_dir() {
+	echo "Removing $HOME/.local/aur/$AUR_DEP/src..."
+	rm -rf "$HOME/.local/aur/$AUR_DEP/src"
+}
+
 UPDATE_COMMAND=(env CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
 
 pushd "$HOME/.local/aur/$AUR_DEP" || exit 1
@@ -26,6 +31,12 @@ git reset --hard
 
 while true; do
 	info "Building $AUR_DEP..."
+
+	# shellcheck disable=SC2043
+	for i in cmake-language-server-git; do
+		[[ "$i" = "$AUR_DEP" ]] && info "Automatically removing build dir for $AUR_DEP." && remove_build_dir
+	done; unset i
+
 	"${UPDATE_COMMAND[@]}" && exit 0
 
 	echo "Building $AUR_DEP failed."
@@ -47,8 +58,7 @@ while true; do
 	fi
 
 	if [[ "$REPLY" =~ "r" ]]; then
-		echo "Removing $HOME/.local/aur/$AUR_DEP/src..."
-		rm -rf "$HOME/.local/aur/$AUR_DEP/src"
+		remove_build_dir
 	fi
 done
 
