@@ -21,9 +21,7 @@ CACHE=1
 GRAPHVIZ=0
 MOLD=1
 LTO=1
-CC="clang"
-CXX="clang++"
-LD="clang"
+CLANG=1
 CFLAGS="${CFLAGS:-}"
 CXXFLAGS="${CXXFLAGS:-}"
 LDFLAGS="${LDFLAGS:-}"
@@ -59,9 +57,7 @@ for arg in "$@"; do
             ;;
         gcc)
             echo "Enabling GCC."
-            CC="gcc"
-            CXX="g++"
-            LD=""
+            CLANG=0
             shift
             ;;
         time)
@@ -105,9 +101,7 @@ for arg in "$@"; do
             ;;
         gcc-analyzer)
             echo "Enabling GCC static analyzer."
-            CC="gcc"
-            CXX="g++"
-            LD=""
+            CLANG=0
             CFLAGS="-fanalyzer ${CFLAGS}"
             CXXFLAGS="-fanalyzer ${CXXFLAGS}"
             shift
@@ -122,6 +116,9 @@ for arg in "$@"; do
             echo "Enabling android."
             CMAKE="$HOME/qt/6.6.0/android_arm64_v8a/bin/qt-cmake"
             CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.6.0/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
+            MOLD=0
+            LTO=0
+            CLANG=0
             shift
             ;;
         no-mold)
@@ -139,9 +136,7 @@ for arg in "$@"; do
             CMAKE=x86_64-w64-mingw32-cmake
             MOLD=0
             LTO=0
-            CC=""
-            CXX=""
-            LD=""
+            CLANG=0
             shift
             ;;
         wasm)
@@ -167,6 +162,16 @@ EXTRA_ARGS=( "$@" )
 if [[ "${#EXTRA_ARGS[@]}" = 0 ]]; then
     echo "${BASH_COLOR_RED}${BASH_COLOR_BOLD}Warning: no arguments supplied. CMake needs at least the source directory.${BASH_COLOR_NORMAL}"
     echo "${BASH_COLOR_RED}${BASH_COLOR_BOLD}CMake will probably error out.${BASH_COLOR_NORMAL}"
+fi
+
+if [[ "$CLANG" = 1 ]]; then
+    CC="clang"
+    CXX="clang++"
+    LD="clang"
+else
+    CC=""
+    CXX=""
+    LD=""
 fi
 
 if [[ "$CACHE" = 1 ]]; then
