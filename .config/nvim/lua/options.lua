@@ -45,13 +45,15 @@ vim.opt.undofile = true
 vim.opt.undolevels = 5000
 
 -- set path for :find
-vim.o.path='.'
-vim.opt.path:append('$PWD')
-vim.opt.path:append('src/**')
-vim.opt.path:append('tests/**')
-vim.opt.path:append('dist/**')
-vim.opt.path:append('public/**')
-vim.opt.path:append('include/**')
+vim.opt.path = {
+    '.',
+    '$PWD',
+    'src/**',
+    'tests/**',
+    'dist/**',
+    'public/**',
+    'include/**'
+}
 
 -- pretty windows split :>
 vim.opt.fillchars = 'fold: ,vert:▏'
