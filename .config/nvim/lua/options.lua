@@ -14,9 +14,6 @@ vim.opt.ttimeoutlen = 10
 -- set 7 lines to the cursor
 vim.opt.scrolloff = 7
 
--- sane opening new files
-vim.opt.hidden = true
-
 -- performance hack
 vim.opt.lazyredraw = true
 
