@@ -29,6 +29,8 @@ cash 💸
 facepalm 🤦
 heart_eyes 😍
 star_eyes 🤩
+eggplant 🍆
+sweat/drops 💦
 toust/toast/bread 🍞
 hidden/hands 🫣
 sunglasses 😎
