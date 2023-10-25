@@ -33,11 +33,9 @@
 # Uncomment the lines above if you want to pay attention to them.
 #
 
-#"py3-cmd refresh keyboard_locks"
-"killall -USR1 py3status"
+"py3-cmd refresh keyboard_locks"
    Release + Caps_Lock
-#"py3-cmd refresh keyboard_locks"
-"killall -USR1 py3status"
+"py3-cmd refresh keyboard_locks"
    Release + Num_Lock
 
 #keystate_numlock = enable
