@@ -140,41 +140,25 @@ local function impl_map(mode, noremap, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@alias MapFunction fun(lhs: string, rhs: string|function, opts: table|nil)
+
+---@type MapFunction
 function M.nnoremap(lhs, rhs, opts) impl_map('n', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.xnoremap(lhs, rhs, opts) impl_map('x', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.onoremap(lhs, rhs, opts) impl_map('o', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.omap(lhs, rhs, opts) impl_map('o', false, lhs, rhs, opts) end
----@param lhs string
----@param rhs string|function
----@param opts table|nil
+---@type MapFunction
 function M.nmap(lhs, rhs, opts) impl_map('', false, lhs, rhs, opts) end
 
 return M
