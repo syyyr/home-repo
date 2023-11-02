@@ -11,7 +11,7 @@ syyyr.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 --" toggle unsaved changes diff
 vim.api.nvim_create_user_command('DiffToggle', function()
     if not vim.b.scratch_bufname then
-        local file_name = vim.fn.expand('%')
+        local file_name = vim.fn.expand('%')--[[@as string]]
         if file_name == '' then
             vim.notify('DiffToggle: Empty file name.')
             return
@@ -54,5 +54,5 @@ vim.api.nvim_create_user_command('SetMakePath', function(info)
 end, { nargs = 1 })
 
 vim.api.nvim_create_user_command('CS', function(info)
-    vim.lsp.buf.workspace_symbol(info.args ~= '' and info.args or vim.fn.expand('<cword>'))
+    vim.lsp.buf.workspace_symbol(info.args ~= '' and info.args or vim.fn.expand('<cword>')--[[@as string]])
 end, { nargs = '?' })

@@ -1,7 +1,7 @@
 local syyyr = require('syyyr')
 local get_char_under_cursor = function()
     local column = vim.fn.col('.')
-    return vim.fn.getline('.'):sub(column, column)
+    return vim.fn.getline(vim.fn.line('.'))--[[@as string]]:sub(column, column)
 end
 local callback =  function(i)
     return function()
