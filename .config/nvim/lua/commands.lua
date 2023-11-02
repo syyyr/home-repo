@@ -43,11 +43,11 @@ syyyr.nnoremap('<a-,>', '<cmd>DiffToggle<cr>')
 --" end with :Q XD
 vim.api.nvim_create_user_command('Q', function(info)
     vim.cmd('q' .. (info.bang and '!' or ''))
-end, { nargs = 0, bang = 1 })
+end, { nargs = 0, bang = true })
 
 vim.api.nvim_create_user_command('Qa', function(info)
     vim.cmd('qa' .. (info.bang and '!' or ''))
-end, { nargs = 0, bang = 1 })
+end, { nargs = 0, bang = true })
 
 vim.api.nvim_create_user_command('SetMakePath', function(info)
     vim.o.makeprg = 'make -C ' .. info.args
