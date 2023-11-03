@@ -1,40 +1,38 @@
-vim.opt.title = true
-vim.opt.showmode = false
-vim.opt.cursorline = true
-
 vim.cmd('syntax enable')
-vim.opt.shiftwidth = 4
-
-vim.opt.timeout = true
-vim.opt.ttimeout = true
-vim.opt.timeoutlen = 1000
-vim.opt.ttimeoutlen = 10
-
-vim.opt.scrolloff = 7
-
-vim.opt.lazyredraw = true
-
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
-vim.opt.showmatch = true
-vim.opt.matchpairs:append('<:>,«:»')
-
-vim.opt.inccommand = 'split'
-
--- Always show fold column, good for the margin
+vim.opt.autoread = false -- Don't autoload file if it's changed outside of vim
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.commentstring = '# %s'
+vim.opt.complete:remove('t') -- Don't scan tagfiles
+vim.opt.cursorline = true
+vim.opt.diffopt:append('algorithm:patience')
+vim.opt.fillchars = 'fold: ,vert:▏'
 vim.opt.foldcolumn = '1'
-
+vim.opt.formatoptions:remove('t') -- Don't wrap text when it's longer than 'textwidth'
+vim.opt.inccommand = 'split'
+vim.opt.ignorecase = true
+vim.opt.lazyredraw = true
 vim.opt.linebreak = true
-
+vim.opt.makeprg = 'make -C build'
+vim.opt.matchpairs:append('<:>,«:»')
+vim.opt.mouse = ''
+vim.opt.scrolloff = 7
+vim.opt.shiftwidth = 4
+vim.opt.shortmess:append('I') -- Don't show :intro message
+vim.opt.shortmess:append('c') -- Don't show completion messages
+vim.opt.showmatch = true
+vim.opt.showmode = false
+vim.opt.signcolumn = 'yes'
+vim.opt.smartcase = true
+vim.opt.splitright = true
 vim.opt.swapfile = false
-
-vim.opt.wildmode = 'list:longest'
-
+vim.opt.tabstop = 4
+vim.opt.textwidth = 120
+vim.opt.title = true
 vim.opt.undofile = true
 vim.opt.undolevels = 5000
+vim.opt.updatetime = 300 -- The time for CursorHold trigger
+vim.opt.wildmode = 'list:longest'
 
--- For :find.
 vim.opt.path = {
     '.',
     '$PWD',
@@ -44,21 +42,6 @@ vim.opt.path = {
     'public/**',
     'include/**'
 }
-
-vim.opt.fillchars = 'fold: ,vert:▏'
-
-vim.opt.splitright = true
-
-vim.opt.clipboard = 'unnamedplus'
-
--- Don't scan tagfiles
-vim.opt.complete:remove('t')
-
--- Don't autoload file if it's changed outside of vim
-vim.opt.autoread = false
-
--- The time for CursorHold trigger
-vim.opt.updatetime = 300
 
 vim.opt.statusline =
     '%#StatusLineNC#' .. -- Set highlight group.
@@ -78,25 +61,3 @@ vim.opt.statusline =
     '%#StatusLineNC#' .. -- Set highlight group
     '%{&ft}' .. -- Show filetype
     '%=' -- Separator
-
--- Don't show completion messages
-vim.opt.shortmess:append('c')
-
--- Don't show :intro message
-vim.opt.shortmess:append('I')
-
-vim.opt.diffopt:append('algorithm:patience')
-
-vim.opt.signcolumn = 'yes'
-
--- Don't wrap text when it's longer than 'textwidth'
-vim.opt.formatoptions:remove('t')
-vim.opt.textwidth = 120
-
-vim.opt.makeprg = 'make -C build'
-
-vim.opt.commentstring = '# %s'
-
-vim.opt.mouse = ''
-
-vim.opt.tabstop = 4
