@@ -42,4 +42,4 @@ vim.api.nvim_buf_create_user_command(0, 'Sleep', function(info)
 end, { nargs = 1 })
 
 vim.cmd([[iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>]])
-vim.o.cinoptions='j1,(0,ws,Ws,:0,l1,N-s,E-s'
+vim.opt.cinoptions = {'j1', '(0', 'ws', 'Ws', ':0', 'l1', 'N-s', 'E-s'}

@@ -1,4 +1,4 @@
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- colors
 vim.g.PaperColor_Theme_Options = {
@@ -19,7 +19,7 @@ vim.g.PaperColor_Theme_Options = {
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'PaperColor',
     callback = function()
-        local separator_colors = vim.o.background == 'dark' and 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234' or 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
+        local separator_colors = vim.opt.background == 'dark' and 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234' or 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
 
         -- Status underline.
         vim.cmd('highlight StatusLineNC ' .. separator_colors .. ' cterm=underline gui=underline')

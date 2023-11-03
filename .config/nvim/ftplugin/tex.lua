@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     group = vim.api.nvim_create_augroup('CompilingTex', {clear = true})
 })
 
-vim.o.makeprg = 'make'
+vim.opt.makeprg = 'make'
 
 syyyr.inoremap([[\tit]], [[\textit{]], {buffer = true})
 syyyr.inoremap([[\ttt]], [[\texttt{]], {buffer = true})

@@ -3,14 +3,14 @@ local nightstart = os.getenv('NIGHTSTART') and tonumber(os.getenv('NIGHTSTART'))
 local daystart = os.getenv('DAYSTART') and tonumber(os.getenv('DAYSTART')) or 8
 local current_hour = tonumber(os.date('%H'))
 if current_hour < daystart or current_hour >= nightstart then
-    vim.o.background = 'dark'
+    vim.opt.background = 'dark'
 else
-    vim.o.background = 'light'
+    vim.opt.background = 'light'
 end
 
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
-        if vim.o.filetype == 'gitcommit' or vim.o.filetype == 'gitrebase' then
+        if vim.opt.filetype == 'gitcommit' or vim.opt.filetype == 'gitrebase' then
             return
         end
         local mark = vim.api.nvim_buf_get_mark(0, '"')

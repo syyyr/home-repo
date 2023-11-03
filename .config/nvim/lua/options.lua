@@ -71,7 +71,7 @@ vim.opt.complete:remove('t')
 vim.opt.autoread = false
 
 -- the time for CursorHold trigger
-vim.opt.updatetime=300
+vim.opt.updatetime = 300
 
 vim.opt.statusline =
     '%#StatusLineNC#' .. -- Set highlight group.

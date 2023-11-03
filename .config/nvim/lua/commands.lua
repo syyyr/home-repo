@@ -25,7 +25,7 @@ vim.api.nvim_create_user_command('DiffToggle', function()
         vim.cmd('vert new')
         vim.b.scratch_bufname = scratch_bufname
         vim.cmd('file ' .. vim.b.scratch_bufname)
-        vim.o.buftype = 'nofile'
+        vim.opt.buftype = 'nofile'
         vim.cmd('read #')
         vim.cmd('0delete_')
         vim.cmd('diffthis')
@@ -50,7 +50,7 @@ vim.api.nvim_create_user_command('Qa', function(info)
 end, { nargs = 0, bang = true })
 
 vim.api.nvim_create_user_command('SetMakePath', function(info)
-    vim.o.makeprg = 'make -C ' .. info.args
+    vim.opt.makeprg = 'make -C ' .. info.args
 end, { nargs = 1 })
 
 vim.api.nvim_create_user_command('CS', function(info)
