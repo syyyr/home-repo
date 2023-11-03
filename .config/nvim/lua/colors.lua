@@ -1,6 +1,5 @@
 vim.opt.termguicolors = true
 
--- colors
 vim.g.PaperColor_Theme_Options = {
     theme = {
         default = {
@@ -21,30 +20,23 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     callback = function()
         local separator_colors = vim.opt.background == 'dark' and 'guifg=#d0d0d0 guibg=#1c1c1c ctermfg=252 ctermbg=234' or 'guifg=#444444 guibg=#eeeeee ctermfg=255 ctermbg=238'
 
-        -- Status underline.
         vim.cmd('highlight StatusLineNC ' .. separator_colors .. ' cterm=underline gui=underline')
         vim.cmd('highlight StatusLine ' .. separator_colors .. ' cterm=underline,bold gui=underline,bold')
 
-        -- WinSeparator
         vim.cmd('highlight WinSeparator ' .. separator_colors)
 
-        -- Search
         vim.cmd('highlight search ctermbg=11 guifg=#444444 guibg=#ffffaa')
 
-        -- End of buffer
         vim.cmd('highlight clear EndOfBuffer')
         vim.cmd('highlight link EndOfBuffer NonText')
 
-        -- Merge conflicts
         vim.cmd('highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red')
 
         -- Make TODO have a default background
         vim.cmd('highlight Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default')
 
-        -- Lowercase Note
         vim.cmd('highlight link LowerCaseNote Todo')
 
-        -- LSP colors
         vim.cmd('highlight clear LspDiagnosticsDefaultError')
         vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
         vim.cmd('highlight clear LspDiagnosticsDefaultWarning')
@@ -68,7 +60,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @namespace NONE')
         vim.cmd('highlight! link @property NONE')
 
-        -- LSP semantic colors
         vim.cmd('highlight! link @lsp.type.class NONE')
         vim.cmd('highlight! link @lsp.type.enum Constant')
         vim.cmd('highlight! link @lsp.type.function NONE')

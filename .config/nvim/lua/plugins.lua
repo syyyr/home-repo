@@ -52,7 +52,6 @@ vim.cmd('packadd vimtex')
 vim.g.vimtex_compiler_latexmk = {build_dir = 'build'}
 vim.g.tex_conceal = 'amgs' -- default but don't conceal delimiters
 
--- FIXME: tabstop gets overriden by the autocommand in startup.vim
 vim.cmd('packadd! vim-linux-coding-style')
 vim.g.linuxsty_patterns = {'/linux/'}
 

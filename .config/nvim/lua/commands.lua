@@ -8,7 +8,6 @@ vim.api.nvim_create_user_command('Trailing', function()
 end, { nargs = 0 })
 syyyr.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
---" toggle unsaved changes diff
 vim.api.nvim_create_user_command('DiffToggle', function()
     if not vim.b.scratch_bufname then
         local file_name = vim.fn.expand('%')--[[@as string]]
@@ -40,7 +39,6 @@ end, { nargs = 0 })
 
 syyyr.nnoremap('<a-,>', '<cmd>DiffToggle<cr>')
 
---" end with :Q XD
 vim.api.nvim_create_user_command('Q', function(info)
     vim.cmd('q' .. (info.bang and '!' or ''))
 end, { nargs = 0, bang = true })

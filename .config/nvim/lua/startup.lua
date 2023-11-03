@@ -1,4 +1,3 @@
--- set dark theme at night
 local nightstart = os.getenv('NIGHTSTART') and tonumber(os.getenv('NIGHTSTART')) or 22
 local daystart = os.getenv('DAYSTART') and tonumber(os.getenv('DAYSTART')) or 8
 local current_hour = tonumber(os.date('%H'))

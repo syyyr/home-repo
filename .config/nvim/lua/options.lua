@@ -1,50 +1,40 @@
-vim.opt.title = true -- set title to NVIM
+vim.opt.title = true
 vim.opt.showmode = false
 vim.opt.cursorline = true
 
-vim.cmd('syntax enable') -- enable syntax highlighting
-vim.opt.shiftwidth = 4 -- << >> 4 spaces
+vim.cmd('syntax enable')
+vim.opt.shiftwidth = 4
 
--- no esc delay
 vim.opt.timeout = true
 vim.opt.ttimeout = true
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 10
 
--- set 7 lines to the cursor
 vim.opt.scrolloff = 7
 
--- performance hack
 vim.opt.lazyredraw = true
 
--- ignore case when searching, but only for lowercase letters
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- matching brackets
 vim.opt.showmatch = true
 vim.opt.matchpairs:append('<:>,«:»')
 
--- incremental commands
 vim.opt.inccommand = 'split'
 
--- always show fold column, good for the margin
+-- Always show fold column, good for the margin
 vim.opt.foldcolumn = '1'
 
--- better linebreak
 vim.opt.linebreak = true
 
--- disable swap file
 vim.opt.swapfile = false
 
--- better ex command autocomplete
 vim.opt.wildmode = 'list:longest'
 
--- undo
 vim.opt.undofile = true
 vim.opt.undolevels = 5000
 
--- set path for :find
+-- For :find.
 vim.opt.path = {
     '.',
     '$PWD',
@@ -55,22 +45,19 @@ vim.opt.path = {
     'include/**'
 }
 
--- pretty windows split :>
 vim.opt.fillchars = 'fold: ,vert:▏'
 
--- windows are vertically split the other way
 vim.opt.splitright = true
 
--- system clipboard is used along with the unnamed register
 vim.opt.clipboard = 'unnamedplus'
 
--- don't scan tagfiles
+-- Don't scan tagfiles
 vim.opt.complete:remove('t')
 
--- don't autoload file if it's changed outside of vim
+-- Don't autoload file if it's changed outside of vim
 vim.opt.autoread = false
 
--- the time for CursorHold trigger
+-- The time for CursorHold trigger
 vim.opt.updatetime = 300
 
 vim.opt.statusline =
@@ -92,10 +79,10 @@ vim.opt.statusline =
     '%{&ft}' .. -- Show filetype
     '%=' -- Separator
 
--- don't show completion messages
+-- Don't show completion messages
 vim.opt.shortmess:append('c')
 
--- don't show :intro message
+-- Don't show :intro message
 vim.opt.shortmess:append('I')
 
 vim.opt.diffopt:append('algorithm:patience')

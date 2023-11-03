@@ -22,7 +22,7 @@ cmp.setup({
         ['<c-f>'] = cmp.mapping.scroll_docs(4),
         ['<c-space>'] = cmp.mapping.complete(),
         ['<c-e>'] = cmp.mapping.abort(),
-        ['<cr>'] = cmp.mapping.confirm({select = false}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<cr>'] = cmp.mapping.confirm({select = false}),
         ['<tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -31,7 +31,7 @@ cmp.setup({
             elseif has_words_before() then
                 cmp.complete()
             else
-                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                fallback()
             end
         end, {'i', 's'}),
 
