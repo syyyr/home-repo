@@ -23,3 +23,18 @@ add_skeleton('main.rs', {
     '{',
     '}'
 }, 2)
+
+add_skeleton('index.html', {
+    '<!DOCTYPE html>',
+    '<html lang="en">',
+    '<meta charset="UTF-8">',
+    '<title>Page Title</title>',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<link rel="stylesheet" href="style.css">',
+    '<style>',
+    '</style>',
+    '<body>',
+    '    <script src="index.js"></script>',
+    '</body>',
+    '</html>'
+}, 10)
