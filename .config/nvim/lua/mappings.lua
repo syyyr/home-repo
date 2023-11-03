@@ -15,18 +15,6 @@ syyyr.nnoremap('<a-w>', '<cmd>update!<cr>')
 syyyr.nnoremap('<space>', '/')
 syyyr.xnoremap('<space>', '/')
 
--- Reset highlighting, floating windows etc.
-syyyr.nnoremap('<a-cr>', function()
-    vim.fn['clever_f#reset']()
-    vim.g.skip_diagnostic_float = true
-    if vim.g.float_win_id then
-        pcall(vim.api.nvim_win_close, vim.g.float_win_id, false) -- discard errors: the window might be already closed
-        vim.g.float_win_id = nil
-    end
-    vim.cmd('nohlsearch')
-    vim.notify('')
-end)
-
 -- Jump to next merge conflict
 syyyr.nnoremap('<a-c>', [[<cmd>silent! keeppatterns /\v^[<|=>]{7}([^=].+)?$<cr><cmd>nohlsearch<cr>]])
 syyyr.xnoremap('<a-c>', [[/<c-U>\v^[<|=>]{7}([^=].+)?$<cr><esc><cmd>nohlsearch<cr>gv]])
@@ -122,3 +110,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.bo[ev.buf].formatexpr = nil
     end,
 })
+
+-- Reset highlighting, floating windows etc.
+syyyr.nnoremap('<a-cr>', function()
+    vim.fn['clever_f#reset']()
+    vim.g.skip_diagnostic_float = true
+    if vim.g.float_win_id then
+        pcall(vim.api.nvim_win_close, vim.g.float_win_id, false) -- discard errors: the window might be already closed
+        vim.g.float_win_id = nil
+    end
+    vim.cmd('nohlsearch')
+    vim.notify('')
+end)
