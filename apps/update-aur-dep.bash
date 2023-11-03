@@ -27,6 +27,7 @@ remove_build_dir() {
 UPDATE_COMMAND=(env CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
 
 pushd "$HOME/.local/aur/$AUR_DEP" || exit 1
+git fetch
 git reset --hard
 
 while true; do
