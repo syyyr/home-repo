@@ -11,6 +11,7 @@ ok_hand 👌
 thumbs_up 👍
 :D 😀
 kiss/:* 😘
+loved 🥰
 angery 😠
 angery2 😡
 angery3 🤬
