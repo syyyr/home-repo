@@ -67,6 +67,7 @@ for _, lsp_name in ipairs({
     'cmake',
     'jsonls',
     'pkgbuild_language_server',
+    'rust_analyzer',
     'tsserver',
     'yang_lsp',
     'vimls'}) do
