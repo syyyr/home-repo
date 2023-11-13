@@ -36,6 +36,7 @@ toust/toast/bread 🍞
 hidden/hands 🫣
 sunglasses 😎
 smirk/lewd 😏
+annoyed/unamused 😒
 oops/blush/embarrassed 😳
 death/skull 💀
 peace ✌️
