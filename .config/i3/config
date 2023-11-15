@@ -55,6 +55,11 @@ bindsym $mod+Return exec --no-startup-id ~/apps/kitty.wrapper
 bindsym $mod+t exec --no-startup-id xterm
 
 assign [class="vlc"] → M
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace N output eDP-1
 
 set $mod Mod4
 font pango:Noto Sans 11
