@@ -12,6 +12,7 @@ alias ctest='ctest --output-on-failure'
 alias d='cd'
 alias dc='cd'
 alias dicker='docker'
+alias drive="rclone mount gdrive: mnt"
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
 alias ffplay='ffplay -autoexit'
 alias free='free -h'
