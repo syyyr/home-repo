@@ -1,7 +1,7 @@
 vim.cmd('packadd! nvim-treesitter')
 vim.cmd('packadd! nvim-treesitter-playground')
 
-require('nvim-treesitter.configs').setup({
+local config = {
     highlight = {
         enable = true,
         disable = {'cpp', 'markdown'},
@@ -28,6 +28,8 @@ require('nvim-treesitter.configs').setup({
     },
     incremental_selection = {enable = false},
     textobjects = {enable = true},
-})
+}
+
+require('nvim-treesitter.configs').setup(config--[[@as TSConfig]])
 
 
