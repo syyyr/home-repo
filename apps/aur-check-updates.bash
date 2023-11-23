@@ -1,6 +1,6 @@
 #!/bin/bash
-if /usr/bin/auracle outdated | grep -v mingw-w64; then
-	notify-send -i '/home/vk/.local/share/icons/blue/25-Ampoule.png' Auracle "AUR updates available."
+if OUT=$(/usr/bin/auracle -q outdated); then
+	notify-send -i '/home/vk/.local/share/icons/blue/25-Ampoule.png' "AUR updates available." "$OUT"
 fi
 OUT=$(aur-out-of-date -user syyyr -json)
 if [[ $? = 4 ]]; then
