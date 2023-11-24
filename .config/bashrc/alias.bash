@@ -11,6 +11,7 @@ alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias ctest='ctest --output-on-failure'
 alias d='cd'
 alias dc='cd'
+alias scd='cd'
 alias dicker='docker'
 alias drive="rclone mount gdrive: mnt"
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
