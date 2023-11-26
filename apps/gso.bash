@@ -55,9 +55,16 @@ fi
 RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
 echo "${RG_CMD[@]@Q}"
-if ! RESULTS="$("${RG_CMD[@]}")"; then
-    echo 'No match.' >&1
-    exit 0
+if RESULTS="$("${RG_CMD[@]}")"; then
+    : # Need to handle the error code in the else branch, because `!` overrides it.
+else
+    if [[ "$?" = 2 ]]; then
+        RG_CMD+=(--no-ignore)
+        echo "${RG_CMD[@]@Q}"
+        RESULTS="$("${RG_CMD[@]}")"
+    else
+        exit "$?"
+    fi
 fi
 if [[ "$OPEN_ALL" = "1" ]]; then
     nvim -q <(echo "$RESULTS")
