@@ -37,8 +37,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         vim.cmd('highlight link LowerCaseNote Todo')
 
-        vim.cmd('highlight clear LspDiagnosticsDefaultError')
-        vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
+        vim.cmd('highlight! link NormalFloat Pmenu')
+
+        for _, group in ipairs({ 'DiagnosticFloatingError', 'LspDiagnosticsDefaultError' }) do
+            vim.cmd('highlight clear ' .. group)
+            vim.cmd('highlight ' .. group .. ' ctermfg=124 guifg=#af0000')
+        end
         vim.cmd('highlight clear LspDiagnosticsDefaultWarning')
         vim.cmd('highlight LspDiagnosticsDefaultWarning gui=bold guifg=#00af5f')
         vim.cmd('highlight clear LspDiagnosticsDefaultInformation')
