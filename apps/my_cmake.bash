@@ -5,6 +5,7 @@ set -euo pipefail
 BASH_COLOR_BOLD=$'\033''[1m'
 BASH_COLOR_NORMAL=$'\033''[0m'
 BASH_COLOR_RED=$'\033''[31m'
+BASH_COLOR_BLUE=$'\033''[34m'
 
 print_var()
 {
@@ -28,6 +29,19 @@ LDFLAGS="${LDFLAGS:-}"
 CMAKE_FLAGS=( '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON' )
 BUILD_TYPE="Debug"
 CMAKE="cmake"
+
+if ! [[ "$(basename "$(pwd)")" =~ ^build ]]; then
+    echo -n "${BASH_COLOR_BLUE}${BASH_COLOR_BOLD}You are building in a directory called '$(pwd)', which doesn't look like a build directory. Is that okay? [y/n] ${BASH_COLOR_NORMAL}"
+    if ! read -r -t 10; then
+        echo
+        echo 'No reply. Aborting just to be safe.'
+        exit 1
+    fi
+    if [[ "$REPLY" != "y" ]]; then
+        echo 'Aborting.'
+        exit 1
+    fi
+fi
 
 for arg in "$@"; do
     case "$arg" in
