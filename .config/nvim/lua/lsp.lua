@@ -172,7 +172,7 @@ require('lspconfig').pylsp.setup({
     settings = {
         pylsp = {
             plugins = {
-                pylint = { enabled = true }
+                ruff = { enabled = true }
             }
         }
     }
