@@ -165,6 +165,13 @@ for arg in "$@"; do
             echo "${CMAKE@Q}"
             shift
             ;;
+        install=*)
+            echo -n "Setting CMAKE_INSTALL_PREFIX to "
+            INSTALL_PREFIX="${arg#install=}"
+            echo "${INSTALL_PREFIX@Q}"
+            CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" "${CMAKE_FLAGS[@]}" )
+            shift
+            ;;
         *)
             break
             ;;
