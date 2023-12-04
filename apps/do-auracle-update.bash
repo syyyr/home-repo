@@ -2,7 +2,6 @@
 set -euo pipefail
 
 pushd "$HOME/.local/aur"
-auracle update || true
 
 filter_disabled_packages() {
     local DISABLED_PKGS=(
