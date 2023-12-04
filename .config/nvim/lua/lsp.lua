@@ -197,9 +197,9 @@ require('lspconfig').clangd.setup({
 cmp.setup.filetype('cpp', {
     sorting = {
         comparators = {
+            require('clangd_extensions.cmp_scores'),
             cmp.config.compare.offset,
             cmp.config.compare.recently_used,
-            require('clangd_extensions.cmp_scores'),
             cmp.config.compare.exact,
             cmp.config.compare.kind,
             cmp.config.compare.sort_text,
