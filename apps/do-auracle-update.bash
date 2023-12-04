@@ -11,7 +11,7 @@ filter_disabled_packages() {
     grep -v "${DISABLED_PKGS[@]}"
 }
 
-for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$'); do
+for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$' | filter_disabled_packages); do
     "$HOME/apps/update-aur-dep.bash" "$i" || true
 done
 popd
