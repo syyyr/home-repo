@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         vim.cmd('highlight link LowerCaseNote Todo')
 
-        vim.cmd('highlight! link ErrorMsg LspDiagnosticsDefaultError')
+        vim.cmd('highlight! link ErrorMsg Statement')
 
         vim.cmd('highlight! Conceal guibg=NONE')
 
