@@ -25,6 +25,7 @@ local config = {
         'qmljs',
         'typescript',
         'vim',
+        'vimdoc',
     },
     incremental_selection = {enable = false},
     textobjects = {enable = true},
