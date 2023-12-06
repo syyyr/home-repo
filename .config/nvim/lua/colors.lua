@@ -39,6 +39,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         vim.cmd('highlight! link ErrorMsg LspDiagnosticsDefaultError')
 
+        vim.cmd('highlight! Conceal guibg=NONE')
+
         vim.cmd('highlight! link NormalFloat Pmenu')
         vim.cmd('highlight clear LspDiagnosticsDefaultError')
         vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
