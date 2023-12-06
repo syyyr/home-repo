@@ -32,8 +32,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         vim.cmd('highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red')
 
-        -- Make TODO have a default background
-        vim.cmd('highlight Todo cterm=bold ctermfg=0 ctermbg=11 gui=bold guifg=#00af5f guibg=default')
+        vim.cmd('highlight Todo ctermbg=NONE guibg=NONE')
 
         vim.cmd('highlight link LowerCaseNote Todo')
 
@@ -46,8 +45,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
         vim.cmd('highlight! link DiagnosticFloatingError LspDiagnosticsDefaultError')
 
-        vim.cmd('highlight clear LspDiagnosticsDefaultWarning')
-        vim.cmd('highlight LspDiagnosticsDefaultWarning gui=bold guifg=#00af5f') -- get rid of background
+        vim.cmd('highlight LspDiagnosticsDefaultWarning guibg=NONE')
         for _, group in ipairs({
             'DiagnosticFloatingHint',
             'DiagnosticFloatingInfo',
