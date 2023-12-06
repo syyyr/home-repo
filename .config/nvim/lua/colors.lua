@@ -38,17 +38,21 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight link LowerCaseNote Todo')
 
         vim.cmd('highlight! link NormalFloat Pmenu')
+        vim.cmd('highlight clear LspDiagnosticsDefaultError')
+        vim.cmd('highlight LspDiagnosticsDefaultError ctermfg=124 guifg=#af0000')
 
-        for _, group in ipairs({ 'DiagnosticFloatingError', 'LspDiagnosticsDefaultError' }) do
-            vim.cmd('highlight clear ' .. group)
-            vim.cmd('highlight ' .. group .. ' ctermfg=124 guifg=#af0000')
-        end
+        vim.cmd('highlight! link DiagnosticFloatingError LspDiagnosticsDefaultError')
+
         vim.cmd('highlight clear LspDiagnosticsDefaultWarning')
-        vim.cmd('highlight LspDiagnosticsDefaultWarning gui=bold guifg=#00af5f')
-        vim.cmd('highlight clear LspDiagnosticsDefaultInformation')
-        vim.cmd('highlight LspDiagnosticsDefaultInformation gui=bold guifg=#00af5f')
-        vim.cmd('highlight clear LspDiagnosticsDefaultHint')
-        vim.cmd('highlight LspDiagnosticsDefaultHint gui=bold guifg=#00af5f')
+        vim.cmd('highlight LspDiagnosticsDefaultWarning gui=bold guifg=#00af5f') -- get rid of background
+        for _, group in ipairs({
+            'DiagnosticFloatingHint',
+            'DiagnosticFloatingInfo',
+            'DiagnosticFloatingWarn',
+            'LspDiagnosticsDefaultHint',
+            'LspDiagnosticsDefaultInformation'}) do
+            vim.cmd('highlight! link ' .. group .. ' LspDiagnosticsDefaultWarning ')
+        end
 
         -- Treesitter
         vim.cmd('highlight! link @typeParameter Constant')
