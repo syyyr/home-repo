@@ -28,7 +28,7 @@ UPDATE_COMMAND=(env CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makep
 
 pushd "$HOME/.local/aur/$AUR_DEP" || exit 1
 git fetch
-git reset --hard
+git reset --hard origin/master
 
 while true; do
 	info "Building $AUR_DEP..."
