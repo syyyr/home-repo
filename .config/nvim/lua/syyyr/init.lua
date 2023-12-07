@@ -54,6 +54,22 @@ end
 ---@param input table
 ---@param f function
 ---@return boolean
+function M.some(input, f)
+    return not M.none(input, f)
+end
+
+---@param input table
+---@param value any
+---@return boolean
+function M.contains(input, value)
+    return M.some(input, function(elem)
+        return elem == value
+    end)
+end
+
+---@param input table
+---@param f function
+---@return boolean
 function M.any(input, f)
     return not M.none(input, f)
 end
