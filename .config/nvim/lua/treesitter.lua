@@ -32,5 +32,3 @@ local config = {
 }
 
 require('nvim-treesitter.configs').setup(config--[[@as TSConfig]])
-
-
