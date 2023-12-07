@@ -1,34 +1,27 @@
 vim.cmd('packadd! nvim-treesitter')
-vim.cmd('packadd! nvim-treesitter-playground')
 
-local config = {
-    highlight = {
-        enable = true,
-        disable = {'cpp', 'markdown'},
-    },
-    indent = {
-        enable = true,
-        disable = function(lang)
-            if lang ~= 'python' then
-                return true
-            end
-        end
-    },
-    ensure_installed = {
-        'bash',
-        'comment',
-        'cpon',
-        'cpp',
-        'lua',
-        'markdown',
-        'python',
-        'qmljs',
-        'typescript',
-        'vim',
-        'vimdoc',
-    },
-    incremental_selection = {enable = false},
-    textobjects = {enable = true},
+local available_parsers = {
+    'bash',
+    'comment',
+    'cpon',
+    'lua',
+    'python',
+    'qmljs',
+    'typescript',
+    'vim',
+    'vimdoc',
 }
 
-require('nvim-treesitter.configs').setup(config--[[@as TSConfig]])
+require('nvim-treesitter').setup({ ensure_install = available_parsers })
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { '*' },
+    callback = function(info)
+        if require('syyyr').contains(available_parsers, info.match) then
+            vim.treesitter.start()
+            if info.match ~= 'python' then
+                vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+            end
+        end
+    end
+})
