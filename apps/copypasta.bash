@@ -19,6 +19,7 @@ pray/dorime 🙏
 hands 🙌
 rofl 🤣
 happy/tear 🥲
+spit/saliva/drooling 🤤
 holy/halo 😇
 wow 😲
 gun/pistol 🔫
