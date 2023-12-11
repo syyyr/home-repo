@@ -29,3 +29,9 @@ vim.api.nvim_create_autocmd('FileType', {
         end
     end
 })
+
+vim.api.nvim_create_user_command('TSUpdateAndQuit', function()
+    require('nvim-treesitter.install').update(nil, nil, function()
+        vim.cmd.quit()
+    end)
+end, {nargs = 0})
