@@ -13,7 +13,10 @@ local available_parsers = {
     'vimdoc',
 }
 
-require('nvim-treesitter').setup({ ensure_install = available_parsers })
+require('nvim-treesitter').setup({
+    ensure_install = available_parsers,
+    install_dir = vim.fn.stdpath('data') .. '/treesitter',
+})
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { '*' },
