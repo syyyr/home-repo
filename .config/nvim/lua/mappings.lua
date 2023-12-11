@@ -94,8 +94,6 @@ syyyr.xnoremap('<c-p>', '"0p')
 
 syyyr.tnoremap('<esc>', '<c-><c-N>')
 
-syyyr.nnoremap('Q', '<nop>')
-
 syyyr.nnoremap('q:', '<nop>')
 syyyr.cnoremap('CR', 'CR ')
 
