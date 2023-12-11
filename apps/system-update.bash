@@ -25,7 +25,7 @@ echo "Waiting for submodules to finish updating..."
 wait "$UPDATE_PID"
 cat <&3
 echo Updating tree-sitter parsers...
-nvim --headless -c TSUpdateSync -c q
+nvim --headless -c TSUpdate -c q
 echo # The output from nvim doesn't have a trailing newline
 git submodule summary
 "$HOME/apps/check-config.bash"
