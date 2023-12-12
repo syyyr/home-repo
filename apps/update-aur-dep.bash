@@ -1,5 +1,5 @@
 #!/bin/bash
-set -u
+set -euxo pipefail
 
 readonly BASH_COLOR_BOLD=$'\033''[1m'
 readonly BASH_COLOR_RED=$'\033''[31m'
@@ -39,10 +39,15 @@ while true; do
 
 	# shellcheck disable=SC2043
 	for i in cmake-language-server-git; do
-		[[ "$i" = "$AUR_DEP" ]] && info "Automatically removing build dir for $AUR_DEP." && remove_build_dir
+		if [[ "$i" = "$AUR_DEP" ]]; then
+			info "Automatically removing build dir for $AUR_DEP."
+			remove_build_dir
+		fi
 	done; unset i
 
-	"${UPDATE_COMMAND[@]}" && exit 0
+	if "${UPDATE_COMMAND[@]}"; then
+		exit 0
+	fi
 
 	echo "Building $AUR_DEP failed."
 	info -n "Try again [(n)ocheck,(s)kippgpcheck,(r)emove_build_dir]? "
