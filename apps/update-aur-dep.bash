@@ -26,7 +26,11 @@ remove_build_dir() {
 
 UPDATE_COMMAND=(env CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
 
-pushd "$HOME/.local/aur/$AUR_DEP" || exit 1
+readonly DEP_DIR="$HOME/.local/aur/$AUR_DEP"
+if ! [[ -d "$DEP_DIR" ]]; then
+	auracle clone --chdir="$HOME/.local/aur" "$AUR_DEP"
+fi
+pushd "$DEP_DIR" || exit 1
 git fetch
 git reset --hard origin/master
 
