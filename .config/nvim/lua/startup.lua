@@ -28,11 +28,11 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
         }, function(res)
                 if res.code ~= 0 then
                     vim.b.TrailingNr = nil
-                    return
+                else
+                    local startIndex, endIndex = res.stdout:find('%d+')
+                    vim.b.TrailingNr = startIndex and res.stdout:sub(startIndex, endIndex) or ''
                 end
-
-                local startIndex, endIndex = res.stdout:find('%d+')
-                vim.b.TrailingNr = startIndex and res.stdout:sub(startIndex, endIndex) or ''
+                vim.defer_fn(vim.cmd.redrawstatus, 0)
             end
         )
     end,
