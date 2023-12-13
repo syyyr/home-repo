@@ -1,5 +1,5 @@
 #!/bin/bash
-"$HOME/apps/check-available.bash" i3lock dunstctl || exit 1
+"$HOME/apps/check-available.bash" i3lock dunstctl xrandr xset || exit 1
 
 get_muted()
 {
@@ -42,21 +42,21 @@ fi
 dunstctl set-paused true
 i3-msg bar mode invisible
 i3lock \
-    -n \
-    -k \
-    -i "$IMAGE_FILE" \
-    -c 000000 \
+    --nofork \
+    --clock \
+    --image="$IMAGE_FILE" \
+    --color=000000 \
     --time-font=Segoeui \
     --date-font=Segoeui \
-    --time-size="$TIME_SIZE" \
-    --date-size="$DATE_SIZE" \
-    --time-str="%H:%M" \
-    --date-str="%A, %d. %B" \
     --date-color=FFFFFF \
     --time-color=FFFFFF \
-    --time-pos="$TIME_POS" \
     --date-align=1 \
     --time-align=1 \
+    --time-str="%H:%M" \
+    --date-str="%A, %d. %B" \
+    --time-size="$TIME_SIZE" \
+    --date-size="$DATE_SIZE" \
+    --time-pos="$TIME_POS" \
     --date-pos="$DATE_POS"
 
 dunstctl set-paused false
