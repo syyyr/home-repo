@@ -3,8 +3,8 @@ set -euxo pipefail
 
 readonly BASH_COLOR_BOLD=$'\033''[1m'
 readonly BASH_COLOR_RED=$'\033''[31m'
-readonly BASH_COLOR_NORMAL=$'\033''[0m'
 readonly BASH_BLUE_BOLD=$'\033''[01;34m'
+readonly BASH_COLOR_NORMAL=$'\033''[0m'
 readonly AUR_DEP="$1"
 
 info() {
