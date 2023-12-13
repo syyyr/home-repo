@@ -25,25 +25,39 @@ if [[ "$1" != "no-off" ]]; then
     SCREENOFF_PID="$!"
 fi
 
+if xrandr | grep primary | grep -F "1920x1080" > /dev/null; then
+    IMAGE_FILE="$HOME/.local/share/win10-lock-1080p.png"
+    TIME_SIZE=130
+    DATE_SIZE=59
+    TIME_POS=80:913
+    DATE_POS=80:ty+80
+else
+    IMAGE_FILE="$HOME/.local/share/win10-lock-4k.png"
+    TIME_SIZE=260
+    DATE_SIZE=118
+    TIME_POS=160:1826
+    DATE_POS=160:ty+160
+fi
+
 dunstctl set-paused true
 i3-msg bar mode invisible
 i3lock \
     -n \
     -k \
-    -i "$HOME"/.local/share/win10-lock-4k.png \
+    -i "$IMAGE_FILE" \
     -c 000000 \
     --time-font=Segoeui \
     --date-font=Segoeui \
-    --time-size=260 \
-    --date-size=118 \
+    --time-size="$TIME_SIZE" \
+    --date-size="$DATE_SIZE" \
     --time-str="%H:%M" \
     --date-str="%A, %d. %B" \
     --date-color=FFFFFF \
     --time-color=FFFFFF \
-    --time-pos=160:1826 \
+    --time-pos="$TIME_POS" \
     --date-align=1 \
     --time-align=1 \
-    --date-pos="160:ty+160"
+    --date-pos="$DATE_POS"
 
 dunstctl set-paused false
 i3-msg bar mode dock
