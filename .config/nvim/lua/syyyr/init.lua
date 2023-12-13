@@ -20,17 +20,6 @@ end
 
 ---@param input table
 ---@param f function
----@return table
-function M.map(input, f)
-    local new_table = {}
-    for i, v in pairs(input) do
-        new_table[i] = f(v)
-    end
-    return new_table
-end
-
----@param input table
----@param f function
 ---@return boolean
 function M.all(input, f)
     for _, v in pairs(input) do
