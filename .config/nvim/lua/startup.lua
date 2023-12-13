@@ -21,6 +21,8 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     group = vim.api.nvim_create_augroup('LastPostion', {clear = true})
 })
 
+local statusline_augroup = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
+
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
     callback = function()
         vim.system({'grep', '--line-number', '--max-count', '1', [[\s$]]}, {
@@ -36,7 +38,14 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
             end
         )
     end,
-    group = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
+    group = statusline_augroup
+})
+
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+    callback = function()
+        vim.cmd.redrawstatus()
+    end,
+    group = statusline_augroup
 })
 
 vim.g.tex_flavor = 'tex'
