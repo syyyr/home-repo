@@ -13,7 +13,7 @@ end
 local syyyr = require('syyyr')
 
 local function have_qt()
-    return syyyr.any({'#include <Q', 'QString', 'QDateTime'}, function(needle)
+    return vim.iter({'#include <Q', 'QString', 'QDateTime'}):any(function(needle)
         return vim.fn.search(needle, 'nw') ~= 0
     end)
 end

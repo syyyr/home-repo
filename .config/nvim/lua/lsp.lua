@@ -235,9 +235,9 @@ vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
 end
 
 local function filter_unused_diagnostics(diagnostics)
-    return syyyr.filter(diagnostics, function(diagnostic)
-        return syyyr.all({"unused", "never read"}, function(x) return not string.match(string.lower(diagnostic.message), x) end)
-    end)
+    return vim.iter(diagnostics):filter(function(diagnostic)
+        return vim.iter({"unused", "never read"}):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)
+    end):totable()
 end
 
 local original_underline_show = vim.diagnostic.handlers.underline.show
