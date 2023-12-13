@@ -46,6 +46,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link DiagnosticFloatingError LspDiagnosticsDefaultError')
 
         vim.cmd('highlight LspDiagnosticsDefaultWarning guibg=NONE')
+        if vim.o.background == 'dark' then
+            vim.cmd('highlight LspDiagnosticsDefaultWarning guifg=#00af5f')
+            vim.cmd('highlight LspDiagnosticsUnderlineWarning guisp=#00af5f')
+            vim.cmd('highlight Todo guifg=#00af5f')
+        end
+
         for _, group in ipairs({
             'DiagnosticFloatingHint',
             'DiagnosticFloatingInfo',
