@@ -26,6 +26,6 @@ wait "$UPDATE_PID"
 cat <&3
 echo Updating tree-sitter parsers...
 nvim --headless -c TSUpdateAndQuit
-git submodule summary
+git --no-pager submodule summary
 "$HOME/apps/check-config.bash"
 popd
