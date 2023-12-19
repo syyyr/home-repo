@@ -68,10 +68,10 @@ vim.cmd('packadd! nvim-lspconfig')
 for _, lsp_name in ipairs({
     'bashls',
     'cmake',
+    'denols',
     'jsonls',
     'pkgbuild_language_server',
     'rust_analyzer',
-    'tsserver',
     'yang_lsp',
     'vimls'}) do
     require('lspconfig')[lsp_name].setup({
