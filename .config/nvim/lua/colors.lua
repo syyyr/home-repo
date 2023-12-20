@@ -29,13 +29,13 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link CurSearch Search')
 
         vim.cmd('highlight clear EndOfBuffer')
-        vim.cmd('highlight link EndOfBuffer NonText')
+        vim.cmd('highlight! link EndOfBuffer NonText')
 
         vim.cmd('highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red')
 
         vim.cmd('highlight Todo ctermbg=NONE guibg=NONE')
 
-        vim.cmd('highlight link LowerCaseNote Todo')
+        vim.cmd('highlight! link LowerCaseNote Todo')
 
         vim.cmd('highlight! link ErrorMsg LspDiagnosticsDefaultError')
 
