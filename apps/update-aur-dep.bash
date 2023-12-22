@@ -38,7 +38,7 @@ while true; do
 	info "Building $AUR_DEP..."
 
 	# shellcheck disable=SC2043
-	for i in cmake-language-server-git; do
+	for i in cmake-language-server-git vulkan-headers mingw-w64-vulkan-icd-loader; do
 		if [[ "$i" = "$AUR_DEP" ]]; then
 			info "Automatically removing build dir for $AUR_DEP."
 			remove_build_dir
