@@ -1,0 +1,10 @@
+InlayHints:
+  Enabled: true
+  ParameterNames: false
+  DeducedTypes: true
+Hover:
+  ShowAKA: true
+Diagnostics:
+  UnusedIncludes: Strict
+  ClangTidy:
+    Remove: bugprone-unchecked-optional-access

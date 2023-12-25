@@ -6,6 +6,8 @@
 !.config
 !.config/bashrc
 !.config/bashrc/**
+!.config/clangd
+!.config/clangd/**
 !.config/chrome-flags.conf
 !.config/dunst
 !.config/dunst/dunstrc
