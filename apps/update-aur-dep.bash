@@ -37,8 +37,13 @@ git reset --hard origin/master
 while true; do
 	info "Building $AUR_DEP..."
 
-	# shellcheck disable=SC2043
-	for i in cmake-language-server-git mingw-w64-vulkan-headers mingw-w64-vulkan-icd-loader; do
+	readonly AUTOREMOVE_PKGS=(
+		cmake-language-server-git
+		mingw-w64-trompeloeil
+		mingw-w64-vulkan-headers
+		mingw-w64-vulkan-icd-loader
+	)
+	for i in "${AUTOREMOVE_PKGS[@]}"; do
 		if [[ "$i" = "$AUR_DEP" ]]; then
 			info "Automatically removing build dir for $AUR_DEP."
 			remove_build_dir
