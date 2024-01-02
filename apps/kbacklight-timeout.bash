@@ -1,5 +1,6 @@
 #!/bin/bash
 set -eu
+shopt -s inherit_errexit
 "$HOME/apps/check-available.bash" xinput || exit 1
 
 echo 'Turning backlight on.'

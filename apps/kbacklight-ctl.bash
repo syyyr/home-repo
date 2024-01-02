@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+shopt -s inherit_errexit
 ARG=$2
 
 case $1 in

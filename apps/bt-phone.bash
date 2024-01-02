@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+shopt -s inherit_errexit
 
 if bluetoothctl info | grep -o 'Connected: yes'; then
     bluetoothctl disconnect

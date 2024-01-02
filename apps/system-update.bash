@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
+shopt -s inherit_errexit
 
 filter_disabled_packages() {
     local DISABLED_PKGS=(

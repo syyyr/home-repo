@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
+shopt -s inherit_errexit
 
 if [[ -z "${GITLAB_TOKEN+x}" ]]; then
 	echo GITLAB_TOKEN not set. >&2

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+shopt -s inherit_errexit
 
 "$HOME/apps/check-available.bash" streamlink google-chrome-stable || return 1
 if [[ $# != 1 ]]; then

@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+shopt -s inherit_errexit
 
 "$HOME/apps/check-available.bash" cvt12 || exit 1
 
