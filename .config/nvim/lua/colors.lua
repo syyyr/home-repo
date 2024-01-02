@@ -92,8 +92,12 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
 
-vim.api.nvim_create_autocmd('Syntax', {
+vim.api.nvim_create_autocmd('BufEnter', {
     callback = function()
+        if vim.b.custom_syntax_set then
+            return
+        end
+        vim.b.custom_syntax_set = true
         vim.cmd([[syn match MergeConflict '\v^[<\|=|>]{7}([^=].+)?$']])
         vim.cmd([[syn keyword LowerCaseNote Note contained containedin=cCommentL]])
     end,
