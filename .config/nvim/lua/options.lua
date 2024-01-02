@@ -1,4 +1,3 @@
-vim.cmd('syntax enable')
 vim.opt.autoread = false -- Don't autoload file if it's changed outside of vim
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.commentstring = '# %s'
