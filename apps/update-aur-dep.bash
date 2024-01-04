@@ -35,15 +35,16 @@ pushd "$DEP_DIR" || exit 1
 git fetch
 git reset --hard origin/master
 
+readonly AUTOREMOVE_PKGS=(
+	cmake-language-server-git
+	mingw-w64-trompeloeil
+	mingw-w64-vulkan-headers
+	mingw-w64-vulkan-icd-loader
+)
+
 while true; do
 	info "Building $AUR_DEP..."
 
-	readonly AUTOREMOVE_PKGS=(
-		cmake-language-server-git
-		mingw-w64-trompeloeil
-		mingw-w64-vulkan-headers
-		mingw-w64-vulkan-icd-loader
-	)
 	for i in "${AUTOREMOVE_PKGS[@]}"; do
 		if [[ "$i" = "$AUR_DEP" ]]; then
 			info "Automatically removing build dir for $AUR_DEP."
