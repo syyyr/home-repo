@@ -104,13 +104,4 @@ vim.api.nvim_create_autocmd('BufEnter', {
     group = vim.api.nvim_create_augroup('CustomSyntax', {clear = true})
 })
 
-vim.api.nvim_create_autocmd('Syntax', {
-    pattern = 'gitcommit',
-    callback = function()
-        vim.cmd([[syn clear gitcommitSummary]])
-        vim.cmd([[syn match gitcommitSummary "^.*\%<81v." contained containedin=gitcommitFirstLine nextgroup=gitcommitOverflow contains=@Spell]])
-    end,
-    group = vim.api.nvim_create_augroup('GitCommitSummaryLength', {clear = true})
-})
-
 vim.cmd('colorscheme PaperColor')
