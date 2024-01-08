@@ -24,9 +24,9 @@ __do_completion_for() {
 
     if [[ -n "$completion_func" ]]; then
         # completion_func functions take these arguments:
-        # $1 the command name begin completed
+        # $1 the command name being completed
         # $2 the word being completed
-        # $3 the word preceding the being completed
+        # $3 the word preceding the word being completed
         # So far, I have found out only fzf completions need the first argument, so I am going to supply it.
         "$completion_func" "$1"
     fi
