@@ -12,7 +12,6 @@ vim.opt.ignorecase = true
 vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.makeprg = 'make -C build'
-vim.opt.matchpairs:append('<:>,«:»')
 vim.opt.mouse = ''
 vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 4
