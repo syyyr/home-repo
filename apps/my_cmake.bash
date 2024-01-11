@@ -156,8 +156,8 @@ for arg in "$@"; do
             ;;
         wasm)
             echo "Enabling wasm."
-            CMAKE="$HOME/qt/6.5.1/wasm_singlethread/bin/qt-cmake"
-            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.5.1/gcc_64 -DBUILD_SHARED_LIBS=OFF "${CMAKE_FLAGS[@]}" )
+            CMAKE="$HOME/qt/6.6.1/wasm_singlethread/bin/qt-cmake"
+            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.6.1/gcc_64 -DBUILD_SHARED_LIBS=OFF "${CMAKE_FLAGS[@]}" )
             shift
             ;;
         cmake=*)
