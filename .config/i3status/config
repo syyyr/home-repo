@@ -37,7 +37,7 @@ keyboard_locks {
 
 volume_status {
     format = "♪: {percentage}%"
-    device = "alsa_output.pci-0000_05_00.6.HiFi__hw_Generic_1__sink"
+    command = "pamixer"
     format_muted = "♪: muted ({percentage}%)"
     color = white
     color_good = white
