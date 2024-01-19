@@ -36,6 +36,7 @@ readonly AUTOREMOVE_PKGS=(
 	mingw-w64-trompeloeil
 	mingw-w64-vulkan-headers
 	mingw-w64-vulkan-icd-loader
+	shvcli-git
 )
 
 while true; do
