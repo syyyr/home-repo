@@ -8,6 +8,7 @@ xd 😆
 :DD/grin 😁
 oof/popofka 😬
 ok_hand 👌
+fingers_crossed 🤞
 thumbs_up 👍
 :D 😀
 kiss/:* 😘
