@@ -7,6 +7,7 @@ local available_parsers = {
     'lua',
     'python',
     'qmljs',
+    'query',
     'sh',
     'typescript',
     'vim',
