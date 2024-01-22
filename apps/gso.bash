@@ -56,16 +56,15 @@ fi
 RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
 echo "${RG_CMD[@]@Q}"
-if RESULTS="$("${RG_CMD[@]}")"; then
-    : # Need to handle the error code in the else branch, because `!` overrides it.
-else
-    if [[ "$?" = 2 ]]; then
-        RG_CMD+=(--no-ignore)
-        echo "${RG_CMD[@]@Q}"
-        RESULTS="$("${RG_CMD[@]}")"
-    else
+if RESULTS="$(! "${RG_CMD[@]}" |& cat)"; then
+    if ! [[ "$RESULTS" =~ "No files were searched" ]]; then
         exit "$?"
     fi
+
+    echo "No files were searched, trying again with --no-ignore..." >&2
+    RG_CMD+=(--no-ignore)
+    echo "${RG_CMD[@]@Q}"
+    RESULTS="$("${RG_CMD[@]}")"
 fi
 if [[ "$OPEN_ALL" = "1" ]]; then
     nvim -q <(echo "$RESULTS")
