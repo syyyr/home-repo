@@ -42,6 +42,7 @@ for i in {1..64}; do
     alias "make$i"="make -j$i"
 done; unset i;
 alias makej="make -j\$(nproc)"
+alias maekj="makej"
 
 alias adog='git adog'
 alias c='git clone --recurse-submodules'
