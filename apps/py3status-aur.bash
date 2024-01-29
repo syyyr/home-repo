@@ -9,10 +9,13 @@ make_html()
 
 UPDATED=()
 
-if [[ "$1" = git ]]; then
+if [[ "$1" = updates ]]; then
+	OUT="$(auracle outdated)"
+elif [[ "$1" = out-of-date ]]; then
 	OUT="$(aur-out-of-date -user syyyr -json | tr -d '\036' | grep OUT-OF-DATE | jq -r '"\(.name) \(.version) -> \(.upstream)"')"
 else
-	OUT="$(auracle outdated)"
+	echo Unknown mode "$1" 2>&1
+	exit 1
 fi
 
 if [[ -n "$OUT" ]]; then

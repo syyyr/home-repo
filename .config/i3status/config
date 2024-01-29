@@ -1,6 +1,6 @@
 order += "keyboard_locks"
-order += "external_script git"
-order += "external_script aur"
+order += "external_script updates"
+order += "external_script out-of-date"
 order += "google_calendar"
 order += "volume_status"
 order += "online_status"
@@ -12,16 +12,16 @@ order += "lm_sensors T14s"
 order += "battery_level 0"
 order += "clock"
 
-external_script git {
+external_script updates {
     cache_timeout = 3600
     markup = 'pango'
-    script_path = '$HOME/apps/py3status-aur.bash git'
+    script_path = '$HOME/apps/py3status-aur.bash updates'
 }
 
-external_script aur {
+external_script out-of-date {
     cache_timeout = 3600
     markup = 'pango'
-    script_path = '$HOME/apps/py3status-aur.bash'
+    script_path = '$HOME/apps/py3status-aur.bash out-of-date'
 }
 
 google_calendar {
