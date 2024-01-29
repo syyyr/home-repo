@@ -11,7 +11,16 @@ filter_disabled_packages() {
 }
 
 pushd "$HOME"
+SHOULD_RESTART="no"
+if checkupdates --nocolor | grep "^linux "; then
+    SHOULD_RESTART="yes"
+fi
 sudo pacman -Syu --noconfirm
+if [[ "$SHOULD_RESTART" = "yes" ]]; then
+    echo Detected a Linux update. Reboot the PC now.
+    exit 0
+fi
+
 exec 3< <(git submodule update --remote |& cat)
 UPDATE_PID="$!"
 auracle outdated || echo "No outdated AUR packages."
