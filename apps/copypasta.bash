@@ -60,7 +60,7 @@ hammer 🔨
 roll 🙄
 smoke/exhale 😤
 sweat 😅
-sweat 🥵
+sweat/hot 🥵
 freezing/cold 🥶
 hundred/100 💯
 fear/scared 😱
