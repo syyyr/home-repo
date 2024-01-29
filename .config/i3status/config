@@ -1,4 +1,6 @@
 order += "keyboard_locks"
+order += "external_script git"
+order += "external_script aur"
 order += "google_calendar"
 order += "volume_status"
 order += "online_status"
@@ -9,6 +11,18 @@ order += "diskdata"
 order += "lm_sensors T14s"
 order += "battery_level 0"
 order += "clock"
+
+external_script git {
+    cache_timeout = 3600
+    markup = 'pango'
+    script_path = '$HOME/apps/py3status-aur.bash git'
+}
+
+external_script aur {
+    cache_timeout = 3600
+    markup = 'pango'
+    script_path = '$HOME/apps/py3status-aur.bash'
+}
 
 google_calendar {
     format = "{events}"
