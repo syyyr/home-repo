@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euxo pipefail
+set -euo pipefail
 shopt -s inherit_errexit
 
 readonly BASH_COLOR_BOLD=$'\033''[1m' BASH_COLOR_RED=$'\033''[31m' BASH_BLUE_BOLD=$'\033''[01;34m' BASH_COLOR_NORMAL=$'\033''[0m' AUR_DEP="$1"
