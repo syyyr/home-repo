@@ -1,7 +1,7 @@
 #!/bin/bash
 for program in "$@"; do
     if ! type "$program" &> /dev/null; then
-        echo "$program"' is not installed in PATH.' >&2
+        echo "$program"' is not installed in PATH.'
         NOTFOUND=1
     fi
 done
