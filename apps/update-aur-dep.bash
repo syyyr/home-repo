@@ -27,7 +27,7 @@ readonly DEP_DIR="$HOME/.local/aur/$AUR_DEP"
 if ! [[ -d "$DEP_DIR" ]]; then
 	auracle clone --chdir="$HOME/.local/aur" "$AUR_DEP"
 fi
-pushd "$DEP_DIR" || exit 1
+cd "$DEP_DIR" || exit 1
 git fetch
 git reset --hard origin/master
 

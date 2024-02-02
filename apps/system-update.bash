@@ -10,7 +10,7 @@ filter_disabled_packages() {
     grep -v "${DISABLED_PKGS[@]}"
 }
 
-pushd "$HOME"
+pushd "$HOME" > /dev/null
 SHOULD_RESTART="no"
 if checkupdates --nocolor | grep "^linux "; then
     SHOULD_RESTART="yes"
@@ -25,11 +25,11 @@ exec 3< <(git submodule update --remote |& cat)
 UPDATE_PID="$!"
 auracle outdated || echo "No outdated AUR packages."
 
-pushd "$HOME/.local/aur"
+pushd "$HOME/.local/aur" > /dev/null
 for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$' | filter_disabled_packages); do
     "$HOME/apps/update-aur-dep.bash" "$i" || true
 done
-popd
+popd > /dev/null
 
 echo "Waiting for submodules to finish updating..."
 wait "$UPDATE_PID"
@@ -38,4 +38,4 @@ echo Updating tree-sitter parsers...
 nvim --headless -c TSUpdateAndQuit
 git --no-pager submodule summary
 "$HOME/apps/check-config.bash"
-popd
+popd > /dev/null
