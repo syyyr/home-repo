@@ -54,3 +54,10 @@ rm()
 
     env rm "$@"
 }
+
+try()
+{
+    while ! "$@"; do
+        sleep 0.1;
+    done
+}
