@@ -78,7 +78,7 @@ _GEN_PROMPT()
                 GIT_INFO="${GIT_INFO}="
             fi
         else
-            if COMMITS=$(git status | grep -Eo "[0-9]+ commits" | grep -Eo '[0-9]'+); then
+            if COMMITS=$(git status | grep -Eo "[0-9]+ commit" | grep -Eo '[0-9]'+); then
                 GIT_INFO="${GIT_INFO} (+${COMMITS})"
             fi
         fi
