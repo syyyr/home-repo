@@ -243,12 +243,12 @@ end
 local original_underline_show = vim.diagnostic.handlers.underline.show --[[@as function]]
 local original_signs_show = vim.diagnostic.handlers.signs.show --[[@as function]]
 
-vim.diagnostic.handlers.underline.show = function(a, b, diagnostics, d, e)
-    original_underline_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
+vim.diagnostic.handlers.underline.show = function(namespace, bufnr, diagnostics, opts)
+    original_underline_show(namespace, bufnr, filter_unused_diagnostics(diagnostics), opts)
 end
 
-vim.diagnostic.handlers.signs.show = function(a, b, diagnostics, d, e)
-    original_signs_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
+vim.diagnostic.handlers.signs.show = function(namespace, bufnr, diagnostics, opts)
+    original_signs_show(namespace, bufnr, filter_unused_diagnostics(diagnostics), opts)
 end
 
 syyyr.nnoremap('<c-space>', function()
