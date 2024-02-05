@@ -67,7 +67,7 @@ _GEN_PROMPT()
 
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
 
-    local USER_HOST="$(whoami)@$(hostname)" WORKDIR="$(dirs +0)" GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)" TIME="$(printf "%(%H:%M:%S)T")"
+    local USER_HOST="$(whoami)@$(hostname)" WORKDIR="$(dirs +0)" GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)" TIME="$(printf "%(%H:%M:%S)T")" COMMITS
     if [[ -n "$GIT_ROOT_DIR" ]]; then
         local GIT_INFO=""
         if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
@@ -76,6 +76,10 @@ _GEN_PROMPT()
             REMOTE_BRANCH="origin/${REMOTE_BRANCH#origin/}"
             if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
                 GIT_INFO="${GIT_INFO}="
+            fi
+        else
+            if COMMITS=$(git status | grep -Eo "[0-9]+ commits" | grep -Eo '[0-9]'+); then
+                GIT_INFO="${GIT_INFO} (+${COMMITS})"
             fi
         fi
         local GIT_SYMBOLS=""
