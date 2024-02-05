@@ -2,6 +2,12 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
+readonly BASH_BLUE_BOLD=$'\033''[01;34m' BASH_COLOR_NORMAL=$'\033''[0m'
+
+info() {
+	echo "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
+}
+
 filter_disabled_packages() {
     local DISABLED_PKGS=(
         # These are part of another package.
@@ -12,12 +18,14 @@ filter_disabled_packages() {
 
 pushd "$HOME" > /dev/null
 SHOULD_RESTART="no"
-if checkupdates --nocolor | grep "^linux "; then
+if CHECKUPDATES_OUTPUT="$(checkupdates | grep "linux ")"; then
     SHOULD_RESTART="yes"
+    info Detected a Linux update. Will prompt for a reboot after updating.
+    echo "$CHECKUPDATES_OUTPUT"
 fi
 sudo pacman -Syu --noconfirm
 if [[ "$SHOULD_RESTART" = "yes" ]]; then
-    echo Detected a Linux update. Reboot the PC now.
+    info Detected a Linux update. Reboot the PC now.
     exit 0
 fi
 
