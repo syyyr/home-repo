@@ -240,8 +240,8 @@ local function filter_unused_diagnostics(diagnostics)
     end):totable()
 end
 
-local original_underline_show = vim.diagnostic.handlers.underline.show
-local original_signs_show = vim.diagnostic.handlers.signs.show
+local original_underline_show = vim.diagnostic.handlers.underline.show --[[@as function]]
+local original_signs_show = vim.diagnostic.handlers.signs.show --[[@as function]]
 
 vim.diagnostic.handlers.underline.show = function(a, b, diagnostics, d, e)
     original_underline_show(a, b, filter_unused_diagnostics(diagnostics), d, e)
