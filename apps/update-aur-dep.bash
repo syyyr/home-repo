@@ -50,7 +50,6 @@ while true; do
 	done; unset i
 
 	if "${UPDATE_COMMAND[@]}"; then
-		"$HOME/apps/check-available.bash" py3-cmd > /dev/null && py3-cmd refresh "external_script updates"
 		exit 0
 	fi
 
