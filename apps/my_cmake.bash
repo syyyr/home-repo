@@ -173,6 +173,13 @@ for arg in "$@"; do
             CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" "${CMAKE_FLAGS[@]}" )
             shift
             ;;
+        d=*)
+            OPTION="${arg#d=}"
+            echo "Setting $OPTION to ON."
+            CMAKE_FLAGS=( "-D$OPTION=ON" "${CMAKE_FLAGS[@]}" )
+            unset OPTION
+            shift
+            ;;
         *)
             break
             ;;
