@@ -240,16 +240,14 @@ local function filter_unused_diagnostics(diagnostics)
     end):totable()
 end
 
-local original_underline_show = vim.diagnostic.handlers.underline.show --[[@as function]]
-local original_signs_show = vim.diagnostic.handlers.signs.show --[[@as function]]
-
-vim.diagnostic.handlers.underline.show = function(namespace, bufnr, diagnostics, opts)
-    original_underline_show(namespace, bufnr, filter_unused_diagnostics(diagnostics), opts)
+local function wrap_filter_unused(original_handler)
+    return function(namespace, bufnr, diagnostics, opts)
+        original_handler(namespace, bufnr, filter_unused_diagnostics(diagnostics), opts)
+    end
 end
 
-vim.diagnostic.handlers.signs.show = function(namespace, bufnr, diagnostics, opts)
-    original_signs_show(namespace, bufnr, filter_unused_diagnostics(diagnostics), opts)
-end
+vim.diagnostic.handlers.underline.show = wrap_filter_unused(vim.diagnostic.handlers.underline.show)
+vim.diagnostic.handlers.signs.show = wrap_filter_unused(vim.diagnostic.handlers.signs.show)
 
 syyyr.nnoremap('<c-space>', function()
     vim.g.skip_diagnostic_float = true
