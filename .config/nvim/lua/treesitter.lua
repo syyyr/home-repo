@@ -2,6 +2,7 @@ vim.cmd('packadd! nvim-treesitter')
 
 local available_parsers = {
     'bash',
+    'c',
     'comment',
     'cpon',
     'lua',
