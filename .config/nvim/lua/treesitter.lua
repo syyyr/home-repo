@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function(info)
         if vim.iter(available_parsers):find(info.match) then
             vim.treesitter.start()
-            if info.match ~= 'python' and info.match ~= 'sh' then
+            if info.match ~= 'sh' then
                 vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
             end
         end
