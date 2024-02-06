@@ -9,7 +9,7 @@ end, { nargs = 0 })
 syyyr.nnoremap('<a-t>', '<cmd>Trailing<cr><cmd>nohlsearch<cr>')
 
 vim.api.nvim_create_user_command('DiffToggle', function()
-    if not vim.b.scratch_bufname then
+    if not vim.b.scratch_winnr then
         local file_name = vim.fn.expand('%')--[[@as string]]
         if file_name == '' then
             vim.notify('DiffToggle: Empty file name.')
@@ -19,21 +19,33 @@ vim.api.nvim_create_user_command('DiffToggle', function()
             vim.notify("DiffToggle: File doesn't exist (or can't be opened).")
             return
         end
-        local scratch_bufname = 'disk:' .. vim.fn.expand('%')
-        vim.b.scratch_bufname = scratch_bufname
+
+        local original_bufnr = vim.fn.bufnr()
+        local original_bufname = vim.fn.expand('%')
         vim.cmd('vert new')
-        vim.b.scratch_bufname = scratch_bufname
-        vim.cmd('file ' .. vim.b.scratch_bufname)
+        vim.api.nvim_create_autocmd('BufHidden', {
+            buffer = vim.fn.bufnr(),
+            callback = function(info)
+                vim.defer_fn(function()
+                    vim.cmd('bdelete ' .. info.buf)
+                    vim.b[original_bufnr].scratch_winnr = nil
+                end, 0)
+            end,
+            once = true,
+            group = vim.api.nvim_create_augroup('RemoveDiffToggleBuffer', {clear = true})
+        })
+        local scratch_winnr = vim.fn.win_getid()
+        vim.b.scratch_winnr = scratch_winnr
+        vim.cmd('file disk:' .. original_bufname)
         vim.opt.buftype = 'nofile'
         vim.cmd('read #')
         vim.cmd('0delete_')
         vim.cmd('diffthis')
         vim.cmd('wincmd p')
+        vim.b.scratch_winnr = scratch_winnr
         vim.cmd('diffthis')
     else
-        vim.cmd('diffoff')
-        vim.cmd('bdelete ' .. vim.b.scratch_bufname)
-        vim.b.scratch_bufname = nil
+        vim.api.nvim_win_close(vim.b.scratch_winnr, false)
     end
 end, { nargs = 0 })
 
