@@ -1,6 +1,6 @@
 ;; extends
 
+;; remove special shebang highlighting
 ((program
   .
-  (comment) @comment)
-  (#lua-match? @comment "^#!/"))
+  (comment) @comment))
