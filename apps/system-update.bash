@@ -17,14 +17,9 @@ filter_disabled_packages() {
 }
 
 pushd "$HOME" > /dev/null
-SHOULD_RESTART="no"
-if CHECKUPDATES_OUTPUT="$(checkupdates | grep "linux ")"; then
-    SHOULD_RESTART="yes"
-    info Detected a Linux update. Will prompt for a reboot after updating.
-    echo "$CHECKUPDATES_OUTPUT"
-fi
+exec 3< <(checkupdates)
 sudo pacman -Syu --noconfirm
-if [[ "$SHOULD_RESTART" = "yes" ]]; then
+if grep "linux " <&3; then
     info Detected a Linux update. Reboot the PC now.
     exit 0
 fi
