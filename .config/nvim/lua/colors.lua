@@ -88,6 +88,16 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @text.uri.comment NONE')
 
         vim.cmd('highlight! link @lsp.type.macro.cpp Macro')
+        vim.cmd('highlight! link @type.builtin.cpp Type')
+        vim.cmd('highlight! link @module.cpp NONE')
+        vim.cmd('highlight! link @keyword.conditional.cpp Conditional')
+        vim.cmd('highlight! link @punctuation.bracket.cpp NONE')
+        vim.cmd('highlight! link @type.qualifier.cpp cStorageClass')
+        vim.cmd('highlight! link @keyword.cpp Structure')
+        vim.cmd('highlight! link @keyword.import.cpp Include')
+        vim.cmd('highlight! link @keyword.repeat.cpp Repeat')
+        vim.cmd('highlight! link @keyword.return.cpp Statement')
+
         vim.cmd('highlight! link @keyword.conditional.bash Conditional')
         vim.cmd('highlight! link @keyword.repeat.bash Repeat')
 
