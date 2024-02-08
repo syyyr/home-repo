@@ -98,6 +98,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @text.uri.comment NONE')
 
         vim.cmd('highlight! link @type.qualifier.cpp cStorageClass')
+        vim.cmd('highlight! link @lsp.mod.deduced.cpp Type')
+        vim.cmd('highlight! link @lsp.type.typeParameter.cpp NONE')
         vim.cmd('highlight! link @keyword.return.cpp Statement')
 
         vim.cmd('highlight DiagnosticOk gui=bold guifg=#629120')
