@@ -77,6 +77,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight! link @preproc NONE')
         vim.cmd('highlight! link @property NONE')
         vim.cmd('highlight! link @punctuation.bracket NONE')
+        vim.cmd('highlight! link @punctuation.special Keyword')
+        vim.cmd('highlight! link @punctuation.delimiter NONE')
         vim.cmd('highlight! link @type NONE')
         vim.cmd('highlight! link @type.builtin Type')
         vim.cmd('highlight! link @typeParameter Constant')
