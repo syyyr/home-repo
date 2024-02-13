@@ -70,6 +70,11 @@ for arg in "$@"; do
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
             shift
             ;;
+        assertions)
+            CFLAGS="-D_FORTIFY_SOURCE=3 $CFLAGS"
+            CXXFLAGS="-D_GLIBCXX_ASSERTIONS=1 -D_FORTIFY_SOURCE=3 $CXXFLAGS"
+            shift
+            ;;
         gcc)
             echo "Enabling GCC."
             CLANG=0
