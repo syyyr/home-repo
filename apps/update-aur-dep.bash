@@ -33,6 +33,7 @@ git reset --hard origin/master
 
 readonly AUTOREMOVE_PKGS=(
 	cmake-language-server-git
+	mingw-w64-jasper
 	mingw-w64-trompeloeil
 	mingw-w64-vulkan-headers
 	mingw-w64-vulkan-icd-loader
