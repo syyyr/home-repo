@@ -98,6 +98,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         }) do
             vim.cmd(('highlight! link %s %s'):format(syntax_group, highlight_group))
         end
+
+        vim.cmd('highlight @keyword.constexpr cterm=nocombine gui=nocombine')
+
     end,
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })

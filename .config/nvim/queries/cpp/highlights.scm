@@ -1,0 +1,4 @@
+; extends
+
+"constexpr" @keyword.constexpr
+
