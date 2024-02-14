@@ -35,6 +35,7 @@ alias rsync='rsync --progress'
 alias se='sudoedit'
 alias sl='ls'
 alias sr='screen -r'
+alias ssh='kitten ssh'
 alias vim='nvim'
 alias 🤔="cat \$HOME/apps/thinking"
 for i in {1..64}; do
