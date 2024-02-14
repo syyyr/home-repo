@@ -46,6 +46,10 @@ __try_compl() {
     __do_completion_for "${COMP_WORDS[0]}"
 }
 
+__update-aur-dep_compl() {
+    readarray -t COMPREPLY < <(auracle outdated -q)
+}
+
 __twitch_compl() {
     readarray -t COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
@@ -64,3 +68,4 @@ _setup_path_compl "bashrc" "$HOME/.config/bashrc"
 complete -F __twitch_compl twitch
 complete -F __try_compl try
 complete -c wv
+complete -F __update-aur-dep_compl update-aur-dep
