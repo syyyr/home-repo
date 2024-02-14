@@ -12,6 +12,8 @@ _setup_path_compl() {
     }"
     complete -F "_$1_complete" "$1"
 }
+_setup_path_compl "vimrc" "$HOME/.config/nvim"
+_setup_path_compl "bashrc" "$HOME/.config/bashrc"
 
 __do_completion_for() {
     local completion_func=$(complete -p "$1" 2>/dev/null | awk '{print $(NF-1)}')
@@ -45,27 +47,25 @@ __try_compl() {
 
     __do_completion_for "${COMP_WORDS[0]}"
 }
+complete -F __try_compl try
 
 __update-aur-dep_compl() {
     readarray -t COMPREPLY < <(auracle outdated -q)
 }
+complete -F __update-aur-dep_compl update-aur-dep
 
 __twitch_compl() {
     readarray -t COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
+complete -F __twitch_compl twitch
 
 __taskkill_compl() {
     readarray -t COMPREPLY < <(IFS=$'\n' compgen -W "$("$HOME/bin/tasklist")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
+complete -F __taskkill_compl taskkill
 
 complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
 complete -W 'android asan cov gcc no-cache release release-di time tsan werror' -o default my_cmake
-complete -F __taskkill_compl taskkill
-_setup_path_compl "vimrc" "$HOME/.config/nvim"
-_setup_path_compl "bashrc" "$HOME/.config/bashrc"
-complete -F __twitch_compl twitch
-complete -F __try_compl try
 complete -c wv
-complete -F __update-aur-dep_compl update-aur-dep
