@@ -19,6 +19,7 @@ angery3 🤬
 pray/dorime 🙏
 hands 🙌
 rofl 🤣
+sleepy 😴
 happy/tear 🥲
 spit/saliva/drooling 🤤
 holy/halo 😇
