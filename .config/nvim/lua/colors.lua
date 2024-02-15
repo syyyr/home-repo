@@ -90,6 +90,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
             ['@lsp.type.typeParameter'] = 'Constant',
             ['@lsp.type.variable'] = 'NONE',
 
+            ['@property.cpon'] = 'Identifier',
+
             ['@keyword.return.cpp'] = 'Statement',
             ['@lsp.mod.deduced.cpp'] = 'Type',
             ['@lsp.type.typeParameter.cpp'] = 'NONE',
