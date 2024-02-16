@@ -55,10 +55,10 @@ while true; do
 	fi
 
 	echo "Building $AUR_DEP failed."
-	info -n "Try again [(t)ry_again,(n)ocheck,(s)kippgpcheck,(r)emove_build_dir]? "
+	info -n "Try again [(t)ry_again,(g)ive_up,(n)ocheck,(s)kippgpcheck,(r)emove_build_dir]? "
 	read -r
 
-	if [[ -z "$REPLY" ]]; then
+	if [[ -z "$REPLY" ]] || [[ "$REPLY" =~ "g" ]]; then
 		break
 	fi
 
