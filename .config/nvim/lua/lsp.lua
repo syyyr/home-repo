@@ -236,7 +236,7 @@ end
 
 local function filter_unused_diagnostics(diagnostics)
     return vim.iter(diagnostics):filter(function(diagnostic)
-        return vim.iter({"unused", "never read"}):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)
+        return vim.iter({"unused", "never read", "not used"}):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)
     end):totable()
 end
 
