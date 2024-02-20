@@ -255,12 +255,13 @@ syyyr.nnoremap('<c-space>', function()
     vim.lsp.buf.hover()
 end)
 
-vim.api.nvim_create_autocmd('CursorHold', {
+vim.api.nvim_create_autocmd({'CursorHold', 'DiagnosticChanged'}, {
     callback = function()
         if vim.g.skip_diagnostic_float then
             vim.g.skip_diagnostic_float = false
             return
         end
+        syyyr.close_float()
         local _, new_float_win = vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
         _, vim.g.float_win_id = nil, new_float_win and new_float_win or vim.g.float_win_id
     end,
