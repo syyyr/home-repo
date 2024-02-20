@@ -43,3 +43,11 @@ end, { nargs = 1 })
 
 vim.cmd([[iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>]])
 vim.opt.cinoptions = {'j1', '(0', 'ws', 'Ws', ':0', 'l1', 'N-s', 'E-s'}
+
+local clazy_namespace_id = require('null-ls.diagnostics').get_namespace(require('null-ls.sources').get('clazy')[1].id)
+vim.api.nvim_create_autocmd({'TextChanged', 'TextChangedI'}, {
+    callback = function()
+        vim.diagnostic.reset(clazy_namespace_id)
+    end,
+    group = vim.api.nvim_create_augroup('CppResetClazy', {clear = true})
+})

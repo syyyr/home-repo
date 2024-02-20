@@ -127,6 +127,7 @@ null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.actionlint,
         null_ls.builtins.diagnostics.checkmake,
+        null_ls.builtins.diagnostics.clazy,
         null_ls.builtins.diagnostics.luacheck,
         null_ls.builtins.diagnostics.vint,
 
