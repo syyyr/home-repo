@@ -113,10 +113,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 syyyr.nnoremap('<a-cr>', function()
     vim.fn['clever_f#reset']()
     vim.g.skip_diagnostic_float = true
-    if vim.g.float_win_id then
-        pcall(vim.api.nvim_win_close, vim.g.float_win_id, false) -- discard errors: the window might be already closed
-        vim.g.float_win_id = nil
-    end
+    syyyr.close_float()
     vim.cmd('nohlsearch')
     vim.notify('')
 end)
