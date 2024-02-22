@@ -117,3 +117,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/none-ls.nvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/none-ls.nvim
 	url = https://github.com/nvimtools/none-ls.nvim.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/rustaceanvim"]
+	path = .local/share/nvim/site/pack/bundle/opt/rustaceanvim
+	url = https://github.com/mrcjkb/rustaceanvim.git
