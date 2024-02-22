@@ -257,6 +257,9 @@ end)
 
 vim.api.nvim_create_autocmd({'CursorHold', 'DiagnosticChanged'}, {
     callback = function()
+        if vim.v.exiting ~= vim.NIL then
+            return
+        end
         if vim.g.skip_diagnostic_float then
             vim.g.skip_diagnostic_float = false
             return
