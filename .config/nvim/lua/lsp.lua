@@ -71,13 +71,13 @@ for _, lsp_name in ipairs({
     'denols',
     'jsonls',
     'pkgbuild_language_server',
-    'rust_analyzer',
     'yang_lsp',
     'vimls'}) do
     require('lspconfig')[lsp_name].setup({
         capabilities = capabilities
     })
 end
+vim.cmd('packadd! rustaceanvim')
 
 require('lspconfig').diagnosticls.setup({
     filetypes = {'cpp'},
