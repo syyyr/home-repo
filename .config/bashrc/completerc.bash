@@ -50,7 +50,7 @@ __try_compl() {
 complete -F __try_compl try
 
 __update-aur-dep_compl() {
-    readarray -t COMPREPLY < <(auracle outdated -q)
+    readarray -t COMPREPLY < <(compgen -W "$(auracle outdated -q)" "${COMP_WORDS[${COMP_CWORD}]}")
 }
 complete -F __update-aur-dep_compl update-aur-dep
 
