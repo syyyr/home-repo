@@ -107,6 +107,11 @@ require('lspconfig').diagnosticls.setup({
     }
 })
 
+require('lspconfig').denols.setup({
+    root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
+    single_file_support = true
+})
+
 require('lspconfig').yamlls.setup({
     settings = {
         redhat = {
