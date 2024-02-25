@@ -1,0 +1,3 @@
+std = "nvim.selene"
+[lints]
+multiple_statements = "allow"
