@@ -12,7 +12,7 @@ end
 require('syyyr').nnoremap('é', '<cmd>ClangdSwitchSourceHeader<cr>', {buffer = true})
 vim.opt.commentstring = '//%s'
 
-if (vim.opt.filetype == 'c') then -- Make sure this is not called with cpp. Sigh.
+if vim.opt.filetype == 'c' then -- Make sure this is not called with cpp. Sigh.
     require('syyyr').register_printing({
         print_var = function(var_name)
             add_stdio()
