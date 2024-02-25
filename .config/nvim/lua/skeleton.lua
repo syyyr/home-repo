@@ -1,3 +1,4 @@
+local skeleton_group = vim.api.nvim_create_augroup('Skeletons', {clear = true})
 ---@param pattern string
 ---@param text string
 ---@param start_line integer
@@ -13,7 +14,7 @@ local function add_skeleton(pattern, text, start_line)
             vim.fn.cursor({start_line, 1})
             vim.fn.feedkeys('o')
         end,
-        group = vim.api.nvim_create_augroup('Skeletons', {clear = true})
+        group = skeleton_group
     })
 end
 
