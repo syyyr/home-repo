@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selene --config .config/nvim/selene.toml .config/nvim/
+selene --no-summary --config .config/nvim/selene.toml .config/nvim/
 shellcheck -a "$HOME"/.config/bashrc/*
 LOGFILE="$(lua-language-server --check "$HOME/.config/nvim" --checklevel=Hint | grep -oE "[^ ]+check\.json")"
 if [[ -n "$LOGFILE" ]]; then
