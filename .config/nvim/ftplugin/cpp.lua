@@ -38,7 +38,7 @@ syyyr.register_printing({
 
 vim.api.nvim_buf_create_user_command(0, 'Sleep', function(info)
     add_thread()
-    vim.cmd.normal({'ostd::this_thread::sleep_for(std::chrono::seconds(' .. info.args .. '));', bang = true})
+    vim.cmd.normal({args = {'ostd::this_thread::sleep_for(std::chrono::seconds(' .. info.args .. '));'}, bang = true})
 end, { nargs = 1 })
 
 vim.cmd([[iabbrev <buffer> DOCSUB DOCTEST_SUBCASE("")<Left><Left>]])
