@@ -94,22 +94,22 @@ end
 ---@alias MapFunction fun(lhs: string, rhs: string|function, opts: table|nil)
 
 ---@type MapFunction
-function M.nnoremap(lhs, rhs, opts) impl_map('n', true, lhs, rhs, opts) end
+function M.nnoremap(...) impl_map('n', true, ...) end
 ---@type MapFunction
-function M.xnoremap(lhs, rhs, opts) impl_map('x', true, lhs, rhs, opts) end
+function M.xnoremap(...) impl_map('x', true, ...) end
 ---@type MapFunction
-function M.onoremap(lhs, rhs, opts) impl_map('o', true, lhs, rhs, opts) end
+function M.onoremap(...) impl_map('o', true, ...) end
 ---@type MapFunction
-function M.inoremap(lhs, rhs, opts) impl_map('i', true, lhs, rhs, opts) end
+function M.inoremap(...) impl_map('i', true, ...) end
 ---@type MapFunction
-function M.cnoremap(lhs, rhs, opts) impl_map('c', true, lhs, rhs, opts) end
+function M.cnoremap(...) impl_map('c', true, ...) end
 ---@type MapFunction
-function M.tnoremap(lhs, rhs, opts) impl_map('t', true, lhs, rhs, opts) end
+function M.tnoremap(...) impl_map('t', true, ...) end
 ---@type MapFunction
-function M.noremap(lhs, rhs, opts) impl_map('', true, lhs, rhs, opts) end
+function M.noremap(...) impl_map('', true, ...) end
 ---@type MapFunction
-function M.omap(lhs, rhs, opts) impl_map('o', false, lhs, rhs, opts) end
+function M.omap(...) impl_map('o', false, ...) end
 ---@type MapFunction
-function M.nmap(lhs, rhs, opts) impl_map('', false, lhs, rhs, opts) end
+function M.nmap(...) impl_map('', false, ...) end
 
 return M
