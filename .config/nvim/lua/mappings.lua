@@ -77,7 +77,7 @@ syyyr.inoremap('{<cr>', '{<cr>}<Esc>O')
 -- insert current line in cmd mode
 syyyr.cnoremap('<c-r><c-l>', [[<c-r>=getline('.')<cr>]])
 
-syyyr.noremap('<f7>', '<nop>')
+syyyr.nnoremap('<f7>', '<nop>')
 syyyr.inoremap('<f7>', '<nop>')
 syyyr.cnoremap('<f7>', '<nop>')
 
