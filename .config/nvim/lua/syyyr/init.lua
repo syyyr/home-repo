@@ -106,8 +106,6 @@ function M.cnoremap(...) impl_map('c', true, ...) end
 ---@type MapFunction
 function M.tnoremap(...) impl_map('t', true, ...) end
 ---@type MapFunction
-function M.noremap(...) impl_map('', true, ...) end
----@type MapFunction
 function M.omap(...) impl_map('o', false, ...) end
 ---@type MapFunction
 function M.nmap(...) impl_map('', false, ...) end
