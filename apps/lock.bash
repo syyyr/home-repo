@@ -13,12 +13,13 @@ get_muted()
 }
 
 "$HOME/apps/kbacklight.bash" 0
-# TODO: if you take out headphones, the speakers get unumuted
-MUTED_BEFORE=$(get_muted)
 
-if [[ $MUTED_BEFORE = 0 ]]; then
+if [[ "$(get_muted)" = 0 ]]; then
     "$HOME/apps/volume.bash" toggle
+    HAVE_MUTED=1
 fi
+
+VOLUME_BEFORE="$("$HOME/apps/volume.bash")"
 
 if [[ "$1" != "no-off" ]]; then
     (sleep 7; xset dpms force off)&
@@ -66,8 +67,16 @@ if [[ "$1" != "no-off" ]]; then
     kill "$SCREENOFF_PID" 2> /dev/null
 fi
 
-MUTED_NOW=$(get_muted)
+VOLUME_NOW="$("$HOME/apps/volume.bash")"
 
-if [[ "$MUTED_BEFORE" != "$MUTED_NOW" ]]; then
+if [[ "$VOLUME_NOW" != "$VOLUME_BEFORE" ]]; then
+    # The volume changed from outside, let's not do anything. If VOLUME_NOW is muted, we definitely don't want to unmute
+    # it even if HAVE_MUTED is 1, and if VOLUME_NOW is unmuted, it's too late to mute it now.
+    # Note: this detection fails if only the muted state changes, for example, if I disconnect my headphones, and the
+    # speaker and headphone volume is the same.
+    exit 0
+fi
+
+if ((HAVE_MUTED)); then
     "$HOME/apps/volume.bash" toggle
 fi
