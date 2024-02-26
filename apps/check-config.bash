@@ -2,7 +2,9 @@
 
 print_and_run()
 {
-	echo RUN: "$@" >&2
+	BASH_COLOR_BOLD=$'\033''[1m'
+	BASH_COLOR_NORMAL=$'\033''[0m'
+	echo "${BASH_COLOR_BOLD}RUN:${BASH_COLOR_NORMAL}" "$@" >&2
 	"$@"
 }
 
