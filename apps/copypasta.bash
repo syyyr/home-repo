@@ -12,6 +12,7 @@ fingers_crossed 🤞
 thumbs_up 👍
 :D 😀
 kiss/:* 😘
+lick/tongue 😋
 loved 🥰
 angery 😠
 angery2 😡
