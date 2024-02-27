@@ -21,7 +21,7 @@ remove_build_dir() {
 	rm -rf "$HOME/.local/aur/$AUR_DEP/src"
 }
 
-UPDATE_COMMAND=(env CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
+UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed)
 
 readonly DEP_DIR="$HOME/.local/aur/$AUR_DEP"
 if ! [[ -d "$DEP_DIR" ]]; then
