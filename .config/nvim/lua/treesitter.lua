@@ -10,6 +10,7 @@ local available_parsers = {
     'python',
     'qmljs',
     'query',
+    'rust',
     'sh',
     'typescript',
     'vim',
