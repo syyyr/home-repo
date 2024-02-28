@@ -12,6 +12,11 @@ filter_disabled_packages() {
     local DISABLED_PKGS=(
         # These are part of another package.
         -e "mingw-w64-harfbuzz-icu"
+
+        # These aren't updated all that frequently (or never).
+        -e "auracle-git"
+        -e "python-aioserial-git"
+        -e "python-i3-chrome-tab-dragging-git"
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
