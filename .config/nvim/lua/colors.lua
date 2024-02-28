@@ -92,6 +92,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
             ['@property.cpon'] = 'Identifier',
 
+            ['@comment.error.comment'] = '@comment.todo.comment',
+
             ['@keyword.return.cpp'] = 'Statement',
             ['@lsp.mod.deduced.cpp'] = 'Type',
             ['@lsp.type.typeParameter.cpp'] = 'NONE',
