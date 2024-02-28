@@ -51,6 +51,7 @@ complete -F __try_compl try
 
 __update-aur-dep_compl() {
     readarray -t COMPREPLY < <(compgen -W "$(auracle outdated -q)" "${COMP_WORDS[${COMP_CWORD}]}")
+    readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$(pacman -Qqs '.-git$')" "${COMP_WORDS[${COMP_CWORD}]}")
 }
 complete -F __update-aur-dep_compl update-aur-dep
 
