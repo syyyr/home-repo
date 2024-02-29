@@ -51,6 +51,7 @@ alias makje="makej"
 
 alias adog='git adog'
 alias c='git clone --recurse-submodules'
+alias fetch='git fetch'
 alias pull='git pull'
 alias push='git push'
 alias reflog='git reflog'
