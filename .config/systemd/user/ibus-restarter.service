@@ -1,0 +1,10 @@
+[Unit]
+Description=IBus restarter
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/vk/apps/ibus-restarter.bash
+
+[Install]
+WantedBy=graphical-session.target
