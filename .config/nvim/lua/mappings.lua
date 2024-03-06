@@ -112,7 +112,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Reset highlighting, floating windows etc.
 syyyr.nnoremap('<a-cr>', function()
     vim.fn['clever_f#reset']()
-    vim.g.skip_diagnostic_float = true
+    vim.b.skip_diagnostic_float = true
     syyyr.close_float()
     vim.cmd('nohlsearch')
     vim.notify('')

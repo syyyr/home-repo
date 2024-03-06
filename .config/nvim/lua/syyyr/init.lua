@@ -70,9 +70,9 @@ end
 
 ---@return nil
 function M.close_float()
-    if vim.g.float_win_id then
-        pcall(vim.api.nvim_win_close, vim.g.float_win_id, false) -- discard errors: the window might be already closed
-        vim.g.float_win_id = nil
+    if vim.b.float_win_id then
+        pcall(vim.api.nvim_win_close, vim.b.float_win_id, false) -- discard errors: the window might be already closed
+        vim.b.float_win_id = nil
     end
 end
 

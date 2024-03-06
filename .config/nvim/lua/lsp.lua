@@ -256,7 +256,7 @@ vim.diagnostic.handlers.underline.show = wrap_filter_unused(vim.diagnostic.handl
 vim.diagnostic.handlers.signs.show = wrap_filter_unused(vim.diagnostic.handlers.signs.show)
 
 syyyr.nnoremap('<c-space>', function()
-    vim.g.skip_diagnostic_float = true
+    vim.b.skip_diagnostic_float = true
     vim.lsp.buf.hover()
 end)
 
@@ -265,15 +265,14 @@ vim.api.nvim_create_autocmd({'CursorHold', 'DiagnosticChanged'}, {
         if vim.v.exiting ~= vim.NIL then
             return
         end
-        if vim.g.skip_diagnostic_float then
-            vim.g.skip_diagnostic_float = false
+        if vim.b.skip_diagnostic_float then
+            vim.b.skip_diagnostic_float = false
             return
         end
         syyyr.close_float()
         local _, new_float_win = vim.diagnostic.open_float(nil, {focus = false, scope = 'cursor'})
-        _, vim.g.float_win_id = nil, new_float_win and new_float_win or vim.g.float_win_id
+        _, vim.b.float_win_id = nil, new_float_win and new_float_win or vim.b.float_win_id
     end,
-    buffer = 0,
     group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
 })
 
