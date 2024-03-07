@@ -24,7 +24,7 @@ filter_disabled_packages() {
 pushd "$HOME" > /dev/null
 exec 3< <(checkupdates)
 sudo pacman -Syu --noconfirm
-if ansi2html | grep "^linux "; then
+if ansi2html <&3 | grep "^linux "; then
     info Detected a Linux update. Reboot the PC now.
     exit 0
 fi
