@@ -24,8 +24,7 @@ filter_disabled_packages() {
 pushd "$HOME" > /dev/null
 exec 3< <(checkupdates)
 sudo pacman -Syu --noconfirm
-UPDATES="$(ansi2html <&3)"
-if grep "^linux " <<< "$UPDATES"; then
+if grep -P '^\x1b\[0;1mlinux ' <&3; then
     info Detected a Linux update. Reboot the PC now.
     exit 0
 fi
