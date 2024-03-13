@@ -42,7 +42,7 @@ alias watch='watch -n1'
 alias x86_64-w64-mingw32-wine='LC_ALL=C x86_64-w64-mingw32-wine'
 alias 🤔="cat \$HOME/apps/thinking"
 eval 'i='{1..64}'; alias make$i="make -j$i";'
-alias makej="make -j\$(nproc)"
+alias makej="nice make -j\$(nproc)"
 alias maekj="makej"
 alias makje="makej"
 
