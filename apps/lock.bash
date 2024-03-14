@@ -44,6 +44,7 @@ dunstctl set-paused true
 i3-msg bar mode invisible
 i3lock \
     --nofork \
+    --fill \
     --clock \
     --image="$IMAGE_FILE" \
     --color=000000 \
