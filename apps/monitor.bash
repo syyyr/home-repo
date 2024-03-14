@@ -9,10 +9,6 @@ refresh_done() {
 }
 
 refresh() {
-    if pgrep i3lock; then
-        echo "Skipping refresh, because i3lock is running"
-        return
-    fi
     OUTPUT="$(xrandr |
         grep -v "h:" |
         grep -v "v:" |
