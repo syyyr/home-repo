@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export CLAZY_CHECKS=level1,no-fully-qualified-moc-types,no-non-pod-global-static,no-qproperty-without-notify,no-range-loop-detach
+export CTCACHE_DIR="$HOME/.ctcache"
 export DAYSTART='8'
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='find . -type d \( -name ".cargo" -or -name ".local" -or -name ".rustup" -or -name ".npm" -or -name ".git" -or -name ".cache" \) -prune -o -type f -print'
