@@ -27,18 +27,18 @@ if [[ "$1" != "no-off" ]]; then
 fi
 
 if xrandr | grep primary | grep -F "1920x1080" > /dev/null; then
-    IMAGE_FILE="$HOME/.local/share/win10-lock-1080p.png"
     TIME_SIZE=130
     DATE_SIZE=59
     TIME_POS=80:913
     DATE_POS=80:ty+80
 else
-    IMAGE_FILE="$HOME/.local/share/win10-lock-4k.png"
     TIME_SIZE=260
     DATE_SIZE=118
     TIME_POS=160:1826
     DATE_POS=160:ty+160
 fi
+
+IMAGE_FILE="$HOME/.local/share/win10-lock-4k.png"
 
 dunstctl set-paused true
 i3-msg bar mode invisible
