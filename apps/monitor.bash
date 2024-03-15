@@ -10,6 +10,7 @@ refresh_done() {
 
 refresh() {
     OUTPUT="$(xrandr |
+        # https://github.com/kellyjonbrazil/jc/issues/549
         grep -v "h:" |
         grep -v "v:" |
         jc --xrandr |
