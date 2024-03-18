@@ -7,6 +7,10 @@ OPEN_ALL='0'
 RG_CMD_ARGS=()
 for arg in "$@"; do
     case "$arg" in
+        --)
+            shift
+            break
+            ;;
         -*)
             [[ "$arg" =~ a ]] && OPEN_ALL='1' || OPEN_ALL='0'
             [[ "$arg" =~ n ]] && RG_CMD_ARGS+=('--no-ignore') || RG_CMD_ARGS+=('--ignore')
