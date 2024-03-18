@@ -81,3 +81,5 @@ fi
 if ((HAVE_MUTED)); then
     "$HOME/apps/volume.bash" toggle
 fi
+
+py3-cmd refresh
