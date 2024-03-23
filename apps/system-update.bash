@@ -15,8 +15,13 @@ filter_disabled_packages() {
 
         # These aren't updated all that frequently (or never).
         -e "auracle-git"
+        -e "cmake-language-server-git"
+        -e "extremely-linear-git"
         -e "python-aioserial-git"
         -e "python-i3-chrome-tab-dragging-git"
+
+        # Broken for now
+        -e "tree-sitter-git"
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
