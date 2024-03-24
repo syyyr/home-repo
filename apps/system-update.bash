@@ -21,6 +21,7 @@ filter_disabled_packages() {
         -e "python-i3-chrome-tab-dragging-git"
 
         # Broken for now
+        -e "libyang-cpp-git"
         -e "tree-sitter-git"
     )
     grep -v "${DISABLED_PKGS[@]}"
