@@ -2,6 +2,13 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
+if command -v wslpath &> /dev/null && [[ -n "${KITTY_WRAPPER_CWD:-}" ]]; then
+    KITTY_WRAPPER_CWD="$(wslpath -u "$KITTY_WRAPPER_CWD" || true)"
+    if ! [[ -d "$KITTY_WRAPPER_CWD" ]]; then
+        unset KITTY_WRAPPER_CWD
+    fi
+fi
+
 HOURS=$(date +%-H)
 if [[ "$HOURS" -lt "${DAYSTART:-8}" ]] || [[ "$HOURS" -ge "${NIGHTSTART:-22}" ]]; then
     echo je noc
@@ -24,7 +31,7 @@ else
 fi
 
 if [[ -n "$KITTY_SOCKET" ]]; then
-    kitty @ --to unix:"$KITTY_SOCKET" launch --type os-window --cwd oldest "$@"
+    kitty @ --to unix:"$KITTY_SOCKET" launch --type os-window --cwd "${KITTY_WRAPPER_CWD:-oldest}" "$@"
 else
-    kitty "$@"
+    kitty --working-directory="${KITTY_WRAPPER_CWD:-$(pwd)}" "$@"
 fi
