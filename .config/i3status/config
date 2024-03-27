@@ -4,6 +4,7 @@ order += "external_script out-of-date"
 order += "google_calendar"
 order += "volume_status"
 order += "online_status"
+order += "external_script mountpoint"
 order += "bluetooth"
 order += "networkmanager wifi"
 order += "networkmanager ethernet"
@@ -22,6 +23,12 @@ external_script out-of-date {
     cache_timeout = 3600
     markup = 'pango'
     script_path = '$HOME/apps/py3status-aur.bash out-of-date'
+}
+
+external_script mountpoint {
+    cache_timeout = 3600
+    markup = 'pango'
+    script_path = '$HOME/apps/py3status-mountpoint.bash'
 }
 
 google_calendar {
