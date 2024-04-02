@@ -50,7 +50,7 @@ __try_compl() {
 complete -F __try_compl try
 
 __update-aur-dep_compl() {
-    readarray -t COMPREPLY < <(compgen -W "$(auracle outdated -q)" "${COMP_WORDS[${COMP_CWORD}]}")
+    readarray -t COMPREPLY < <(compgen -W "$(auracle outdated -q | grep -v -e "mingw-w64-harfbuzz-icu")" "${COMP_WORDS[${COMP_CWORD}]}")
     if ! ((${#COMPREPLY[@]})); then
         readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$(pacman -Qqs '.-git$')" "${COMP_WORDS[${COMP_CWORD}]}")
     fi
