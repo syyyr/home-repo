@@ -2,8 +2,7 @@
 
 source /usr/share/bash-complete-alias/complete_alias
 alias agit="git"
-# shellcheck disable=SC2139
-alias arch-clone="cd $HOME/git/arch-packages && pkgctl repo clone --protocol https"
+alias arch-clone="cd \$HOME/git/arch-packages && pkgctl repo clone --protocol https"
 alias aur-srcinfo='makepkg --printsrcinfo > .SRCINFO'
 alias calc="python -q"
 # shellcheck disable=SC2139
