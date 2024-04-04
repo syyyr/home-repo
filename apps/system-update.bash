@@ -23,6 +23,8 @@ filter_disabled_packages() {
         # Broken for now
         -e "libyang-cpp-git"
         -e "tree-sitter-git"
+        -e "mingw-w64-curl"
+        -e "mingw-w64-gettext"
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
