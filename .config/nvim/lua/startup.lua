@@ -55,14 +55,8 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
 
 vim.filetype.add({
     extension = {
-        cjson = 'cjson',
         cpon = 'cpon',
-        tab = 'tab',
-        qml = 'qml'
-    },
-    filename = {
-        [vim.fs.joinpath(vim.fn.getenv('HOME'), '.config/i3/config')] = 'i3config',
-        ['tsconfig.json'] = 'jsonc'
+        tab = 'tab'
     }
 })
 
