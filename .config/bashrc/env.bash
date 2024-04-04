@@ -19,3 +19,5 @@ unset OUTPUT
 export SCREENDIR="$HOME/.screen"
 export UBSAN_OPTIONS=print_stacktrace=true,halt_on_error=1
 export VISUAL='nvim'
+export BUILDKIT_STEP_LOG_MAX_SIZE="1073741824"
+export BUILDKIT_STEP_LOG_MAX_SPEED="10240000"
