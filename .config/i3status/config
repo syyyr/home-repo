@@ -1,7 +1,7 @@
-order += "keyboard_locks"
 order += "external_script updates"
 order += "external_script out-of-date"
 order += "google_calendar"
+order += "keyboard_locks"
 order += "volume_status"
 order += "online_status"
 order += "external_script mountpoint"
