@@ -6,6 +6,7 @@ local available_parsers = {
     'cpp',
     'comment',
     'cpon',
+    'jsonc',
     'lua',
     'python',
     'qmljs',
