@@ -42,6 +42,13 @@ readonly AUTOREMOVE_PKGS=(
 	shvcli-git
 )
 
+# https://aur.archlinux.org/packages/mingw-w64-curl#comment-965704
+if grep \
+	-e mingw-w64-curl \
+	-e mingw-w64-gettext <<< "$AUR_DEP"; then
+	export WINEPREFIX=/nonexistent
+fi
+
 while true; do
 	info "Building $AUR_DEP..."
 
