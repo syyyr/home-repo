@@ -82,7 +82,7 @@ networkmanager ethernet {
 
 diskdata {
     format = "[\?color=free {free}]"
-    format_space = "{value:.1f} GB"
+    format_space = "{value:.0f} GB"
     thresholds = {
         'free': [(0, 'worst'), (30, 'worse'), (70, 'better'), (100, 'best')]
     }
