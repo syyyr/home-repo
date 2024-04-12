@@ -7,6 +7,7 @@ if [[ "$1" = "-" ]] || ! [[ -t 0 ]]; then
         shift
     fi
     TARGET_FILE="${1}"
+    TARGET_FILE="$(basename "$TARGET_FILE")"
     cat | ssh "rak@anip.icu" "cat > www/rakac/$TARGET_FILE"
 else
     if [[ $# = 1 ]]; then
@@ -14,6 +15,7 @@ else
     else
         TARGET_FILE="${2}"
     fi
+    TARGET_FILE="$(basename "$TARGET_FILE")"
     scp "$1" "rak@anip.icu:www/rakac/$TARGET_FILE"
 fi
 
