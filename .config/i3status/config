@@ -10,6 +10,7 @@ order += "networkmanager wifi"
 order += "networkmanager ethernet"
 order += "diskdata"
 order += "lm_sensors T14s"
+order += "weather_owm"
 order += "battery_level 0"
 order += "clock"
 
@@ -117,4 +118,13 @@ lm_sensors T14s {
     thresholds = {
         'input': [(80, 'red'), (70, 'orange'), (60, 'yellow'), (40, 'lime'), (0, 'cyan')]
     }
+}
+
+weather_owm {
+    api_key = shell(cat /home/vk/.local/share/owm.key)
+    city = 'Prague'
+    lang = 'cz'
+    format = '{icon} {temperature}'
+    format_temperature = '{current:.0f} °{unit}'
+    unit_temperature = 'C'
 }
