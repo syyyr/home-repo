@@ -23,6 +23,7 @@ filter_disabled_packages() {
         # Broken for now
         -e "libyang-cpp-git"
         -e "tree-sitter-git"
+        -e "py3status-git"
     )
     grep -v "${DISABLED_PKGS[@]}"
 }

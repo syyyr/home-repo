@@ -4,7 +4,7 @@ make_html()
 	NAME="$1"
 	OLD="$2"
 	NEW="$3"
-	echo "<span color='lightblue'>$NAME</span> <span color='red'>$OLD</span> <span color='lightgrey'>-></span> <span color='lime'>$NEW</span>"
+	echo "[\?color=lightblue&show $NAME] [\?color=red&show $OLD] [\?color=lightgrey&show -] [\?color=lime&show $NEW]"
 }
 
 UPDATED=()
