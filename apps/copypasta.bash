@@ -58,6 +58,7 @@ duck/kachna 🦆
 eyes 👀
 strong/arm 💪
 knife 🔪
+not_stonks 📉
 hammer 🔨
 roll 🙄
 smoke/exhale 😤
