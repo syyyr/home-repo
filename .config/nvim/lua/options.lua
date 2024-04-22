@@ -17,6 +17,7 @@ vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 4
 vim.opt.shortmess:append('I') -- Don't show :intro message
 vim.opt.shortmess:append('c') -- Don't show completion messages
+vim.opt.shortmess:append('C') -- No "scanning tags" when insert completing
 vim.opt.showmatch = true
 vim.opt.showmode = false
 vim.opt.signcolumn = 'yes'
