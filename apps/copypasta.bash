@@ -31,6 +31,7 @@ party 🎉
 heart ❤
 broken_heart 💔
 cash 💸
+fear/scared 😱
 facepalm 🤦
 heart_eyes 😍
 star_eyes 🤩
@@ -67,7 +68,6 @@ sweat 😅
 sweat/hot 🥵
 freezing/cold 🥶
 hundred/100 💯
-fear/scared 😱
 rock 🤘
 honk/goose 🦢
 puke 🤮
