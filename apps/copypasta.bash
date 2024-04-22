@@ -35,6 +35,7 @@ facepalm 🤦
 heart_eyes 😍
 star_eyes 🤩
 eggplant 🍆
+japan 🗾
 sweat/drops 💦
 toust/toast/bread 🍞
 hidden/hands 🫣
