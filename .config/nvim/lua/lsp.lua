@@ -289,6 +289,7 @@ vim.diagnostic.config({
             if diagnostic.severity == vim.diagnostic.severity.ERROR or diagnostic.message:find('fix available') then
                 return format_diagnostic(diagnostic)
             end
+            return (nil)--[[@as string]] -- The function does handle nil.
         end
     },
     severity_sort = true,
