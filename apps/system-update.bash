@@ -43,7 +43,7 @@ UPDATE_PID="$!"
 auracle outdated || echo "No outdated AUR packages."
 
 pushd "$HOME/.local/aur" > /dev/null
-for i in $(auracle -q outdated | filter_disabled_packages) $(pacman -Qqs '.-git$' | filter_disabled_packages); do
+for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
     "$HOME/apps/update-aur-dep.bash" "$i" || true
 done
 popd > /dev/null
