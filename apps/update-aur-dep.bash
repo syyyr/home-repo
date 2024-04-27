@@ -23,7 +23,9 @@ remove_build_dir() {
 }
 
 ADDITIONAL_ARGS=("$@")
-UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si --noconfirm --needed "${ADDITIONAL_ARGS[@]}")
+NO_CONFIRM=(--noconfirm --needed)
+UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si "${ADDITIONAL_ARGS[@]}")
+UPDATE_COMMAND_INPUT=(true)
 
 readonly DEP_DIR="$HOME/.local/aur/$AUR_DEP"
 if ! [[ -d "$DEP_DIR" ]]; then
@@ -59,12 +61,12 @@ while true; do
 		fi
 	done; unset i
 
-	if "${UPDATE_COMMAND[@]}"; then
+	if "${UPDATE_COMMAND_INPUT[@]}" | "${UPDATE_COMMAND[@]}" "${NO_CONFIRM[@]}"; then
 		exit 0
 	fi
 
 	echo "Building $AUR_DEP failed."
-	info -n "Try again [(t)ry_again,(g)ive_up,(n)ocheck,(s)kippgpcheck,(r)emove_build_dir]? "
+	info -n "Try again [(t)ry_again,(g)ive_up,(n)ocheck,(s)kippgpcheck,(r)emove_build_dir,(y)es]? "
 	read -r
 
 	if [[ -z "$REPLY" ]] || [[ "$REPLY" =~ "g" ]]; then
@@ -72,16 +74,22 @@ while true; do
 	fi
 
 	if [[ "$REPLY" =~ "t" ]]; then
-		echo "Will try again.";
+		echo "Will try again."
+	fi
+
+	if [[ "$REPLY" =~ "y" ]]; then
+		UPDATE_COMMAND_INPUT=(echo -en "y\ny")
+		NO_CONFIRM=()
+		echo "Will add yes to makepkg."
 	fi
 
 	if [[ "$REPLY" =~ "n" ]]; then
-		echo "Adding --nocheck...";
+		echo "Adding --nocheck..."
 		UPDATE_COMMAND+=(--nocheck)
 	fi
 
 	if [[ "$REPLY" =~ "s" ]]; then
-		echo "Adding --skippgpcheck...";
+		echo "Adding --skippgpcheck..."
 		UPDATE_COMMAND+=(--skippgpcheck)
 	fi
 
