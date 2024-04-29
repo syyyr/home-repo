@@ -126,6 +126,7 @@ weather_owm {
     city = 'Prague'
     lang = 'cz'
     format = '{icon} {temperature}'
+    icon_sun = '☀️'
     thresholds = {'all': [(36, 'red'), (28, 'orange'), (15, 'lime'), (-100, 'cyan')]}
     format_temperature = '[\?color=current {current:.0f}] °{unit}'
     unit_temperature = 'C'

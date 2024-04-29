@@ -18,8 +18,8 @@
 !.config/fontconfig/fonts.conf
 !.config/i3
 !.config/i3/**
-!.config/i3status
-!.config/i3status/**
+!.config/py3status
+!.config/py3status/config
 !.config/kbacklight_timeout
 !.config/kbacklight_timeout/config
 !.config/kbdpulse.conf

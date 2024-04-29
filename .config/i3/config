@@ -22,7 +22,7 @@ bindsym $mod+b workspace 2; exec --no-startup-id google-chrome-stable
 
 # Fun stuff
 bindsym XF86Messenger exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/.config/i3/config
-bindsym Control+XF86Messenger exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/.config/i3status/config
+bindsym Control+XF86Messenger exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/.config/py3status/config
 bindsym XF86Go exec --no-startup-id dunstctl close
 bindsym Shift+XF86Go exec --no-startup-id dunstctl close-all
 bindsym Cancel exec --no-startup-id ~/apps/kbacklight-ctl.bash toggle
@@ -155,6 +155,6 @@ mode "resize" {
 bindsym $mod+r mode resize
 
 bar {
-    status_command py3status -s
+    status_command py3status -s -c ~/.config/py3status/config
     tray_output primary
 }
