@@ -70,6 +70,8 @@ fi
 
 VOLUME_NOW="$("$HOME/apps/volume.bash")"
 
+py3-cmd refresh --all
+
 if [[ "$VOLUME_NOW" != "$VOLUME_BEFORE" ]]; then
     # The volume changed from outside, let's not do anything. If VOLUME_NOW is muted, we definitely don't want to unmute
     # it even if HAVE_MUTED is 1, and if VOLUME_NOW is unmuted, it's too late to mute it now.
@@ -81,5 +83,3 @@ fi
 if ((HAVE_MUTED)); then
     "$HOME/apps/volume.bash" toggle
 fi
-
-py3-cmd refresh
