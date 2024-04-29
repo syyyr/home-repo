@@ -17,6 +17,7 @@ filter_disabled_packages() {
         -e "auracle-git"
         -e "cmake-language-server-git"
         -e "extremely-linear-git"
+        -e "gdb-ctest-git"
         -e "mingw-w64-ntldd-git"
         -e "python-aioserial-git"
         -e "python-i3-chrome-tab-dragging-git"
