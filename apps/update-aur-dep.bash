@@ -24,7 +24,7 @@ remove_build_dir() {
 
 ADDITIONAL_ARGS=("$@")
 NO_CONFIRM=(--noconfirm --needed)
-UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" MAKEFLAGS="-j$(nproc)" makepkg -si "${ADDITIONAL_ARGS[@]}")
+UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" GNUMAKEFLAGS="-j$(nproc)" makepkg -si "${ADDITIONAL_ARGS[@]}")
 UPDATE_COMMAND_INPUT=(true)
 
 readonly DEP_DIR="$HOME/.local/aur/$AUR_DEP"
