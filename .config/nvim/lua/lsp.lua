@@ -69,6 +69,7 @@ for _, lsp_name in ipairs({
     'bashls',
     'cmake',
     'denols',
+    'dockerls',
     'jsonls',
     'pkgbuild_language_server',
     'yang_lsp',
