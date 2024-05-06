@@ -35,7 +35,7 @@ require('blame').setup({
     virtual_style = "float"
 })
 
-vim.api.nvim_create_user_command('GT', 'ToggleBlame virtual', {nargs = 0})
+vim.api.nvim_create_user_command('GT', 'BlameToggle virtual', {nargs = 0})
 
 vim.cmd('packadd! git-blame.nvim')
 require('gitblame').setup {
