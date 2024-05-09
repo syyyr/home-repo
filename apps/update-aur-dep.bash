@@ -37,6 +37,7 @@ git reset --hard origin/master
 
 readonly AUTOREMOVE_PKGS=(
 	cmake-language-server-git
+	kddockwidgets
 	mingw-w64-jasper
 	mingw-w64-trompeloeil
 	mingw-w64-vulkan-headers
