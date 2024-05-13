@@ -66,6 +66,8 @@ roll 🙄
 smoke/exhale 😤
 sweat 😅
 sweat/hot 🥵
+motorcycle/bike 🏍️
+zzz/sleep 💤
 freezing/cold 🥶
 hundred/100 💯
 rock 🤘
