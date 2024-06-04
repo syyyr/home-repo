@@ -62,6 +62,9 @@ local capabilities = vim.tbl_deep_extend("force",
     vim.lsp.protocol.make_client_capabilities(),
     require('cmp_nvim_lsp').default_capabilities()
 )
+
+---@class lsp.ClientCapabilities
+---@field offsetEncoding string[]
 capabilities.offsetEncoding = {'utf-16'}
 
 vim.cmd('packadd! nvim-lspconfig')
@@ -239,7 +242,7 @@ vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action({apply
 vim.api.nvim_create_user_command('Cref', vim.lsp.buf.references, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', vim.diagnostic.setqflist, {nargs = 0})
-syyyr.nnoremap('<a-g>', function() vim.diagnostic.goto_next({cursor_position = {0, 0}}) end)
+syyyr.nnoremap('<a-g>', function() vim.diagnostic.jump({count = 1, cursor_position = {0, 0}}) end)
 
 vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
     local _
