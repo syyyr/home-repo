@@ -81,6 +81,7 @@ end
 vim.cmd('packadd! rustaceanvim')
 
 require('lspconfig').diagnosticls.setup({
+    capabilities = capabilities,
     filetypes = {'cpp'},
     init_options = {
         linters = {
@@ -109,11 +110,13 @@ require('lspconfig').diagnosticls.setup({
 })
 
 require('lspconfig').denols.setup({
+    capabilities = capabilities,
     root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
     single_file_support = true
 })
 
 require('lspconfig').yamlls.setup({
+    capabilities = capabilities,
     settings = {
         redhat = {
             telemetry = {
@@ -189,6 +192,7 @@ require('lspconfig').pylsp.setup({
 })
 
 require('lspconfig').qmlls.setup({
+    capabilities = capabilities,
     filetypes = {'qml'},
     cmd = {'qmlls6', '-b', 'build'}
 })
