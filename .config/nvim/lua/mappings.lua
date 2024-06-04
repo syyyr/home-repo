@@ -99,6 +99,8 @@ syyyr.cnoremap('CR', 'CR ')
 
 syyyr.nmap('úc', '<cmd>cprev<cr>')
 syyyr.nmap(')c', '<cmd>cnext<cr>')
+syyyr.nmap('úd', function() vim.diagnostic.jump({count = -1}) end)
+syyyr.nmap(')d', function() vim.diagnostic.jump({count = 1}) end)
 
 syyyr.nmap('<a-f>', '<cmd>CF<cr>')
 
