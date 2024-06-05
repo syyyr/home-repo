@@ -102,6 +102,8 @@ function M.onoremap(...) impl_map('o', true, ...) end
 ---@type MapFunction
 function M.inoremap(...) impl_map('i', true, ...) end
 ---@type MapFunction
+function M.snoremap(...) impl_map('s', true, ...) end
+---@type MapFunction
 function M.cnoremap(...) impl_map('c', true, ...) end
 ---@type MapFunction
 function M.tnoremap(...) impl_map('t', true, ...) end

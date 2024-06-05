@@ -12,32 +12,54 @@ vim.cmd('packadd! cmp-vsnip')
 vim.cmd('packadd! cmp-path')
 
 local cmp = require('cmp')
-cmp.setup({
-    mapping = cmp.mapping.preset.insert({
-        ['<c-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<c-f>'] = cmp.mapping.scroll_docs(4),
-        ['<c-space>'] = cmp.mapping.complete(),
-        ['<c-e>'] = cmp.mapping.abort(),
-        ['<cr>'] = cmp.mapping.confirm({select = false}),
-        ['<tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif vim.fn['vsnip#available'](1) == 1 then
-                feedkey('<plug>(vsnip-expand-or-jump)', '')
-            else
-                fallback()
-            end
-        end, {'i', 's'}),
+local cmp_types = require('cmp.types')
 
-        ['<s-tab>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+syyyr.inoremap('<c-b>', function() cmp.scroll_docs(-4) end)
+syyyr.inoremap('<c-f>', function() cmp.scroll_docs(4) end)
+syyyr.inoremap('<cr>', function()
+    if cmp.confirm({select = false}) then
+        return
+    end
+
+    feedkey('<cr>', 'n')
+end)
+syyyr.inoremap('<c-e>', function() cmp.abort() end)
+syyyr.inoremap('<c-space>', function() cmp.complete() end)
+syyyr.inoremap('<c-n>', function()
+    if cmp.visible() then
+        cmp.select_next_item({ behavior = cmp_types.cmp.SelectBehavior.Insert })
+    else
+        cmp.complete()
+    end
+end)
+syyyr.inoremap('<c-p>', function()
+    if cmp.visible() then
+        cmp.select_prev_item({ behavior = cmp_types.cmp.SelectBehavior.Insert })
+    else
+        cmp.complete()
+    end
+end)
+local jump_snippet_if_possible = function(offset)
+    return function()
+        if vim.fn['vsnip#jumpable'](offset) == 1 then
+            if offset == 1 then
+                feedkey('<plug>(vsnip-jump-next)', '')
+            else
                 feedkey('<plug>(vsnip-jump-prev)', '')
             end
-        end, {'i', 's'}),
 
-    }),
+            return
+        end
+
+        feedkey('<tab>', 'n')
+    end
+end
+syyyr.inoremap('<tab>', jump_snippet_if_possible(1))
+syyyr.snoremap('<tab>', jump_snippet_if_possible(1))
+syyyr.inoremap('<s-tab>', jump_snippet_if_possible(-1))
+syyyr.snoremap('<s-tab>', jump_snippet_if_possible(-1))
+
+cmp.setup({
     sources = cmp.config.sources({
         {name = 'nvim_lsp'},
         {
