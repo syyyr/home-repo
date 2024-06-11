@@ -57,11 +57,6 @@ __update-aur-dep_compl() {
 }
 complete -F __update-aur-dep_compl update-aur-dep
 
-__twitch_compl() {
-    readarray -t COMPREPLY < <(compgen -W "$("$HOME/apps/twitch-online.bash")" "${COMP_WORDS[${COMP_CWORD}]}")
-}
-complete -F __twitch_compl twitch
-
 __taskkill_compl() {
     readarray -t COMPREPLY < <(IFS=$'\n' compgen -W "$("$HOME/bin/tasklist")" "${COMP_WORDS[${COMP_CWORD}]}")
 }
