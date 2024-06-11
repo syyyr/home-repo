@@ -94,12 +94,13 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
             ['@comment.error.comment'] = '@comment.todo.comment',
 
+            ['@constant.builtin.nil'] = '@keyword',
+            ['@keyword.import.bash'] = '@keyword',
             ['@keyword.return.cpp'] = 'Statement',
             ['@lsp.mod.deduced.cpp'] = 'Type',
             ['@lsp.type.typeParameter.cpp'] = 'NONE',
             ['@type.qualifier.c'] = 'cStorageClass',
             ['@type.qualifier.cpp'] = 'cStorageClass',
-            ['@constant.builtin.nil'] = '@keyword'
         }) do
             vim.cmd(('highlight! link %s %s'):format(syntax_group, highlight_group))
         end
