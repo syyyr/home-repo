@@ -10,14 +10,9 @@ refresh_done() {
 
 refresh() {
     OUTPUT="$(xrandr |
-        # https://github.com/kellyjonbrazil/jc/issues/549
-        grep -v "h:" |
-        grep -v "v:" |
         jc --xrandr |
         jq '.screens[].devices | map(select(.device_name != "eDP-1" and .is_connected))[] | del(.resolution_modes)')"
     LAPTOP_OUTPUT="$(xrandr |
-        grep -v "h:" |
-        grep -v "v:" |
         jc --xrandr |
         jq '.screens[].devices | map(select(.device_name == "eDP-1"))[] | del(.resolution_modes)')"
     OUTPUT_PRETTY="$(jq --compact-output '{is_connected, is_primary, device_name}' <<< "$OUTPUT")"
