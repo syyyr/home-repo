@@ -45,19 +45,26 @@ if grep -P '^\x1b\[0;1mlinux ' <&3; then
     exit 0
 fi
 
-exec 3< <(git submodule update --remote |& cat)
-UPDATE_PID="$!"
-auracle outdated || echo "No outdated AUR packages."
+if [[ -z "${NO_SUB+x}" ]]; then
+    exec 3< <(git submodule update --remote |& cat)
+    UPDATE_PID="$!"
+fi
 
-pushd "$HOME/.local/aur" > /dev/null
-for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
-    "$HOME/apps/update-aur-dep.bash" "$i" || true
-done
-popd > /dev/null
+if [[ -z "${NO_AUR+x}" ]]; then
+    auracle outdated || echo "No outdated AUR packages."
+    pushd "$HOME/.local/aur" > /dev/null
+    for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
+        "$HOME/apps/update-aur-dep.bash" "$i" || true
+    done
+    popd > /dev/null
+fi
 
-echo "Waiting for submodules to finish updating..."
-wait "$UPDATE_PID"
-cat <&3
+if [[ -z "${NO_SUB+x}" ]]; then
+    echo "Waiting for submodules to finish updating..."
+    wait "$UPDATE_PID"
+    cat <&3
+fi
+
 echo Updating tree-sitter parsers...
 nvim --headless -c TSUpdateAndQuit
 git --no-pager submodule summary
