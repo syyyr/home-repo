@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
             ['DiagnosticFloatingWarn'] = 'LspDiagnosticsDefaultWarning',
             ['LspDiagnosticsDefaultHint'] = 'LspDiagnosticsDefaultWarning',
             ['LspDiagnosticsDefaultInformation'] = 'LspDiagnosticsDefaultWarning',
+            ['LspInlayHint'] = 'Comment',
 
             ['@class'] = 'NONE',
             ['@comment'] = 'Comment',

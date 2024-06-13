@@ -90,6 +90,8 @@ local capabilities = vim.tbl_deep_extend("force",
 capabilities.offsetEncoding = {'utf-16'}
 
 vim.cmd('packadd! nvim-lspconfig')
+
+vim.lsp.inlay_hint.enable()
 for _, lsp_name in ipairs({
     'bashls',
     'cmake',
@@ -227,10 +229,6 @@ vim.cmd('packadd! clangd_extensions.nvim')
 require('lspconfig').clangd.setup({
     capabilities = capabilities,
     cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'},
-    on_attach = function ()
-        require("clangd_extensions.inlay_hints").setup_autocmd()
-        require("clangd_extensions.inlay_hints").set_inlay_hints()
-    end
 })
 
 cmp.setup.filetype('cpp', {
