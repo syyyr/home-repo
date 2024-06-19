@@ -1,5 +1,5 @@
 #!/bin/bash
-make_html()
+make_py3status_format()
 {
 	NAME="$1"
 	OLD="$2"
@@ -23,7 +23,7 @@ if [[ -n "$OUT" ]]; then
 		NAME="$(cut -d ' ' -f1 <<< "$LINE")"
 		OLD="$(cut -d ' ' -f2 <<< "$LINE")"
 		NEW="$(cut -d ' ' -f4 <<< "$LINE")"
-		UPDATED+=("$(make_html "$NAME" "$OLD" "$NEW")")
+		UPDATED+=("$(make_py3status_format "$NAME" "$OLD" "$NEW")")
 	done <<< "$OUT"; unset LINE
 fi
 
