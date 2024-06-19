@@ -16,14 +16,12 @@ order += "clock"
 
 external_script updates {
     cache_timeout = 3600
-    markup = 'pango'
     script_path = '$HOME/apps/py3status-aur.bash updates'
     on_click 1 = 'exec pacman -Q $OUTPUT_PART && google-chrome-stable https://aur.archlinux.org/packages/$OUTPUT_PART'
 }
 
 external_script out-of-date {
     cache_timeout = 3600
-    markup = 'pango'
     script_path = '$HOME/apps/py3status-aur.bash out-of-date'
 }
 
