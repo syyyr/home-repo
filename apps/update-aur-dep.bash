@@ -27,6 +27,12 @@ NO_CONFIRM=(--noconfirm --needed)
 UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" GNUMAKEFLAGS="-j$(nproc)" makepkg -si "${ADDITIONAL_ARGS[@]}")
 UPDATE_COMMAND_INPUT=(true)
 
+if [[ " ${ADDITIONAL_ARGS[*]} " =~ [[:space:]]-f[[:space:]] ]]; then
+	UPDATE_COMMAND_INPUT=(echo -en "y\ny")
+	NO_CONFIRM=()
+	echo "Forcing building and installation of package."
+fi
+
 readonly DEP_DIR="$HOME/.local/aur/$AUR_DEP"
 if ! [[ -d "$DEP_DIR" ]]; then
 	auracle clone --chdir="$HOME/.local/aur" "$AUR_DEP"
