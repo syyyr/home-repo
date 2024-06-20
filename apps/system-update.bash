@@ -40,10 +40,13 @@ filter_disabled_packages() {
 pushd "$HOME" > /dev/null
 exec 3< <(checkupdates)
 sudo pacman -Syu --noconfirm
-if grep -P '^\x1b\[0;1mlinux ' <&3; then
-    info Detected a Linux update. Reboot the PC now.
-    exit 0
-fi
+CHECKUPDATES_OUTPUT="$(cat <&3)"
+for PACKAGE in linux systemd; do
+    if grep -P '^\x1b\[0;1m'"$PACKAGE"' ' <<< "$CHECKUPDATES_OUTPUT"; then
+        echo Detected a "$PACKAGE" update. Reboot the PC now.
+        exit 0
+    fi
+done
 
 if [[ -z "${NO_SUB+x}" ]]; then
     exec 3< <(git submodule update --remote |& cat)
