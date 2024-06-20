@@ -9,6 +9,7 @@ local available_parsers = {
     'dockerfile',
     'jsonc',
     'lua',
+    'markdown',
     'python',
     'qmljs',
     'query',

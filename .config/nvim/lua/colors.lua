@@ -102,6 +102,22 @@ vim.api.nvim_create_autocmd('ColorScheme', {
             ['@lsp.type.typeParameter.cpp'] = 'NONE',
             ['@type.qualifier.c'] = 'cStorageClass',
             ['@type.qualifier.cpp'] = 'cStorageClass',
+
+            ['@markup.heading.1.markdown'] = 'markdownH1',
+            ['@markup.heading.2.markdown'] = 'markdownH2',
+            ['@markup.heading.3.markdown'] = 'htmlH3',
+            ['@markup.heading.4.markdown'] = 'markdownH2',
+            ['@markup.heading.5.markdown'] = 'markdownH2',
+            ['@markup.heading.6.markdown'] = 'markdownH2',
+            ['@markup.heading.1.hash.markdown'] = 'Delimiter',
+            ['@markup.heading.2.hash.markdown'] = 'Delimiter',
+            ['@markup.heading.3.hash.markdown'] = 'Delimiter',
+            ['@markup.heading.4.hash.markdown'] = 'Delimiter',
+            ['@markup.heading.5.hash.markdown'] = 'Delimiter',
+            ['@markup.heading.6.hash.markdown'] = 'Delimiter',
+            ['@markup.link.label.markdown_inline'] = 'markdownLinkText',
+            ['@markup.link.markdown_inline'] = 'markdownUrl',
+            ['@markup.raw.markdown_inline']  = 'markdownCode',
         }) do
             vim.cmd(('highlight! link %s %s'):format(syntax_group, highlight_group))
         end
