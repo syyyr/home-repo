@@ -10,7 +10,7 @@
 [difftool]
     prompt = false
 [difftool "nvimdiff"]
-    cmd = "/bin/nvim -d \"$LOCAL\" \"$REMOTE\""
+    cmd = "$HOME/apps/nvim-diff.bash \"$LOCAL\" \"$REMOTE\""
 [multidiff]
     tool = vd
 [merge]

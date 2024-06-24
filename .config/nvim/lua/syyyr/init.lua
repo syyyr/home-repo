@@ -76,6 +76,24 @@ function M.close_float()
     end
 end
 
+---@return nil
+function M.diff_adjacent_args()
+    local buffer_list = vim.api.nvim_list_bufs()
+    local buffer_count = #buffer_list
+    local current_buffer = 1
+    while current_buffer < buffer_count do
+        vim.cmd.buffer(buffer_list[current_buffer])
+        vim.cmd.vsplit()
+        vim.cmd.buffer(buffer_list[current_buffer] + 1)
+        vim.cmd.windo('diffthis')
+        current_buffer = current_buffer + 2
+        if current_buffer < buffer_count then
+            vim.cmd.tabnew()
+        end
+    end
+    vim.cmd.tabfirst()
+end
+
 ---@param mode string
 ---@param noremap boolean
 ---@param lhs string
