@@ -83,6 +83,7 @@ function M.diff_adjacent_args()
     local current_buffer = 1
     while current_buffer < buffer_count do
         vim.cmd.buffer(buffer_list[current_buffer])
+        vim.diagnostic.enable(false)
         vim.cmd.vsplit()
         vim.cmd.buffer(buffer_list[current_buffer] + 1)
         vim.cmd.windo('diffthis')
