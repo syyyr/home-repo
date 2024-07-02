@@ -2,7 +2,6 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-"$HOME/apps/check-available.bash" rg || exit 1
 OPEN_ALL='0'
 RG_CMD_ARGS=()
 for arg in "$@"; do

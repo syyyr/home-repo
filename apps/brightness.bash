@@ -1,5 +1,6 @@
 #!/bin/bash
-"$HOME/apps/check-available.bash" brightnessctl python || exit 1
+set -euo pipefail
+shopt -s inherit_errexit
 
 case "$1" in
     increase)

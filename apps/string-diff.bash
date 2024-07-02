@@ -2,8 +2,6 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-"$HOME/apps/check-available.bash" dwdiff || exit 1
-
 if [[ "$*" =~ "==" ]]; then
     LEFT=$(grep ".* == " -o <<< "$*" | sed 's/ == //')
     RIGHT=$(grep " == .*" -o <<< "$*" | sed 's/ == //')

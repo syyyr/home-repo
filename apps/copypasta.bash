@@ -1,5 +1,4 @@
 #!/bin/bash
-"$HOME/apps/check-available.bash" rofi xvkbd nohup xclip || exit 1
 
 PASTAS='thinking 🤔
 tears 😭

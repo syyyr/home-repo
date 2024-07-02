@@ -1,6 +1,6 @@
 #!/bin/bash
-
-"$HOME/apps/check-available.bash" pngcheck base64 fold sha1sum xclip
+set -euo pipefail
+shopt -s inherit_errexit
 
 get_image()
 {

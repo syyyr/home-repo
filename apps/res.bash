@@ -2,8 +2,6 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-"$HOME/apps/check-available.bash" cvt12 || exit 1
-
 if [[ "$#" -ne 4 ]]; then
     echo 'usage: res <xrandr output> <x> <y> <hz>'
     exit 1

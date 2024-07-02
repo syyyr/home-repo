@@ -1,6 +1,4 @@
 #!/bin/bash
-"$HOME/apps/check-available.bash" fzf
-
 
 if ! FILE=$(ssh -t "rak@anip.icu" 'ls -1A --color=always www/rakac' | fzf -0 --height=50% --border --ansi | tr -d ''); then
     exit 1
