@@ -10,6 +10,7 @@ ok_hand 👌
 fingers_crossed 🤞
 thumbs_up 👍
 :D 😀
+weary 😩
 kiss/:* 😘
 lick/tongue 😋
 loved 🥰
@@ -17,6 +18,7 @@ angery 😠
 angery2 😡
 angery3 🤬
 pray/dorime 🙏
+highfive 🙌
 hands 🙌
 rofl 🤣
 sleepy 😴
@@ -35,6 +37,7 @@ facepalm 🤦
 heart_eyes 😍
 star_eyes 🤩
 eggplant 🍆
+pig/prase 🐷
 japan 🗾
 sweat/drops 💦
 toust/toast/bread 🍞
