@@ -48,7 +48,9 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
 
 vim.api.nvim_create_autocmd('DiagnosticChanged', {
     callback = function()
-        vim.cmd.redrawstatus()
+        if vim.api.nvim_buf_is_loaded(0) then
+            vim.cmd.redrawstatus()
+        end
     end,
     group = statusline_augroup
 })
