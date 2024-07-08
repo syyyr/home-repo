@@ -13,7 +13,7 @@ window {
 
 mainbox {
     border: 2px;
-    background-color: rgba(238, 238, 238, 100%);
+    background-color: #eff1f5;
     padding: 0.5em;
 }
 
@@ -23,7 +23,7 @@ listview {
 }
 
 element.selected.normal {
-    background-color: rgba(228, 228, 228, 100%);
+    background-color: #e0e4ec;
     text-color: rgba(0, 0, 0, 100%);
 }
 
