@@ -39,6 +39,7 @@ star_eyes 🤩
 eggplant 🍆
 pig/prase 🐷
 japan 🗾
+watery_eyes 🥹
 sweat/drops 💦
 toust/toast/bread 🍞
 hidden/hands 🫣
