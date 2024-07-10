@@ -6,7 +6,8 @@ export BROWSER="wslbrowser"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
-export LIBGL_ALWAYS_INDIRECT=1
+export LIBGL_ALWAYS_INDIRECT=0
+export LIBGL_ALWAYS_SOFTWARE=1
 
 if [[ -n "$DISPLAY" ]]; then
 	xmodmap -e 'keycode 126='
