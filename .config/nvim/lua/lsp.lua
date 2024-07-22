@@ -95,11 +95,11 @@ vim.lsp.inlay_hint.enable()
 for _, lsp_name in ipairs({
     'bashls',
     'cmake',
-    'denols',
     'dockerls',
     'jsonls',
     'pkgbuild_language_server',
     'yang_lsp',
+    'volar',
     'vimls'}) do
     require('lspconfig')[lsp_name].setup({
         capabilities = capabilities
@@ -136,10 +136,22 @@ require('lspconfig').diagnosticls.setup({
     }
 })
 
-require('lspconfig').denols.setup({
+require('lspconfig').tsserver.setup({
     capabilities = capabilities,
-    root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
-    single_file_support = true
+    init_options = {
+        plugins = {
+            {
+                name = "@vue/typescript-plugin",
+                location = "/usr/lib/node_modules/@vue/typescript-plugin",
+                languages = {"javascript", "typescript", "vue"},
+            },
+        },
+    },
+    filetypes = {
+        "javascript",
+        "typescript",
+        "vue",
+    },
 })
 
 require('lspconfig').yamlls.setup({
