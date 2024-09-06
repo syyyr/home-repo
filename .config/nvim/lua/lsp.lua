@@ -136,7 +136,7 @@ require('lspconfig').diagnosticls.setup({
     }
 })
 
-require('lspconfig').tsserver.setup({
+require('lspconfig').ts_ls.setup({
     capabilities = capabilities,
     init_options = {
         plugins = {
