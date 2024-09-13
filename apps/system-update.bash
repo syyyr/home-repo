@@ -29,7 +29,6 @@ filter_disabled_packages() {
         -e "yang-lsp-git"
 
         # Broken for now
-        -e "libyang-cpp-git"
         -e "tree-sitter-git"
         -e "py3status-git"
         -e "pyshv-git"
