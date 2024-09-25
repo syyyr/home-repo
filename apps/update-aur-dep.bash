@@ -2,6 +2,11 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
+if [[ $# = 0 ]]; then
+    echo No arguments.
+    exit 1
+fi
+
 readonly BASH_COLOR_BOLD=$'\033''[1m' BASH_COLOR_RED=$'\033''[31m' BASH_BLUE_BOLD=$'\033''[01;34m' BASH_COLOR_NORMAL=$'\033''[0m' AUR_DEP="$1"
 shift
 
