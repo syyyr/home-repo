@@ -59,6 +59,10 @@ vim.api.nvim_create_user_command('Qa', function(info)
     vim.cmd('qa' .. (info.bang and '!' or ''))
 end, { nargs = 0, bang = true })
 
+vim.api.nvim_create_user_command('Cq', function(info)
+    vim.cmd('cq' .. (info.bang and '!' or ''))
+end, { nargs = 0, bang = true })
+
 vim.api.nvim_create_user_command('SetMakePath', function(info)
     vim.opt.makeprg = 'make -C ' .. info.args
 end, { nargs = 1 })
