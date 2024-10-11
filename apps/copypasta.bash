@@ -31,7 +31,7 @@ handshake/shaking_hands 🤝
 party 🎉
 heart ❤
 broken_heart 💔
-cash 💸
+cash/money/flying 💸
 fear/scared 😱
 facepalm 🤦
 heart_eyes 😍
