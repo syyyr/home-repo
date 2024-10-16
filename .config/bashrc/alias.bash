@@ -23,6 +23,7 @@ alias i3config-status="nvim \$HOME/.config/i3status/config"
 alias i3config="nvim \$HOME/.config/i3/config"
 alias icat="kitty +kitten icat"
 alias ivm="nvim"
+alias svim="nvim"
 alias krc="nvim \$HOME/.config/kitty/custom.conf"
 alias l='ls -CF'
 alias la='ls -A'
