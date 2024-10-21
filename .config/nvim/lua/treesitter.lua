@@ -39,10 +39,3 @@ vim.api.nvim_create_autocmd('FileType', {
         end
     end
 })
-
-vim.api.nvim_create_user_command('TSUpdateAndQuit', function()
-    require('nvim-treesitter.install').update(nil, nil, function()
-        vim.notify('') -- The install output does not have a newline at the end.
-        vim.cmd.quit()
-    end)
-end, {nargs = 0})

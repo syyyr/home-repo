@@ -70,3 +70,10 @@ end, { nargs = 1 })
 vim.api.nvim_create_user_command('CS', function(info)
     vim.lsp.buf.workspace_symbol(info.args ~= '' and info.args or vim.fn.expand('<cword>')--[[@as string]])
 end, { nargs = '?' })
+
+vim.api.nvim_create_user_command('TSUpdateAndQuit', function()
+    local update_func = require('nvim-treesitter.install').update({ with_sync = true })
+    update_func('all')
+    vim.notify('') -- The install output does not have a newline at the end.
+    vim.cmd.quit()
+end, {nargs = 0})
