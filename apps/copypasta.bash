@@ -36,6 +36,7 @@ fear/scared 😱
 facepalm 🤦
 heart_eyes 😍
 star_eyes 🤩
+up_eyes/rolling_eyes 🙄
 eggplant 🍆
 pig/prase 🐷
 japan 🗾
