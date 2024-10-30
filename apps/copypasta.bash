@@ -49,6 +49,7 @@ smirk/lewd 😏
 annoyed/unamused 😒
 oops/blush/embarrassed 😳
 death/skull 💀
+moai 🗿
 peace ✌️
 smiling/crying 🥲
 checkmark ✅
