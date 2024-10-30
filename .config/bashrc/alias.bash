@@ -47,7 +47,7 @@ alias makje="makej"
 
 alias adog='git adog'
 br() {
-    git branch --contains HEAD | sed  -r 's@[^/]*/(.*)\)$@\1@' | xargs git switch -c
+    git branch --contains HEAD | sed  -r 's@[^/]*/(.*)\)$@\1@' | xargs git switch -C
 }
 alias c='git clone --recurse-submodules'
 alias down='git log --oneline origin/master~..HEAD 2>/dev/null || git log --oneline origin/main~..HEAD'
