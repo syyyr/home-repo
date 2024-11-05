@@ -196,11 +196,6 @@ To have multiple identities, all I have to do is:
     "secret": "-A",
   }
 
-  # Options to pass to ssh by default.
-  # If you don't specify anything, UserRoaming=no is passed, due
-  # to CVE-2016-0777. Leave it empty to disable this.
-  SSH_DEFAULT_OPTIONS = "-oUseRoaming=no"
-
   # Which options to use by default if no match with SSH_ADD_OPTIONS
   # was found. Note that ssh-ident hard codes -t 7200 to prevent your
   # keys from remaining in memory for too long.
@@ -418,7 +413,7 @@ class Config(object):
       # the specified options to the ssh command run.
       "SSH_OPTIONS": {},
       # Additional options to append to ssh by default.
-      "SSH_DEFAULT_OPTIONS": "-oUseRoaming=no",
+      "SSH_DEFAULT_OPTIONS": "",
 
       # Complete path of full ssh binary to use. If not set, ssh-ident will
       # try to find the correct binary in PATH.
