@@ -58,6 +58,7 @@ goto 𝓰𝓸𝓽𝓸
 lightning ⚡
 com/rice cơm
 lit/fire 🔥
+snowflake ❄️
 boom 💥
 diamond 💎
 shhhh 🤫
