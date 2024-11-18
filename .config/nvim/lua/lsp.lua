@@ -275,11 +275,6 @@ vim.api.nvim_create_user_command('Cref', function() vim.lsp.buf.references() end
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', function () vim.diagnostic.setqflist() end, {nargs = 0})
 
-vim.lsp.handlers["textDocument/hover"] = function(err, result, ctx, config)
-    local _
-    _, vim.g.float_win_id = vim.lsp.handlers.hover(err, result, ctx, config)
-end
-
 local function filter_unused_diagnostics(diagnostics)
     return vim.iter(diagnostics):filter(function(diagnostic)
         return vim.iter({"unused", "not used", "never read", "never used"}):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)

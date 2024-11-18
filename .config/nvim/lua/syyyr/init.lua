@@ -74,6 +74,11 @@ function M.close_float()
         pcall(vim.api.nvim_win_close, vim.b.float_win_id, false) -- discard errors: the window might be already closed
         vim.b.float_win_id = nil
     end
+
+    if vim.b.lsp_floating_preview then
+        pcall(vim.api.nvim_win_close, vim.b.lsp_floating_preview, false) -- discard errors: the window might be already closed
+    end
+
 end
 
 ---@return nil
