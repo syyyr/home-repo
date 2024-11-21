@@ -20,7 +20,7 @@ end
 
 local function get_stream()
     if have_qt() then
-        return 'qDebug()'
+        return 'qDebug().noquote()'
     else
         add_iostream()
         return 'std::cerr'
