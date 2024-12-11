@@ -32,6 +32,7 @@ party 🎉
 heart ❤
 broken_heart 💔
 cash/money/flying 💸
+money/face 🤑
 fear/scared 😱
 facepalm 🤦
 heart_eyes 😍
