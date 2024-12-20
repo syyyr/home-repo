@@ -40,7 +40,7 @@ exec 3< <(checkupdates)
 sudo pacman -Syu --noconfirm
 CHECKUPDATES_OUTPUT="$(cat <&3)"
 SHOULD_RESTART=0
-for PACKAGE in linux systemd; do
+for PACKAGE in linux systemd mkinitcpio; do
     if grep -P '^\x1b\[0;1m'"$PACKAGE"' ' <<< "$CHECKUPDATES_OUTPUT"; then
         SHOULD_RESTART=1
     fi
