@@ -3,9 +3,9 @@ vim.cmd('packadd! nvim-treesitter')
 local available_parsers = {
     'bash',
     'c',
-    'cpp',
     'comment',
     'cpon',
+    'cpp',
     'dockerfile',
     'jsonc',
     'lua',
