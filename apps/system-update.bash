@@ -27,6 +27,7 @@ filter_disabled_packages() {
         -e "python-aioserial-git"
         -e "python-i3-chrome-tab-dragging-git"
         -e "yang-lsp-git"
+        -e "wireshark-chainpack-rpc-block-dissector-git"
 
         # Broken for now
         -e "py3status-git"
