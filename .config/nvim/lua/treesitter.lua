@@ -14,7 +14,6 @@ local available_parsers = {
     'qmljs',
     'query',
     'rust',
-    'sh',
     'typescript',
     'vim',
     'vimdoc',
@@ -23,8 +22,8 @@ local available_parsers = {
 local parser_install_dir = vim.fn.stdpath('data') .. '/treesitter'
 vim.opt.runtimepath:prepend(parser_install_dir)
 
-require('nvim-treesitter').setup({
-    ensure_install = available_parsers,
+require('nvim-treesitter.configs').setup({
+    ensure_installed = available_parsers,
     install_dir = parser_install_dir
 })
 
