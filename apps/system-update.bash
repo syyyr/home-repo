@@ -32,6 +32,7 @@ filter_disabled_packages() {
         # Broken for now
         -e "py3status-git"
         -e "pyshv-git"
+        -e "tree-sitter-git"
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
