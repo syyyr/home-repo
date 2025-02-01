@@ -32,7 +32,6 @@ filter_disabled_packages() {
     grep -v "${DISABLED_PKGS[@]}"
 }
 
-pushd "$HOME" > /dev/null
 exec 3< <(checkupdates)
 sudo pacman -Syu --noconfirm
 CHECKUPDATES_OUTPUT="$(cat <&3)"
@@ -49,18 +48,19 @@ if ((SHOULD_RESTART)); then
 fi
 
 if [[ -z "${NO_SUB+x}" ]]; then
-    exec 3< <(git submodule update --remote |& cat)
+    exec 3< <(git -C "$HOME" submodule update --remote |& cat)
     UPDATE_PID="$!"
 fi
 
 if [[ -z "${NO_AUR+x}" ]]; then
-    auracle outdated || echo "No outdated AUR packages."
-    mkdir -p "$HOME/.local/aur"
-    pushd "$HOME/.local/aur" > /dev/null
-    for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
-        "$HOME/apps/update-aur-dep.bash" "$i" || true
-    done
-    popd > /dev/null
+    (
+        auracle outdated || echo "No outdated AUR packages."
+        mkdir -p "$HOME/.local/aur"
+        cd "$HOME/.local/aur" > /dev/null
+        for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
+            "$HOME/apps/update-aur-dep.bash" "$i" || true
+        done
+    )
 fi
 
 if [[ -z "${NO_SUB+x}" ]]; then
@@ -71,6 +71,5 @@ fi
 
 echo Updating tree-sitter parsers...
 nvim --headless -c TSUpdateAndQuit
-git --no-pager submodule summary
+git -C "$HOME" --no-pager submodule summary
 "$HOME/apps/check-config.bash"
-popd > /dev/null
