@@ -55,6 +55,7 @@ fi
 
 if [[ -z "${NO_AUR+x}" ]]; then
     auracle outdated || echo "No outdated AUR packages."
+    mkdir -p "$HOME/.local/aur"
     pushd "$HOME/.local/aur" > /dev/null
     for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
         "$HOME/apps/update-aur-dep.bash" "$i" || true
