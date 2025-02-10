@@ -28,7 +28,7 @@ refresh() {
     fi
     if [[ -n "$OUTPUT" ]] && [[ "$(jq '.is_primary' <<< "$OUTPUT")" = false ]]; then
         echo Setting up "$DEVICE_NAME"...
-        xrandr --output "$DEVICE_NAME" --above eDP-1 --auto --primary
+        xrandr --output "$DEVICE_NAME" --above eDP-1 --auto --primary --scale 1
         "$HOME/apps/workspace-ball.bash" &> /dev/null
         refresh_done
         return
