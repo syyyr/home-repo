@@ -47,6 +47,8 @@ if ((SHOULD_RESTART)); then
     exit 0
 fi
 
+rustup update
+
 if [[ -z "${NO_SUB+x}" ]]; then
     exec 3< <(git -C "$HOME" submodule update --remote |& cat)
     UPDATE_PID="$!"
