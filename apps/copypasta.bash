@@ -67,6 +67,7 @@ clown 🤡
 duck/kachna 🦆
 eyes 👀
 strong/arm 💪
+fist 👊
 knife 🔪
 not_stonks 📉
 hammer 🔨
