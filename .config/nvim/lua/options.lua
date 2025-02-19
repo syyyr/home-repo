@@ -1,6 +1,13 @@
 vim.opt.autoread = false -- Don't autoload file if it's changed outside of vim
 vim.opt.clipboard = 'unnamedplus'
-vim.opt.commentstring = '# %s'
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*",
+    callback = function()
+        if vim.bo.filetype == "" then
+            vim.bo.commentstring = "# %s"
+        end
+    end,
+})
 vim.opt.complete:remove('t') -- Don't scan tagfiles
 vim.opt.cursorline = true
 vim.opt.diffopt:append('algorithm:patience')
