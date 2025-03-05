@@ -39,6 +39,7 @@ heart_eyes 😍
 star_eyes 🤩
 up_eyes/rolling_eyes 🙄
 eggplant 🍆
+rocket 🚀
 pig/prase 🐷
 japan 🗾
 watery_eyes 🥹
