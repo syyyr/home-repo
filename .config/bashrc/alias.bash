@@ -38,6 +38,7 @@ alias shvspy='shvspy -v RpcMsg'
 alias sl='ls'
 alias sr='screen -r'
 alias vim='nvim'
+alias w='watch'
 alias watch='watch -n1'
 alias x86_64-w64-mingw32-wine='LC_ALL=C x86_64-w64-mingw32-wine'
 alias 🤔="cat \$HOME/apps/thinking"
