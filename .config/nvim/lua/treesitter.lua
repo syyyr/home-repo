@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('FileType', {
         if vim.iter(available_parsers):find(info.match) then
             vim.treesitter.start()
             if vim.iter({'cpp', 'sh', 'rust'}):find(info.match) == nil then
-                vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+                vim.bo.indentexpr = "nvim_treesitter#indent()"
             end
         end
     end
