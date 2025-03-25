@@ -1,5 +1,6 @@
 $include /etc/inputrc
 "\es":"\C-asudo \C-e"
+"\ev":"\C-avim \C-e"
 "\e[18~":""
 
 # Color the common prefix
