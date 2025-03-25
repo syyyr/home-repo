@@ -46,6 +46,7 @@ eval 'i='{1..64}'; alias make$i="make -j$i";'
 alias makej="nice make -j\$(nproc)"
 alias maekj="makej"
 alias makje="makej"
+alias mkaje="makej"
 
 alias adog='git adog'
 br() {
