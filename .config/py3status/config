@@ -6,6 +6,7 @@ order += "volume_status"
 order += "online_status"
 order += "external_script mountpoint"
 order += "bluetooth"
+order += "external_script pixel-buds"
 order += "networkmanager wifi"
 order += "networkmanager ethernet"
 order += "diskdata"
@@ -103,6 +104,12 @@ battery_level 0 {
     format_status_full = "💯"
     threshold_full = 100
     last_full_capacity = true
+}
+
+external_script pixel-buds {
+    cache_timeout = 15
+    script_path = '$HOME/apps/py3status-pixel-buds.bash'
+    format = '{composite}'
 }
 
 clock {
