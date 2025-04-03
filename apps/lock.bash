@@ -35,22 +35,13 @@ i3lock \
 
 i3-msg bar mode invisible
 
-get_muted()
-{
-    if "$HOME/apps/volume.bash" | grep muted; then
-        echo 1
-        return 1
-    else
-        echo 0
-        return 0
-    fi
-}
-
 "$HOME/apps/kbacklight.bash" 0
 
-if [[ "$(get_muted)" = 0 ]]; then
-    "$HOME/apps/volume.bash" toggle
-    HAVE_MUTED=1
+if [[ "$(playerctl status)" = "Playing" ]]; then
+    playerctl pause
+    HAVE_PAUSED=1
+else
+    HAVE_PAUSED=0
 fi
 
 VOLUME_BEFORE="$("$HOME/apps/volume.bash")"
@@ -75,12 +66,12 @@ py3-cmd refresh --all
 
 if [[ "$VOLUME_NOW" != "$VOLUME_BEFORE" ]]; then
     # The volume changed from outside, let's not do anything. If VOLUME_NOW is muted, we definitely don't want to unmute
-    # it even if HAVE_MUTED is 1, and if VOLUME_NOW is unmuted, it's too late to mute it now.
+    # it even if HAVE_PAUSED is 1, and if VOLUME_NOW is unmuted, it's too late to mute it now.
     # Note: this detection fails if only the muted state changes, for example, if I disconnect my headphones, and the
     # speaker and headphone volume is the same.
     exit 0
 fi
 
-if ((HAVE_MUTED)); then
-    "$HOME/apps/volume.bash" toggle
+if ((HAVE_PAUSED)); then
+    playerctl play
 fi
