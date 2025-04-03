@@ -14,6 +14,12 @@ if [[ -n "${LEFT}" ]]; then
 	LEFT="[\?color=lightblue&show L: ${LEFT}%]"
 fi
 
+CASE="$(grep "case:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
+
+if [[ -n "${CASE}" ]]; then
+	CASE="[\?color=lightblue&show Case: ${CASE}%]"
+fi
+
 RIGHT="$(grep "right bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
 
 if [[ -n "${RIGHT}" ]]; then
@@ -28,5 +34,5 @@ else
 	ANC=""
 fi
 
-echo -n "$LEFT $RIGHT $ANC"
+echo -n "$LEFT $CASE $RIGHT $ANC"
 
