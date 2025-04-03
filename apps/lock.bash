@@ -17,6 +17,7 @@ i3lock \
     --nofork \
     --fill \
     --clock \
+    --pass-media-keys \
     --image="$IMAGE_FILE" \
     --color=000000 \
     --time-font=Segoeui \
