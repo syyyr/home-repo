@@ -45,3 +45,10 @@ add_skeleton('index.html', [[
 </body>
 </html>
 ]], 10)
+
+add_skeleton('*.bash', [[
+#!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
+]], 4)
