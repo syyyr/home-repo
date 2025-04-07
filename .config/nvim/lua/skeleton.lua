@@ -4,8 +4,8 @@ local skeleton_group = vim.api.nvim_create_augroup('Skeletons', {clear = true})
 ---@param start_line integer
 local function add_skeleton(pattern, text, start_line)
     local lines = {}
-    for line in text:gmatch('[^\n]+') do
-        table.insert(lines, line)
+    for line in text:gmatch('[^\n]*[\n]') do
+        table.insert(lines, line:sub(0, #line - 1))
     end
     vim.api.nvim_create_autocmd('BufNewFile', {
         pattern = pattern,
