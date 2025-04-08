@@ -1,5 +1,3 @@
-vim.cmd('packadd rust.vim')
-
 local syyyr = require('syyyr')
 
 require('syyyr').register_printing({
