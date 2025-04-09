@@ -17,7 +17,9 @@ fi
 CASE="$(grep "case:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
 
 if [[ -n "${CASE}" ]]; then
-	CASE="[\?color=lightblue&show Case: ${CASE}%]"
+	CASE=" [\?color=lightblue&show Case: ${CASE}%] "
+else
+	CASE=" "
 fi
 
 RIGHT="$(grep "right bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
@@ -29,10 +31,10 @@ fi
 ANC="$(pbpctrl get anc)"
 
 if [[ "$ANC" = active ]]; then
-	ANC="[\?color=lightblue&show ANC]"
+	ANC=" [\?color=lightblue&show ANC]"
 else
 	ANC=""
 fi
 
-echo -n "$LEFT $CASE $RIGHT $ANC"
+echo -n "${LEFT}${CASE}${RIGHT}${ANC}"
 
