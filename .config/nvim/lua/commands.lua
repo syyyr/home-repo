@@ -36,7 +36,7 @@ vim.api.nvim_create_user_command('DiffToggle', function()
         })
         local scratch_winnr = vim.fn.win_getid()
         vim.b.scratch_winnr = scratch_winnr
-        vim.cmd('file disk:' .. original_bufname)
+        vim.cmd('file disk://' .. original_bufname)
         vim.opt.buftype = 'nofile'
         vim.cmd('read #')
         vim.cmd('0delete_')
