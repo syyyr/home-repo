@@ -15,6 +15,7 @@ local available_parsers = {
     'query',
     'rust',
     'typescript',
+    'vue',
     'vim',
     'vimdoc',
 }

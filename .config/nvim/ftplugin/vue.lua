@@ -1,4 +1,3 @@
-vim.opt.commentstring = '// %s'
 require('syyyr').register_printing({
     print_var = function(var_name)
         return 'console.log("' .. var_name .. '", "=", ' .. var_name .. ');'
