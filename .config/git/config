@@ -24,3 +24,5 @@
     defaultBranch = main
 [commit]
     verbose = 1
+[safe]
+	directory = /home/vk/git/pi-backup
