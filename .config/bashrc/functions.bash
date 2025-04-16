@@ -61,3 +61,12 @@ try()
         sleep 0.1;
     done
 }
+
+prc() {
+    MOUNTPOINT="$HOME/git/pi-backup"
+    if ! mountpoint "$MOUNTPOINT" &> /dev/null; then
+        sshfs pi:/homeassistant pi-backup
+    fi
+
+    vim "$HOME/git/pi-backup/configuration.yaml"
+}
