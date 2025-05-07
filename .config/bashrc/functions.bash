@@ -65,7 +65,7 @@ try()
 prc() {
     MOUNTPOINT="$HOME/git/pi-backup"
     if ! mountpoint "$MOUNTPOINT" &> /dev/null; then
-        sshfs pi:/homeassistant pi-backup
+        sshfs pi:/homeassistant "$MOUNTPOINT"
     fi
 
     vim "$HOME/git/pi-backup/configuration.yaml"
