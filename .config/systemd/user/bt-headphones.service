@@ -3,7 +3,7 @@ Description=Stop music when headphones disconnect
 
 [Service]
 Type=simple
-ExecStart=/home/vk/apps/bt-stop-music.bash
+ExecStart=/home/vk/apps/bt-headphones.bash
 
 [Install]
 WantedBy=graphical-session.target
