@@ -36,5 +36,11 @@ else
 	ANC=""
 fi
 
-echo -n "${LEFT}${CASE}${RIGHT}${ANC}"
+if ! pactl list | grep -F 'High Fidelity Playback (A2DP Sink,' &> /dev/null; then
+	A2DP=" [\?color=salmon&show A2DP unavailable!]"
+else
+	A2DP=""
+fi
+
+echo -n "${LEFT}${CASE}${RIGHT}${ANC}${A2DP}"
 
