@@ -70,3 +70,10 @@ prc() {
 
     vim "$HOME/git/pi-backup/configuration.yaml"
 }
+
+fix_headphones() {
+    pbpctrl set multipoint false
+    bluetoothctl disconnect
+    pbpctrl show battery
+    pbpctrl set multipoint true
+}
