@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('FileType', {
     callback = function(info)
         if vim.iter(available_parsers):find(info.match) then
             vim.treesitter.start()
-            if vim.iter({'cpp', 'sh', 'rust'}):find(info.match) == nil then
+            if vim.iter({'vue', 'cpp', 'sh', 'rust'}):find(info.match) == nil then
                 vim.bo.indentexpr = "nvim_treesitter#indent()"
             end
         end
