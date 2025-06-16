@@ -11,23 +11,24 @@ info() {
 filter_disabled_packages() {
     local DISABLED_PKGS=(
         # These are part of another package.
-        -e "mingw-w64-harfbuzz-icu"
+        -e 'mingw-w64-harfbuzz-icu'
 
         # These aren't updated all that frequently (or never).
-        -e "auracle-git"
-        -e "cmake-language-server-git"
-        -e "ctcache-git"
-        -e "extremely-linear-git"
-        -e "flamerobin-git"
-        -e "gdb-ctest-git"
-        -e "leagueoflegends-git"
-        -e "libosmscout-git"
-        -e "mingw-w64-ntldd-git"
-        -e "mingw-libosmscout-git"
-        -e "python-aioserial-git"
-        -e "python-i3-chrome-tab-dragging-git"
-        -e "yang-lsp-git"
-        -e "wireshark-chainpack-rpc-block-dissector-git"
+        -e 'auracle-git'
+        -e 'cmake-language-server-git'
+        -e 'ctcache-git'
+        -e 'extremely-linear-git'
+        -e 'flamerobin-git'
+        -e 'gdb-ctest-git'
+        -e 'leagueoflegends-git'
+        -e 'libosmscout-git'
+        -e 'mingw-w64-ntldd-git'
+        -e 'mingw-libosmscout-git'
+        -e 'python-aioserial-git'
+        -e 'python-i3-chrome-tab-dragging-git'
+        -e 'tomlq-git'
+        -e 'yang-lsp-git'
+        -e 'wireshark-chainpack-rpc-block-dissector-git'
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
