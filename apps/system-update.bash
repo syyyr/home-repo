@@ -33,6 +33,7 @@ filter_disabled_packages() {
 }
 
 exec 3< <(checkupdates)
+echo Updating system packages...
 sudo pacman -Syu --noconfirm
 CHECKUPDATES_OUTPUT="$(cat <&3)"
 SHOULD_RESTART=0
@@ -47,9 +48,11 @@ if ((SHOULD_RESTART)); then
     exit 0
 fi
 
+echo Updating Rust...
 rustup update
 
 if [[ -z "${NO_SUB+x}" ]]; then
+    echo Updating submodules...
     exec 3< <(git -C "$HOME" submodule update --remote |& cat)
     UPDATE_PID="$!"
 fi
