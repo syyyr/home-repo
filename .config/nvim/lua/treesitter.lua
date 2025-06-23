@@ -23,10 +23,11 @@ local available_parsers = {
 local parser_install_dir = vim.fn.stdpath('data') .. '/treesitter'
 vim.opt.runtimepath:prepend(parser_install_dir)
 
-require('nvim-treesitter.configs').setup({
-    ensure_installed = available_parsers,
+require('nvim-treesitter').setup({
     install_dir = parser_install_dir
 })
+
+require('nvim-treesitter').install(available_parsers)
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { '*' },

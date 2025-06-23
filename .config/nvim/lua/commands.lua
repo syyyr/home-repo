@@ -72,8 +72,7 @@ vim.api.nvim_create_user_command('CS', function(info)
 end, { nargs = '?' })
 
 vim.api.nvim_create_user_command('TSUpdateAndQuit', function()
-    local update_func = require('nvim-treesitter.install').update({ with_sync = true })
-    update_func('all')
+    require('nvim-treesitter').update():wait(300000) -- max. 5 minutes
     vim.notify('') -- The install output does not have a newline at the end.
     vim.cmd.quit()
 end, {nargs = 0})
