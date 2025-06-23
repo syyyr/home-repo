@@ -30,13 +30,11 @@ require('nvim-treesitter').setup({
 require('nvim-treesitter').install(available_parsers)
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { '*' },
+    pattern = available_parsers,
     callback = function(info)
-        if vim.iter(available_parsers):find(info.match) then
-            vim.treesitter.start()
-            if vim.iter({'vue', 'cpp', 'sh', 'rust'}):find(info.match) == nil then
-                vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
-            end
+        vim.treesitter.start()
+        if vim.iter({'vue', 'cpp', 'sh', 'rust'}):find(info.match) == nil then
+            vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
         end
     end
 })
