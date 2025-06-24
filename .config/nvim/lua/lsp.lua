@@ -105,6 +105,19 @@ for _, lsp_name in ipairs({
         capabilities = capabilities
     })
 end
+
+vim.lsp.config("rust-analyzer", {
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                features = {
+                    "entra-id"
+                }
+            }
+        }
+    }
+})
+
 vim.cmd('packadd! rustaceanvim')
 
 require('lspconfig').diagnosticls.setup({
