@@ -2,7 +2,7 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-if [[ $# = 1 ]]; then
+if [[ $# -gt 0 ]]; then
     case "$1" in
         increase)
             pamixer --allow-boost --increase "$2"
