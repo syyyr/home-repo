@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -euxo pipefail
 shopt -s inherit_errexit
 
 make_py3status_format()
@@ -13,9 +13,9 @@ make_py3status_format()
 UPDATED=()
 
 if [[ "$1" = updates ]]; then
-	OUT="$(auracle outdated)"
+	OUT="$(auracle outdated || true)"
 elif [[ "$1" = out-of-date ]]; then
-	OUT="$(aur-out-of-date -user syyyr -json | tr -d '\036' | grep OUT-OF-DATE | jq -r '"\(.name) \(.version) -> \(.upstream)"')"
+	OUT="$(aur-out-of-date -user syyyr -json | tr -d '\036' | grep OUT-OF-DATE | jq -r '"\(.name) \(.version) -> \(.upstream)"' || true)"
 else
 	echo Unknown mode "$1" 2>&1
 	exit 1
