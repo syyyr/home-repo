@@ -1,5 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
 set -euo pipefail
+shopt -s inherit_errexit
+
 LEFT="$1"
 RIGHT="$2"
 if [[ -f "$LEFT" ]] && [[ -f "$RIGHT" ]]; then

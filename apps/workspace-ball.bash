@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
 OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
 i3 "workspace 2; move workspace to output $OUTPUT"
 i3 "workspace 3; move workspace to output $OUTPUT"

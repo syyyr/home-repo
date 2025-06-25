@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
 
 if xrandr | grep primary | grep -F "1920x1080" > /dev/null; then
     TIME_SIZE=130

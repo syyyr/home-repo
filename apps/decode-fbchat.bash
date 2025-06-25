@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
 {
     readarray -t FILES < <(find . -name "message_?.json")
     if [[ "$(find message_*.json | wc -l)" -gt 9 ]]; then

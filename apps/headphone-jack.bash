@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
 
 refresh() {
     py3-cmd refresh volume_status

@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
 ARG="$1"
 export BROWSER=/home/vk/bin/wslbrowser
 echo Current working directory: "'$(pwd)'"

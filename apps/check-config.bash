@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
 
 print_and_run()
 {

@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
 make_py3status_format()
 {
 	NAME="$1"

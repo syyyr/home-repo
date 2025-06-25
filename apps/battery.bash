@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
 THRESHOLD=10
 
 if systemd-ac-power; then

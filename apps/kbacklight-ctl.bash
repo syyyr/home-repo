@@ -1,7 +1,7 @@
 #!/bin/bash
-
-set -e
+set -euo pipefail
 shopt -s inherit_errexit
+
 ARG=$2
 
 case $1 in

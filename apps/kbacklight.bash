@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -euo pipefail
 shopt -s inherit_errexit
 
 BRIGHTNESS_FILE='/sys/class/leds/tpacpi::kbd_backlight/brightness'
