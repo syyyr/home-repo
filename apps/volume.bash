@@ -2,22 +2,25 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-case "$1" in
-    increase)
-        pamixer --allow-boost --increase "$2"
-        echo "Raising volume."
-        ;;
-    decrease)
-        pamixer --allow-boost --decrease "$2"
-        echo "Lowering volume."
-        ;;
-    toggle)
-        pamixer --toggle-mute
-        echo "Toggling mute."
-        ;;
-    *)
-        ;;
-esac
+if [[ $# = 1 ]]; then
+    case "$1" in
+        increase)
+            pamixer --allow-boost --increase "$2"
+            echo "Raising volume."
+            ;;
+        decrease)
+            pamixer --allow-boost --decrease "$2"
+            echo "Lowering volume."
+            ;;
+        toggle)
+            pamixer --toggle-mute
+            echo "Toggling mute."
+            ;;
+        *)
+            ;;
+    esac
+fi
+
 
 py3-cmd refresh volume_status
 
@@ -29,8 +32,9 @@ VOLUME_MUTE="$HOME/.local/share/icons/blue/volume-mute.png"
 VOL="$(pamixer --get-volume)%"
 
 VOLUME_IMG="$VOLUME_LOW"
+MUTED=""
 if [[ "$(pamixer --get-mute)" != "false" ]]; then
-    MUTED="(muted)"
+    MUTED=" (muted)"
     VOLUME_IMG="$VOLUME_MUTE"
 elif [[ "${VOL//%}" -ge "66" ]];then
     VOLUME_IMG="$VOLUME_HIGH"
@@ -38,6 +42,6 @@ elif [[ "${VOL//%}" -ge "33" ]];then
     VOLUME_IMG="$VOLUME_MEDIUM"
 fi
 
-echo "Volume: $VOL $MUTED"
+echo "Volume: $VOL${MUTED}"
 ARGS=( -t 2000 -h string:x-canonical-private-synchronous:volume -i "$VOLUME_IMG" )
 notify-send "${ARGS[@]}" "Volume" "$VOL"
