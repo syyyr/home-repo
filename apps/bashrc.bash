@@ -5,6 +5,6 @@ shopt -s inherit_errexit
 if [[ $# -eq 0 ]]; then
     nvim -p "$HOME/.config/bashrc/"*
 else
-    read -ra ARGS < <(printf "$HOME/.config/bashrc/%s " "$@")
+    readarray -t ARGS < <(printf "$HOME/.config/bashrc/%s\n" "$@")
     nvim -p "${ARGS[@]}"
 fi
