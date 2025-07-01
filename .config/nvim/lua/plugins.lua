@@ -1,3 +1,4 @@
+vim.cmd('packadd! bufdelete.nvim')
 vim.cmd('packadd! cfilter')
 vim.cmd('packadd fluent.vim')
 vim.cmd('packadd! i3config.vim')

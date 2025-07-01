@@ -36,7 +36,7 @@ syyyr.nnoremap('<a-n>', '<cmd>setlocal number!<cr>')
 
 syyyr.nnoremap('<a-b>', '<cmd>let &background = ( &background == "dark"? "light" : "dark" )<cr>')
 
-syyyr.nnoremap('<a-d>', ':bdelete<cr>')
+syyyr.nnoremap('<a-d>', ':Bdelete<cr>')
 syyyr.nnoremap('<a-h>', ':bprevious<cr>')
 syyyr.nnoremap('<a-l>', ':bnext<cr>')
 
