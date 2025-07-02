@@ -2,10 +2,9 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
-ARG=$2
-
 case $1 in
     timeout)
+        ARG=$2
         echo TIMEOUT="${ARG:-30}" > "$HOME/.config/kbacklight_timeout/config"
         systemctl --quiet --user restart kbacklight_timeout
         STATE='timeout'
