@@ -64,6 +64,7 @@ try()
 
 prc() {
     MOUNTPOINT="$HOME/git/pi-backup"
+    mkdir -p "$MOUNTPOINT"
     if ! mountpoint "$MOUNTPOINT" &> /dev/null; then
         sshfs pi:/homeassistant "$MOUNTPOINT"
     fi
