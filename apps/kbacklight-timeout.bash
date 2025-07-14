@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -euo pipefail
 shopt -s inherit_errexit
 
 echo 'Turning backlight on.'
