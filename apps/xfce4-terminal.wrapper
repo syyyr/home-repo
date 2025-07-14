@@ -3,7 +3,7 @@ set -euo pipefail
 shopt -s inherit_errexit
 
 HOURS=$(date +%H)
-if [ "$HOURS" -lt "${DAYSTART:-8}" ] || [ "$HOURS" -ge "${NIGHTSTART:-22}" ]; then
+if [[ "$HOURS" -lt "${DAYSTART:-8}" ]] || [[ "$HOURS" -ge "${NIGHTSTART:-22}" ]]; then
     echo je noc
     cp "$HOME/.config/xfce4/terminal/terminalrc.dark" "$HOME/.config/xfce4/terminal/terminalrc"
 else
