@@ -33,6 +33,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.cmd('highlight MergeConflict ctermbg=black ctermfg=red guibg=black guifg=red')
         vim.cmd('highlight Todo ctermbg=NONE guibg=NONE')
         vim.cmd('highlight! Conceal guibg=NONE')
+        vim.cmd('highlight! NonText guibg=NONE')
 
         vim.cmd('highlight DiagnosticOk gui=bold guifg=#629120')
 
