@@ -53,13 +53,14 @@ vim.opt.statusline =
     '%#StatusLineNC#' .. -- Set highlight group.
     '%-20.' ..  -- Add padding to the diagnostic to prevent flickering when the diagnostic appears and disappears.
     [[{v:lua.require('syyyr').statusline_diagnostics()}]] .. -- Show diagnostics.
-    '%##%' .. -- Reset highlight group.
-    [[{&paste? ' [paste]' :''}]] .. -- Show [paste] mode.
+    '%##' .. -- Reset highlight group.
     '%=%=' .. -- Separators.
     '%20f' .. -- Show filename.
     '%h' .. -- Show [Help] in help buffers.
     '%m' .. -- Show modified ([+]/[-]) sign.
     '%r' .. -- Show [RO] sign.
+    [[%{&paste? ' [paste]' :''}]] .. -- Show [paste] mode.
+    [[%{&fileformat == "dos"? ' [dos]' :''} ]] .. -- Show [paste] mode.
     ' ' .. -- A literal space.
     '%-30.' .. -- Add minimal width, so that we don't flicker when diagnostics change.
     '(ln %l col %c%)' .. -- Show line number and column number.
