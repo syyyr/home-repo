@@ -22,6 +22,7 @@ angery3 🤬
 pray/dorime 🙏
 highfive 🙌
 hands 🙌
+italy 🤌
 rofl 🤣
 sleepy 😴
 happy/tear 🥲
