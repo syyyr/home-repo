@@ -10,6 +10,15 @@ print_and_run()
 	"$@"
 }
 
+ignore_line()
+{
+	if grep -Fv 'Diagnosis completed, no problems found'; then
+		if [[ $? = 1 ]]; then
+			return 0
+		fi
+	fi
+}
+
 print_and_run selene --no-summary --config "$HOME/.config/nvim/selene.toml" "$HOME/.config/nvim/"
 print_and_run shellcheck -a "$HOME"/.config/bashrc/*
-print_and_run lua-language-server --check="$HOME/.config/nvim" --checklevel=Hint
+print_and_run lua-language-server --check="$HOME/.config/nvim" --checklevel=Hint | ignore_line
