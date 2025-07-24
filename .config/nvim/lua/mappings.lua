@@ -25,6 +25,8 @@ syyyr.nnoremap('<c-k>', '<c-W>k')
 syyyr.nnoremap('<c-h>', '<c-W>h')
 syyyr.nnoremap('<c-l>', '<c-W>l')
 
+syyyr.nnoremap('<c-w><c-]>', '<c-w><c-v><c-]>')
+
 syyyr.nnoremap('<c-q>', '<cmd>qa<cr>')
 
 syyyr.inoremap('<c-j>', '<down>')
