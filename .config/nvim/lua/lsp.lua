@@ -119,35 +119,6 @@ vim.lsp.config("rust-analyzer", {
 
 vim.cmd('packadd! rustaceanvim')
 
-require('lspconfig').diagnosticls.setup({
-    capabilities = capabilities,
-    filetypes = {'cpp'},
-    init_options = {
-        linters = {
-            gitlab = {
-                command = "/home/vk/apps/gitlab-review-diagnostic.bash",
-                rootPatterns = {".git"},
-                args = { "%filepath" },
-                sourceName = "gitlab",
-                parseJson = {
-                    sourceName = "file",
-                    sourceNameFilter = true,
-                    line = "line",
-                    endline = "endline",
-                    message = "${message}",
-                    security = "severity",
-                },
-                securities = {
-                    warning = "warning"
-                }
-            }
-        },
-        filetypes = {
-            cpp = "gitlab"
-        }
-    }
-})
-
 require('lspconfig').ts_ls.setup({
     capabilities = capabilities,
     init_options = {
