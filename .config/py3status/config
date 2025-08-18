@@ -52,7 +52,7 @@ online_status {
 bluetooth {
     format = "\?color=deepskyblue BT: {format_adapter}|\?color=dimgrey BT: down"
     format_device = "\?if=connected {alias}"
-    on_click 1 = 'exec bluetoothctl disconnect && py3-cmd refresh bluetooth'
+    on_click 1 = 'exec $HOME/apps/bt-pixelbuds.bash'
 }
 
 keyboard_locks {
