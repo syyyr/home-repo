@@ -110,6 +110,7 @@ external_script pixel-buds {
     cache_timeout = 15
     script_path = '$HOME/apps/py3status-pixel-buds.bash'
     format = '{composite}'
+    on_click 1 = 'exec $HOME/apps/fix_headphones.bash'
 }
 
 clock {
