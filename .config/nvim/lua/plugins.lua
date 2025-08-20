@@ -6,8 +6,6 @@ vim.cmd('packadd! vim-better-whitespace')
 vim.cmd('packadd! vim-colon-therapy')
 vim.cmd('packadd! vim-icalendar')
 vim.cmd('packadd vim-kitty')
-vim.cmd('packadd! vim-pug')
-vim.cmd('packadd! yang.vim')
 
 vim.cmd('packadd! nvim-dap')
 require('inc_rename').setup({
