@@ -136,4 +136,23 @@ function M.omap(...) impl_map('o', false, ...) end
 ---@type MapFunction
 function M.nmap(...) impl_map('', false, ...) end
 
+local loaded_plugins = {}
+
+---@param plugin_name string
+---@param command_to_run string|function
+function M.lazy_load(plugin_name, command_to_run)
+  return function()
+    if not loaded_plugins[plugin_name] then
+      vim.cmd('packadd ' .. plugin_name)
+      loaded_plugins[plugin_name] = true
+    end
+
+    if type(command_to_run) == 'function' then
+      command_to_run()
+    else
+      vim.cmd(command_to_run)
+    end
+  end
+end
+
 return M

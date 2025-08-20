@@ -4,7 +4,6 @@ vim.cmd('packadd fluent.vim')
 vim.cmd('packadd! i3config.vim')
 vim.cmd('packadd! inc-rename.nvim')
 vim.cmd('packadd! readline.vim')
-vim.cmd('packadd! undotree')
 vim.cmd('packadd! vim-better-whitespace')
 vim.cmd('packadd! vim-colon-therapy')
 vim.cmd('packadd! vim-icalendar')
@@ -30,24 +29,20 @@ require('ibl').setup({
 	}
 })
 
-vim.cmd('packadd! blame.nvim')
-require('blame').setup({
-    date_format = "%Y/%m/%d %H:%M",
-    merge_consecutive = false,
-    virtual_style = "float"
-})
+vim.api.nvim_create_user_command('GT', function ()
+	vim.g.gitblame_enabled = 0
+	vim.cmd('packadd! blame.nvim')
+	require('blame').setup({
+		date_format = "%Y/%m/%d %H:%M",
+		merge_consecutive = false,
+		virtual_style = "float"
+	})
+	vim.cmd('BlameToggle virtual')
+end, {nargs = 0})
 
-vim.api.nvim_create_user_command('GT', 'BlameToggle virtual', {nargs = 0})
-
-vim.cmd('packadd! git-blame.nvim')
-require('gitblame').setup {
-    enabled = false,
-	highlight_group = 'Question',
-	set_extmark_options = {hl_mode = 'combine'}
-}
-
-vim.api.nvim_create_user_command('GSHA', 'GitBlameCopySHA', {nargs = 0})
-vim.api.nvim_create_user_command('GURL', 'GitBlameOpenCommitURL', {nargs = 0})
+local ll = require('syyyr').lazy_load
+vim.api.nvim_create_user_command('GSHA', ll('git-blame.nvim', 'GitBlameCopySHA'), {nargs = 0})
+vim.api.nvim_create_user_command('GURL', ll('git-blame.nvim', 'GitBlameOpenCommitURL'), {nargs = 0})
 
 vim.cmd('packadd vimtex')
 vim.g.vimtex_compiler_latexmk = {build_dir = 'build'}
