@@ -80,15 +80,6 @@ cmp.setup({
     },
 })
 
-local capabilities = vim.tbl_deep_extend("force",
-    vim.lsp.protocol.make_client_capabilities(),
-    require('cmp_nvim_lsp').default_capabilities()
-)
-
----@class lsp.ClientCapabilities
----@field offsetEncoding string[]
-capabilities.offsetEncoding = {'utf-16'}
-
 vim.cmd('packadd! nvim-lspconfig')
 vim.lsp.config("rust-analyzer", {
     settings = {
