@@ -86,6 +86,7 @@ vim.lsp.config("rust-analyzer", {
         ['rust-analyzer'] = {
             cargo = {
                 features = {
+                    'entra-id'
                 }
             }
         }
