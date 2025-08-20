@@ -29,17 +29,28 @@ vim.api.nvim_create_autocmd('FileType', {
 local statusline_augroup = vim.api.nvim_create_augroup('StatuslineIntegration', {clear = true})
 
 vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
-    callback = function()
-        vim.system({'grep', '--line-number', '--max-count', '1', [[\s$]]}, {
+    callback = function(info)
+        vim.system({'grep', '--line-number', [[\s$]]}, {
             stdin = vim.fn.join(vim.api.nvim_buf_get_lines(0, 0, -1, true), "\n"),
         }, function(res)
-                if res.code ~= 0 then
-                    vim.b.TrailingNr = nil
-                else
-                    local startIndex, endIndex = res.stdout:find('%d+')
-                    vim.b.TrailingNr = startIndex and res.stdout:sub(startIndex, endIndex) or ''
-                end
-                vim.defer_fn(vim.cmd.redrawstatus, 0)
+                vim.defer_fn(function ()
+                    local ws_diagnostics = {}
+                    for str in string.gmatch(res.stdout, "([^\n]+)") do
+                        local line_prefix = string.match(str, "^%d+")
+                        local spaces_start, spaces_end = str:find("%s+$")
+                        table.insert(ws_diagnostics, {
+                            lnum = tonumber(line_prefix) - 1,
+                            end_lnum = tonumber(line_prefix) - 1,
+                            col = spaces_start - 1 - (#line_prefix + 1 --[[ For the column in grep's output ]] ),
+                            end_col = spaces_end - #line_prefix - 1,
+                            message = 'Trailing whitespace detected',
+                            code = 'trailing-whitespace',
+                            source = 'trailing-whitespace',
+                            severity = vim.diagnostic.severity.HINT
+                        })
+                    end
+                    vim.diagnostic.set(vim.api.nvim_create_namespace("syyyr-whitespaces"), info.buf, ws_diagnostics)
+                end, 0)
             end
         )
     end,

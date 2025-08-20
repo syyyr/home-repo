@@ -23,10 +23,6 @@ function M.statusline_diagnostics()
             return format_statusline_diagnostics(vim.diagnostic.severity[severity]:sub(1, 1), tostring(diagnostic.lnum + 1))
         end
     end
-    if vim.b.TrailingNr and vim.b.TrailingNr ~= '' and vim.api.nvim_get_mode() ~= 'i' then
-        return format_statusline_diagnostics('WS', vim.b.TrailingNr)
-    end
-
     return ' ' -- Have to return something here, otherwise padding won't be applied.
 end
 
