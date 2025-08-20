@@ -102,6 +102,7 @@ for _, lsp_def in ipairs({
     {'clangd', { cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}}},
     {'cmake'},
     {'dockerls'},
+    {'eslint'},
     {'jsonls'},
     {'lua_ls', {
         settings = {
