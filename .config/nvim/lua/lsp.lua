@@ -90,21 +90,6 @@ local capabilities = vim.tbl_deep_extend("force",
 capabilities.offsetEncoding = {'utf-16'}
 
 vim.cmd('packadd! nvim-lspconfig')
-
-vim.lsp.inlay_hint.enable()
-for _, lsp_name in ipairs({
-    'bashls',
-    'cmake',
-    'dockerls',
-    'jsonls',
-    'pkgbuild_language_server',
-    'yang_lsp',
-    'vimls'}) do
-    require('lspconfig')[lsp_name].setup({
-        capabilities = capabilities
-    })
-end
-
 vim.lsp.config("rust-analyzer", {
     settings = {
         ['rust-analyzer'] = {
@@ -117,39 +102,88 @@ vim.lsp.config("rust-analyzer", {
 })
 
 vim.cmd('packadd! rustaceanvim')
+vim.cmd('packadd! clangd_extensions.nvim')
 
-vim.lsp.config('ts_ls', {
-    init_options = {
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = "/usr/lib/node_modules/@vue/language-server",
-                languages = {"javascript", "typescript", "vue"},
+vim.lsp.inlay_hint.enable()
+for _, lsp_def in ipairs({
+    {'bashls'},
+    {'clangd', { cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}}},
+    {'cmake'},
+    {'dockerls'},
+    {'jsonls'},
+    {'lua_ls', {
+        settings = {
+            Lua = {
+                runtime = {
+                    version = 'LuaJIT'
+                },
+                diagnostics = {
+                    globals = {'vim'},
+                    disable = {
+                        'empty-block',
+                        'trailing-space'
+                    }
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                },
+            }
+        }
+    }},
+    {'pylsp', {
+        settings = {
+            pylsp = {
+                plugins = {
+                    ruff = { enabled = true }
+                }
+            }
+        }
+    }},
+    {'qmlls', {
+        filetypes = {'qml'},
+        cmd = {'qmlls6', '-b', 'build'}
+    }},
+    {'rust_analyzer',},
+    {'termux_language_server',},
+    {'ts_ls', {
+        init_options = {
+            plugins = {
+                {
+                    name = "@vue/typescript-plugin",
+                    location = "/usr/lib/node_modules/@vue/language-server",
+                    languages = {"javascript", "typescript", "vue"},
+                },
             },
         },
-    },
-    filetypes = {
-        "javascript",
-        "typescript",
-        "vue",
-    },
-})
-
-vim.lsp.enable({'ts_ls', 'vue_ls'})
-
-require('lspconfig').yamlls.setup({
-    capabilities = capabilities,
-    settings = {
-        redhat = {
-            telemetry = {
-                enabled = false
-            }
+        filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
         },
-        yaml = {
-            keyOrdering = false
+    }},
+    {'vimls',},
+    {'vue_ls',},
+    {'yamlls', {
+        settings = {
+            redhat = {
+                telemetry = {
+                    enabled = false
+                }
+            },
+            yaml = {
+                keyOrdering = false
+            }
         }
-    }
-})
+    }},
+    {'yang_lsp',},
+}) do
+    if lsp_def[2] then
+        vim.lsp.config(lsp_def[1], lsp_def[2])
+    end
+
+    vim.lsp.enable(lsp_def[1])
+end
 
 vim.cmd('packadd! plenary.nvim')
 vim.cmd('packadd! none-ls.nvim')
@@ -178,52 +212,6 @@ null_ls.setup({
             }
         }),
     },
-})
-
-require('lspconfig').lua_ls.setup({
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT'
-            },
-            diagnostics = {
-                globals = {'vim'},
-                disable = {
-                    'empty-block',
-                    'trailing-space'
-                }
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-        }
-    }
-})
-
-require('lspconfig').pylsp.setup({
-    capabilities = capabilities,
-    settings = {
-        pylsp = {
-            plugins = {
-                ruff = { enabled = true }
-            }
-        }
-    }
-})
-
-require('lspconfig').qmlls.setup({
-    capabilities = capabilities,
-    filetypes = {'qml'},
-    cmd = {'qmlls6', '-b', 'build'}
-})
-
-vim.cmd('packadd! clangd_extensions.nvim')
-
-require('lspconfig').clangd.setup({
-    capabilities = capabilities,
-    cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'},
 })
 
 cmp.setup.filetype('cpp', {
