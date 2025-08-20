@@ -18,26 +18,26 @@ require('inc_rename').setup({
 
 vim.cmd('packadd! indent-blankline.nvim')
 require('ibl').setup({
-	scope = {
-		enabled = false
-	},
-	indent = {
-		char = '▏',
-	},
-	exclude = {
-		buftypes = {'tab', 'help'}
-	}
+    scope = {
+        enabled = false
+    },
+    indent = {
+        char = '▏',
+    },
+    exclude = {
+        buftypes = {'tab', 'help'}
+    }
 })
 
 vim.api.nvim_create_user_command('GT', function ()
-	vim.g.gitblame_enabled = 0
-	vim.cmd('packadd! blame.nvim')
-	require('blame').setup({
-		date_format = "%Y/%m/%d %H:%M",
-		merge_consecutive = false,
-		virtual_style = "float"
-	})
-	vim.cmd('BlameToggle virtual')
+    vim.g.gitblame_enabled = 0
+    vim.cmd('packadd! blame.nvim')
+    require('blame').setup({
+        date_format = "%Y/%m/%d %H:%M",
+        merge_consecutive = false,
+        virtual_style = "float"
+    })
+    vim.cmd('BlameToggle virtual')
 end, {nargs = 0})
 
 local ll = require('syyyr').lazy_load
@@ -68,7 +68,7 @@ require('ts_context_commentstring').setup {
 local get_option = vim.filetype.get_option
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.filetype.get_option = function(filetype, option)
-	return option == "commentstring"
-		and require("ts_context_commentstring.internal").calculate_commentstring()
-		or get_option(filetype, option)
+    return option == "commentstring"
+        and require("ts_context_commentstring.internal").calculate_commentstring()
+        or get_option(filetype, option)
 end
