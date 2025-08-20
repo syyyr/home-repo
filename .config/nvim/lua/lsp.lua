@@ -135,7 +135,6 @@ for _, lsp_def in ipairs({
         filetypes = {'qml'},
         cmd = {'qmlls6', '-b', 'build'}
     }},
-    {'rust_analyzer',},
     {'termux_language_server',},
     {'ts_ls', {
         init_options = {
