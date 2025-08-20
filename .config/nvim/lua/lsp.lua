@@ -162,7 +162,10 @@ for _, lsp_def in ipairs({
                 }
             },
             yaml = {
-                keyOrdering = false
+                keyOrdering = false,
+                customTags = {
+                    '!include_dir_merge_named scalar',
+                },
             }
         }
     }},
