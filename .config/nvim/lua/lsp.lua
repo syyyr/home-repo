@@ -135,7 +135,7 @@ for _, lsp_def in ipairs({
         filetypes = {'qml'},
         cmd = {'qmlls6', '-b', 'build'}
     }},
-    {'termux_language_server',},
+    {'termux_language_server'},
     {'ts_ls', {
         init_options = {
             plugins = {
@@ -152,8 +152,8 @@ for _, lsp_def in ipairs({
             "vue",
         },
     }},
-    {'vimls',},
-    {'vue_ls',},
+    {'vimls'},
+    {'vue_ls'},
     {'yamlls', {
         settings = {
             redhat = {
@@ -166,7 +166,7 @@ for _, lsp_def in ipairs({
             }
         }
     }},
-    {'yang_lsp',},
+    {'yang_lsp'},
 }) do
     if lsp_def[2] then
         vim.lsp.config(lsp_def[1], lsp_def[2])
