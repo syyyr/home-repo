@@ -99,7 +99,6 @@ for _, lsp_name in ipairs({
     'jsonls',
     'pkgbuild_language_server',
     'yang_lsp',
-    'volar',
     'vimls'}) do
     require('lspconfig')[lsp_name].setup({
         capabilities = capabilities
@@ -119,8 +118,7 @@ vim.lsp.config("rust-analyzer", {
 
 vim.cmd('packadd! rustaceanvim')
 
-require('lspconfig').ts_ls.setup({
-    capabilities = capabilities,
+vim.lsp.config('ts_ls', {
     init_options = {
         plugins = {
             {
@@ -136,6 +134,8 @@ require('lspconfig').ts_ls.setup({
         "vue",
     },
 })
+
+vim.lsp.enable({'ts_ls', 'vue_ls'})
 
 require('lspconfig').yamlls.setup({
     capabilities = capabilities,
