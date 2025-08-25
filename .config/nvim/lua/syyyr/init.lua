@@ -8,6 +8,13 @@ function M.escape_double_quotes(text)
     return ret
 end
 
+---@param text string
+---@return string
+function M.escape_single_quotes(text)
+    local ret, _ = text:gsub([[']], [[\']])
+    return ret
+end
+
 ---@param type string
 ---@param lnum string
 ---@return string
