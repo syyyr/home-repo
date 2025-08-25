@@ -35,19 +35,21 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
         }, function(res)
                 vim.defer_fn(function ()
                     local ws_diagnostics = {}
-                    for str in string.gmatch(res.stdout, "([^\n]+)") do
-                        local line_prefix = string.match(str, "^%d+")
-                        local spaces_start, spaces_end = str:find("%s+$")
-                        table.insert(ws_diagnostics, {
-                            lnum = tonumber(line_prefix) - 1,
-                            end_lnum = tonumber(line_prefix) - 1,
-                            col = spaces_start - 1 - (#line_prefix + 1 --[[ For the column in grep's output ]] ),
-                            end_col = spaces_end - #line_prefix - 1,
-                            message = 'Trailing whitespace detected',
-                            code = 'trailing-whitespace',
-                            source = 'trailing-whitespace',
-                            severity = vim.diagnostic.severity.HINT
-                        })
+                    if vim.o.filetype ~= 'gitcommit' then
+                        for str in string.gmatch(res.stdout, "([^\n]+)") do
+                            local line_prefix = string.match(str, "^%d+")
+                            local spaces_start, spaces_end = str:find("%s+$")
+                            table.insert(ws_diagnostics, {
+                                lnum = tonumber(line_prefix) - 1,
+                                end_lnum = tonumber(line_prefix) - 1,
+                                col = spaces_start - 1 - (#line_prefix + 1 --[[ For the column in grep's output ]] ),
+                                end_col = spaces_end - #line_prefix - 1,
+                                message = 'Trailing whitespace detected',
+                                code = 'trailing-whitespace',
+                                source = 'trailing-whitespace',
+                                severity = vim.diagnostic.severity.HINT
+                            })
+                        end
                     end
                     vim.diagnostic.set(vim.api.nvim_create_namespace("syyyr-whitespaces"), info.buf, ws_diagnostics)
                 end, 0)
