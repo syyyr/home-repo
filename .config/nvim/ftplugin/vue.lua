@@ -1,9 +1,9 @@
 local syyyr = require('syyyr')
 syyyr.register_printing({
     print_var = function(var_name)
-        return 'console.log(\'' .. syyyr.escape_single_quotes(var_name) .. '\', \'=\', ' .. var_name .. ');'
+        return string.format([[console.log(`%s = ${%s}`);]], var_name, var_name)
     end,
     print_text = function(text)
-        return 'console.log(\'' .. text .. '\');'
+        return string.format([[console.log(`%s`)]], text)
     end,
 })

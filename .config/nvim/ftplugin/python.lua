@@ -1,14 +1,11 @@
 vim.cmd('packadd vim-python-pep8-indent')
 
-local function escape_double_quotes(text)
-    return text:gsub([["]], [[\"]])
-end
-
-require('syyyr').register_printing({
+local syyyr = require('syyyr')
+syyyr.register_printing({
     print_var = function(var_name)
-        return 'print("' .. escape_double_quotes(var_name) .. '", "=", ' .. var_name .. ')'
+        return string.format([[print(f'%s = {%s}')]], syyyr.escape_single_quotes(var_name), var_name)
     end,
     print_text = function(text)
-        return 'print("' .. escape_double_quotes(text) .. '")'
+        return string.format([[print('%s')]], syyyr.escape_single_quotes(text))
     end,
 })

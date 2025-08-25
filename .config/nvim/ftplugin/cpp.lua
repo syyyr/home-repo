@@ -29,10 +29,10 @@ end
 
 syyyr.register_printing({
     print_var = function(var_name)
-        return get_stream() .. [[ << "]] .. syyyr.escape_double_quotes(var_name) .. (have_qt() and [[" << "=" << ]] or [[" << " = " << ]]) .. var_name .. (have_qt() and ";" or [[ << "\n";]])
+        return string.format([[%s << "%s" << %s << %s;]], get_stream(), syyyr.escape_double_quotes(var_name), have_qt() and [["="]] or [[" = "]], var_name, have_qt() and "" or [["\n"]])
     end,
     print_text = function(text)
-        return get_stream() .. [[ << "]] .. syyyr.escape_double_quotes(text) .. (have_qt() and [[";]] or [[\n";]])
+        return string.format([[%s << "%s%s";]], get_stream(), syyyr.escape_double_quotes(text), have_qt() and "" or [[\n]])
     end,
 })
 
