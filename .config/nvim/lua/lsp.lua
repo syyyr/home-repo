@@ -103,6 +103,12 @@ for _, lsp_def in ipairs({
     {'cmake'},
     {'dockerls'},
     {'eslint'},
+    {'homeassistant', {
+        cmd = {'ts-node', '/home/vk/git/vscode-home-assistant/out/server/server.js', '--stdio'},
+        filetypes = {'yaml'},
+        root_markers = { 'configuration.yaml'},
+        settings = {}
+    }},
     {'jsonls'},
     {'lua_ls', {
         settings = {

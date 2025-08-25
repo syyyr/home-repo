@@ -69,5 +69,5 @@ prc() {
         sshfs pi:/homeassistant "$MOUNTPOINT"
     fi
 
-    vim "$HOME/git/pi-backup/configuration.yaml"
+    (cd "$HOME/git/pi-backup" && vim "configuration.yaml")
 }
