@@ -81,17 +81,6 @@ cmp.setup({
 })
 
 vim.cmd('packadd! nvim-lspconfig')
-vim.lsp.config("rust-analyzer", {
-    settings = {
-        ['rust-analyzer'] = {
-            cargo = {
-                features = {
-                    'entra-id'
-                }
-            }
-        }
-    }
-})
 
 vim.cmd('packadd! rustaceanvim')
 vim.cmd('packadd! clangd_extensions.nvim')
