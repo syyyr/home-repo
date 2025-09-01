@@ -2,6 +2,11 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
+if pgrep -f 'fix_headphones.bash' &> /dev/null; then
+	echo -n '[\?color=plum&show Fixing headphones…]'
+	exit 0
+fi
+
 if ! bluetoothctl devices Connected | grep 'Pixel Buds Pro' &> /dev/null; then
 	echo ""
 	exit 0
