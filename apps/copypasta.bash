@@ -80,6 +80,7 @@ smoke/exhale 😤
 sweat 😅
 sweat/hot 🥵
 motorcycle/bike 🏍️
+car/f1/formule/formula 🏎️
 zzz/sleep 💤
 freezing/cold 🥶
 hundred/100 💯
