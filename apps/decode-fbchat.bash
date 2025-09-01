@@ -43,7 +43,7 @@ shopt -s inherit_errexit
     done
 } | tac > temp_decoded
 awk '
-BEGIN { FS="	"; OFS="  " }
+BEGIN { FS="    "; OFS="  " }
 NR==FNR {
     w = (length($2) > w ? length($2) : w)
     prefix_message = ""

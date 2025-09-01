@@ -5,7 +5,7 @@ shopt -s inherit_errexit
 readonly BASH_BLUE_BOLD=$'\033''[01;34m' BASH_COLOR_NORMAL=$'\033''[0m'
 
 info() {
-	echo "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
+    echo "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
 }
 
 filter_disabled_packages() {
