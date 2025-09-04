@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.opt.complete:remove('t') -- Don't scan tagfiles
 vim.opt.cursorline = true
 vim.opt.diffopt:append('algorithm:patience')
+vim.opt.expandtab = true
 vim.opt.exrc = true
 vim.opt.fillchars = 'fold: ,vert:▏'
 vim.opt.foldcolumn = '1'
