@@ -4,6 +4,6 @@ syyyr.register_printing({
         return string.format([[console.log(`%s = ${%s}`);]], var_name, var_name)
     end,
     print_text = function(text)
-        return string.format([[console.log(`%s`)]], text)
+        return string.format([[console.log('%s');]], text)
     end,
 })
