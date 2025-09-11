@@ -4,6 +4,7 @@ exec --no-startup-id systemctl start --user i3-session.target
 # Copypasta
 bindsym --release XF86Favorites exec --no-startup-id ~/apps/copypasta.bash
 bindsym --release Ctrl+XF86Favorites exec --no-startup-id ~/apps/kitty.wrapper nvim -p ~/apps/copypasta.bash
+bindsym --release Ctrl+Shift+XF86Favorites exec --no-startup-id ~/apps/select-sink.bash
 
 # Microphone mute
 bindsym --release XF86AudioMicMute exec --no-startup-id exec pamixer --default-source --toggle-mute; exec ~/apps/mic-led.bash
