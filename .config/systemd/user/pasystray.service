@@ -1,0 +1,10 @@
+[Unit]
+Description=pasystray applet
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pasystray --notify=none
+
+[Install]
+WantedBy=graphical-session.target
