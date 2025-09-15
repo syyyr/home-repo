@@ -67,8 +67,8 @@ _GEN_PROMPT()
 
     local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
 
-    local USER_HOST="$(whoami)@$(hostname)" WORKDIR="$(dirs +0)" GIT_ROOT_DIR="$(git rev-parse --show-toplevel 2> /dev/null)" TIME="$(printf "%(%H:%M:%S)T")" COMMITS
-    if [[ -n "$GIT_ROOT_DIR" ]]; then
+    local USER_HOST="$(whoami)@$(hostname)" WORKDIR="$(dirs +0)" TIME="$(printf "%(%H:%M:%S)T")" COMMITS GIT_ROOT_DIR
+    if GIT_ROOT_DIR="$(timeout 0.1 git rev-parse --show-toplevel 2> /dev/null)"; then
         local GIT_INFO=""
         if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
             GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
@@ -83,10 +83,10 @@ _GEN_PROMPT()
             fi
         fi
         local GIT_SYMBOLS=""
-        if ! timeout 0.1 git diff --quiet; then
+        if ! git diff --quiet; then
             GIT_SYMBOLS+="+"
         fi
-        if ! timeout 0.1 git diff --cached --quiet; then
+        if ! git diff --cached --quiet; then
             GIT_SYMBOLS+="*"
         fi
         if [[ -n "$GIT_SYMBOLS" ]]; then
