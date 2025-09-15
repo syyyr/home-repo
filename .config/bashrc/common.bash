@@ -67,7 +67,7 @@ _GEN_PROMPT()
             local REMOTE_BRANCH="${GIT_INFO# }"
             REMOTE_BRANCH="origin/${REMOTE_BRANCH#origin/}"
             if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && timeout 0.1 git diff --quiet "$REMOTE_BRANCH" "$(git rev-parse HEAD)" -- &> /dev/null; then
-                GIT_INFO="${GIT_INFO}="
+                GIT_INFO+="="
             fi
         else
             if [[ "$(git rev-list --left-right --count origin/main...HEAD)" =~ (([0-9]+)$'\t'([0-9]+)) ]] && [[ ${BASH_REMATCH[3]} != 0 ]]; then
