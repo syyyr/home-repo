@@ -98,6 +98,9 @@ _GEN_PROMPT()
     echo -en $'\033'']0;'"${USER_HOST}:${WORKDIR}\a"
 
     PS1="\[\e[01;32m\]${USER_HOST}\[\e[00m\]:\[\e[01;34m\]${WORKDIR}\[\e[00;38;5;7m\]${GIT_INFO}${ERROR}$(printf "%${NUM_SPACES}s")\[\e[00;38;5;7;3m\]${TIME}${LAST_COMMAND_DURATION}\[\e[00m\]"'\n$ '
+    # END_PROMPT="$(date '+%s%3N')"
+    # _FORMAT_EXEC_TIME $((" $END_PROMPT" - "$CURRENT_TIME"))
+    # echo
 }
 
 _SAVE_STARTUP_TIME()
