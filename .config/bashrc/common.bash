@@ -53,12 +53,12 @@ _GEN_PROMPT()
     local CODE="$?"
     local USER_HOST="$USER@$HOSTNAME" WORKDIR="$(dirs +0)" TIME="$(printf "%(%H:%M:%S)T")" BAD=(👎 😭 😤) CURRENT_TIME="$(date '+%s%3N')" GIT_INFO="" ERROR="" LAST_COMMAND_DURATION=""
     if ((CODE)); then
-        local ERROR=" ${BAD[$RANDOM%3]} $CODE"
+        ERROR=" ${BAD[$RANDOM%3]} $CODE"
     fi
 
     # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
     if [[ $((CURRENT_TIME - _COMMAND_START_TIME)) -ge 1000 ]]; then
-        local LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $((CURRENT_TIME - _COMMAND_START_TIME))))"
+        LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $((CURRENT_TIME - _COMMAND_START_TIME))))"
     fi
 
     if GIT_ROOT_DIR="$(timeout 0.1 git rev-parse --show-toplevel 2> /dev/null)"; then
