@@ -70,7 +70,7 @@ _GEN_PROMPT()
             fi
         else
             if [[ "$(git rev-list --left-right --count origin/main...HEAD)" =~ (([0-9]+)$'\t'([0-9]+)) ]] && [[ ${BASH_REMATCH[3]} != 0 ]]; then
-                GIT_INFO="${GIT_INFO} (+${BASH_REMATCH[3]})"
+                GIT_INFO+=" (+${BASH_REMATCH[3]})"
             fi
         fi
         local GIT_SYMBOLS=""
