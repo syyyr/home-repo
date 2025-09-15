@@ -57,8 +57,8 @@ _GEN_PROMPT()
     fi
 
     # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
-    if [[ $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) -ge 1000 ]]; then
-        local LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
+    if [[ $((CURRENT_TIME - _COMMAND_START_TIME)) -ge 1000 ]]; then
+        local LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $((CURRENT_TIME - _COMMAND_START_TIME))))"
     fi
 
     if GIT_ROOT_DIR="$(timeout 0.1 git rev-parse --show-toplevel 2> /dev/null)"; then
@@ -91,7 +91,7 @@ _GEN_PROMPT()
     local NUM_SPACES="$((COLUMNS - ${#PROMPT_COLORLESS} - ${#LAST_COMMAND_DURATION} - 8))"
     if [[ -n "$ERROR" ]]; then
         # Emojis actually take up two columns, but bash counts them as 1 character.
-        NUM_SPACES="$(("$NUM_SPACES" - 1))"
+        NUM_SPACES="$((NUM_SPACES - 1))"
     fi
 
     # Set the title.
@@ -99,7 +99,7 @@ _GEN_PROMPT()
 
     PS1="\[\e[01;32m\]${USER_HOST}\[\e[00m\]:\[\e[01;34m\]${WORKDIR}\[\e[00;38;5;7m\]${GIT_INFO}${ERROR}$(printf "%${NUM_SPACES}s")\[\e[00;38;5;7;3m\]${TIME}${LAST_COMMAND_DURATION}\[\e[00m\]"'\n$ '
     # END_PROMPT="$(date '+%s%3N')"
-    # _FORMAT_EXEC_TIME $((" $END_PROMPT" - "$CURRENT_TIME"))
+    # _FORMAT_EXEC_TIME $((END_PROMPT - CURRENT_TIME))
     # echo
 }
 
