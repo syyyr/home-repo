@@ -51,25 +51,17 @@ _GEN_PROMPT()
 {
     # Have to save the error code, otherwise it'll by be overwritten immediately (by the `[[` command).
     local CODE="$?"
-    if [[ "$CODE" -ne 0 ]]; then
-        local BAD=(👎 😭 😤)
-        local ERROR=" ${BAD[$RANDOM%${#BAD[@]}]} $CODE"
+    local USER_HOST="$USER@$HOSTNAME" WORKDIR="$(dirs +0)" TIME="$(printf "%(%H:%M:%S)T")" BAD=(👎 😭 😤) CURRENT_TIME="$(date '+%s%3N')" GIT_INFO="" ERROR="" LAST_COMMAND_DURATION=""
+    if ((CODE)); then
+        local ERROR=" ${BAD[$RANDOM%3]} $CODE"
     fi
 
-    if [[ -n "$_COMMAND_START_TIME" ]]; then
-        local CURRENT_TIME="$(date '+%s%3N' | tr -d '\n')"
-        # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
-        if [[ $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) -ge 1000 ]]; then
-            local LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
-        fi
-        unset _COMMAND_START_TIME
+    # If the execution time is less than 1 second, don't bother showing the execution time. It won't be too precise anyway.
+    if [[ $(("$CURRENT_TIME" - "$_COMMAND_START_TIME")) -ge 1000 ]]; then
+        local LAST_COMMAND_DURATION=" ($(_FORMAT_EXEC_TIME $(("$CURRENT_TIME" - "$_COMMAND_START_TIME"))))"
     fi
 
-    local TITLE=$'\033'']0;' GREEN_BOLD=$'\033''[01;32m' BLUE_BOLD=$'\033''[01;34m' GRAY=$'\033''[00;38;5;7m' CURSIVE_GRAY=$'\033''[00;38;5;7;3m' NORMAL_COLOR=$'\033''[00m'
-
-    local USER_HOST="$(whoami)@$(hostname)" WORKDIR="$(dirs +0)" TIME="$(printf "%(%H:%M:%S)T")" GIT_ROOT_DIR
     if GIT_ROOT_DIR="$(timeout 0.1 git rev-parse --show-toplevel 2> /dev/null)"; then
-        local GIT_INFO=""
         if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
             GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
             local REMOTE_BRANCH="${GIT_INFO# }"
@@ -101,12 +93,11 @@ _GEN_PROMPT()
         # Emojis actually take up two columns, but bash counts them as 1 character.
         NUM_SPACES="$(("$NUM_SPACES" - 1))"
     fi
-    local SPACES="$(printf "%${NUM_SPACES}s")"
 
     # Set the title.
-    echo -en "${TITLE}${USER_HOST}:${WORKDIR}\a"
+    echo -en $'\033'']0;'"${USER_HOST}:${WORKDIR}\a"
 
-    PS1="${GREEN_BOLD}${USER_HOST}${NORMAL_COLOR}:${BLUE_BOLD}${WORKDIR}${GRAY}${GIT_INFO}${ERROR}${SPACES}${CURSIVE_GRAY}${TIME}${LAST_COMMAND_DURATION}${NORMAL_COLOR}"'\n$ '
+    PS1="\[\e[01;32m\]${USER_HOST}\[\e[00m\]:\[\e[01;34m\]${WORKDIR}\[\e[00;38;5;7m\]${GIT_INFO}${ERROR}$(printf "%${NUM_SPACES}s")\[\e[00;38;5;7;3m\]${TIME}${LAST_COMMAND_DURATION}\[\e[00m\]"'\n$ '
 }
 
 _SAVE_STARTUP_TIME()
