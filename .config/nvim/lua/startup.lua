@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd({'BufReadPost', 'TextChanged', 'InsertLeave'}, {
         }, function(res)
                 vim.defer_fn(function ()
                     local ws_diagnostics = {}
-                    if vim.o.filetype ~= 'gitcommit' then
+                    if vim.o.filetype ~= 'gitcommit' and vim.o.filetype ~= 'qf' then
                         for str in string.gmatch(res.stdout, "([^\n]+)") do
                             local line_prefix = string.match(str, "^%d+")
                             local spaces_start, spaces_end = str:find("%s+$")
