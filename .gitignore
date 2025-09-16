@@ -88,8 +88,6 @@
 .config/chrome-remote-desktop
 .config/chromium
 .config/google-chrome
-.config/i3/config
-.config/i3status/config
 .config/nvim/.netrwhist
 .config/nvim/tags
 .vim/.netrwhist
