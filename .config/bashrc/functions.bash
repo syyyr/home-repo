@@ -61,24 +61,3 @@ try()
         sleep 0.1;
     done
 }
-
-prc() {
-    MOUNTPOINT="$HOME/git/pi-backup"
-    mkdir -p "$MOUNTPOINT"
-    if ! mountpoint "$MOUNTPOINT" &> /dev/null; then
-        sshfs pi:/homeassistant "$MOUNTPOINT"
-    fi
-
-    (
-        cd "$HOME/git/pi-backup" || return 1
-        FILE_CONTENT="$(cat configuration.yaml)"
-        vim 'configuration.yaml'
-        if [[ "$FILE_CONTENT" != "$(cat configuration.yaml)" ]]; then
-            echo 'Detected changes to configuration.yaml, running `git status`...'
-            git status
-        else
-            echo 'configuration.yaml unchanged.'
-        fi
-
-    )
-}
