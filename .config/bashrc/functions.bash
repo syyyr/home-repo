@@ -69,5 +69,16 @@ prc() {
         sshfs pi:/homeassistant "$MOUNTPOINT"
     fi
 
-    (cd "$HOME/git/pi-backup" && vim "configuration.yaml")
+    (
+        cd "$HOME/git/pi-backup" || return 1
+        FILE_CONTENT="$(cat configuration.yaml)"
+        vim 'configuration.yaml'
+        if [[ "$FILE_CONTENT" != "$(cat configuration.yaml)" ]]; then
+            echo 'Detected changes to configuration.yaml, running `git status`...'
+            git status
+        else
+            echo 'configuration.yaml unchanged.'
+        fi
+
+    )
 }
