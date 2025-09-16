@@ -10,6 +10,12 @@ make_py3status_format()
     echo "[\?color=lightblue&show $NAME] [\?color=red&show $OLD] [\?color=lightgrey&show -] [\?color=lime&show $NEW]"
 }
 
+if [[ $# != 1 ]]; then
+    echo Unknown arguments: "${@@Q}"
+    echo 'Expected: updates|out-of-date'
+    exit 1
+fi
+
 UPDATED=()
 
 if [[ "$1" = updates ]]; then
