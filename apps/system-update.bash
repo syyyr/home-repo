@@ -12,6 +12,8 @@ filter_disabled_packages() {
     local DISABLED_PKGS=(
         # These are part of another package.
         -e 'mingw-w64-harfbuzz-icu'
+        -e 'kitty-shell-integration-git'
+        -e 'kitty-terminfo-git'
 
         # These aren't updated all that frequently (or never).
         -e 'auracle-git'
