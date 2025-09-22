@@ -48,7 +48,7 @@ fi
 
 VOLUME_BEFORE="$("$HOME/apps/volume.bash")"
 
-if [[ "$1" != "no-off" ]]; then
+if [[ "${1:-}" != "no-off" ]]; then
     (sleep 7; xset dpms force off)&
     SCREENOFF_PID="$!"
 fi
@@ -58,7 +58,7 @@ wait
 dunstctl set-paused false
 i3-msg bar mode dock
 
-if [[ "$1" != "no-off" ]]; then
+if [[ "${1:-}" != "no-off" ]]; then
     kill "$SCREENOFF_PID" 2> /dev/null
 fi
 
