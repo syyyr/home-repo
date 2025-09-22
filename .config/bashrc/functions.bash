@@ -61,3 +61,10 @@ try()
         sleep 0.1;
     done
 }
+
+try_not()
+{
+    while "$@"; do
+        sleep 0.1;
+    done
+}
