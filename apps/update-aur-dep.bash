@@ -44,7 +44,7 @@ if ! [[ -d "$DEP_DIR" ]]; then
 fi
 cd "$DEP_DIR" || exit 1
 git fetch
-git reset --hard origin/master
+git reset --hard origin/master --
 
 readonly AUTOREMOVE_PKGS=(
     cmake-language-server-git
