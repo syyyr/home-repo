@@ -13,7 +13,6 @@ alias {cd..,dc..}='cd ..'
 alias cdp='cd -P'
 alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias ctest='ctest --output-on-failure'
-# shellcheck disable=SC2139
 alias dicker='docker'
 alias explorer='taskkill -f explorer.exe; cmd "start /B explorer"& exit'
 alias ffplay='ffplay -autoexit'
