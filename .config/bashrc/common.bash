@@ -31,7 +31,7 @@ _FORMAT_EXEC_TIME()
             input-=hours*60*60*1000;
         }
         min = input/60/1000;
-        if (min >= 3) { /* from three minutes onward, we'll show to output in the XXm XX.XXs format. */
+        if (min >= 3) { /* from three minutes onward, we'll show the output in the XXm XX.XXs format. */
             print min;
             print "m ";
             input-=min*60*1000;
