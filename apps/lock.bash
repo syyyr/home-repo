@@ -41,9 +41,6 @@ i3-msg bar mode invisible
 
 if [[ "$(playerctl status)" = "Playing" ]]; then
     playerctl pause
-    HAVE_PAUSED=1
-else
-    HAVE_PAUSED=0
 fi
 
 VOLUME_BEFORE="$("$HOME/apps/volume.bash")"
@@ -68,12 +65,8 @@ py3-cmd refresh --all
 
 if [[ "$VOLUME_NOW" != "$VOLUME_BEFORE" ]]; then
     # The volume changed from outside, let's not do anything. If VOLUME_NOW is muted, we definitely don't want to unmute
-    # it even if HAVE_PAUSED is 1, and if VOLUME_NOW is unmuted, it's too late to mute it now.
+    # it, and if VOLUME_NOW is unmuted, it's too late to mute it now.
     # Note: this detection fails if only the muted state changes, for example, if I disconnect my headphones, and the
     # speaker and headphone volume is the same.
     exit 0
-fi
-
-if ((HAVE_PAUSED)); then
-    playerctl play
 fi
