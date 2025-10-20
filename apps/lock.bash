@@ -34,6 +34,7 @@ i3lock \
     --date-size="$DATE_SIZE" \
     --time-pos="$TIME_POS" \
     --date-pos="$DATE_POS" &
+I3LOCK_PID="$!"
 
 i3-msg bar mode invisible
 
@@ -51,7 +52,7 @@ if [[ "${1:-}" != "no-off" ]]; then
 fi
 
 dunstctl set-paused true
-wait
+wait "$I3LOCK_PID"
 dunstctl set-paused false
 i3-msg bar mode dock
 
