@@ -49,6 +49,7 @@ watery_eyes 🥹
 sweat/drops 💦
 toust/toast/bread 🍞
 hidden/hands 🫣
+mushroom/houby/houba 🍄🍄‍🟫
 sunglasses 😎
 smirk/lewd/smug 😏
 annoyed/unamused 😒
