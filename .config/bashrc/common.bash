@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -z "$STY" ]] && screen -ls > /dev/null; then
+if [[ "${STY+x}" != x ]] && screen -ls > /dev/null; then
     screen -wipe
 fi
 
