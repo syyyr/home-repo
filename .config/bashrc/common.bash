@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -u
-
 if [[ "${STY+x}" != x ]] && screen -ls > /dev/null; then
     screen -wipe
 fi
@@ -123,5 +121,3 @@ source "$HOME/.config/bashrc/functions.bash"
 if [[ -f "$HOME/.config/bashrc/ignore.bash" ]]; then
     source "$HOME/.config/bashrc/ignore.bash"
 fi
-
-set +u
