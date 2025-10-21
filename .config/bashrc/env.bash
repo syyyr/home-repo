@@ -9,7 +9,7 @@ export LESS='-RFS'
 export MANPAGER='nvim +Man!'
 export NIGHTSTART='22'
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
-if [[ -n "$DISPLAY" ]]; then
+if [[ "${DISPLAY+x}" = x ]]; then
 	OUTPUT=$(xrandr | grep -o '^.* connected' | grep -v 'eDP-1' | sed 's/ connected//')
 	if [[ -n "$OUTPUT" ]]; then
 		export QT_SCALE_FACTOR=1.5
