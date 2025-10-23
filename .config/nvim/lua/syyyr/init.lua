@@ -26,7 +26,7 @@ end
 function M.statusline_diagnostics()
     for _, severity in pairs({vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN, vim.diagnostic.severity.INFO, vim.diagnostic.severity.HINT}) do
         local diagnostic = vim.diagnostic.get(0, {severity = severity})[1]
-        if diagnostic then
+        if diagnostic and diagnostic.code ~= 'inactive-code' then
             return format_statusline_diagnostics(vim.diagnostic.severity[severity]:sub(1, 1), tostring(diagnostic.lnum + 1))
         end
     end
