@@ -49,6 +49,6 @@ add_skeleton('index.html', [[
 add_skeleton('*.bash', [[
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 ]], 4)
