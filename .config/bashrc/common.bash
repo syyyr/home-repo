@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH="$HOME/.local/bin:$PATH"
+
 if [[ "${STY+x}" != x ]] && screen -ls > /dev/null; then
     screen -wipe
 fi
