@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 while true; do
     echo Wating for i3 socket...

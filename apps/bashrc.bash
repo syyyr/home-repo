@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if [[ $# -eq 0 ]]; then
     nvim -p "$HOME/.config/bashrc/"*

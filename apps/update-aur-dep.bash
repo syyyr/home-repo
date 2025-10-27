@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if [[ $# = 0 ]]; then
     echo No arguments.

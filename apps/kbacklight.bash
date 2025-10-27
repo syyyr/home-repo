@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 BRIGHTNESS_FILE='/sys/class/leds/tpacpi::kbd_backlight/brightness'
 

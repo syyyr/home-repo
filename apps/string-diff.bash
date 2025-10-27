@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if [[ "$*" =~ "==" ]]; then
     LEFT=$(grep ".* == " -o <<< "$*" | sed 's/ == //')

@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 BASH_COLOR_BOLD=$'\033''[1m'
 BASH_COLOR_NORMAL=$'\033''[0m'

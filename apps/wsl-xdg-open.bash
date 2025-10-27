@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 ARG="$1"
 export BROWSER=/home/vk/bin/wslbrowser

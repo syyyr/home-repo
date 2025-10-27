@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 FILE_PATH="$(command -v "$1")"
 if ! grep --binary-files=without-match --regexp="" "$FILE_PATH" &> /dev/null; then

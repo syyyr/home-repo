@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 echo -n "Switching ANC mode... "
 while pbpctrl set anc cycle-next |& grep 'Error: Bluetooth operation not permitted: UUID already registered' &> /dev/null; do

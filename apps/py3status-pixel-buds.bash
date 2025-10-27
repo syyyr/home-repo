@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if pgrep -f 'fix_headphones.bash' &> /dev/null; then
     echo -n '[\?color=plum&show Fixing headphones…]'

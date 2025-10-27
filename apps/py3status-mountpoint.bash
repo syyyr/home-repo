@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if mount -l -t fuse.rclone | grep gdrive &> /dev/null; then
     echo -n "<span color='deepskyblue'>drive</span> "

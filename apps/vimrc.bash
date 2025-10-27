@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if [[ $# -eq 0 ]]; then
     readarray -t FILES < <(find "$HOME/.config/nvim/init.lua" "$HOME/.config/nvim/lua/"* -type f)

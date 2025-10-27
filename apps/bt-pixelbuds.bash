@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s failglob inherit_errexit
 
 if bluetoothctl devices Connected | grep 'Pixel Buds Pro' &> /dev/null; then
     bluetoothctl disconnect
