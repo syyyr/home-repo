@@ -76,10 +76,10 @@ _GEN_PROMPT()
             fi
         fi
         local GIT_SYMBOLS=""
-        if ! git diff --quiet; then
+        if ! git diff --quiet > /dev/null; then
             GIT_SYMBOLS+="+"
         fi
-        if ! git diff --cached --quiet; then
+        if ! git diff --cached --quiet > /dev/null; then
             GIT_SYMBOLS+="*"
         fi
         if [[ -n "$GIT_SYMBOLS" ]]; then
