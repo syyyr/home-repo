@@ -56,6 +56,7 @@ readonly AUTOREMOVE_PKGS=(
     mingw-w64-vulkan-icd-loader
     python-websockets-git
     shvcli-git
+    termux_language_server
 )
 
 # https://aur.archlinux.org/packages/mingw-w64-curl#comment-965704
