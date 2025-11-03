@@ -2,7 +2,7 @@
 set -euo pipefail
 shopt -s failglob inherit_errexit
 
-if [[ "${BT_HEADPHONES_MAC+x}" != x ]]; then
+if ! [[ -v BT_HEADPHONES_MAC ]]; then
     echo BT_HEADPHONES_MAC not set.
     exit 1
 fi

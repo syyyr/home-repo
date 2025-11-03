@@ -62,13 +62,13 @@ fi
 echo Updating Rust...
 rustup update
 
-if [[ -z "${NO_SUB+x}" ]]; then
+if ! [[ -v NO_SUB ]]; then
     echo Updating submodules...
     exec 3< <(git -C "$HOME" submodule update --remote |& cat)
     UPDATE_PID="$!"
 fi
 
-if [[ -z "${NO_AUR+x}" ]]; then
+if ! [[ -v NO_AUR ]]; then
     (
         auracle outdated || echo "No outdated AUR packages."
         mkdir -p "$HOME/.local/aur"
@@ -83,7 +83,7 @@ if [[ -z "${NO_AUR+x}" ]]; then
     )
 fi
 
-if [[ -z "${NO_SUB+x}" ]]; then
+if ! [[ -v NO_SUB ]]; then
     echo "Waiting for submodules to finish updating..."
     wait "$UPDATE_PID"
     cat <&3

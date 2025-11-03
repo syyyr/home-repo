@@ -36,7 +36,7 @@ done
 
 SEARCH_LOCATIONS=( "$@" )
 
-if [[ -z "${SEARCH_PATTERN+x}" ]]; then
+if ! [[ -v SEARCH_PATTERN ]]; then
     SEARCH_PATTERN="${SEARCH_LOCATIONS[0]:-}"
     SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
 fi

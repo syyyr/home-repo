@@ -2,7 +2,7 @@
 set -euo pipefail
 shopt -s failglob inherit_errexit
 
-if [[ "${1+x}" != x ]]; then
+if ! [[ -v 1 ]]; then
     echo You have to specify an executable / a library as the first argument. >&2
     exit 1
 fi
@@ -12,7 +12,7 @@ shift
 
 EXTRA_ARGS=("$@")
 
-if [[ "${2+x}" = x ]]; then
+if [[ -v 2 ]]; then
     EXTRA_ARGS+=("$2")
 fi
 

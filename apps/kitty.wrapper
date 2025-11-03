@@ -20,7 +20,7 @@ fi
 
 kitty +kitten themes --reload-in=all --cache-age=-1 "$THEME"
 
-if [[ -n "${WSL_DISTRO_NAME+x}" ]]; then
+if [[ -v WSL_DISTRO_NAME ]]; then
     KITTY_SOCKET="$(ss --listening --unix --no-header src '@mykitty-*' | tr --squeeze-repeats ' ' | cut --delimiter=' ' --fields=5)"
 else
     if PID="$(xdotool getwindowfocus getwindowpid 2> /dev/null)" && [[ "$(ps -p "$PID" -o comm --no-headers)" = kitty ]]; then
