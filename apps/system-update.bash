@@ -35,6 +35,14 @@ filter_disabled_packages() {
     grep -v "${DISABLED_PKGS[@]}"
 }
 
+filter_norebuild_packages() {
+    local DISABLED_PKGS=(
+        # One binary is broken because of newer ldd
+        -e 'mingw-w64-rust-bin'
+    )
+    grep -v "${DISABLED_PKGS[@]}"
+}
+
 exec 3< <(checkupdates)
 echo Updating system packages...
 sudo pacman -Syu --noconfirm
@@ -66,7 +74,7 @@ if [[ -z "${NO_AUR+x}" ]]; then
         mkdir -p "$HOME/.local/aur"
         cd "$HOME/.local/aur" > /dev/null
         echo 'Rebuilding broken packages.'
-        for i in $({ checkrebuild |& sed 's/^foreign\s//'; } | filter_disabled_packages); do
+        for i in $({ checkrebuild |& sed 's/^foreign\s//'; } | filter_disabled_packages | filter_norebuild_packages); do
             "$HOME/apps/update-aur-dep.bash" "$i" -f || true
         done
         for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
