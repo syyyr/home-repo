@@ -27,6 +27,7 @@ bindsym Control+XF86Messenger exec --no-startup-id ~/apps/kitty.wrapper nvim -p 
 bindsym XF86Go exec --no-startup-id dunstctl close
 bindsym Shift+XF86Go exec --no-startup-id dunstctl close-all
 bindsym Cancel exec --no-startup-id ~/apps/kbacklight-ctl.bash toggle
+bindsym Control+Cancel exec --no-startup-id ~/apps/anc.bash
 
 # Brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/apps/brightness.bash increase
