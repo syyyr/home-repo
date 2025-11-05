@@ -68,3 +68,16 @@ try_not()
         sleep 0.1;
     done
 }
+
+add_overrides() {
+    SCRIPT='. + {overrides:{}}'
+    for PACKAGE_PATH in "$@"; do
+        npm install "$PACKAGE_PATH"
+        PACKAGE="$(jq -r .name "$PACKAGE_PATH/package.json")"
+        SCRIPT+=" | . + {overrides: .overrides + {\"$PACKAGE\": \"\$$PACKAGE\"}}"
+    done
+
+    echo jq "$SCRIPT" package.json
+    NEW_PACKAGE_JSON="$(jq "$SCRIPT" package.json)"
+    echo "$NEW_PACKAGE_JSON" > package.json
+}
