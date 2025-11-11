@@ -53,6 +53,8 @@ bindsym XF86Display exec --no-startup-id peek
 # Workspace ball
 bindsym $mod+shift+b exec --no-startup-id ~/apps/workspace-ball.bash
 
+bindsym $mod+shift+o exec --no-startup-id ~/apps/move-tab.bash
+
 # Dmenu
 bindsym $mod+d exec --no-startup-id dmenu_path | rofi -sort -dmenu -matching fuzzy -p "> " | ${SHELL:-"/bin/sh"}
 
