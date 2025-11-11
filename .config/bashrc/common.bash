@@ -64,6 +64,7 @@ _GEN_PROMPT()
     fi
 
     if GIT_ROOT_DIR="$(timeout 0.1 git rev-parse --show-toplevel 2> /dev/null)"; then
+        local BASH_REMATCH
         if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
             GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
             local REMOTE_BRANCH="${GIT_INFO# }"
