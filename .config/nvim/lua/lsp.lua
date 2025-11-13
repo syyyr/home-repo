@@ -249,6 +249,7 @@ end
 
 vim.diagnostic.handlers.underline.show = wrap_filter_unused(vim.diagnostic.handlers.underline.show)
 vim.diagnostic.handlers.signs.show = wrap_filter_unused(vim.diagnostic.handlers.signs.show)
+vim.diagnostic.handlers.virtual_text.show = wrap_filter_unused(vim.diagnostic.handlers.virtual_text.show)
 
 syyyr.nnoremap('<c-space>', function()
     vim.b.skip_diagnostic_float = true
