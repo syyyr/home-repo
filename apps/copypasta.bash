@@ -15,6 +15,7 @@ thumbs_up 👍
 weary 😩
 kiss/:* 😘
 lick/tongue 😋
+tongue 👅
 loved 🥰
 angery 😠
 angery2 😡
