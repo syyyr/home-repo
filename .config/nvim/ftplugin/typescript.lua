@@ -5,6 +5,7 @@ syyyr.register_printing({
         return string.format([[console.log('%s', '=', %s);]], syyyr.escape_single_quotes(var_name), var_name)
     end,
     print_text = function(text)
-        return string.format([[console.log('%s');]], text)
+        local quote = string.find(text, '${') ~= nil and [[`]] or [[']]
+        return string.format([[console.log(%s%s%s);]], quote, text, quote)
     end,
 })
