@@ -235,20 +235,34 @@ vim.api.nvim_create_user_command('Cref', function() vim.lsp.buf.references() end
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', function () vim.diagnostic.setqflist() end, {nargs = 0})
 
-local function make_ignore_diagnostics(original_handler, what_to_ignore)
+local function make_ignore_diagnostics(original_handler, ignore_message, ignore_codes)
+    if ignore_codes == nil then
+        ignore_codes = {}
+    end
     return function(namespace, bufnr, diagnostics, opts)
         local filtered_diagnostics = vim.iter(diagnostics):filter(function(diagnostic)
-            return vim.iter(what_to_ignore):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)
+            local passes_msg = vim.iter(ignore_message):all(function(x)
+                return not string.find(string.lower(diagnostic.message), x)
+            end)
+            local passes_code = vim.iter(ignore_codes):all(function(x)
+                if diagnostic.code == nil then
+                    return true
+                end
+
+                return diagnostic.code ~= x
+            end)
+            return passes_msg and passes_code
         end):totable()
         original_handler(namespace, bufnr, filtered_diagnostics, opts)
     end
 end
 
 local unused_strings = {"unused", "not used", "never read", "never used"}
+local unused_codes = {"inactive-code", "unused_variables"}
 
-vim.diagnostic.handlers.underline.show = make_ignore_diagnostics(vim.diagnostic.handlers.underline.show, unused_strings)
-vim.diagnostic.handlers.signs.show = make_ignore_diagnostics(vim.diagnostic.handlers.signs.show, unused_strings)
-vim.diagnostic.handlers.virtual_text.show = make_ignore_diagnostics(vim.diagnostic.handlers.virtual_text.show, unused_strings)
+vim.diagnostic.handlers.underline.show = make_ignore_diagnostics(vim.diagnostic.handlers.underline.show, unused_strings, unused_codes)
+vim.diagnostic.handlers.signs.show = make_ignore_diagnostics(vim.diagnostic.handlers.signs.show, unused_strings, unused_codes)
+vim.diagnostic.handlers.virtual_text.show = make_ignore_diagnostics(vim.diagnostic.handlers.virtual_text.show, unused_strings, unused_codes)
 
 syyyr.nnoremap('<c-space>', function()
     vim.b.skip_diagnostic_float = true
