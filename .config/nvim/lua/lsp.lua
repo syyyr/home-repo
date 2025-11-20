@@ -235,21 +235,20 @@ vim.api.nvim_create_user_command('Cref', function() vim.lsp.buf.references() end
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', function () vim.diagnostic.setqflist() end, {nargs = 0})
 
-local function filter_unused_diagnostics(diagnostics)
-    return vim.iter(diagnostics):filter(function(diagnostic)
-        return vim.iter({"unused", "not used", "never read", "never used"}):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)
-    end):totable()
-end
-
-local function wrap_filter_unused(original_handler)
+local function make_ignore_diagnostics(original_handler, what_to_ignore)
     return function(namespace, bufnr, diagnostics, opts)
-        original_handler(namespace, bufnr, filter_unused_diagnostics(diagnostics), opts)
+        local filtered_diagnostics = vim.iter(diagnostics):filter(function(diagnostic)
+            return vim.iter(what_to_ignore):all(function(x) return not string.match(string.lower(diagnostic.message), x) end)
+        end):totable()
+        original_handler(namespace, bufnr, filtered_diagnostics, opts)
     end
 end
 
-vim.diagnostic.handlers.underline.show = wrap_filter_unused(vim.diagnostic.handlers.underline.show)
-vim.diagnostic.handlers.signs.show = wrap_filter_unused(vim.diagnostic.handlers.signs.show)
-vim.diagnostic.handlers.virtual_text.show = wrap_filter_unused(vim.diagnostic.handlers.virtual_text.show)
+local unused_strings = {"unused", "not used", "never read", "never used"}
+
+vim.diagnostic.handlers.underline.show = make_ignore_diagnostics(vim.diagnostic.handlers.underline.show, unused_strings)
+vim.diagnostic.handlers.signs.show = make_ignore_diagnostics(vim.diagnostic.handlers.signs.show, unused_strings)
+vim.diagnostic.handlers.virtual_text.show = make_ignore_diagnostics(vim.diagnostic.handlers.virtual_text.show, unused_strings)
 
 syyyr.nnoremap('<c-space>', function()
     vim.b.skip_diagnostic_float = true
