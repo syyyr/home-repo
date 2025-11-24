@@ -228,7 +228,12 @@ require('lsp_signature').setup({
 })
 
 vim.cmd('packadd! nvim-custom-diagnostic-highlight')
-require('nvim-custom-diagnostic-highlight').setup({})
+require('nvim-custom-diagnostic-highlight').setup({
+    extra_patterns = {
+        'code is inactive due to',
+        'unreachable expression',
+    }
+})
 
 vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
 vim.api.nvim_create_user_command('Cref', function() vim.lsp.buf.references() end, {nargs = 0})
