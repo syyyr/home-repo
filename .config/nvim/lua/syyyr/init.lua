@@ -72,19 +72,6 @@ function M.register_printing(opts)
 end
 
 ---@return nil
-function M.close_float()
-    if vim.b.float_win_id then
-        pcall(vim.api.nvim_win_close, vim.b.float_win_id, false) -- discard errors: the window might be already closed
-        vim.b.float_win_id = nil
-    end
-
-    if vim.b.lsp_floating_preview then
-        pcall(vim.api.nvim_win_close, vim.b.lsp_floating_preview, false) -- discard errors: the window might be already closed
-    end
-
-end
-
----@return nil
 function M.diff_adjacent_args()
     local buffer_list = vim.api.nvim_list_bufs()
     local buffer_count = #buffer_list

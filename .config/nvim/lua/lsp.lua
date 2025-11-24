@@ -283,12 +283,10 @@ vim.api.nvim_create_autocmd({'CursorHold', 'DiagnosticChanged'}, {
             vim.b.skip_diagnostic_float = false
             return
         end
-        syyyr.close_float()
-        local _, new_float_win
+        vim.cmd('fclose!')
         if vim.api.nvim_buf_is_loaded(0) then
-            _, new_float_win = vim.diagnostic.open_float({focus = false, scope = 'cursor'})
+            vim.diagnostic.open_float({focus = false, scope = 'cursor'})
         end
-        _, vim.b.float_win_id = nil, new_float_win and new_float_win or vim.b.float_win_id
     end,
     group = vim.api.nvim_create_augroup('LSPDiagnostic', {clear = true})
 })

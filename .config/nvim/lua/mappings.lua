@@ -117,7 +117,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 syyyr.nnoremap('<a-cr>', function()
     vim.fn['clever_f#reset']()
     vim.b.skip_diagnostic_float = true
-    syyyr.close_float()
+    vim.cmd('fclose!')
     vim.cmd('nohlsearch')
     vim.notify('')
 end)
