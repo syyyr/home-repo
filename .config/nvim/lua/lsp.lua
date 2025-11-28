@@ -93,7 +93,7 @@ for _, lsp_def in ipairs({
     {'dockerls'},
     {'eslint'},
     {'homeassistant', {
-        cmd = {'ts-node', '/home/vk/git/vscode-home-assistant/out/server/server.js', '--stdio'},
+        cmd = {'home-assistant-lsp', '--stdio'},
         filetypes = {'yaml'},
         root_markers = { 'configuration.yaml'},
         settings = {}
