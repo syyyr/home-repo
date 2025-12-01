@@ -153,6 +153,7 @@ for arg in "$@"; do
         mingw)
             echo "Enabling MingW."
             CMAKE=x86_64-w64-mingw32-cmake
+            CMAKE_FLAGS=(-DQT_HOST_PATH="$HOME/qt/6.10.1/gcc_64" -DCMAKE_FIND_ROOT_PATH="$HOME/qt/6.10.1/mingw_64")
             MOLD=0
             LTO=0
             CLANG=0
