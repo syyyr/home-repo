@@ -150,6 +150,15 @@ for arg in "$@"; do
             LTO=0
             shift
             ;;
+        mingw-static)
+            QT_VERSION=6.10.1
+            echo "Enabling static MingW."
+            CMAKE=x86_64-w64-mingw32-cmake-static
+            MOLD=0
+            LTO=0
+            CLANG=0
+            shift
+            ;;
         mingw)
             QT_VERSION=6.10.1
             echo "Enabling MingW."
