@@ -151,18 +151,20 @@ for arg in "$@"; do
             shift
             ;;
         mingw)
+            QT_VERSION=6.10.1
             echo "Enabling MingW."
             CMAKE=x86_64-w64-mingw32-cmake
-            CMAKE_FLAGS=(-DQT_HOST_PATH="$HOME/qt/6.10.1/gcc_64" -DCMAKE_FIND_ROOT_PATH="$HOME/qt/6.10.1/mingw_64")
+            CMAKE_FLAGS=(-DQT_HOST_PATH="$HOME/qt/$QT_VERSION/gcc_64" -DCMAKE_FIND_ROOT_PATH="$HOME/qt/$QT_VERSION/mingw_64")
             MOLD=0
             LTO=0
             CLANG=0
             shift
             ;;
         wasm)
+            QT_VERSION=6.10.1
             echo "Enabling wasm."
-            CMAKE="$HOME/qt/6.10.1/wasm_singlethread/bin/qt-cmake"
-            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.10.1/gcc_64 -DBUILD_SHARED_LIBS=OFF "${CMAKE_FLAGS[@]}" )
+            CMAKE="$HOME/qt/$QT_VERSION/wasm_singlethread/bin/qt-cmake"
+            CMAKE_FLAGS=( "-DQT_HOST_PATH=/home/vk/qt/$QT_VERSION/gcc_64" -DBUILD_SHARED_LIBS=OFF "${CMAKE_FLAGS[@]}" )
             shift
             ;;
         cmake=*)
