@@ -38,9 +38,9 @@ google_calendar {
     format = "{events}"
     time_to_max = 99999
     events_within_hours = 48
-    format_event = "[\?color=lime {summary}][ {start_time} {format_timer}]"
+    format_event = "[\?color=lime {summary}] [\?if=is_current&color=orange until][\?if=is_current  {end_time}][\?if=!is_current {start_time}] {format_timer}"
     format_time = "%a %H:%M"
-    format_timer = "\?color=time ([\?if=!is_current in ][\?if=days {days}d ][\?if=hours {hours}h ][\?if=minutes {minutes}m][\?if=is_current \ left])"
+    format_timer = "\?color=time ([\?if=is_current ends ]in [\?if=days {days}d ][\?if=hours {hours}h ][\?if=minutes {minutes}m])"
 }
 
 online_status {
