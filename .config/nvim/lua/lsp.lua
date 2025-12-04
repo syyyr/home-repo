@@ -283,7 +283,6 @@ vim.api.nvim_create_autocmd({'CursorHold', 'DiagnosticChanged'}, {
             vim.b.skip_diagnostic_float = false
             return
         end
-        vim.cmd('fclose!')
         if vim.api.nvim_buf_is_loaded(0) then
             vim.diagnostic.open_float({focus = false, scope = 'cursor'})
         end
