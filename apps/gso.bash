@@ -55,7 +55,7 @@ else
     RG_CMD_ARGS+=("--color=always")
 fi
 
-RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp  "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
 echo "${RG_CMD[@]@Q}"
 if RESULTS="$(! "${RG_CMD[@]}" |& cat)"; then
