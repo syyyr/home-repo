@@ -155,7 +155,6 @@ for arg in "$@"; do
             echo "Enabling static MingW."
             CMAKE=x86_64-w64-mingw32-cmake-static
             MOLD=0
-            LTO=0
             CLANG=0
             shift
             ;;
