@@ -12,7 +12,7 @@ for arg in "$@"; do
         -*)
             [[ "$arg" =~ a ]] && OPEN_ALL='1'
             [[ "$arg" =~ n ]] && RG_CMD_ARGS+=('--no-ignore') || RG_CMD_ARGS+=('--ignore')
-            while [[ "$arg" =~ ([^-ain]) ]]; do
+            while [[ "$arg" =~ ([^-an]) ]]; do
                 echo "Unknown option:" -"${BASH_REMATCH[1]}"
                 arg="$(tr -d "${BASH_REMATCH[1]}" <<< "$arg")"
             done
