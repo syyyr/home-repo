@@ -2,7 +2,6 @@
 set -euo pipefail
 shopt -s failglob inherit_errexit
 
-OPEN_ALL='0'
 RG_CMD_ARGS=()
 for arg in "$@"; do
     case "$arg" in
@@ -11,7 +10,7 @@ for arg in "$@"; do
             break
             ;;
         -*)
-            [[ "$arg" =~ a ]] && OPEN_ALL='1' || OPEN_ALL='0'
+            [[ "$arg" =~ a ]] && OPEN_ALL='1'
             [[ "$arg" =~ n ]] && RG_CMD_ARGS+=('--no-ignore') || RG_CMD_ARGS+=('--ignore')
             while [[ "$arg" =~ ([^-ain]) ]]; do
                 echo "Unknown option:" -"${BASH_REMATCH[1]}"
@@ -50,7 +49,7 @@ fi
 
 RG_CMD_ARGS+=("$IGNORE_CASE")
 
-if [[ "$OPEN_ALL" = "1" ]]; then
+if [[ -v OPEN_ALL ]]; then
     RG_CMD_ARGS+=("--color=never")
 else
     RG_CMD_ARGS+=("--color=always")
@@ -69,7 +68,7 @@ if RESULTS="$(! "${RG_CMD[@]}" |& cat)"; then
     echo "${RG_CMD[@]@Q}"
     RESULTS="$("${RG_CMD[@]}")"
 fi
-if [[ "$OPEN_ALL" = "1" ]]; then
+if [[ -v OPEN_ALL ]]; then
     nvim -q <(echo "$RESULTS")
     exit 0
 fi
