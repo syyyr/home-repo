@@ -2,4 +2,4 @@
 set -euo pipefail
 shopt -s failglob inherit_errexit
 
-TERM=dumb command ninja "$@"
+TERM=dumb /usr/bin/ninja "$@"
