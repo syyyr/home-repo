@@ -72,7 +72,7 @@ shhhh 🤫
 clown 🤡
 duck/kachna 🦆
 eyes 👀
-strong/arm 💪
+strong/arm/flex 💪
 fist 👊
 knife 🔪
 not_stonks 📉
