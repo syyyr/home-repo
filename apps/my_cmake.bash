@@ -153,6 +153,26 @@ for arg in "$@"; do
         mingw-static)
             QT_VERSION=6.10.1
             echo "Enabling static MingW."
+            PREFIX="/usr/x86_64-w64-mingw32/lib"
+            LIBRARIES_THAT_BREAK_THE_STATIC_BUILD=(
+                "$PREFIX/libfreetype.dll.a"
+                "$PREFIX/libharfbuzz.dll.a"
+                "$PREFIX/libjpeg.dll.a"
+                "$PREFIX/libpcre2-16.dll.a"
+                "$PREFIX/libpng.dll.a"
+                "$PREFIX/libz.dll.a"
+            )
+            FOUND_BREAKING_LIBRARIES=()
+            for BREAKING_LIBRARY in "${LIBRARIES_THAT_BREAK_THE_STATIC_BUILD[@]}"; do
+                if [[ -f "$BREAKING_LIBRARY" ]]; then
+                    FOUND_BREAKING_LIBRARIES+=("$BREAKING_LIBRARY")
+                fi
+            done
+            if (("${#FOUND_BREAKING_LIBRARIES[@]}")); then
+                echo Found import libraries that break the static-ness of the build. Remove them by:
+                echo "sudo rm" "${FOUND_BREAKING_LIBRARIES[@]}"
+                exit 1
+            fi
             CMAKE=x86_64-w64-mingw32-cmake-static
             MOLD=0
             CLANG=0
