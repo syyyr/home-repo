@@ -150,6 +150,25 @@ for arg in "$@"; do
             LTO=0
             shift
             ;;
+        static)
+            CMAKE=static-compat-cmake
+            # Dependencies
+            # static-compat-cmake
+            # static-compat-pkgconf
+            # static-compat-qt6-base
+            # static-compat-qt6-networkauth
+            # static-compat-qt6-svg
+            # static-compat-qt6-tools
+            # static-compat-qt6-websockets
+            CMAKE_FLAGS=(
+                -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=ON
+                -DGLIB2_DEPENDENCIES='-lgobject-2.0;-lgmodule-2.0;-lglib-2.0;-lmount;-lblkid;-lffi'
+                -DBUILD_TESTING=OFF
+            )
+            MOLD=0
+            CLANG=0
+            shift
+            ;;
         mingw-static)
             QT_VERSION=6.10.1
             echo "Enabling static MingW."
