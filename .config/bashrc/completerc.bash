@@ -65,5 +65,10 @@ complete -F __taskkill_compl taskkill
 complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
-complete -W 'android asan cov gcc no-cache release release-di time tsan werror' -o default my_cmake
+
+__my_cmake_compl() {
+    readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$(grep -E '[-a-z]+)$' "$HOME/apps/my_cmake.bash" | sed 's/)//')" "${COMP_WORDS[${COMP_CWORD}]}")
+}
+
+complete -F __my_cmake_compl -o default my_cmake
 complete -c wv
