@@ -202,12 +202,6 @@ while true; do
             echo "Setting CMAKE_INSTALL_PREFIX to ${INSTALL_PREFIX@Q}"
             CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" "${CMAKE_FLAGS[@]}" )
             ;;
-        d=*)
-            OPTION="${arg#d=}"
-            echo "Setting $OPTION to ON."
-            CMAKE_FLAGS=( "-D$OPTION=ON" "${CMAKE_FLAGS[@]}" )
-            unset OPTION
-            ;;
         *)
             SCRIPT_ARGS+=("$arg")
             break

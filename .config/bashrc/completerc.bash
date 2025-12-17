@@ -66,8 +66,16 @@ complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
 
+__add_completion_words() {
+    local WORDS="$1"
+    readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$WORDS" -- "${COMP_WORDS["${COMP_CWORD}"]}")
+}
+
 __my_cmake_compl() {
-    readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$(grep -E '[-a-z]+)$' "$HOME/apps/my_cmake.bash" | sed 's/)//')" "${COMP_WORDS[${COMP_CWORD}]}")
+    __add_completion_words "$(grep -Eo '[-a-z]+)$' "$HOME/apps/my_cmake.bash" | sed 's/)//')"
+    local CMAKE_OUTPUT="$(cmake -L .. 2> /dev/null | sed -E 's/(.*):BOOL=/-D\1=/')"
+    __add_completion_words "$(sed -En 's/ON/OFF/p' <<< "$CMAKE_OUTPUT")"
+    __add_completion_words "$(sed -En 's/OFF/ON/p' <<< "$CMAKE_OUTPUT")"
 }
 
 complete -F __my_cmake_compl -o default my_cmake
