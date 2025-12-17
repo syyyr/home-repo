@@ -49,27 +49,27 @@ __try_compl() {
 }
 complete -F __try_compl try
 
+__add_completion_words() {
+    local WORDS="$1"
+    readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$WORDS" -- "${COMP_WORDS["${COMP_CWORD}"]}")
+}
+
 __update-aur-dep_compl() {
-    readarray -t COMPREPLY < <(compgen -W "$(auracle outdated -q | grep -v -e "mingw-w64-harfbuzz-icu")" "${COMP_WORDS[${COMP_CWORD}]}")
+    __add_completion_words "$(auracle outdated -q | grep -v -e "mingw-w64-harfbuzz-icu")"
     if ! ((${#COMPREPLY[@]})); then
-        readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$(pacman -Qqs '.-git$')" "${COMP_WORDS[${COMP_CWORD}]}")
+        __add_completion_words "$(pacman -Qqs '.-git$')"
     fi
 }
 complete -F __update-aur-dep_compl update-aur-dep
 
 __taskkill_compl() {
-    readarray -t COMPREPLY < <(IFS=$'\n' compgen -W "$("$HOME/bin/tasklist")" "${COMP_WORDS[${COMP_CWORD}]}")
+    __add_completion_words "$("$HOME/bin/tasklist")"
 }
 complete -F __taskkill_compl taskkill
 
 complete -W 'increase decrease min max'  brightness
 complete -W 'increase decrease toggle' volume
 complete -W 'toggle manual timeout' kbacklight_ctl
-
-__add_completion_words() {
-    local WORDS="$1"
-    readarray -O "${#COMPREPLY[@]}" -t COMPREPLY < <(compgen -W "$WORDS" -- "${COMP_WORDS["${COMP_CWORD}"]}")
-}
 
 __my_cmake_compl() {
     __add_completion_words "$(grep -Eo '[-a-z]+)$' "$HOME/apps/my_cmake.bash" | sed 's/)//')"
