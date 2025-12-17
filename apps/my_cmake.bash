@@ -48,6 +48,22 @@ SCRIPT_ARGS=("$@")
 while true; do
     arg="${SCRIPT_ARGS[0]}"
     case "$arg" in
+        gcc)
+            echo "Enabling GCC."
+            CLANG=0
+            ;;
+        no-cache)
+            echo "Disabling ccache."
+            CACHE=0
+            ;;
+        no-mold)
+            echo "Disabling mold."
+            MOLD=0
+            ;;
+        no-lto)
+            echo "Disabling lto."
+            LTO=0
+            ;;
         asan)
             echo "Enabling ASAN/UBSAN."
             CFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CFLAGS}"
@@ -73,10 +89,6 @@ while true; do
             CFLAGS="-D_FORTIFY_SOURCE=3 $CFLAGS"
             CXXFLAGS="-D_GLIBCXX_ASSERTIONS=1 -D_FORTIFY_SOURCE=3 $CXXFLAGS"
             ;;
-        gcc)
-            echo "Enabling GCC."
-            CLANG=0
-            ;;
         time)
             echo "Enabling time trace."
             CFLAGS="-ftime-trace ${CXXFLAGS}"
@@ -86,10 +98,6 @@ while true; do
             echo "Enabling code coverage."
             CFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CFLAGS}"
             CXXFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CXXFLAGS}"
-            ;;
-        no-cache)
-            echo "Disabling ccache."
-            CACHE=0
             ;;
         optimize)
             echo "Enabling optimizations."
@@ -125,14 +133,6 @@ while true; do
             CMAKE="$HOME/qt/6.6.3/android_arm64_v8a/bin/qt-cmake"
             CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.6.3/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
             SCRIPT_ARGS=(no-mold no-lto gcc "${SCRIPT_ARGS[@]:1}")
-            ;;
-        no-mold)
-            echo "Disabling mold."
-            MOLD=0
-            ;;
-        no-lto)
-            echo "Disabling lto."
-            LTO=0
             ;;
         static)
             CMAKE=static-compat-cmake
