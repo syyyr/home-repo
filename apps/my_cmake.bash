@@ -251,9 +251,9 @@ if [[ "$CLANG" = 1 ]]; then
     CXX="clang++"
     LD="clang"
 else
-    CC=""
-    CXX=""
-    LD=""
+    CC="${CC:-}"
+    CXX="${CXX:-}"
+    LD="${LD:-}"
 fi
 
 if [[ "$CACHE" = 1 ]]; then
