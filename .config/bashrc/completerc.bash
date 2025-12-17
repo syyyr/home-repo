@@ -73,7 +73,7 @@ complete -W 'toggle manual timeout' kbacklight_ctl
 
 __my_cmake_compl() {
     __add_completion_words "$(grep -Eo '[-a-z]+)$' "$HOME/apps/my_cmake.bash" | sed 's/)//')"
-    local CMAKE_OUTPUT="$(cmake -L .. 2> /dev/null | sed -E 's/(.*):BOOL=/-D\1=/')"
+    local CMAKE_OUTPUT="$(cmake -L .. 2> /dev/null | sed -En 's/(.*):BOOL=/-D\1=/p')"
     __add_completion_words "$(sed -En 's/ON/OFF/p' <<< "$CMAKE_OUTPUT")"
     __add_completion_words "$(sed -En 's/OFF/ON/p' <<< "$CMAKE_OUTPUT")"
 }
