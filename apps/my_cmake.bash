@@ -43,7 +43,10 @@ if ! [[ "$(basename "$(pwd)")" =~ ^build ]]; then
     fi
 fi
 
-for arg in "$@"; do
+SCRIPT_ARGS=("$@")
+
+while true; do
+    arg="${SCRIPT_ARGS[0]}"
     case "$arg" in
         asan)
             echo "Enabling ASAN/UBSAN."
@@ -51,7 +54,6 @@ for arg in "$@"; do
             CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=address,undefined ${CXXFLAGS}"
             LDFLAGS="-fsanitize=address,undefined ${LDFLAGS}"
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
-            shift
             ;;
         msan)
             echo "Enabling MSAN."
@@ -59,7 +61,6 @@ for arg in "$@"; do
             CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=memory -fsanitize-recover=memory -fsanitize-memory-track-origins=2 -stdlib=libc++ ${CXXFLAGS}"
             LDFLAGS="-fsanitize=memory -fsanitize-recover=memory -stdlib=libc++ ${LDFLAGS}"
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
-            shift
             ;;
         tsan)
             echo "Enabling TSAN."
@@ -67,69 +68,57 @@ for arg in "$@"; do
             CXXFLAGS="-O0 -fno-optimize-sibling-calls -fno-omit-frame-pointer -fsanitize=thread ${CXXFLAGS}"
             LDFLAGS="-fsanitize=thread ${LDFLAGS}"
             CMAKE_FLAGS=( -DCMAKE_POSITION_INDEPENDENT_CODE=ON "${CMAKE_FLAGS[@]}" )
-            shift
             ;;
         assertions)
             CFLAGS="-D_FORTIFY_SOURCE=3 $CFLAGS"
             CXXFLAGS="-D_GLIBCXX_ASSERTIONS=1 -D_FORTIFY_SOURCE=3 $CXXFLAGS"
-            shift
             ;;
         gcc)
             echo "Enabling GCC."
             CLANG=0
-            shift
             ;;
         time)
             echo "Enabling time trace."
             CFLAGS="-ftime-trace ${CXXFLAGS}"
             CXXFLAGS="-ftime-trace ${CXXFLAGS}"
-            shift
             ;;
         cov)
             echo "Enabling code coverage."
             CFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CFLAGS}"
             CXXFLAGS="-fprofile-instr-generate -fcoverage-mapping ${CXXFLAGS}"
-            shift
             ;;
         no-cache)
             echo "Disabling ccache."
             CACHE=0
-            shift
             ;;
         optimize)
             echo "Enabling optimizations."
             CFLAGS="-O2 ${CFLAGS}"
             CXXFLAGS="-O2 ${CXXFLAGS}"
-            shift
             ;;
         release)
             echo "Enabling Release mode."
             BUILD_TYPE="Release"
-            shift
             ;;
         release-di)
             echo "Enabling RelWithDebInfo mode."
             BUILD_TYPE="RelWithDebInfo"
-            shift
             ;;
         werror)
             echo "Enabling Werror."
             CFLAGS="-Werror ${CFLAGS}"
             CXXFLAGS="-Werror ${CXXFLAGS}"
-            shift
             ;;
         gcc-analyzer)
             echo "Enabling GCC static analyzer."
             CLANG=0
             CFLAGS="-fanalyzer ${CFLAGS}"
             CXXFLAGS="-fanalyzer ${CXXFLAGS}"
-            shift
             ;;
         graph)
             echo "Enabling graphviz."
             CMAKE_FLAGS=( "--graphviz=deps.dot" "${CMAKE_FLAGS[@]}" )
             GRAPHVIZ=1
-            shift
             ;;
         android)
             echo "Enabling android."
@@ -138,17 +127,14 @@ for arg in "$@"; do
             MOLD=0
             LTO=0
             CLANG=0
-            shift
             ;;
         no-mold)
             echo "Disabling mold."
             MOLD=0
-            shift
             ;;
         no-lto)
             echo "Disabling lto."
             LTO=0
-            shift
             ;;
         static)
             CMAKE=static-compat-cmake
@@ -167,7 +153,6 @@ for arg in "$@"; do
             )
             MOLD=0
             CLANG=0
-            shift
             ;;
         mingw-static)
             QT_VERSION=6.10.1
@@ -195,7 +180,6 @@ for arg in "$@"; do
             CMAKE=x86_64-w64-mingw32-cmake-static
             MOLD=0
             CLANG=0
-            shift
             ;;
         mingw)
             QT_VERSION=6.10.1
@@ -205,41 +189,38 @@ for arg in "$@"; do
             MOLD=0
             LTO=0
             CLANG=0
-            shift
             ;;
         wasm)
             QT_VERSION=6.10.1
             echo "Enabling wasm."
             CMAKE="$HOME/qt/$QT_VERSION/wasm_singlethread/bin/qt-cmake"
             CMAKE_FLAGS=( "-DQT_HOST_PATH=/home/vk/qt/$QT_VERSION/gcc_64" -DBUILD_SHARED_LIBS=OFF "${CMAKE_FLAGS[@]}" )
-            shift
             ;;
         cmake=*)
             echo -n "Setting CMAKE to "
             CMAKE="${arg#cmake=}"
             echo "${CMAKE@Q}"
-            shift
             ;;
         install=*)
             INSTALL_PREFIX="${arg#install=}"
             echo "Setting CMAKE_INSTALL_PREFIX to ${INSTALL_PREFIX@Q}"
             CMAKE_FLAGS=( -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" "${CMAKE_FLAGS[@]}" )
-            shift
             ;;
         d=*)
             OPTION="${arg#d=}"
             echo "Setting $OPTION to ON."
             CMAKE_FLAGS=( "-D$OPTION=ON" "${CMAKE_FLAGS[@]}" )
             unset OPTION
-            shift
             ;;
         *)
             break
             ;;
     esac
+
+    SCRIPT_ARGS=("${SCRIPT_ARGS[@]:1}")
 done
 
-EXTRA_ARGS=( "$@" )
+EXTRA_ARGS=( "${SCRIPT_ARGS[@]}" )
 
 if [[ "${#EXTRA_ARGS[@]}" = 0 ]]; then
     echo "${BASH_COLOR_RED}${BASH_COLOR_BOLD}Warning: no arguments supplied. CMake needs at least the source directory.${BASH_COLOR_NORMAL}"
