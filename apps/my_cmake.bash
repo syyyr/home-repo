@@ -111,7 +111,7 @@ while true; do
             ;;
         gcc-analyzer)
             echo "Enabling GCC static analyzer."
-            CLANG=0
+            SCRIPT_ARGS=(gcc "${SCRIPT_ARGS[@]:1}")
             CFLAGS="-fanalyzer ${CFLAGS}"
             CXXFLAGS="-fanalyzer ${CXXFLAGS}"
             ;;
@@ -124,9 +124,7 @@ while true; do
             echo "Enabling android."
             CMAKE="$HOME/qt/6.6.3/android_arm64_v8a/bin/qt-cmake"
             CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.6.3/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
-            MOLD=0
-            LTO=0
-            CLANG=0
+            SCRIPT_ARGS=(no-mold no-lto gcc "${SCRIPT_ARGS[@]:1}")
             ;;
         no-mold)
             echo "Disabling mold."
@@ -151,8 +149,7 @@ while true; do
                 -DGLIB2_DEPENDENCIES='-lgobject-2.0;-lgmodule-2.0;-lglib-2.0;-lmount;-lblkid;-lffi'
                 -DBUILD_TESTING=OFF
             )
-            MOLD=0
-            CLANG=0
+            SCRIPT_ARGS=(no-mold gcc "${SCRIPT_ARGS[@]:1}")
             ;;
         mingw-static)
             QT_VERSION=6.10.1
@@ -178,17 +175,14 @@ while true; do
                 exit 1
             fi
             CMAKE=x86_64-w64-mingw32-cmake-static
-            MOLD=0
-            CLANG=0
+            SCRIPT_ARGS=(no-mold gcc "${SCRIPT_ARGS[@]:1}")
             ;;
         mingw)
             QT_VERSION=6.10.1
             echo "Enabling MingW."
             CMAKE=x86_64-w64-mingw32-cmake
             CMAKE_FLAGS=(-DQT_HOST_PATH="$HOME/qt/$QT_VERSION/gcc_64" -DCMAKE_FIND_ROOT_PATH="$HOME/qt/$QT_VERSION/mingw_64")
-            MOLD=0
-            LTO=0
-            CLANG=0
+            SCRIPT_ARGS=(no-mold no-lto gcc "${SCRIPT_ARGS[@]:1}")
             ;;
         wasm)
             QT_VERSION=6.10.1
