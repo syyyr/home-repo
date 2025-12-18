@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# BASH_COLOR_BLUE='$'\033''[34m'
+BASH_COLOR_BLUE=$'\033''[34m'
 BASH_COLOR_BOLD=$'\033''[1m'
 # BASH_COLOR_CYAN=$'\033''[36m'
 # BASH_COLOR_GREEN=$'\033''[32m'
@@ -80,4 +80,50 @@ add_overrides() {
     echo jq "$SCRIPT" package.json
     NEW_PACKAGE_JSON="$(jq "$SCRIPT" package.json)"
     echo "$NEW_PACKAGE_JSON" > package.json
+}
+
+__info_log() {
+    local BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
+    echo -ne "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
+}
+
+# I am making this a bash function so that it doesn't mess with non-interactive scripts.
+git() {
+    local ORIG_GIT=(command git "$@")
+    # Only handle the very simple cases.
+    if [[ "$1" = switch && "$2" = -c && ("$#" = 3 || "$#" = 4) ]]; then
+        local OUTPUT BRANCH_NAME="$3"
+        OUTPUT="$(command git "$@" 2>&1)"
+        local CODE="$?"
+        echo "$OUTPUT"
+
+        if [[ "$OUTPUT" != "fatal: a branch named '$BRANCH_NAME' already exists" ]]; then
+            return "$CODE"
+        fi
+
+        echo
+        __info_log "Branch '$BRANCH_NAME' points to:\n"
+        git show  --abbrev --oneline --no-patch main
+
+        local NEW_COMMAND=(git switch -C "$BRANCH_NAME")
+        if [[ -v 4 ]]; then
+            NEW_COMMAND+=("$4")
+        fi
+
+        __info_log "Do you want to run '${NEW_COMMAND[*]}' ? [y/n] "
+        if ! read -r -t 10; then
+            echo
+            return "$CODE"
+        fi
+
+        if [[ "${REPLY}" != "y" ]]; then
+            return "$CODE"
+        fi
+
+        echo "${NEW_COMMAND[@]}"
+        "${NEW_COMMAND[@]}"
+        return "$?"
+    fi
+
+    "${ORIG_GIT[@]}"
 }
