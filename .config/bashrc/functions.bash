@@ -88,15 +88,11 @@ __info_log() {
 }
 
 __detect_and_run() {
-    if [[ "${#ORIG_COMMAND[@]}" -gt "$#" ]]; then
-        return 1
-    fi
+    [[ "${#ORIG_COMMAND[@]}" -le "$#" ]] || return 1
     local INDEX
     local ARG_REGEXES=("$@")
     for INDEX in $(seq 0 "$(("${#ARG_REGEXES[@]}" - 1))"); do
-        if ! [[ "${ORIG_COMMAND[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]]; then
-            return 1
-        fi
+        [[ "${ORIG_COMMAND[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]] || return 1
     done
     OUTPUT="$(unbuffer "${ORIG_COMMAND[@]}" 2>&1)"
     CODE="$?"
@@ -110,9 +106,7 @@ __ask_user_to_run() {
         exit "$CODE"
     fi
 
-    if [[ "${REPLY}" != "y" ]]; then
-        exit "$CODE"
-    fi
+    [[ "${REPLY}" = "y" ]] || exit "$CODE"
 
     echo "${NEW_COMMAND}"
     bash -c "${NEW_COMMAND}"
@@ -120,9 +114,7 @@ __ask_user_to_run() {
 }
 
 __fix_git_switch_c() {
-    if ! [[ "$OUTPUT" =~ fatal:\ a\ branch\ named\ \'([^[:space:]]+)\'\ already\ exists ]]; then
-        exit "$CODE"
-    fi
+    [[ "$OUTPUT" =~ fatal:\ a\ branch\ named\ \'([^[:space:]]+)\'\ already\ exists ]] || exit "$CODE"
 
     BRANCH_NAME="${BASH_REMATCH[1]}"
 
@@ -137,15 +129,15 @@ __fix_git_switch_c() {
 }
 
 __fix_git_push_origin_head() {
-    if ! [[ "$OUTPUT" =~ "error: The destination you provided is not a full refname" ]]; then
-        exit "$CODE"
-    fi
+    [[ "$OUTPUT" =~ "error: The destination you provided is not a full refname" ]] || exit "$CODE"
 
-    [[ "$(git branch --contains HEAD)" =~ \(HEAD\ detached\ from\ origin/([^[:space:]]+)\) ]] || exit "$CODE"
-    DETACHED_FROM="${BASH_REMATCH[1]}"
+    [[ "$(git branch --contains HEAD)" =~ \(HEAD\ detached\ (from|at)\ origin/([^[:space:]]+)\) ]] || exit "$CODE"
+    DETACHED_FROM="${BASH_REMATCH[2]}"
+
+    [[ "$DETACHED_FROM" = master ]] || exit "$CODE"
 
     echo
-    __info_log "It seems that your detached HEAD is based on $DETACHED_FROM.\n"
+    __info_log "It seems that your detached HEAD is based on origin/$DETACHED_FROM.\n"
     NEW_COMMAND="git switch -C $DETACHED_FROM && git push origin HEAD"
     __ask_user_to_run
 }
