@@ -95,7 +95,7 @@ __detect_and_run() {
         [[ "${ORIG_COMMAND[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]] || return 1
     done
     set -o pipefail
-    OUTPUT="$(unbuffer "${ORIG_COMMAND[@]}" 2>&1 | tee /dev/tty)"
+    OUTPUT="$(unbuffer -p "${ORIG_COMMAND[@]}" 2>&1 | tee /dev/tty)"
     CODE="$?"
     set +o pipefail
 }
