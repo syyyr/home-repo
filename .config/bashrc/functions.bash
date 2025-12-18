@@ -134,7 +134,7 @@ __fix_git_push_origin_head() {
     [[ "$(git branch --contains HEAD)" =~ \(HEAD\ detached\ (from|at)\ origin/([^[:space:]]+)\) ]] || exit "$CODE"
     DETACHED_FROM="${BASH_REMATCH[2]}"
 
-    [[ "$DETACHED_FROM" = master ]] || exit "$CODE"
+    [[ "$DETACHED_FROM" != master ]] || exit "$CODE"
 
     echo
     __info_log "It seems that your detached HEAD is based on origin/$DETACHED_FROM.\n"
