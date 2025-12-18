@@ -88,17 +88,17 @@ __info_log() {
 }
 
 __detect_and_run() {
-    if [[ "${#ORIG_GIT[@]}" -gt "$#" ]]; then
+    if [[ "${#ORIG_COMMAND[@]}" -gt "$#" ]]; then
         return 1
     fi
     local INDEX
     local ARG_REGEXES=("$@")
     for INDEX in $(seq 0 "$(("${#ARG_REGEXES[@]}" - 1))"); do
-        if ! [[ "${ORIG_GIT[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]]; then
+        if ! [[ "${ORIG_COMMAND[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]]; then
             return 1
         fi
     done
-    OUTPUT="$(command "${ORIG_GIT[@]}" 2>&1)"
+    OUTPUT="$(unbuffer "${ORIG_COMMAND[@]}" 2>&1)"
     CODE="$?"
     echo "$OUTPUT"
 }
@@ -130,8 +130,8 @@ __fix_git_switch_c() {
     __info_log "Branch '$BRANCH_NAME' points to:\n"
     git show  --abbrev --oneline --no-patch main
 
-    ORIG_GIT[2]="-C"
-    NEW_COMMAND="${ORIG_GIT[*]}"
+    ORIG_COMMAND[2]="-C"
+    NEW_COMMAND="${ORIG_COMMAND[*]}"
 
     __ask_user_to_run
 }
@@ -150,12 +150,17 @@ __fix_git_push_origin_head() {
     __ask_user_to_run
 }
 
-# I am making this a bash function so that it doesn't mess with non-interactive scripts.
-git() (
-    ORIG_GIT=(git "$@")
+__impl_fix_command() {
+    ORIG_COMMAND=("$@")
 
     __detect_and_run git switch -c '\S+' '\S*' && __fix_git_switch_c
     __detect_and_run git push origin HEAD && __fix_git_push_origin_head
 
-    command "${ORIG_GIT[@]}"
+    command "${ORIG_COMMAND[@]}"
+    return "$?"
+}
+
+# I am making this a bash function so that it doesn't mess with non-interactive scripts.
+git() (
+    __impl_fix_command git "$@"
 )
