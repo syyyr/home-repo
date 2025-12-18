@@ -104,18 +104,18 @@ __detect_and_run() {
 }
 
 __ask_user_to_run() {
-    __info_log "Do you want to run '${NEW_COMMAND[*]}' ? [y/n] "
+    __info_log "Do you want to run '${NEW_COMMAND}' ? [y/n] "
     if ! read -r -t 10; then
         echo
-        return "$CODE"
+        exit "$CODE"
     fi
 
     if [[ "${REPLY}" != "y" ]]; then
         exit "$CODE"
     fi
 
-    echo "${NEW_COMMAND[@]}"
-    "${NEW_COMMAND[@]}"
+    echo "${NEW_COMMAND}"
+    bash -c "${NEW_COMMAND}"
     exit "$?"
 }
 
@@ -130,9 +130,23 @@ __fix_git_switch_c() {
     __info_log "Branch '$BRANCH_NAME' points to:\n"
     git show  --abbrev --oneline --no-patch main
 
-    NEW_COMMAND=("${ORIG_GIT[@]}")
-    NEW_COMMAND[2]="-C"
+    ORIG_GIT[2]="-C"
+    NEW_COMMAND="${ORIG_GIT[*]}"
 
+    __ask_user_to_run
+}
+
+__fix_git_push_origin_head() {
+    if ! [[ "$OUTPUT" =~ "error: The destination you provided is not a full refname" ]]; then
+        exit "$CODE"
+    fi
+
+    [[ "$(git branch --contains HEAD)" =~ \(HEAD\ detached\ from\ origin/([^[:space:]]+)\) ]] || exit "$CODE"
+    DETACHED_FROM="${BASH_REMATCH[1]}"
+
+    echo
+    __info_log "It seems that your detached HEAD is based on $DETACHED_FROM.\n"
+    NEW_COMMAND="git switch -C $DETACHED_FROM && git push origin HEAD"
     __ask_user_to_run
 }
 
@@ -141,6 +155,7 @@ git() (
     ORIG_GIT=(git "$@")
 
     __detect_and_run git switch -c '\S+' '\S*' && __fix_git_switch_c
+    __detect_and_run git push origin HEAD && __fix_git_push_origin_head
 
     command "${ORIG_GIT[@]}"
 )
