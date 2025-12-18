@@ -82,49 +82,65 @@ add_overrides() {
     echo "$NEW_PACKAGE_JSON" > package.json
 }
 
+__info_log() {
+    BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
+    echo -ne "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
+}
+
+__detect_and_run() {
+    if [[ "${#ORIG_GIT[@]}" -gt "$#" ]]; then
+        return 1
+    fi
+    local INDEX
+    local ARG_REGEXES=("$@")
+    for INDEX in $(seq 0 "$(("${#ARG_REGEXES[@]}" - 1))"); do
+        if ! [[ "${ORIG_GIT[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]]; then
+            return 1
+        fi
+    done
+    OUTPUT="$(command "${ORIG_GIT[@]}" 2>&1)"
+    CODE="$?"
+    echo "$OUTPUT"
+}
+
+__ask_user_to_run() {
+    __info_log "Do you want to run '${NEW_COMMAND[*]}' ? [y/n] "
+    if ! read -r -t 10; then
+        echo
+        return "$CODE"
+    fi
+
+    if [[ "${REPLY}" != "y" ]]; then
+        exit "$CODE"
+    fi
+
+    echo "${NEW_COMMAND[@]}"
+    "${NEW_COMMAND[@]}"
+    exit "$?"
+}
+
+__fix_git_switch_c() {
+    if ! [[ "$OUTPUT" =~ fatal:\ a\ branch\ named\ \'([^[:space:]]+)\'\ already\ exists ]]; then
+        exit "$CODE"
+    fi
+
+    BRANCH_NAME="${BASH_REMATCH[1]}"
+
+    echo
+    __info_log "Branch '$BRANCH_NAME' points to:\n"
+    git show  --abbrev --oneline --no-patch main
+
+    NEW_COMMAND=("${ORIG_GIT[@]}")
+    NEW_COMMAND[2]="-C"
+
+    __ask_user_to_run
+}
 
 # I am making this a bash function so that it doesn't mess with non-interactive scripts.
 git() (
-    __info_log() {
-        BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
-        echo -ne "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
-    }
+    ORIG_GIT=(git "$@")
 
-    ORIG_GIT=(command git "$@")
-    # Only handle the very simple cases.
-    if [[ "$1" = switch && "$2" = -c && ("$#" = 3 || "$#" = 4) ]]; then
-        BRANCH_NAME="$3"
-        OUTPUT="$(command git "$@" 2>&1)"
-        CODE="$?"
-        echo "$OUTPUT"
+    __detect_and_run git switch -c '\S+' '\S*' && __fix_git_switch_c
 
-        if [[ "$OUTPUT" != "fatal: a branch named '$BRANCH_NAME' already exists" ]]; then
-            return "$CODE"
-        fi
-
-        echo
-        __info_log "Branch '$BRANCH_NAME' points to:\n"
-        git show  --abbrev --oneline --no-patch main
-
-        NEW_COMMAND=(git switch -C "$BRANCH_NAME")
-        if [[ -v 4 ]]; then
-            NEW_COMMAND+=("$4")
-        fi
-
-        __info_log "Do you want to run '${NEW_COMMAND[*]}' ? [y/n] "
-        if ! read -r -t 10; then
-            echo
-            return "$CODE"
-        fi
-
-        if [[ "${REPLY}" != "y" ]]; then
-            return "$CODE"
-        fi
-
-        echo "${NEW_COMMAND[@]}"
-        "${NEW_COMMAND[@]}"
-        return "$?"
-    fi
-
-    "${ORIG_GIT[@]}"
+    command "${ORIG_GIT[@]}"
 )

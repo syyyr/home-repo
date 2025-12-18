@@ -33,6 +33,7 @@ wow 😲
 gun/pistol 🔫
 handshake/shaking_hands 🤝
 party 🎉
+party 🥳
 heart ❤
 broken_heart 💔
 cash/money/flying 💸
