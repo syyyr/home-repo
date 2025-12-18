@@ -131,9 +131,17 @@ while true; do
             GRAPHVIZ=1
             ;;
         android)
+            QT_VERSION=6.10.1
             echo "Enabling android."
-            CMAKE="$HOME/qt/6.6.3/android_arm64_v8a/bin/qt-cmake"
-            CMAKE_FLAGS=( -DQT_HOST_PATH=/home/vk/qt/6.6.3/gcc_64 -DANDROID_SDK_ROOT=/opt/android-sdk -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/25.1.8937393 "${CMAKE_FLAGS[@]}" )
+            CMAKE="$HOME/qt/$QT_VERSION/android_arm64_v8a/bin/qt-cmake"
+            export CMAKE_POLICY_VERSION_MINIMUM=3.0
+            CMAKE_FLAGS=(
+                "-DQT_HOST_PATH=/home/vk/qt/$QT_VERSION/gcc_64"
+                -DANDROID_SDK_ROOT=/opt/android-sdk
+                -DANDROID_NDK_ROOT=/opt/android-sdk/ndk/27.2.12479018
+                -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+                "${CMAKE_FLAGS[@]}"
+            )
             SCRIPT_ARGS=(no-mold no-lto gcc "${SCRIPT_ARGS[@]}")
             ;;
         static)
