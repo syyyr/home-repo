@@ -82,19 +82,20 @@ add_overrides() {
     echo "$NEW_PACKAGE_JSON" > package.json
 }
 
-__info_log() {
-    local BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
-    echo -ne "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
-}
 
 # I am making this a bash function so that it doesn't mess with non-interactive scripts.
-git() {
-    local ORIG_GIT=(command git "$@")
+git() (
+    __info_log() {
+        BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
+        echo -ne "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
+    }
+
+    ORIG_GIT=(command git "$@")
     # Only handle the very simple cases.
     if [[ "$1" = switch && "$2" = -c && ("$#" = 3 || "$#" = 4) ]]; then
-        local OUTPUT BRANCH_NAME="$3"
+        BRANCH_NAME="$3"
         OUTPUT="$(command git "$@" 2>&1)"
-        local CODE="$?"
+        CODE="$?"
         echo "$OUTPUT"
 
         if [[ "$OUTPUT" != "fatal: a branch named '$BRANCH_NAME' already exists" ]]; then
@@ -105,7 +106,7 @@ git() {
         __info_log "Branch '$BRANCH_NAME' points to:\n"
         git show  --abbrev --oneline --no-patch main
 
-        local NEW_COMMAND=(git switch -C "$BRANCH_NAME")
+        NEW_COMMAND=(git switch -C "$BRANCH_NAME")
         if [[ -v 4 ]]; then
             NEW_COMMAND+=("$4")
         fi
@@ -126,4 +127,4 @@ git() {
     fi
 
     "${ORIG_GIT[@]}"
-}
+)
