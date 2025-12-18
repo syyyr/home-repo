@@ -94,13 +94,14 @@ __detect_and_run() {
     for INDEX in $(seq 0 "$(("${#ARG_REGEXES[@]}" - 1))"); do
         [[ "${ORIG_COMMAND[$INDEX]:-}" =~ ^${ARG_REGEXES[$INDEX]}$ ]] || return 1
     done
-    OUTPUT="$(unbuffer "${ORIG_COMMAND[@]}" 2>&1)"
+    set -o pipefail
+    OUTPUT="$(unbuffer "${ORIG_COMMAND[@]}" 2>&1 | tee /dev/tty)"
     CODE="$?"
-    echo "$OUTPUT"
+    set +o pipefail
 }
 
 __ask_user_to_run() {
-    __info_log "Do you want to run '${NEW_COMMAND}' ? [y/n] "
+    __info_log "Do you want to run '${NEW_COMMAND}'? [y/n] "
     if ! read -r -t 10; then
         echo
         exit "$CODE"
