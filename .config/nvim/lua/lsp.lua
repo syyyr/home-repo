@@ -92,12 +92,7 @@ for _, lsp_def in ipairs({
     {'cmake'},
     {'dockerls'},
     {'eslint'},
-    {'homeassistant', {
-        cmd = {'home-assistant-lsp', '--stdio'},
-        filetypes = {'yaml'},
-        root_markers = { 'configuration.yaml'},
-        settings = {}
-    }},
+    {'home_assistant'},
     {'jsonls'},
     {'lua_ls', {
         settings = {
