@@ -645,9 +645,13 @@ def GetSessionTty():
   """
   try:
     fd = open("/dev/tty", "r")
-    fcntl.ioctl(fd, termios.TIOCGPGRP)
-  except IOError:
+  except OSError:
     return None
+
+  if not os.isatty(fd):
+    os.close(fd)
+    return None
+
   return fd
 
 
