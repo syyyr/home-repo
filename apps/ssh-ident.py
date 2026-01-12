@@ -645,7 +645,7 @@ def GetSessionTty():
   """
   try:
     fd = open("/dev/tty", "r")
-    fcntl.ioctl(fd, termios.TIOCGPGRP, "  ")
+    fcntl.ioctl(fd, termios.TIOCGPGRP)
   except IOError:
     return None
   return fd
