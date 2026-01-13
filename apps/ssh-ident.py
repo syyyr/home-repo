@@ -644,7 +644,7 @@ def GetSessionTty():
   None otherwise.
   """
   try:
-    fd = open("/dev/tty", "r")
+    fd = os.open("/dev/tty", os.O_RDONLY)
   except OSError:
     return None
 
