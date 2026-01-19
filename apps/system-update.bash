@@ -74,7 +74,7 @@ if ! [[ -v NO_AUR ]]; then
         mkdir -p "$HOME/.local/aur"
         cd "$HOME/.local/aur" > /dev/null
         echo 'Rebuilding broken packages.'
-        for i in $({ checkrebuild |& sed 's/^foreign\s//'; } | filter_disabled_packages | filter_norebuild_packages); do
+        for i in $({ checkrebuild |& sed 's/^foreign\s//'; } | filter_norebuild_packages); do
             "$HOME/apps/update-aur-dep.bash" "$i" -f || true
         done
         for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
