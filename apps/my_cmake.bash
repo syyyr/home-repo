@@ -114,6 +114,39 @@ while true; do
             echo "Enabling RelWithDebInfo mode."
             BUILD_TYPE="RelWithDebInfo"
             ;;
+        weverything)
+            WEVERYTHING_FLAGS=(
+                -Weverything
+                -Wno-c++98-compat
+                -Wno-c++98-compat-pedantic
+                -Wno-covered-switch-default
+                -Wno-ctad-maybe-unsupported
+                -Wno-disabled-macro-expansion
+                -Wno-exit-time-destructors
+                -Wno-float-equal
+                -Wno-global-constructors
+                -Wno-missing-noreturn
+                -Wno-missing-prototypes
+                -Wno-nrvo
+                -Wno-padded
+                -Wno-pre-c++20-compat-pedantic
+                -Wno-range-loop-bind-reference
+                -Wno-shadow-field-in-constructor
+                -Wno-switch-default
+                -Wno-switch-enum
+                -Wno-unique-object-duplication
+                -Wno-unsafe-buffer-usage
+                -Wno-deprecated-copy-with-user-provided-dtor
+                -Wno-unused-exception-parameter
+                -Wno-unused-macros
+                -Wno-unused-member-function
+                -Wno-unused-template
+                -Wno-weak-vtables
+                -Wno-c++20-compat
+                -fsafe-buffer-usage-suggestions
+            )
+            CXXFLAGS="${WEVERYTHING_FLAGS[*]} ${CXXFLAGS}"
+            ;;
         werror)
             echo "Enabling Werror."
             CFLAGS="-Werror ${CFLAGS}"
