@@ -56,6 +56,7 @@ readonly AUTOREMOVE_PKGS=(
     mingw-w64-vulkan-icd-loader
     python-lsp-tree-sitter
     python-websockets-git
+    qcustomplot-qt6
     shvcli-git
     termux-language-server
 )
