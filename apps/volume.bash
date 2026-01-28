@@ -43,5 +43,10 @@ elif [[ "${VOL//%}" -ge "33" ]];then
 fi
 
 echo "Volume: $VOL${MUTED}"
-ARGS=( -t 2000 -h string:x-canonical-private-synchronous:volume -i "$VOLUME_IMG" )
-notify-send "${ARGS[@]}" "Volume" "$VOL"
+ID_FILE="$HOME/.cache/volume-id"
+if [[ -f "$ID_FILE" ]]; then
+    ID="$(cat "$ID_FILE" 2> /dev/null || true)"
+fi
+ARGS=( -t 2000 -i "$VOLUME_IMG" --print-id --replace-id="${ID:-0}")
+ID="$(notify-send "${ARGS[@]}" "Volume" "$VOL")"
+echo "$ID" > ~/.cache/volume-id
