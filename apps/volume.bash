@@ -47,6 +47,6 @@ ID_FILE="$HOME/.cache/volume-id"
 if [[ -f "$ID_FILE" ]]; then
     ID="$(cat "$ID_FILE" 2> /dev/null || true)"
 fi
-ARGS=( -t 2000 -i "$VOLUME_IMG" --print-id --replace-id="${ID:-0}")
+ARGS=( --expire-time 2000 --icon "$VOLUME_IMG" --print-id --replace-id "${ID:-0}")
 ID="$(notify-send "${ARGS[@]}" "Volume" "$VOL")"
 echo "$ID" > ~/.cache/volume-id
