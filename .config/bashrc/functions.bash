@@ -14,9 +14,9 @@ rm()
 {
     if [[ "$1" = "-rf" ]] && [[ "$#" -gt "1" ]]; then
         shift
-        local DIRNAME="$(dirname "$(realpath "$1")")"
-        local REQUEST="$({ for i in "$@"; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
-        local COMPARE_TO="$({ for i in "$DIRNAME"/*; do printf '%s\0' "$i"; done; } | xargs -0 realpath | sort)"
+        local DIRNAME="$(dirname "$(realpath -- "$1")")"
+        local REQUEST="$({ for i in "$@"; do printf '%s\0' "$i"; done; } | xargs -0 realpath -- | sort)"
+        local COMPARE_TO="$({ for i in "$DIRNAME"/*; do printf '%s\0' "$i"; done; } | xargs -0 realpath -- | sort)"
         if [[ "$REQUEST" = "$COMPARE_TO" ]]; then
             if [[ "$DIRNAME" = "$HOME" ]]; then
                 echo "${BASH_COLOR_BOLD}${BASH_COLOR_RED}You were about to remove everything in your home directory.${BASH_COLOR_NORMAL}"
@@ -46,9 +46,9 @@ rm()
                 echo 'Aborting.'
                 return 1
             fi
-            echo rm -rf "${@@Q}"
+            echo rm -- -rf "${@@Q}"
         fi
-        env rm -rf "$@"
+        env rm -rf -- "$@"
         return "$?"
     fi
 
