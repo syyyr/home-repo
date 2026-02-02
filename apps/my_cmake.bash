@@ -158,6 +158,10 @@ while true; do
             CFLAGS="-fanalyzer ${CFLAGS}"
             CXXFLAGS="-fanalyzer ${CXXFLAGS}"
             ;;
+        iwyu)
+            echo "Enabling IWYU."
+            CMAKE_FLAGS+=(-DCMAKE_CXX_INCLUDE_WHAT_YOU_USE=include-what-you-use)
+            ;;
         graph)
             echo "Enabling graphviz."
             CMAKE_FLAGS=( "--graphviz=deps.dot" "${CMAKE_FLAGS[@]}" )
