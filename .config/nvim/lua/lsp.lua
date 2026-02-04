@@ -123,6 +123,15 @@ for _, lsp_def in ipairs({
             }
         }
     }},
+    {'rust-analyzer', {
+        settings = {
+            ['rust-analyzer'] = {
+                check = {
+                    command = 'clippy'
+                }
+            },
+        },
+    }},
     {'qmlls', {
         filetypes = {'qml'},
         cmd = {'qmlls6', '-b', 'build'}
