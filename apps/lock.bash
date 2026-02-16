@@ -44,7 +44,7 @@ if [[ "$(playerctl status)" = "Playing" ]]; then
     playerctl pause
 fi
 
-VOLUME_BEFORE="$("$HOME/apps/volume.bash")"
+"$HOME/apps/volume.bash"
 
 if [[ "${1:-}" != "no-off" ]]; then
     (sleep 7; xset dpms force off)&
@@ -60,14 +60,9 @@ if [[ "${1:-}" != "no-off" ]]; then
     kill "$SCREENOFF_PID" 2> /dev/null
 fi
 
-VOLUME_NOW="$("$HOME/apps/volume.bash")"
-
 py3-cmd refresh --all
 
-if [[ "$VOLUME_NOW" != "$VOLUME_BEFORE" ]]; then
-    # The volume changed from outside, let's not do anything. If VOLUME_NOW is muted, we definitely don't want to unmute
-    # it, and if VOLUME_NOW is unmuted, it's too late to mute it now.
-    # Note: this detection fails if only the muted state changes, for example, if I disconnect my headphones, and the
-    # speaker and headphone volume is the same.
-    exit 0
-fi
+# Here we could restore the volume, but let's not do anything, even if the volume changed from outside. If VOLUME_NOW is
+# muted, we definitely don't want to unmute it, and if VOLUME_NOW is unmuted, it's too late to mute it now. This happens
+# if only the muted state changes, for example, if I disconnect my headphones, and the speaker and headphone volume is
+# the same.
