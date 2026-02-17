@@ -7,7 +7,8 @@ if pgrep -f 'fix_headphones.bash' &> /dev/null; then
     exit 0
 fi
 
-if ! bluetoothctl devices Connected | grep 'Pixel Buds Pro' &> /dev/null; then
+# FIXME: Change back to `bluetoothctl devices` after upstream fixes the bug.
+if ! echo -e 'devices Connected\nquit' | bluetoothctl | grep 'Pixel Buds Pro' &> /dev/null; then
     echo ""
     exit 0
 fi
