@@ -44,7 +44,7 @@ if [[ "$(playerctl status)" = "Playing" ]]; then
     playerctl pause
 fi
 
-"$HOME/apps/volume.bash"
+"$HOME/apps/volume.bash" quiet
 
 if [[ "${1:-}" != "no-off" ]]; then
     (sleep 7; xset dpms force off)&

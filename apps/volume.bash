@@ -16,11 +16,17 @@ if [[ $# -gt 0 ]]; then
             pamixer --toggle-mute
             echo "Toggling mute."
             ;;
+        quiet)
+            QUIET=1
+            ;;
         *)
             ;;
     esac
 fi
 
+if [[ -v QUIET ]]; then
+    exit 0
+fi
 
 py3-cmd refresh volume_status
 
