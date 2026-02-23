@@ -6,3 +6,5 @@ pbpctrl set multipoint false
 bluetoothctl disconnect
 pbpctrl show battery
 pbpctrl set multipoint true
+sleep 1
+py3-cmd refresh 'external_script pixel-buds'
