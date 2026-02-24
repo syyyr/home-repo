@@ -90,6 +90,7 @@ for _, lsp_def in ipairs({
     {'bashls'},
     {'clangd', { cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}}},
     {'cmake'},
+    {'denols'},
     {'dockerls'},
     {'eslint'},
     {'home_assistant'},
