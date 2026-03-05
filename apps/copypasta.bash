@@ -94,6 +94,8 @@ devil 😈
 shrug ¯\_(ツ)_/¯
 lenny ( ͡° ͜ʖ ͡°)
 monocle/detective 🧐
+confused 🥴
+nerd/data 🤓
 tm ™
 green_circle 🟢
 sushi 🍣
