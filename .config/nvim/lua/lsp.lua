@@ -166,6 +166,7 @@ for _, lsp_def in ipairs({
             yaml = {
                 customTags = {
                     '!include_dir_merge_named scalar',
+                    '!input scalar',
                 },
             }
         }
