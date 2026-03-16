@@ -12,6 +12,7 @@ alias {d,dc,scd}='cd'
 # shellcheck disable=SC2139
 alias {cd..,dc..,d..}='cd ..'
 alias cd,,='cd ..'
+alias cd-='cd -'
 alias cdp='cd -P'
 alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias ctest='ctest --output-on-failure'
