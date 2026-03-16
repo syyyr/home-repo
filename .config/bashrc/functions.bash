@@ -121,7 +121,7 @@ __fix_git_switch_c() {
 
     echo
     __info_log "Branch '$BRANCH_NAME' points to:\n"
-    git show  --abbrev --oneline --no-patch main
+    git show  --abbrev --oneline --no-patch "$BRANCH_NAME"
 
     ORIG_COMMAND[2]="-C"
     NEW_COMMAND="${ORIG_COMMAND[*]}"
