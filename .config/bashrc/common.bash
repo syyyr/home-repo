@@ -77,12 +77,25 @@ _GEN_PROMPT()
             fi
         fi
         local GIT_SYMBOLS=""
-        if ! timeout 0.1 git diff --quiet > /dev/null; then
-            GIT_SYMBOLS+="+"
+        timeout 0.1 git diff --quiet > /dev/null
+        local RET="$?"
+        if [[ "$RET" != 0 ]]; then
+            if [[ "$RET" != 124 ]]; then
+                GIT_SYMBOLS+="+"
+            else
+                GIT_SYMBOLS+="?"
+            fi
         fi
-        if ! timeout 0.1 git diff --cached --quiet > /dev/null; then
-            GIT_SYMBOLS+="*"
+        timeout 0.1 git diff --cached --quiet > /dev/null
+        local RET="$?"
+        if [[ "$RET" != 0 ]]; then
+            if [[ "$RET" != 124 ]]; then
+                GIT_SYMBOLS+="*"
+            else
+                GIT_SYMBOLS+="?"
+            fi
         fi
+
         if [[ -n "$GIT_SYMBOLS" ]]; then
             GIT_INFO+=" [${GIT_SYMBOLS}]"
         fi
