@@ -130,6 +130,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
             ['@tag.attribute.vue'] = 'htmlArg',
             ['@tag.vue'] = 'htmlTagName',
             ['@variable.member.vue'] = 'htmlArg',
+
+            ['@property.json'] = 'Keyword',
         }) do
             vim.cmd(('highlight! link %s %s'):format(syntax_group, highlight_group))
         end

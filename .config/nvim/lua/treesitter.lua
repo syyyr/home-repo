@@ -7,7 +7,7 @@ local available_parsers = {
     'cpon',
     'cpp',
     'dockerfile',
-    'jsonc',
+    'json',
     'lua',
     'markdown',
     'python',
@@ -28,6 +28,9 @@ require('nvim-treesitter').setup({
 })
 
 require('nvim-treesitter').install(available_parsers)
+
+-- A jsonc parser doesn't work, but I still want to enable treesitter for it.
+table.insert(available_parsers, 'jsonc')
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = available_parsers,
