@@ -17,6 +17,8 @@ filter_disabled_packages() {
 
         # These aren't updated all that frequently (or never).
         -e 'auracle-git'
+        -e 'ble2mqtt-git'
+        -e 'clang-build-analyzer-git'
         -e 'cmake-language-server-git'
         -e 'ctcache-git'
         -e 'extremely-linear-git'
