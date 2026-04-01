@@ -137,7 +137,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         end
 
         vim.cmd('highlight @keyword.constexpr cterm=nocombine gui=nocombine')
-
+        vim.cmd('highlight shFunctionOne cterm=bold gui=bold guifg=#d75f00')
+        vim.cmd('highlight shFunctionExprRegion cterm=bold gui=bold guifg=#d75f00')
     end,
     group = vim.api.nvim_create_augroup('PaperColorOverride', {clear = true})
 })
