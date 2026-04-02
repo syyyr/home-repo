@@ -103,8 +103,8 @@ while true; do
             ;;
         optimize)
             echo "Enabling optimizations."
-            CFLAGS="-O2 ${CFLAGS}"
-            CXXFLAGS="-O2 ${CXXFLAGS}"
+            CFLAGS="-O3 ${CFLAGS}"
+            CXXFLAGS="-O3 ${CXXFLAGS}"
             ;;
         release)
             echo "Enabling Release mode."
