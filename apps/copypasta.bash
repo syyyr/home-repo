@@ -61,6 +61,9 @@ moai 🗿
 peace ✌️
 smiling/crying 🥲
 checkmark ✅
+lizard 🦎
+beaver 🦫
+chopped_wood_logs 🪵
 night 🌃
 goto 𝓰𝓸𝓽𝓸
 lightning ⚡
