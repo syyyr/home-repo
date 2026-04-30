@@ -68,7 +68,8 @@ _GEN_PROMPT()
         if [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
             GIT_INFO=" $(git branch | sed -r -n '/^\* /{s/\* //;s/HEAD detached (at|from) //;p}' | tr -d '()')"
             local REMOTE_BRANCH="${GIT_INFO# }"
-            if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && [[ "$(git rev-parse "origin/${REMOTE_BRANCH#origin/}")" = "$(git rev-parse HEAD)" ]]; then
+            local REF_TO_MATCH="$(git rev-parse --parseopt "origin/${REMOTE_BRANCH#origin/}" -- 2>/dev/null || git rev-parse "${REMOTE_BRANCH#origin/}" 2>/dev/null || echo "")"
+            if ! [[ "${GIT_INFO# }" =~ rebasing ]] && ! [[ "${GIT_INFO# }" =~ "bisect started" ]] && [[ "$REF_TO_MATCH" = "$(git rev-parse HEAD)" ]]; then
                 GIT_INFO+="="
             fi
         else
