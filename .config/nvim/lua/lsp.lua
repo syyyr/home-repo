@@ -92,7 +92,6 @@ for _, lsp_def in ipairs({
     {'cmake'},
     {'denols'},
     {'dockerls'},
-    {'eslint'},
     {'home_assistant', {
         workspace_required = true
     }},
@@ -117,6 +116,7 @@ for _, lsp_def in ipairs({
             }
         }
     }},
+    {'oxlint'},
     {'pylsp', {
         settings = {
             pylsp = {
