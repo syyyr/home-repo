@@ -93,7 +93,9 @@ for _, lsp_def in ipairs({
     {'denols'},
     {'dockerls'},
     {'eslint'},
-    {'home_assistant'},
+    {'home_assistant', {
+        workspace_required = true
+    }},
     {'jsonls'},
     {'lua_ls', {
         settings = {
