@@ -13,6 +13,7 @@ alias {ccd,d,dc,scd}='cd'
 alias {cd..,dc..,d..,ccd..}='cd ..'
 alias cd,,='cd ..'
 alias cd-='cd -'
+alias cargo-nvim="vim --cmd 'compiler cargo' -q -"
 alias cdp='cd -P'
 alias cpu='cat /proc/cpuinfo | grep "MHz"'
 alias ctest='ctest --output-on-failure'
