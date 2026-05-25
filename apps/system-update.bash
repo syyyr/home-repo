@@ -78,6 +78,7 @@ if ! [[ -v NO_AUR ]]; then
         for i in $({ checkrebuild |& sed 's/^foreign\s//'; } | filter_norebuild_packages); do
             "$HOME/apps/update-aur-dep.bash" "$i" -f || true
         done
+        echo 'Updating packages.'
         auracle outdated || echo "No outdated AUR packages."
         for i in $({ auracle -q outdated || true; pacman -Qqs '.-git$'; } | filter_disabled_packages); do
             "$HOME/apps/update-aur-dep.bash" "$i" || true
