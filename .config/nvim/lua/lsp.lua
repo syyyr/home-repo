@@ -140,6 +140,9 @@ for _, lsp_def in ipairs({
             ['rust-analyzer'] = {
                 check = {
                     command = 'clippy'
+                },
+                cargo = {
+                    targetDir = true,
                 }
             },
         },
