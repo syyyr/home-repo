@@ -8,3 +8,5 @@ require('syyyr').register_printing({
         return ([[dbg!("%s");]]):format(syyyr.escape_double_quotes(text))
     end,
 })
+
+syyyr.nmap('<a-f>', '<cmd>RustLsp codeAction<cr>')
