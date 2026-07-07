@@ -143,11 +143,21 @@ __fix_git_push_origin_head() {
     __ask_user_to_run
 }
 
+__fix_git_push() {
+    [[ "$OUTPUT" =~ fatal:\ The\ current\ branch\ .*\ has\ no\ upstream\ branch. ]] || exit "$CODE"
+
+    __info_log "It seems that you wanted to push your current branch, but it doesn't have an upstream branch set.\n"
+    NEW_COMMAND="git push origin HEAD"
+    __ask_user_to_run
+}
+
 __impl_fix_command() {
     ORIG_COMMAND=("$@")
 
     __detect_and_run git switch -c '\S+' '\S*' && __fix_git_switch_c
     __detect_and_run git push origin HEAD && __fix_git_push_origin_head
+    __detect_and_run git push && __fix_git_push
+    __detect_and_run push && __fix_git_push
 
     command "${ORIG_COMMAND[@]}"
     return "$?"
