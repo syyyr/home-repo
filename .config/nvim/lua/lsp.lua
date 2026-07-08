@@ -162,6 +162,18 @@ for _, lsp_def in ipairs({
                 },
             },
         },
+        settings = {
+            javascript = {
+                format = {
+                    insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = false,
+                }
+            },
+            typescript = {
+                format = {
+                    insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = false,
+                }
+            },
+        },
         filetypes = {
             "javascript",
             "typescript",
