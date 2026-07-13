@@ -33,6 +33,9 @@ filter_disabled_packages() {
         -e 'tomlq-git'
         -e 'yang-lsp-git'
         -e 'wireshark-chainpack-rpc-block-dissector-git'
+
+        # Disable debug packages.
+        -e '.*-debug'
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
