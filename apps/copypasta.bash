@@ -93,6 +93,7 @@ hundred/100 💯
 rock 🤘
 honk/goose 🦢
 puke 🤮
+fih 🥀
 devil 😈
 shrug ¯\_(ツ)_/¯
 lenny ( ͡° ͜ʖ ͡°)
