@@ -125,6 +125,8 @@ function M.tnoremap(...) impl_map('t', true, ...) end
 function M.omap(...) impl_map('o', false, ...) end
 ---@type MapFunction
 function M.nmap(...) impl_map('', false, ...) end
+---@type MapFunction
+function M.noremap(...) impl_map('', false, ...) end
 
 local loaded_plugins = {}
 
