@@ -106,6 +106,8 @@ syyyr.nmap(')d', function() vim.diagnostic.jump({count = 1}) end)
 
 syyyr.nmap('<a-f>', '<cmd>CF<cr>')
 
+syyyr.nnoremap('-', '-')
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
