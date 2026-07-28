@@ -57,9 +57,6 @@ alias makej="make -j\$(nproc)"
 alias {maekj,makje,mkaje}="makej"
 
 alias adog='git adog'
-br() {
-    git switch -C "$(git branch --contains HEAD | sed -r 's@[^/]*/(.*)\)$@\1@')"
-}
 alias c='git clone --recurse-submodules'
 alias fetch='git fetch'
 alias pull='git pull'
