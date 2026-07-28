@@ -91,7 +91,7 @@ for _, lsp_def in ipairs({
     {'clangd', { cmd = {'clangd', '--background-index', '-j=6', '--clang-tidy', '--header-insertion=never', '--completion-style=detailed'}}},
     {'cmake'},
     {'crates', {
-        cmd = { '/home/vk/git/crates-lsp/target/debug/crates-lsp' },
+        cmd = { '/usr/bin/crates-lsp' },
         filetypes = { 'toml' },
         root_markers = { 'Cargo.toml', '.git' },
         init_options = {
