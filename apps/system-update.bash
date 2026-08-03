@@ -36,6 +36,8 @@ filter_disabled_packages() {
 
         # Disable debug packages.
         -e '.*-debug'
+
+        -e 'crates-lsp-git'
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
