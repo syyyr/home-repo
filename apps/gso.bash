@@ -31,20 +31,20 @@ for arg in "$@"; do
     shift
 done
 
-SEARCH_LOCATIONS=( "$@" )
+SEARCH_LOCATIONS=("$@")
 
 if ! [[ -v SEARCH_PATTERN ]]; then
     SEARCH_PATTERN="${SEARCH_LOCATIONS[0]:-}"
-    SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
+    SEARCH_LOCATIONS=("${SEARCH_LOCATIONS[@]:1}")
 fi
 
 if [[ -v OPEN_ALL ]]; then
-    RG_CMD_ARGS+=("--color=never")
+    RG_CMD_ARGS+=('--color=never')
 else
-    RG_CMD_ARGS+=("--color=always")
+    RG_CMD_ARGS+=('--color=always')
 fi
 
-RG_CMD=( rg "${RG_CMD_ARGS[@]}" --smart-case --with-filename --line-number --column --regexp "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+RG_CMD=(rg "${RG_CMD_ARGS[@]}" --smart-case --with-filename --line-number --column --regexp "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}")
 
 echo "${RG_CMD[@]@Q}"
 RESULTS="${ "${RG_CMD[@]}" 2>&1 || RG_ERR_CODE="$?"; }"
@@ -53,7 +53,7 @@ if [[ -v RG_ERR_CODE ]]; then
         exit 1
     fi
 
-    if ! [[ "$RESULTS" =~ "No files were searched" ]]; then
+    if ! [[ "$RESULTS" =~ 'No files were searched' ]]; then
         echo "$RESULTS" >&2
         exit 1
     fi
