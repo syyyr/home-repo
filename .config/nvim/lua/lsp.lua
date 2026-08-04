@@ -136,7 +136,7 @@ for _, lsp_def in ipairs({
         }
     }},
     {'rust-analyzer', {
-        default_settings = {
+        settings = {
             ['rust-analyzer'] = {
                 cargo = {
                     targetDir = true,
