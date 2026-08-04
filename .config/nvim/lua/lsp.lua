@@ -136,17 +136,14 @@ for _, lsp_def in ipairs({
         }
     }},
     {'rust-analyzer', {
-        settings = {
+        default_settings = {
             ['rust-analyzer'] = {
-                check = {
-                    command = 'clippy'
-                },
                 cargo = {
                     targetDir = true,
                 }
             },
         },
-    }},
+    }, 'no-enable'},
     {'qmlls', {
         filetypes = {'qml'},
         cmd = {'qmlls6', '-b', 'build'}
@@ -203,7 +200,10 @@ for _, lsp_def in ipairs({
         vim.lsp.config(lsp_def[1], lsp_def[2])
     end
 
-    vim.lsp.enable(lsp_def[1])
+    if lsp_def[3] ~= 'no-enable' then
+        vim.lsp.enable(lsp_def[1])
+    end
+
 end
 
 vim.cmd('packadd! plenary.nvim')
