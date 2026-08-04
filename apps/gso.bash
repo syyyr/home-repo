@@ -79,13 +79,13 @@ case "${FZF_ERR_CODE:-0}" in
         nvim -q <(echo "$FILE")
         ;;
     1)
-        echo "fzf: No match. This shouldn't happen." >&1
+        echo "fzf: No match. This shouldn't happen." >&2
         ;;
     2)
-        echo 'fzf: Error.' >&1
+        echo 'fzf: Error.' >&2
         ;;
     130)
         ;;
     *)
-        echo 'error.' >&1
+        echo 'error.' >&2
 esac
