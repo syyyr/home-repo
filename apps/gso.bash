@@ -59,6 +59,7 @@ echo "${RG_CMD[@]@Q}"
 RESULTS="${ "${RG_CMD[@]}" |& cat || RG_ERR_CODE="$?"; }"
 if [[ -v RG_ERR_CODE ]]; then
     if ! [[ "$RESULTS" =~ "No files were searched" ]]; then
+        echo "$RESULTS" >&2
         exit 1
     fi
 
