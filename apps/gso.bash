@@ -58,9 +58,10 @@ fi
 RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
 echo "${RG_CMD[@]@Q}"
-if RESULTS="$(! "${RG_CMD[@]}" |& cat)"; then
+RESULTS="${ "${RG_CMD[@]}" |& cat || RG_ERR_CODE="$?"; }"
+if [[ -v RG_ERR_CODE ]]; then
     if ! [[ "$RESULTS" =~ "No files were searched" ]]; then
-        exit "$?"
+        exit 1
     fi
 
     echo "No files were searched, trying again with --no-ignore..." >&2
