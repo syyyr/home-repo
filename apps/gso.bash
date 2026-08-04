@@ -73,8 +73,8 @@ if [[ -v OPEN_ALL ]]; then
     nvim -q <(echo "$RESULTS")
     exit 0
 fi
-FILE="$(fzf --tac -0 --height=50% --border --ansi --multi <<< "$RESULTS")"
-case "$?" in
+FILE="${ fzf --tac -0 --height=50% --border --ansi --multi <<< "$RESULTS" || FZF_ERR_CODE="$?"; }"
+case "${FZF_ERR_CODE:-0}" in
     0)
         nvim -q <(echo "$FILE")
         ;;
