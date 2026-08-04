@@ -112,7 +112,7 @@ RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 
 # I have no idea why this doesn't work without nohup, when this script gets run by i3, but OK
 if [[ -n "$RES" ]]; then
-    nohup xclip -rmlastnl -se c <<< "$RES" &> /dev/null
+    printf "%s" "$RES" | nohup xclip -se c &> /dev/null
     # Leave some time to allow focus switch back to whatever app I'm using
     sleep 0.5
     xvkbd -text '\CV'
