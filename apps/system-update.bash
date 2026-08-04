@@ -71,7 +71,7 @@ rustup update
 
 if ! [[ -v NO_SUB ]]; then
     echo Updating submodules...
-    exec 3< <(git -C "$HOME" submodule update --remote |& cat)
+    exec 3< <(git -C "$HOME" submodule update --remote 2>&1)
     UPDATE_PID="$!"
 fi
 
