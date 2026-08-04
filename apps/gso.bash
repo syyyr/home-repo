@@ -3,26 +3,24 @@ set -euo pipefail
 shopt -s failglob inherit_errexit
 
 RG_CMD_ARGS=()
-for arg in "$@"; do
-    case "$arg" in
-        --)
-            shift
-            break
+while getopts ':an' opt; do
+    case "$opt" in
+        a)
+            OPEN_ALL='1'
             ;;
-        -*)
-            [[ "$arg" =~ a ]] && OPEN_ALL='1'
-            [[ "$arg" =~ n ]] && RG_CMD_ARGS+=('--no-ignore') || RG_CMD_ARGS+=('--ignore')
-            while [[ "$arg" =~ ([^-an]) ]]; do
-                echo "Unknown option:" -"${BASH_REMATCH[1]}"
-                arg="$(tr -d "${BASH_REMATCH[1]}" <<< "$arg")"
-            done
-            shift
+        n)
+            RG_CMD_ARGS+=('--no-ignore')
+            ;;
+        ?)
+            echo "Unknown option: -$OPTARG" >&2
             ;;
         *)
-            break
+            echo "Unknown error while parsing opts" >&2
+            exit 2
             ;;
     esac
 done
+shift $((OPTIND - 1))
 
 for arg in "$@"; do
     if [[ -d "$arg" || -r "$arg" ]]; then
