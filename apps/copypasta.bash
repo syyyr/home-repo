@@ -107,13 +107,21 @@ linux/interject I'\''d just like to interject for a moment. What you'\''re refer
 ab 🆎
 b 🅱️'
 
+ORIG_WINDOW="$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5)"
+
 SELECTED_PASTA="$(rofi -dmenu -p "> " -sort -matching fuzzy -scroll-method 1 <<< "$PASTAS")"
 RES="$(sed -r 's/^[^ ]+ //' <<< "$SELECTED_PASTA")"
 
 # I have no idea why this doesn't work without nohup, when this script gets run by i3, but OK
 if [[ -n "$RES" ]]; then
     printf "%s" "$RES" | nohup xclip -se c &> /dev/null
-    # Leave some time to allow focus switch back to whatever app I'm using
-    sleep 0.5
+    # Wait for focus switch back to the window I was using
+    for _ in {1..20}; do
+        CURRENT="$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5)"
+        if [[ "$CURRENT" == "$ORIG_WINDOW" ]]; then
+            break
+        fi
+        sleep 0.05
+    done
     xvkbd -text '\CV'
 fi
