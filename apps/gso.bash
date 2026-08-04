@@ -38,22 +38,13 @@ if ! [[ -v SEARCH_PATTERN ]]; then
     SEARCH_LOCATIONS=( "${SEARCH_LOCATIONS[@]:1}" )
 fi
 
-# Smart case
-if [[ "${SEARCH_PATTERN}" != "${SEARCH_PATTERN,,}" ]]; then
-    IGNORE_CASE='--case-sensitive'
-else
-    IGNORE_CASE='--ignore-case'
-fi
-
-RG_CMD_ARGS+=("$IGNORE_CASE")
-
 if [[ -v OPEN_ALL ]]; then
     RG_CMD_ARGS+=("--color=never")
 else
     RG_CMD_ARGS+=("--color=always")
 fi
 
-RG_CMD=( rg "${RG_CMD_ARGS[@]}" --with-filename --line-number --column --regexp "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
+RG_CMD=( rg "${RG_CMD_ARGS[@]}" --smart-case --with-filename --line-number --column --regexp "$SEARCH_PATTERN" "${SEARCH_LOCATIONS[@]}" )
 
 echo "${RG_CMD[@]@Q}"
 RESULTS="${ "${RG_CMD[@]}" |& cat || RG_ERR_CODE="$?"; }"
