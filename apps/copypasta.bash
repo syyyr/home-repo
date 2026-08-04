@@ -26,7 +26,7 @@ hands 🙌
 italy 🤌
 rofl 🤣
 sleepy 😴
-happy/tear 🥲
+happy/tear/smiling/crying 🥲
 spit/saliva/drooling 🤤
 holy/halo 😇
 wow 😲
@@ -59,7 +59,6 @@ oops/blush/embarrassed 😳
 death/skull 💀
 moai 🗿
 peace ✌️
-smiling/crying 🥲
 checkmark ✅
 lizard 🦎
 beaver 🦫
