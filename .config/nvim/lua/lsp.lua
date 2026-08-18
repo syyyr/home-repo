@@ -295,7 +295,8 @@ local function make_ignore_diagnostics(original_handler, ignore_message, ignore_
 end
 
 local unused_strings = {"unused", "not used", "never read", "never used"}
-local unused_codes = {"inactive_code", "unused_variables"}
+-- stable/nightly change - and _
+local unused_codes = {"inactive-code", "inactive_code", "unused_variables"}
 
 vim.diagnostic.handlers.underline.show = make_ignore_diagnostics(vim.diagnostic.handlers.underline.show, unused_strings, unused_codes)
 vim.diagnostic.handlers.signs.show = make_ignore_diagnostics(vim.diagnostic.handlers.signs.show, unused_strings, unused_codes)
