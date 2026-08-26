@@ -45,6 +45,7 @@ alias sl='ls'
 alias sr='screen -r'
 alias stable='echo Current: $(rustup default) && rustup default stable'
 alias super-clippy='cargo clippy -- -D clippy::pedantic -D clippy::nursery'
+alias tsc-nvim="vim --cmd 'compiler tsc' -q -"
 alias vim='nvim'
 alias w='watch'
 alias watch='watch -n1'
