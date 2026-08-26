@@ -14,7 +14,7 @@ PASTAS='🤔	thinking
 😀	:D
 😩	weary
 😘	kiss/:*
-😋	lick/tongue
+😋	lick/tongue/yum
 👅	tongue
 🥰	loved
 😠	angery
