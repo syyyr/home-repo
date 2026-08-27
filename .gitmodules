@@ -115,3 +115,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/bufdelete.nvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/bufdelete.nvim
 	url = https://github.com/famiu/bufdelete.nvim.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/SchemaStore.nvim"]
+	path = .local/share/nvim/site/pack/bundle/opt/SchemaStore.nvim
+	url = git@github.com:b0o/SchemaStore.nvim.git

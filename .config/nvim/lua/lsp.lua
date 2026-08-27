@@ -82,6 +82,8 @@ cmp.setup({
 
 vim.cmd('packadd! nvim-lspconfig')
 
+
+vim.cmd('packadd! SchemaStore.nvim')
 vim.cmd('packadd! rustaceanvim')
 vim.cmd('packadd! clangd_extensions.nvim')
 
@@ -104,7 +106,14 @@ for _, lsp_def in ipairs({
     {'home_assistant', {
         workspace_required = true
     }},
-    {'jsonls'},
+    {'jsonls', {
+        settings = {
+            json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true },
+            },
+        },
+    }},
     {'lua_ls', {
         settings = {
             Lua = {
