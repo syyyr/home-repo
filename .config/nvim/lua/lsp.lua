@@ -316,6 +316,10 @@ syyyr.nnoremap('<c-space>', function()
     vim.lsp.buf.hover()
 end)
 
+syyyr.nnoremap('<c-]>', vim.lsp.buf.definition)
+syyyr.nnoremap('<c-[>', vim.lsp.buf.type_definition)
+syyyr.nnoremap('<c-w><c-[>', '<c-w><c-v><c-[>')
+
 vim.api.nvim_create_autocmd({'CursorHold', 'DiagnosticChanged'}, {
     callback = function()
         if vim.v.exiting ~= vim.NIL then
