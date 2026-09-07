@@ -83,7 +83,7 @@ cơm	com/rice
 🙄	roll
 😤	smoke/exhale
 😅	sweat
-🥵	sweat/hot
+🥵	sweat/hot/vedro
 🏍️	motorcycle/bike
 🏎️	car/f1/formule/formula
 💤	zzz/sleep
