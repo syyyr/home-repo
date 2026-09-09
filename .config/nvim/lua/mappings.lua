@@ -115,6 +115,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+syyyr.nnoremap('Q', '<cmd>set mouse=a<cr>Q')
+
 -- Reset highlighting, floating windows etc.
 syyyr.nnoremap('<a-cr>', function()
     vim.fn['clever_f#reset']()
@@ -122,4 +124,10 @@ syyyr.nnoremap('<a-cr>', function()
     vim.cmd('fclose!')
     vim.cmd('nohlsearch')
     vim.notify('')
+    do
+        local mc_ns = vim.api.nvim_create_namespace('nvim.multicursor')
+        vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+    end
+
+    vim.opt.mouse = ''
 end)
