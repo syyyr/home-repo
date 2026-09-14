@@ -83,7 +83,7 @@ _GEN_PROMPT()
         if [[ "$RET" != 0 ]]; then
             if [[ "$RET" != 124 ]]; then
                 GIT_SYMBOLS+="+"
-            else
+            elif [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
                 GIT_SYMBOLS+="?"
             fi
         fi
@@ -92,7 +92,7 @@ _GEN_PROMPT()
         if [[ "$RET" != 0 ]]; then
             if [[ "$RET" != 124 ]]; then
                 GIT_SYMBOLS+="*"
-            else
+            elif [[ "$GIT_ROOT_DIR" != "$HOME" ]]; then
                 GIT_SYMBOLS+="?"
             fi
         fi
