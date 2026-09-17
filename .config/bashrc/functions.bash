@@ -46,7 +46,7 @@ rm()
                 echo 'Aborting.'
                 return 1
             fi
-            echo rm -- -rf "${@@Q}"
+            echo rm -rf -- "${@@Q}"
         fi
         env rm -rf -- "$@"
         return "$?"
