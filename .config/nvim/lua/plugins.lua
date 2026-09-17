@@ -36,6 +36,7 @@ vim.api.nvim_create_user_command('GT', function ()
 end, {nargs = 0})
 
 local ll = require('syyyr').lazy_load
+vim.api.nvim_create_user_command('OpenAsk', ll('opencode.nvim', function() require('opencode').ask('@this: ') end), {nargs = 0})
 vim.api.nvim_create_user_command('GSHA', ll('git-blame.nvim', 'GitBlameCopySHA'), {nargs = 0})
 vim.api.nvim_create_user_command('GURL', ll('git-blame.nvim', 'GitBlameOpenCommitURL'), {nargs = 0})
 

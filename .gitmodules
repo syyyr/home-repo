@@ -118,3 +118,6 @@
 [submodule ".local/share/nvim/site/pack/bundle/opt/SchemaStore.nvim"]
 	path = .local/share/nvim/site/pack/bundle/opt/SchemaStore.nvim
 	url = https://github.com/b0o/SchemaStore.nvim.git
+[submodule ".local/share/nvim/site/pack/bundle/opt/opencode.nvim"]
+	path = .local/share/nvim/site/pack/bundle/opt/opencode.nvim
+	url = https://github.com/nickjvandyke/opencode.nvim.git
