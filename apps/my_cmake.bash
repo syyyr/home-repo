@@ -172,7 +172,7 @@ while true; do
             GRAPHVIZ=1
             ;;
         android)
-            QT_VERSION=6.10.2
+            QT_VERSION=6.12.0
             echo "Enabling android."
             CMAKE="$HOME/qt/$QT_VERSION/android_arm64_v8a/bin/qt-cmake"
             CMAKE_FLAGS=(
@@ -194,6 +194,8 @@ while true; do
             # static-compat-qt6-svg
             # static-compat-qt6-tools
             # static-compat-qt6-websockets
+            # Optional:
+            # static-compat-qt6-serialport
             CMAKE_FLAGS=(
                 -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=ON
                 -DGLIB2_DEPENDENCIES='-lgobject-2.0;-lgmodule-2.0;-lglib-2.0;-lmount;-lblkid;-lffi'
