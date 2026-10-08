@@ -33,6 +33,7 @@ alias krc="nvim \$HOME/.config/kitty/custom.conf"
 alias l='ls -CF'
 alias la='ls -A'
 alias lah='ls -lah'
+alias lh='ls -lh'
 alias ll='ls -alF'
 alias ls='ls --color=auto --hyperlink=auto'
 alias makec='make clean'
@@ -46,6 +47,7 @@ alias sr='screen -r'
 alias stable='echo Current: $(rustup default) && rustup default stable'
 alias super-clippy='cargo clippy -- -D clippy::pedantic -D clippy::nursery'
 alias tsc-nvim="vim --cmd 'compiler tsc' -q -"
+alias update-nix="nix --experimental-features 'nix-command flakes' flake update --store /tmp/nix"
 alias vim='nvim'
 alias w='watch'
 alias watch='watch -n1'
