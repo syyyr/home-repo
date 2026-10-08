@@ -22,11 +22,6 @@ info() {
     echo "${ARGS[@]}"
 }
 
-remove_build_dir() {
-    echo "Removing $HOME/.local/aur/$AUR_DEP/src..."
-    rm -rf "$HOME/.local/aur/$AUR_DEP/src"
-}
-
 ADDITIONAL_ARGS=("$@")
 NO_CONFIRM=(--noconfirm --needed)
 UPDATE_COMMAND=(env DEBUGINFOD_URLS="https://debuginfod.archlinux.org" CTEST_PARALLEL_LEVEL="$(nproc)" GNUMAKEFLAGS="-j$(nproc)" makepkg -si "${ADDITIONAL_ARGS[@]}")
@@ -73,8 +68,8 @@ while true; do
 
     for i in "${AUTOREMOVE_PKGS[@]}"; do
         if [[ "$i" = "$AUR_DEP" ]]; then
-            info "Automatically removing build dir for $AUR_DEP."
-            remove_build_dir
+            info "Automatically using --cleanbuild for $AUR_DEP."
+            UPDATE_COMMAND+=(--cleanbuild)
         fi
     done; unset i
 
@@ -111,7 +106,8 @@ while true; do
     fi
 
     if [[ "$REPLY" =~ "r" ]]; then
-        remove_build_dir
+        echo "Adding --cleanbuild..."
+        UPDATE_COMMAND+=(--cleanbuild)
     fi
 done
 
