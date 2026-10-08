@@ -114,6 +114,10 @@ while true; do
             echo "Enabling RelWithDebInfo mode."
             BUILD_TYPE="RelWithDebInfo"
             ;;
+        minsizerel)
+            echo "Enabling MinSizeRel mode."
+            BUILD_TYPE="MinSizeRel"
+            ;;
         weverything)
             WEVERYTHING_FLAGS=(
                 -Weverything
