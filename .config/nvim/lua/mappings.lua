@@ -76,6 +76,8 @@ syyyr.omap('i%', '<cmd>normal vi%<cr>')
 -- Auto complete brace
 syyyr.inoremap('{<cr>', '{<cr>}<Esc>O')
 
+syyyr.inoremap('<s-cr>', '<Esc>O')
+
 -- insert current line in cmd mode
 syyyr.cnoremap('<c-r><c-l>', [[<c-r>=getline('.')<cr>]])
 
