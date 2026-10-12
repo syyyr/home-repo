@@ -34,6 +34,9 @@ filter_disabled_packages() {
         -e 'yang-lsp-git'
         -e 'wireshark-chainpack-rpc-block-dissector-git'
 
+        # This takes too long to build.
+        -e 'wine-staging-git'
+
         # Disable debug packages.
         -e '.*-debug'
 
