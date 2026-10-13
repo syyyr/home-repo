@@ -39,6 +39,7 @@ alias ls='ls --color=auto --hyperlink=auto'
 alias makec='make clean'
 alias nightly='echo Current: $(rustup default) && rustup default nightly'
 alias no-lid='systemd-inhibit --what=handle-lid-switch --who="Command line lid switch blocker" --why='\''User typed "no-lid" in a terminal'\'' --mode=block sleep infinity'
+alias orc="nvim -p \$HOME/.config/opencode/{AGENTS.md,opencode.json}"
 alias rsync='rsync --progress'
 alias se='sudoedit'
 alias shvspy='shvspy -v RpcMsg'
