@@ -134,7 +134,19 @@ for _, lsp_def in ipairs({
             }
         }
     }},
-    {'oxlint'},
+    {'oxlint', {
+        settings = {
+            run = 'onSave',
+        },
+        before_init = function(init_params, config)
+            local oxlint_base = assert(loadfile(vim.api.nvim_get_runtime_file("lsp/oxlint.lua", false)[1]))()
+            oxlint_base.before_init(init_params, config)
+
+            if init_params.capabilities.workspace then
+                init_params.capabilities.workspace.diagnostics = nil
+            end
+        end,
+    }},
     {'pylsp', {
         settings = {
             pylsp = {
