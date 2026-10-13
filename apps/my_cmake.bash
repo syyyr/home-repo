@@ -21,7 +21,7 @@ print_var()
 CACHE=1
 GRAPHVIZ=0
 MOLD=1
-LTO=1
+LTO=0
 CLANG=1
 CFLAGS="${CFLAGS:-}"
 CXXFLAGS="${CXXFLAGS:-}"
@@ -62,9 +62,9 @@ while true; do
             echo "Disabling mold."
             MOLD=0
             ;;
-        no-lto)
-            echo "Disabling lto."
-            LTO=0
+        lto)
+            echo "Enabling lto."
+            LTO=1
             ;;
         asan)
             echo "Enabling ASAN/UBSAN."
