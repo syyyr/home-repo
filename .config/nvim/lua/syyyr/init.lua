@@ -49,7 +49,8 @@ end
 ---@return nil
 function M.register_printing(opts)
     vim.api.nvim_buf_create_user_command(0, 'Print', function(info)
-        print_something(info.bang and opts.print_text(info.args) or opts.print_var(info.args))
+        to_print = info.args:gsub('%s$', '')
+        print_something(info.bang and opts.print_text(to_print) or opts.print_var(to_print))
     end, {nargs = 1, bang = true})
 
     if opts.no_printthis then
