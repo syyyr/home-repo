@@ -93,6 +93,14 @@ syyyr.xnoremap('<', '<gv')
 syyyr.nnoremap('*', '*N')
 syyyr.nnoremap('#', '#N')
 
+local function fetch_orig_mapping(mode, lhs)
+    return vim.iter(vim.api.nvim_get_keymap(mode)):find(function(keymap) return keymap.lhs == lhs end).callback
+end
+local old_v_star = fetch_orig_mapping('x', '*')
+local old_v_hash = fetch_orig_mapping('x', '#')
+syyyr.xnoremap('*', function() old_v_star(); vim.cmd([[normal! N]]) end)
+syyyr.xnoremap('#', function() old_v_hash(); vim.cmd([[normal! n]]) end)
+
 syyyr.nnoremap('<c-p>', '"0p')
 syyyr.xnoremap('<c-p>', '"0p')
 
