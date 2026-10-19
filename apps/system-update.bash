@@ -40,7 +40,11 @@ filter_disabled_packages() {
         # Disable debug packages.
         -e '.*-debug'
 
+        # This one has my local changes.
         -e 'crates-lsp-git'
+
+        # Skip static-compat- pkgs, because there's too many.
+        -e 'static-compat-.*'
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
