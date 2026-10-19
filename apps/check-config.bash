@@ -19,6 +19,9 @@ ignore_line()
     fi
 }
 
-print_and_run selene --no-summary --config "$HOME/.config/nvim/selene.toml" "$HOME/.config/nvim/"
-print_and_run shellcheck -a "$HOME"/.config/bashrc/*
-print_and_run lua-language-server --check="$HOME/.config/nvim" --checklevel=Hint | ignore_line
+EXIT_CODE=0
+print_and_run selene --no-summary --config "$HOME/.config/nvim/selene.toml" "$HOME/.config/nvim/" || EXIT_CODE="$?"
+print_and_run shellcheck -a "$HOME"/.config/bashrc/* || EXIT_CODE="$?"
+print_and_run lua-language-server --check="$HOME/.config/nvim" --checklevel=Hint | ignore_line || EXIT_CODE="$?"
+
+exit "$EXIT_CODE"
