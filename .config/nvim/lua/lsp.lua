@@ -179,6 +179,9 @@ for _, lsp_def in ipairs({
                     languages = {"javascript", "typescript", "vue"},
                 },
             },
+            preferences = {
+                preferTypeOnlyAutoImports = true,
+            }
         },
         settings = {
             javascript = {
