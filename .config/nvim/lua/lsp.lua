@@ -291,7 +291,13 @@ require('nvim-custom-diagnostic-highlight').setup({
     }
 })
 
-vim.api.nvim_create_user_command('CF', function() vim.lsp.buf.code_action() end, {nargs = 0})
+vim.api.nvim_create_user_command('CF', function()
+    vim.lsp.buf.code_action({
+        filter = function (x)
+            return x.disabled == nil
+        end
+    })
+end, {nargs = 0})
 vim.api.nvim_create_user_command('Cref', function() vim.lsp.buf.references() end, {nargs = 0})
 vim.api.nvim_create_user_command('CQ', function() vim.diagnostic.setloclist({severity = vim.diagnostic.severity.ERROR}) end, {nargs = 0})
 vim.api.nvim_create_user_command('CQA', function () vim.diagnostic.setqflist() end, {nargs = 0})
