@@ -42,9 +42,6 @@ filter_disabled_packages() {
 
         # This one has my local changes.
         -e 'crates-lsp-git'
-
-        # Skip static-compat- pkgs, because there's too many.
-        -e 'static-compat-.*'
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
@@ -53,6 +50,9 @@ filter_norebuild_packages() {
     local DISABLED_PKGS=(
         # One binary is broken because of newer ldd
         -e 'mingw-w64-rust-bin'
+
+        # Skip static-compat- pkgs, because there's too many.
+        -e 'static-compat-.*'
     )
     grep -v "${DISABLED_PKGS[@]}"
 }
