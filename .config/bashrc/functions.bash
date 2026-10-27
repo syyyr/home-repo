@@ -146,8 +146,14 @@ __fix_git_push_origin_head() {
 __fix_git_push() {
     [[ "$OUTPUT" =~ fatal:\ The\ current\ branch\ .*\ has\ no\ upstream\ branch. ]] || exit "$CODE"
 
-    __info_log "It seems that you wanted to push your current branch, but it doesn't have an upstream branch set.\n"
-    NEW_COMMAND="git push origin HEAD"
+    printf '%s\0' "${ORIG_COMMAND[@]}" | grep -F -x -z -- '-f' && IS_FORCE=" FORCE "
+
+    __info_log "It seems that you wanted to${IS_FORCE:- }push your current branch, but it doesn't have an upstream branch set.\n"
+    if [[ -v IS_FORCE ]]; then
+        NEW_COMMAND="git push -f origin HEAD"
+    else
+        NEW_COMMAND="git push origin HEAD"
+    fi
     __ask_user_to_run
 }
 
@@ -158,6 +164,8 @@ __impl_fix_command() {
     __detect_and_run git push origin HEAD && __fix_git_push_origin_head
     __detect_and_run git push && __fix_git_push
     __detect_and_run push && __fix_git_push
+    __detect_and_run git push -f && __fix_git_push
+    __detect_and_run push -f && __fix_git_push
 
     command "${ORIG_COMMAND[@]}"
     return "$?"
