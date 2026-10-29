@@ -2,4 +2,4 @@
 set -euo pipefail
 shopt -s failglob inherit_errexit
 
-find . -type d -iname \*"$1"\*
+find "${2:-.}" -type d -iname \*"$1"\*
