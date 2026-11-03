@@ -162,10 +162,11 @@ __impl_fix_command() {
 
     __detect_and_run git switch -c '\S+' '\S*' && __fix_git_switch_c
     __detect_and_run git push origin HEAD && __fix_git_push_origin_head
-    __detect_and_run git push && __fix_git_push
-    __detect_and_run push && __fix_git_push
-    __detect_and_run git push -f && __fix_git_push
-    __detect_and_run push -f && __fix_git_push
+
+    for CMD in "git push" "push" "git push -f" "push -f"; do
+        readarray -d ' ' -t CMD_PARTS < <(echo -n "$CMD")
+        __detect_and_run "${CMD_PARTS[@]}" && __fix_git_push
+    done
 
     command "${ORIG_COMMAND[@]}"
     return "$?"
