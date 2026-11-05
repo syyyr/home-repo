@@ -19,7 +19,7 @@ get_ha_battery() {
             "http://${HASS_SERVER}/api/states/${ENTITY_ID}" |
             jq -er '.state' 2>/dev/null
     )"; then
-        return 0
+        return
     fi
 
     echo -n "$VALUE"
@@ -44,46 +44,50 @@ get_connected_battery() {
     RIGHT="$(grep "right bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
 }
 
+format_battery() {
+    local LABEL="$1"
+    local VALUE="$2"
+
+    echo -n "[\?color=lightblue&show ${LABEL}: ${VALUE}%]"
+}
+
+add_battery_label() {
+    local LABEL="$1"
+    local VALUE="$2"
+
+    [[ -n "$VALUE" ]] && BATTERY_LABELS+=("$LABEL")
+    return 0
+}
+
+declare -A BATTERY_VALUES
+BATTERY_LABELS=()
+
 # FIXME: Change back to `bluetoothctl devices` after upstream fixes the bug.
-if ! echo -e 'devices Connected\nquit' | bluetoothctl | grep 'Pixel Buds Pro' &> /dev/null; then
+if ! printf 'devices Connected\nquit\n' | bluetoothctl | grep 'Pixel Buds Pro' &> /dev/null; then
     CONNECTED=0
     get_disconnected_battery
+    BATTERY_VALUES=([C]="$CASE")
+    add_battery_label C "$CASE"
 else
     CONNECTED=1
     get_connected_battery
+    BATTERY_VALUES=([L]="$LEFT" [C]="$CASE" [R]="$RIGHT")
+    add_battery_label L "$LEFT"
+    add_battery_label C "$CASE"
+    add_battery_label R "$RIGHT"
 fi
 
-if [[ -n "${LEFT}" ]]; then
-    LEFT="[\?color=lightblue&show L: ${LEFT}%]"
+OUTPUT_PARTS=()
+for LABEL in "${BATTERY_LABELS[@]}"; do
+    OUTPUT_PARTS+=("$(format_battery "$LABEL" "${BATTERY_VALUES[$LABEL]}")")
+done
+
+if [[ "$CONNECTED" -eq 1 ]]; then
+    ANC="$(pbpctrl get anc)"
+    [[ "$ANC" = active ]] && OUTPUT_PARTS+=("[\?color=lightblue&show ANC]")
+    pactl list | grep -F 'High Fidelity Playback (A2DP Sink,' &> /dev/null || OUTPUT_PARTS+=("[\?color=salmon&show A2DP unavailable!]")
 fi
 
-if [[ -n "${CASE}" ]]; then
-    CASE=" [\?color=lightblue&show C: ${CASE}%] "
-elif [[ "$CONNECTED" -eq 1 ]]; then
-    CASE=" "
-fi
+OUTPUT="${OUTPUT_PARTS[*]}"
 
-if [[ -n "${RIGHT}" ]]; then
-    RIGHT="[\?color=lightblue&show R: ${RIGHT}%]"
-fi
-
-if [[ "$CONNECTED" -eq 0 ]]; then
-    echo -n "${CASE}"
-    exit 0
-fi
-
-ANC="$(pbpctrl get anc)"
-
-if [[ "$ANC" = active ]]; then
-    ANC=" [\?color=lightblue&show ANC]"
-else
-    ANC=""
-fi
-
-if ! pactl list | grep -F 'High Fidelity Playback (A2DP Sink,' &> /dev/null; then
-    A2DP=" [\?color=salmon&show A2DP unavailable!]"
-else
-    A2DP=""
-fi
-
-echo -n "${LEFT}${CASE}${RIGHT}${ANC}${A2DP}"
+echo -n "$OUTPUT"
