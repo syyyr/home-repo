@@ -55,7 +55,9 @@ add_battery_label() {
     local LABEL="$1"
     local VALUE="$2"
 
-    [[ -n "$VALUE" ]] && BATTERY_LABELS+=("$LABEL")
+    if [[ -n "$VALUE" ]]; then
+        BATTERY_LABELS+=("$LABEL")
+    fi
     return 0
 }
 
@@ -84,7 +86,9 @@ done
 
 if [[ "$CONNECTED" -eq 1 ]]; then
     ANC="$(pbpctrl get anc)"
-    [[ "$ANC" = active ]] && OUTPUT_PARTS+=("[\?color=lightblue&show ANC]")
+    if [[ "$ANC" = active ]]; then
+        OUTPUT_PARTS+=("[\?color=lightblue&show ANC]")
+    fi
     pactl list | grep -F 'High Fidelity Playback (A2DP Sink,' &> /dev/null || OUTPUT_PARTS+=("[\?color=salmon&show A2DP unavailable!]")
 fi
 
