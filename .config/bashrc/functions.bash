@@ -9,6 +9,8 @@ BASH_COLOR_NORMAL=$'\033''[0m'
 # BASH_COLOR_ORANGE=$'\033''[33m'
 # BASH_COLOR_PURPLE=$'\033''[35m'
 BASH_COLOR_RED=$'\033''[31m'
+BASH_RED_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_RED}"
+BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
 
 rm()
 {
@@ -83,7 +85,6 @@ add_overrides() {
 }
 
 __info_log() {
-    BASH_BLUE_BOLD="${BASH_COLOR_BOLD}${BASH_COLOR_BLUE}"
     echo -ne "${BASH_BLUE_BOLD}$*${BASH_COLOR_NORMAL}"
 }
 
@@ -146,7 +147,7 @@ __fix_git_push_origin_head() {
 __fix_git_push() {
     [[ "$OUTPUT" =~ fatal:\ The\ current\ branch\ .*\ has\ no\ upstream\ branch. ]] || exit "$CODE"
 
-    printf '%s\0' "${ORIG_COMMAND[@]}" | grep -F -x -z -- '-f' > /dev/null && IS_FORCE=" FORCE "
+    printf '%s\0' "${ORIG_COMMAND[@]}" | grep -F -x -z -- '-f' > /dev/null && IS_FORCE=" ${BASH_RED_BOLD}FORCE${BASH_BLUE_BOLD} "
 
     __info_log "It seems that you wanted to${IS_FORCE:- }push your current branch, but it doesn't have an upstream branch set.\n"
     if [[ -v IS_FORCE ]]; then
