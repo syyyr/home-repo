@@ -33,14 +33,19 @@ get_disconnected_battery() {
 get_connected_battery() {
     local BATTERY_INFO
 
-    BATTERY_INFO="$(pbpctrl show battery)"
-    LEFT="$(grep "left bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
-
-    if ! CASE="$(grep "case:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')" || [[ -z "${CASE}" ]]; then
+    if ! BATTERY_INFO="$(pbpctrl show battery)"; then
+        LEFT="$(get_ha_battery sensor.pixel_buds_left_battery_last)"
         CASE="$(get_ha_battery sensor.pixel_buds_case_battery_last)"
-    fi
+        RIGHT="$(get_ha_battery sensor.pixel_buds_right_battery_last)"
+    else
+        LEFT="$(grep "left bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
 
-    RIGHT="$(grep "right bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
+        if ! CASE="$(grep "case:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')" || [[ -z "${CASE}" ]]; then
+            CASE="$(get_ha_battery sensor.pixel_buds_case_battery_last)"
+        fi
+
+        RIGHT="$(grep "right bud:" <<< "$BATTERY_INFO" | grep -o '[0-9]*')"
+    fi
 }
 
 format_battery() {
@@ -84,8 +89,7 @@ for LABEL in "${BATTERY_LABELS[@]}"; do
 done
 
 if [[ "$CONNECTED" -eq 1 ]]; then
-    ANC="$(pbpctrl get anc)"
-    if [[ "$ANC" = active ]]; then
+    if ANC="$(pbpctrl get anc)" && [[ "$ANC" = active ]]; then
         OUTPUT_PARTS+=("[\?color=lightblue&show ANC]")
     fi
     pactl list | grep -F 'High Fidelity Playback (A2DP Sink,' &> /dev/null || OUTPUT_PARTS+=("[\?color=salmon&show A2DP unavailable!]")
