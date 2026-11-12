@@ -61,6 +61,7 @@ add_battery_label() {
 
     if [[ -n "$VALUE" ]]; then
         BATTERY_LABELS+=("$LABEL")
+        BATTERY_VALUES["$LABEL"]="$VALUE"
     fi
 }
 
@@ -71,13 +72,11 @@ if ! bluetoothctl devices Connected | grep 'Pixel Buds Pro' &> /dev/null; then
     CONNECTED=0
     get_disconnected_battery
     if [[ "$CASE" -le 50 ]]; then
-        BATTERY_VALUES=([C]="$CASE")
         add_battery_label C "$CASE"
     fi
 else
     CONNECTED=1
     get_connected_battery
-    BATTERY_VALUES=([L]="$LEFT" [C]="$CASE" [R]="$RIGHT")
     add_battery_label L "$LEFT"
     add_battery_label C "$CASE"
     add_battery_label R "$RIGHT"
