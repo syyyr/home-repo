@@ -90,7 +90,7 @@ done
 
 if [[ "$CONNECTED" -eq 1 ]]; then
     if ANC="$(pbpctrl get anc)" && [[ "$ANC" = active ]]; then
-        OUTPUT_PARTS+=("[\?color=lightblue&show ANC]")
+        OUTPUT_PARTS+=("[\?color=lightblue&show 🔕]")
     fi
     pactl list | grep -F 'High Fidelity Playback (A2DP Sink,' &> /dev/null || OUTPUT_PARTS+=("[\?color=salmon&show A2DP unavailable!]")
 fi
