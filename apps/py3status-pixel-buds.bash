@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exuo pipefail
+set -euo pipefail
 shopt -s failglob inherit_errexit
 
 source "$HOME/.local/share/ha-token"
