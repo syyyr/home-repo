@@ -57,7 +57,6 @@ add_battery_label() {
     if [[ -n "$VALUE" ]]; then
         BATTERY_LABELS+=("$LABEL")
     fi
-    return 0
 }
 
 declare -A BATTERY_VALUES
