@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -exuo pipefail
 shopt -s failglob inherit_errexit
 
 source "$HOME/.local/share/ha-token"
@@ -15,6 +15,7 @@ get_ha_battery() {
 
     if ! VALUE="$(
         curl --fail --silent \
+            --max-time 5 \
             --header "Authorization: Bearer ${HASS_TOKEN}" \
             "http://${HASS_SERVER}/api/states/${ENTITY_ID}" |
             jq -er '.state' 2>/dev/null
