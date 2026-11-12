@@ -64,8 +64,7 @@ add_battery_label() {
 declare -A BATTERY_VALUES
 BATTERY_LABELS=()
 
-# FIXME: Change back to `bluetoothctl devices` after upstream fixes the bug.
-if ! printf 'devices Connected\nquit\n' | bluetoothctl | grep 'Pixel Buds Pro' &> /dev/null; then
+if ! bluetoothctl devices Connected | grep 'Pixel Buds Pro' &> /dev/null; then
     CONNECTED=0
     get_disconnected_battery
     if [[ "$CASE" -ne 100 ]]; then
