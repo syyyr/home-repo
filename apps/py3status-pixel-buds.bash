@@ -27,9 +27,7 @@ get_ha_battery() {
 }
 
 get_disconnected_battery() {
-    LEFT="$(get_ha_battery sensor.pixel_buds_left_battery_last)"
     CASE="$(get_ha_battery sensor.pixel_buds_case_battery_last)"
-    RIGHT="$(get_ha_battery sensor.pixel_buds_right_battery_last)"
 }
 
 get_connected_battery() {
